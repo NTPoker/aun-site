@@ -105,23 +105,34 @@ form.addEventListener("submit", async e => {
 
 apply(pickLang());
 
-// Hero demo: plays the sample result like a short video, on a loop.
+// Hero demo: plays the sample result once like a short video, then stays on the result.
 const demo = document.getElementById("demo");
 if (demo) {
   const prog = demo.querySelector(".prog");
   const clock = demo.querySelector(".clock");
-  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const replay = document.getElementById("replay");
+  const motion = matchMedia("(prefers-reduced-motion: reduce)");
+  const steps = [["s0", 0, "0:00", 600], ["s1", 30, "0:03", 1700], ["s2", 58, "0:07", 1800], ["s3", 58, "0:07", 1500], ["s4", 58, "0:07", 0]];
+  let timer = null;
   const set = (s, pct, t) => {
     demo.className = "demo " + s;
-    prog.style.transition = pct === 0 ? "none" : "width 1.6s linear";
+    prog.style.transition = pct === 0 || motion.matches ? "none" : "width 1.6s linear";
     prog.style.width = pct + "%";
     clock.textContent = t;
   };
-  if (still) set("s4", 58, "0:07");
-  else {
-    const steps = [["s0", 0, "0:00", 600], ["s1", 30, "0:03", 1700], ["s2", 58, "0:07", 1800], ["s3", 58, "0:07", 1500], ["s4", 58, "0:07", 5200]];
+  const end = () => { clearTimeout(timer); set("s4", 58, "0:07"); replay.hidden = motion.matches; };
+  const play = () => {
+    if (motion.matches) return end();
+    replay.hidden = true;
     let i = 0;
-    const tick = () => { const [s, p, t, ms] = steps[i]; set(s, p, t); i = (i + 1) % steps.length; setTimeout(tick, ms); };
+    const tick = () => {
+      const [s, p, t, ms] = steps[i++];
+      set(s, p, t);
+      if (i < steps.length) timer = setTimeout(tick, ms); else end();
+    };
     tick();
-  }
+  };
+  replay.addEventListener("click", play);
+  motion.addEventListener("change", () => { if (motion.matches) end(); });
+  play();
 }
