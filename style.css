@@ -252,3 +252,19 @@ h2{font-size:28px}
 .vs-aun{padding:22px 20px}
 .bubble-aun{font-size:20px}
 }
+/* v3 after reviews */
+.lead-sub{margin:-8px 0 0;font-size:18px;line-height:1.7;color:#BDB8AC}
+.sub-plan{margin:-40px 0 48px;font-size:15px;color:#77726A}
+.h-name span:empty{display:none}
+.big-seal{width:200px;height:200px;font-size:130px}
+.vs-item .vs-note{margin-top:auto}
+@media (max-width:720px){
+.lead-sub{font-size:16px}
+.demo{margin:0}
+.h-photo{margin:20px -20px 0}
+.h-photo img{aspect-ratio:4/3}
+.sub-plan{margin:-24px 0 32px}
+.big-seal{width:120px;height:120px;font-size:80px}
+}
+.hero-visual .demo{z-index:2}
+h2{text-wrap:balance}
