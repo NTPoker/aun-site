@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /signups/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['email','lang','country','firstLanguage','jlpt','want','consent','createdAt','ua'])
+        && request.resource.data.email is string
+        && request.resource.data.email.size() > 3 && request.resource.data.email.size() < 200
+        && request.resource.data.email.matches('.+@.+\\..+')
+        && request.resource.data.consent == true
+        && (!('want' in request.resource.data) || (request.resource.data.want is string && request.resource.data.want.size() < 2000))
+        && (!('country' in request.resource.data) || (request.resource.data.country is string && request.resource.data.country.size() < 100))
+        && (!('firstLanguage' in request.resource.data) || (request.resource.data.firstLanguage is string && request.resource.data.firstLanguage.size() < 100))
+        && (!('jlpt' in request.resource.data) || (request.resource.data.jlpt is string && request.resource.data.jlpt.size() < 20))
+        && (!('lang' in request.resource.data) || (request.resource.data.lang is string && request.resource.data.lang.size() < 10))
+        && (!('ua' in request.resource.data) || (request.resource.data.ua is string && request.resource.data.ua.size() < 400))
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
