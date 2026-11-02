@@ -264,3 +264,8 @@ h2{font-size:32px}
 .hero-card-wrap .demo{right:auto;width:auto;margin:-80px 16px 0 40px}
 }
 .hero-card-wrap .replay{top:-46px;right:0}
+@media (max-width:720px){
+.hero-card-wrap .demo{margin:-60px 0 0 0}
+.hero-card-wrap .dl{font-size:20px}
+.hero-card-wrap .replay{top:-46px}
+}
