@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>阿吽 AUN — 上手ですね、は禁止。</title>
+<title>阿吽 AUN — 「上手ですね」は、禁止。</title>
 <meta name="description" content="日本人が聞く、日本語スピーキングテストを準備中。いまは先行登録だけを受け付けています。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23C93D27'/%3E%3Ctext x='20' y='27' font-size='18' text-anchor='middle' fill='white' font-family='serif'%3E阿%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,17 +37,18 @@
 <section class="hero">
 <div class="hero-text">
 <p class="tag" data-i="tag"></p>
-<h1 class="h1-ja">「上手ですね」は、<br><span class="red">禁止。</span></h1>
+<h1 class="h1-ja"><span class="strike">「上手ですね」<svg viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true"><path d="M6 26 C 90 14, 210 30, 394 12"/></svg></span><br>は、<span class="red">禁止。</span></h1>
 <p class="h1-sub" data-i="h1sub"></p>
-<p class="lead-2" data-i="lead1"></p>
+<p class="lead" data-i-html="lead1"></p>
 <div class="cta-row">
 <a href="#signup" class="btn" data-i="cta"></a>
 <span class="meta" data-i="meta"></span>
 </div>
 </div>
-<div class="hero-card-wrap">
-<figure class="h3-photo"><img src="https://images.unsplash.com/photo-1677480208097-c9f544822ebc?w=900&h=1100&fit=crop&crop=faces&q=75" alt="" width="450" height="550"><figcaption class="h3-name"><b data-i="lisName"></b><span data-i="lisRole"></span></figcaption></figure>
+<div class="hero-visual">
+<figure class="h-photo"><img src="https://images.unsplash.com/photo-1677480208097-c9f544822ebc?w=900&h=1100&fit=crop&crop=faces&q=75" alt="" width="450" height="550"><figcaption class="h-name"><b data-i="lisName"></b><span data-i="lisRole"></span></figcaption><p class="h-cap" data-i="lisPhoto"></p></figure>
 <div class="demo" id="demo" aria-label="結果の見本">
+<button type="button" class="replay" id="replay" hidden><span aria-hidden="true">↻</span> <span data-i="dReplay"></span></button>
 <div class="demo-top"><span class="rec"></span><span class="demo-label" data-i="dLabel"></span><span class="demo-q">「週末、何をしましたか。」</span></div>
 <div class="demo-body">
 <p class="dl dl1">友だちと映画を見て、</p>
@@ -60,93 +61,20 @@
 </div>
 </div>
 <div class="demo-bar"><div class="track"><i class="prog"></i><i class="mark"></i></div><span class="clock">0:00</span></div>
-<button type="button" class="replay" id="replay" hidden><span aria-hidden="true">↻</span> <span data-i="dReplay"></span></button>
 </div>
 </div>
 </section>
 </div>
-
-<section class="band">
-<div class="wrap band-in">
-<p class="band-title" data-i-html="band"></p>
-<ul class="band-list">
-<li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8735F" stroke-width="1.6" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg><span data-i="b1"></span></li>
-<li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8735F" stroke-width="1.6" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5v4"/></svg><span data-i="b2"></span></li>
-<li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8735F" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M3 6l9 7 9-7"/></svg><span data-i="b3"></span></li>
-</ul>
-</div>
-</section>
 </div>
 
-<section class="light" id="listener">
-<div class="wrap pad listener">
-<figure class="lis-photo"><img src="https://images.unsplash.com/photo-1677480208097-c9f544822ebc?w=900&h=1100&fit=crop&crop=faces&q=75" alt="" width="450" height="550" loading="lazy"><figcaption data-i="lisPhoto"></figcaption></figure>
-<div class="lis-text">
-<h2 data-i="lisH"></h2>
-<div class="lis-item"><b>1</b><div><p class="lis-t" data-i="lis1t"></p><p data-i="lis1"></p></div></div>
-<div class="lis-item"><b>2</b><div><p class="lis-t" data-i="lis2t"></p><p data-i="lis2"></p></div></div>
-<div class="lis-item"><b>3</b><div><p class="lis-t" data-i="lis3t"></p><p data-i="lis3"></p></div></div>
-</div>
-</div>
-</section>
-
-<section class="light bordered" id="how">
+<section class="light" id="truth">
 <div class="wrap pad">
-<h2 data-i="howH"></h2>
-<p class="sub" data-i="howSub"></p>
-<div class="phones">
-<figure class="phone-fig">
-<div class="phone"><div class="screen">
-<p class="ph-top" data-i="ph1top"></p>
-<div class="ph-mid">
-<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#B8321E" stroke-width="1.5" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>
-<p class="ph-q">「週末、<br>何をしましたか。」</p>
-<p class="ph-small" data-i="ph1note"></p>
-</div>
-</div></div>
-<figcaption><b>1</b><span data-i="step1"></span></figcaption>
-</figure>
-<figure class="phone-fig">
-<div class="phone"><div class="screen">
-<p class="ph-top" data-i="ph1top"></p>
-<div class="ph-mid">
-<div class="mic"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5v4"/></svg></div>
-<div class="wave"><i style="height:14px"></i><i style="height:30px"></i><i style="height:22px"></i><i style="height:38px"></i><i style="height:18px"></i><i style="height:28px"></i><i style="height:12px"></i><i style="height:24px"></i><i style="height:34px"></i><i style="height:16px"></i></div>
-<p class="timer">0:14</p>
-<p class="ph-small" data-i="ph2note"></p>
-</div>
-</div></div>
-<figcaption><b>2</b><span data-i="step2"></span></figcaption>
-</figure>
-<figure class="phone-fig">
-<div class="phone"><div class="screen">
-<div class="res-head"><span data-i="ph3title"></span><span class="mini-seal">B1</span></div>
-<p class="res-count" data-i="ph3count"></p>
-<div class="res-card"><p>レストランで<span class="mini-circle">たべてもらいました</span></p><p class="res-note">誰が、食べたの？</p><p class="res-fix"><b>こう言える</b>　食べました。</p></div>
-<div class="res-card"><p>きのう、<span class="mini-circle">びよういん</span>に</p><p class="res-note">美容院？病院？</p></div>
-</div></div>
-<figcaption><b>3</b><span data-i="step3"></span></figcaption>
-</figure>
-</div>
-</div>
-</section>
-
-<section class="light bordered" id="level">
-<div class="wrap pad">
-<div class="row-between">
-<h2 data-i-html="levelH"></h2>
-<span class="sample-tag" data-i="sample"></span>
-</div>
-<div class="bars">
-<div class="bar"><div style="height:36px"></div><span data-i="belowA1"></span></div>
-<div class="bar"><div style="height:64px"></div><span>A1</span></div>
-<div class="bar"><div style="height:96px"></div><span>A2</span></div>
-<div class="bar you"><div class="you-seal"><b>B1</b><small data-i="you"></small></div><div style="height:132px"></div><span>B1</span></div>
-<div class="bar next"><div style="height:168px"></div><span data-i="b2plus"></span></div>
-</div>
-<div class="two">
-<p data-i-html="done"></p>
-<p class="red" data-i-html="next"></p>
+<h2 class="center" data-i-html="vsH"></h2>
+<div class="vs">
+<div class="vs-item"><p class="vs-who" data-i="vs1w"></p><div class="bubble">日本語、<br>上手ですね！</div><p class="gloss" data-i="vs1g"></p><p class="vs-note" data-i="vs1n"></p></div>
+<div class="vs-item"><p class="vs-who" data-i="vs2w"></p><div class="bubble bubble-ai"><b>92</b> / 100<br>Great job!</div><p class="gloss"></p><p class="vs-note" data-i="vs2n"></p></div>
+<div class="vs-item"><p class="vs-who" data-i="vs3w"></p><div class="bubble">うん、<br>分かりますよ。</div><p class="gloss" data-i="vs3g"></p><p class="vs-note" data-i="vs3n"></p></div>
+<div class="vs-item vs-aun"><p class="vs-who"><span class="mini-seal-r">吽</span><span data-i="vs4w"></span></p><div class="bubble bubble-aun"><b>0:07</b><br>ここで<span class="nw">分からなくなった。</span></div><p class="gloss" data-i="vs4g"></p><p class="vs-note" data-i="vs4n"></p></div>
 </div>
 </div>
 </section>
@@ -156,12 +84,39 @@
 <h2 data-i-html="resH"></h2>
 <div class="sheet">
 <div class="sheet-head"><span data-i="sheetTitle"></span><span class="red b" data-i="sheetCount"></span></div>
+<div class="lv">
+<div class="lv-cells"><span data-i="belowA1"></span><span>A1</span><span>A2</span><span class="lv-you"><b>B1</b><small data-i="you"></small></span><span class="lv-next" data-i="b2plus"></span></div>
+<div class="lv-text"><p data-i-html="done"></p><p class="red" data-i-html="next"></p></div>
+</div>
 <div class="item"><div><span class="qsmall">「週末、何をしましたか。」</span><p class="said">レストランで<span class="circle">たべてもらいました</span></p></div><div><p class="red-note">誰が、食べたの？</p><p class="why"><b data-i="why"></b>　「〜てもらう」だと、ほかの人がしてくれたことになります。</p><p class="why"><b data-i="fix"></b>　レストランで<mark>食べました</mark>。</p></div></div>
-<div class="item"><div><span class="qsmall">「どうして日本語を勉強していますか。」</span><p class="said">アニメが好きで、<span class="circle">それから仕事で、あと</span>…</p></div><div><p class="red-note">いちばんの理由は、どれ？</p></div></div>
-<div class="item"><div><span class="qsmall">「きのう、どこへ行きましたか。」</span><p class="said">ゆうびんきょくで、<span class="circle">きて</span>を買いました</p></div><div><p class="red-note">「来て」？　何を買ったの？</p></div></div>
-<div class="item"><div><span class="qsmall">「先週、何がありましたか。」</span><p class="said">きのう、<span class="circle">びよういん</span>に行って</p></div><div><p class="red-note">美容院？　病院？</p></div></div>
+<div class="item"><div><span class="qsmall">「どうして日本語を勉強していますか。」</span><p class="said">アニメが好きで、<span class="circle">それから仕事で、あと</span>…</p></div><div><p class="red-note">いちばんの理由は、どれ？</p><p class="why"><b data-i="fix"></b>　いちばんは仕事のためです。アニメも好きです。</p></div></div>
+<div class="item"><div><span class="qsmall">「きのう、どこへ行きましたか。」</span><p class="said">ゆうびんきょくで、<span class="circle">きて</span>を買いました</p></div><div><p class="red-note">「来て」？　何を買ったの？</p><p class="why"><b data-i="fix"></b>　郵便局で<mark>切手</mark>を買いました。</p></div></div>
 </div>
 <p class="foot-note" data-i="sheetNote"></p>
+</div>
+</section>
+
+<section class="dark" id="listener">
+<div class="wrap pad listener">
+<div class="big-seal" aria-hidden="true">吽</div>
+<div class="lis-text">
+<h2 data-i="lisH"></h2>
+<div class="lis-item"><b>1</b><div><p class="lis-t" data-i="lis1t"></p><p data-i="lis1"></p></div></div>
+<div class="lis-item"><b>2</b><div><p class="lis-t" data-i="lis2t"></p><p data-i="lis2"></p></div></div>
+<div class="lis-item"><b>3</b><div><p class="lis-t" data-i="lis3t"></p><p data-i="lis3"></p></div></div>
+</div>
+</div>
+</section>
+
+<section class="light" id="how">
+<div class="wrap pad">
+<h2 data-i="howH"></h2>
+<ol class="steps">
+<li><span class="n">1</span><p class="st" data-i="step1"></p><p class="ss" data-i="step1s"></p></li>
+<li><span class="n">2</span><p class="st" data-i="step2"></p><p class="ss" data-i="step2s"></p></li>
+<li><span class="n">3</span><p class="st" data-i="step3"></p><p class="ss" data-i="step3s"></p></li>
+</ol>
+<p class="foot-note" data-i="howNote"></p>
 </div>
 </section>
 
