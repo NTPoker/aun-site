@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>阿吽 AUN — 日本語、上手ですね。でも、本当は？</title>
+<title>阿吽 AUN — 上手ですね、は禁止。</title>
 <meta name="description" content="日本人が聞く、日本語スピーキングテストを準備中。いまは先行登録だけを受け付けています。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23C93D27'/%3E%3Ctext x='20' y='27' font-size='18' text-anchor='middle' fill='white' font-family='serif'%3E阿%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,21 +37,29 @@
 <section class="hero">
 <div class="hero-text">
 <p class="tag" data-i="tag"></p>
-<h1 class="h1-ja">「日本語、<br>上手ですね」。<br><span class="red">でも、本当は？</span></h1>
+<h1 class="h1-ja">「上手ですね」は、<br><span class="red">禁止。</span></h1>
 <p class="h1-sub" data-i="h1sub"></p>
-<p class="lead-1" data-i="lead1"></p>
-<p class="lead-2" data-i="lead2"></p>
+<p class="lead-2" data-i="lead1"></p>
+<p class="lead-1" data-i="lead2"></p>
 <div class="cta-row">
 <a href="#signup" class="btn" data-i="cta"></a>
 <span class="meta" data-i="meta"></span>
 </div>
 </div>
 <div class="hero-card-wrap">
-<div class="paper">
-<p class="q">「週末、何をしましたか。」</p>
-<p class="ans">友だちと映画を見て、<br>レストランで<br><span class="circled">たべてもらいました<svg viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><path class="draw" d="M18 64 C 16 26, 120 8, 190 12 C 262 16, 292 40, 286 70 C 280 102, 196 114, 120 110 C 52 106, 8 92, 22 56 C 30 36, 70 26, 104 22"/></svg></span>。</p>
-<p class="note fade1">誰が、食べたの？</p>
-<div class="fix fade2"><p class="fix-label">こう言える</p><p class="fix-text">レストランで<mark>食べました</mark>。</p></div>
+<div class="demo" id="demo" aria-label="結果の見本">
+<div class="demo-top"><span class="rec"></span><span class="demo-label" data-i="dLabel"></span><span class="demo-q">「週末、何をしましたか。」</span></div>
+<div class="demo-body">
+<p class="dl dl1">友だちと映画を見て、</p>
+<p class="dl dl2">レストランで<span class="hit">たべてもらいました<svg viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><path d="M18 64 C 16 26, 120 8, 190 12 C 262 16, 292 40, 286 70 C 280 102, 196 114, 120 110 C 52 106, 8 92, 22 56 C 30 36, 70 26, 104 22"/></svg></span>。</p>
+<div class="stop"><b>0:07</b><span data-i="dStop"></span></div>
+<div class="dcard">
+<p class="dnote">誰が、食べたの？</p>
+<p class="dwhy"><b data-i="why"></b>「〜てもらう」だと、ほかの人がしてくれたことになります。</p>
+<p class="dfix"><b data-i="fix"></b>レストランで<mark>食べました</mark>。</p>
+</div>
+</div>
+<div class="demo-bar"><div class="track"><i class="prog"></i><i class="mark"></i></div><span class="clock">0:00</span></div>
 </div>
 </div>
 </section>
@@ -69,7 +77,19 @@
 </section>
 </div>
 
-<section class="light" id="how">
+<section class="light" id="listener">
+<div class="wrap pad listener">
+<figure class="lis-photo"><img src="https://images.unsplash.com/photo-1677480208097-c9f544822ebc?w=900&h=1100&fit=crop&crop=faces&q=75" alt="" width="450" height="550" loading="lazy"><figcaption data-i="lisPhoto"></figcaption></figure>
+<div class="lis-text">
+<h2 data-i="lisH"></h2>
+<div class="lis-item"><b>1</b><div><p class="lis-t" data-i="lis1t"></p><p data-i="lis1"></p></div></div>
+<div class="lis-item"><b>2</b><div><p class="lis-t" data-i="lis2t"></p><p data-i="lis2"></p></div></div>
+<div class="lis-item"><b>3</b><div><p class="lis-t" data-i="lis3t"></p><p data-i="lis3"></p></div></div>
+</div>
+</div>
+</section>
+
+<section class="light bordered" id="how">
 <div class="wrap pad">
 <h2 data-i="howH"></h2>
 <p class="sub" data-i="howSub"></p>
