@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aunjapanese.com/sitemap.xml

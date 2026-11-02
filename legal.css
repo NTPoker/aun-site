@@ -1,0 +1,39 @@
+:root{--ink:#141414;--paper:#F3F0E8;--bg:#0F0F0F;--fg:#EFECE4;--muted:#5E5A52;--red:#B8321E;--red2:#C93D27;--line:#DCD8CE}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Shippori Mincho','Noto Sans SC','Noto Sans TC','Noto Sans KR',serif;-webkit-font-smoothing:antialiased}
+a{color:var(--red)}
+.bar{background:var(--bg);color:var(--fg)}
+.bar-in{max-width:860px;margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
+.seal{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--red2);color:#fff;font-weight:700;font-size:13px;writing-mode:vertical-rl;letter-spacing:2px}
+.brand-name{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:18px;letter-spacing:6px}
+.switch{display:flex;gap:6px}
+.switch button{min-height:40px;padding:6px 14px;background:transparent;color:var(--fg);border:1px solid #3A3A3A;font:inherit;font-size:14px;cursor:pointer}
+.switch button[aria-pressed="true"]{border-color:var(--red2);color:#E8735F}
+main{max-width:860px;margin:0 auto;padding:56px 24px 88px}
+h1{margin:0 0 8px;font-size:34px;line-height:1.4;letter-spacing:1px}
+.updated{margin:0 0 40px;font-size:14px;color:var(--muted)}
+h2{margin:44px 0 12px;font-size:21px;line-height:1.5;padding-top:20px;border-top:1px solid var(--line)}
+p,li,td,th{font-size:16px;line-height:1.95}
+ol,ul{padding-left:1.4em}
+table{width:100%;border-collapse:collapse;margin:8px 0 24px}
+th,td{text-align:left;vertical-align:top;padding:12px 10px;border-top:1px solid var(--line)}
+th{width:30%;font-weight:800}
+.note{font-size:14px;color:var(--muted)}
+.foot{background:var(--bg);color:#CFCAC0}
+.foot-in{max-width:860px;margin:0 auto;padding:28px 24px 36px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px}
+.foot a{color:#CFCAC0}
+[data-l]{display:none}
+html[lang="ja"] [data-l="ja"]{display:revert}
+html:not([lang="ja"]) [data-l="en"]{display:revert}
+.form{display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--line);padding:28px;margin-top:8px}
+.form label{font-size:15px;font-weight:800;margin-top:6px}
+.form input,.form textarea,.form select{font-size:17px;padding:13px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);font-family:'Inter Tight','Noto Sans SC','Noto Sans TC','Noto Sans KR',sans-serif;width:100%}
+.form .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:15px;line-height:1.7}
+.form .check input{width:20px;height:20px;margin-top:4px;flex:none;accent-color:var(--red)}
+.btn{display:inline-block;background:var(--red2);color:#fff;border:0;padding:16px 28px;font:inherit;font-weight:800;font-size:17px;letter-spacing:2px;cursor:pointer;min-height:56px}
+.btn[disabled]{opacity:.6;cursor:wait}
+.msg{min-height:1em;font-size:15px;margin:4px 0 0}
+.msg.ok{color:#1E6B3A;font-weight:700}
+.msg.err{color:var(--red);font-weight:700}
+@media (max-width:640px){h1{font-size:27px}th{width:36%}main{padding-top:40px}}

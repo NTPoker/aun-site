@@ -1,21 +1,55 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    function optStr(d, k, n) { return !(k in d) || (d[k] is string && d[k].size() < n); }
+
     match /signups/{id} {
-      allow create: if request.resource.data.keys().hasOnly(['email','lang','country','firstLanguage','jlpt','want','consent','createdAt','ua'])
+      allow create: if request.resource.data.keys().hasOnly(['email','lang','country','firstLanguage','jlpt','want','consent','createdAt','ua','src'])
         && request.resource.data.email is string
         && request.resource.data.email.size() > 3 && request.resource.data.email.size() < 200
         && request.resource.data.email.matches('.+@.+\\..+')
         && request.resource.data.consent == true
-        && (!('want' in request.resource.data) || (request.resource.data.want is string && request.resource.data.want.size() < 2000))
-        && (!('country' in request.resource.data) || (request.resource.data.country is string && request.resource.data.country.size() < 100))
-        && (!('firstLanguage' in request.resource.data) || (request.resource.data.firstLanguage is string && request.resource.data.firstLanguage.size() < 100))
-        && (!('jlpt' in request.resource.data) || (request.resource.data.jlpt is string && request.resource.data.jlpt.size() < 20))
-        && (!('lang' in request.resource.data) || (request.resource.data.lang is string && request.resource.data.lang.size() < 10))
-        && (!('ua' in request.resource.data) || (request.resource.data.ua is string && request.resource.data.ua.size() < 400))
+        && optStr(request.resource.data, 'want', 2000)
+        && optStr(request.resource.data, 'country', 100)
+        && optStr(request.resource.data, 'firstLanguage', 100)
+        && optStr(request.resource.data, 'jlpt', 20)
+        && optStr(request.resource.data, 'lang', 10)
+        && optStr(request.resource.data, 'ua', 400)
+        && optStr(request.resource.data, 'src', 41)
         && request.resource.data.createdAt == request.time;
       allow read, update, delete: if false;
     }
+
+    match /contacts/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['email','topic','message','lang','consent','createdAt'])
+        && request.resource.data.email is string
+        && request.resource.data.email.size() > 3 && request.resource.data.email.size() < 200
+        && request.resource.data.email.matches('.+@.+\\..+')
+        && request.resource.data.topic in ['question','data','other']
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0 && request.resource.data.message.size() < 2000
+        && request.resource.data.consent == true
+        && optStr(request.resource.data, 'lang', 10)
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
+
+    // Anonymous page events: no personal data.
+    match /events/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['t','page','lang','src','depth','w','sid','createdAt'])
+        && request.resource.data.keys().hasAll(['t','page','src','createdAt'])
+        && (request.resource.data.t == 'scroll') == ('depth' in request.resource.data)
+        && request.resource.data.t in ['view','scroll','cta','signup','lang']
+        && optStr(request.resource.data, 'page', 40)
+        && optStr(request.resource.data, 'lang', 10)
+        && optStr(request.resource.data, 'src', 41)
+        && optStr(request.resource.data, 'sid', 17)
+        && (!('depth' in request.resource.data) || (request.resource.data.depth is int && request.resource.data.depth >= 0 && request.resource.data.depth <= 100))
+        && (!('w' in request.resource.data) || (request.resource.data.w is int && request.resource.data.w >= 0 && request.resource.data.w <= 10000))
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
+
     match /{document=**} { allow read, write: if false; }
   }
 }

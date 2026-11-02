@@ -273,3 +273,4 @@ h2{font-size:28px}
 .h-photo img{object-position:center 25%;filter:saturate(.9) contrast(1.05)}
 @media (max-width:1040px){.hero-visual{padding-bottom:250px}}
 @media (max-width:720px){.hero-visual{padding-bottom:0}}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 20px}.foot-links a{color:var(--muted)}

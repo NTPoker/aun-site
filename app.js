@@ -1,15 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCHsu4QvmccC6feQ2qBltt7zxUjZ2aP7VA",
-  authDomain: "aun-japanese-1900.firebaseapp.com",
-  projectId: "aun-japanese-1900",
-  storageBucket: "aun-japanese-1900.firebasestorage.app",
-  messagingSenderId: "464841605680",
-  appId: "1:464841605680:web:fb414a0f7e4f935b38e3f5"
-};
-const db = getFirestore(initializeApp(firebaseConfig));
+import { save, src, track, slowNote } from "./fb.js";
 
 const T = window.AUN_I18N;
 const LANGS = Object.keys(T);
@@ -61,6 +50,7 @@ menu.addEventListener("click", e => {
   const b = e.target.closest("button[data-lang]");
   if (!b) return;
   apply(b.dataset.lang);
+  track("lang");
   menu.hidden = true;
   btn.setAttribute("aria-expanded", "false");
 });
@@ -79,8 +69,9 @@ form.addEventListener("submit", async e => {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 199) { msg.textContent = d.msgEmail; msg.classList.add("err"); return; }
   if (!document.getElementById("consent").checked) { msg.textContent = d.msgConsent; msg.classList.add("err"); return; }
   submit.disabled = true;
+  const slow = slowNote(msg, d.msgSlow);
   try {
-    await addDoc(collection(db, "signups"), {
+    await save("signups", {
       email,
       lang,
       firstLanguage: form.firstLanguage.value.trim(),
@@ -89,8 +80,9 @@ form.addEventListener("submit", async e => {
       want: form.want.value.trim(),
       consent: true,
       ua: navigator.userAgent.slice(0, 390),
-      createdAt: serverTimestamp()
+      src: src()
     });
+    track("signup");
     form.reset();
     msg.textContent = d.msgOk;
     msg.classList.add("ok");
@@ -99,11 +91,28 @@ form.addEventListener("submit", async e => {
     msg.textContent = d.msgErr;
     msg.classList.add("err");
   } finally {
+    clearTimeout(slow);
     submit.disabled = false;
   }
 });
 
 apply(pickLang());
+
+// Anonymous measurement: page view, how far people scroll, and which buttons they press.
+track("view");
+const seen = new Set();
+const depth = () => {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  if (max <= 0) return;
+  const atBottom = scrollY >= max - 2;
+  const pct = atBottom ? 100 : Math.min(99, Math.floor(scrollY / max * 100));
+  for (const step of [25, 50, 75, 100]) {
+    if (pct >= step && !seen.has(step)) { seen.add(step); track("scroll", { depth: step }); }
+  }
+};
+addEventListener("scroll", depth, { passive: true });
+addEventListener("load", depth);
+document.querySelectorAll('a[href="#signup"]').forEach(a => a.addEventListener("click", () => track("cta")));
 
 // Hero demo: plays the sample result once like a short video, then stays on the result.
 const demo = document.getElementById("demo");
