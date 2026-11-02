@@ -85,7 +85,9 @@ lis3t:"「上手ですね」は禁止",
 lis3:"中身のない褒め言葉は書きません。通じた所は、理由つきで「通じた」と書きます。",
 lisPhoto:"イメージ写真です。実際の聞き手ではありません。",
 dReplay:"もう一度見る",
-aiNote:"文字起こしなどに AI を使いますが、判断するのは日本人です。"
+aiNote:"文字起こしなどに AI を使いますが、判断するのは日本人です。",
+lisName:"聞き手（見本）",
+lisRole:"日本語が母語・東京"
 },
 "en": {
 langLabel:"English",
@@ -172,7 +174,9 @@ lis3t:"“Jouzu” is banned",
 lis3:"No empty compliments. Where you got through, we say so — with the reason.",
 lisPhoto:"Illustrative photo. Not an actual listener.",
 dReplay:"Watch again",
-aiNote:"We use AI for things like transcription, but the judgment is made by a Japanese person."
+aiNote:"We use AI for things like transcription, but the judgment is made by a Japanese person.",
+lisName:"Listener (sample)",
+lisRole:"Native Japanese speaker · Tokyo"
 },
 "id": {
 langLabel:"Bahasa Indonesia",
@@ -259,7 +263,9 @@ lis3t:"“Jouzu” dilarang",
 lis3:"Tidak ada pujian kosong. Bagian yang tersampaikan kami tulis “tersampaikan”, dengan alasannya.",
 lisPhoto:"Foto ilustrasi. Bukan pendengar sebenarnya.",
 dReplay:"Lihat lagi",
-aiNote:"Kami memakai AI untuk hal seperti transkripsi, tetapi yang menilai adalah orang Jepang."
+aiNote:"Kami memakai AI untuk hal seperti transkripsi, tetapi yang menilai adalah orang Jepang.",
+lisName:"Pendengar (contoh)",
+lisRole:"Penutur asli bahasa Jepang · Tokyo"
 },
 "vi": {
 langLabel:"Tiếng Việt",
@@ -346,7 +352,9 @@ lis3t:"Cấm khen “jouzu”",
 lis3:"Không khen suông. Chỗ nào truyền đạt được, chúng tôi ghi rõ là được — kèm lý do.",
 lisPhoto:"Ảnh minh họa. Không phải người nghe thực tế.",
 dReplay:"Xem lại",
-aiNote:"Chúng tôi dùng AI cho những việc như chép lời, nhưng người đánh giá là người Nhật."
+aiNote:"Chúng tôi dùng AI cho những việc như chép lời, nhưng người đánh giá là người Nhật.",
+lisName:"Người nghe (mẫu)",
+lisRole:"Người bản ngữ tiếng Nhật · Tokyo"
 },
 "zh": {
 langLabel:"简体中文",
@@ -433,7 +441,9 @@ lis3t:"禁止说“日语真好”",
 lis3:"不写空洞的夸奖。对方听懂的部分，会附上理由写明“听懂了”。",
 lisPhoto:"示意图片，并非实际的聆听者。",
 dReplay:"再看一次",
-aiNote:"转写等环节会使用 AI，但做判断的是日本人。"
+aiNote:"转写等环节会使用 AI，但做判断的是日本人。",
+lisName:"聆听者（示例）",
+lisRole:"日语母语者 · 东京"
 },
 "zh-TW": {
 langLabel:"繁體中文",
@@ -520,7 +530,9 @@ lis3t:"禁止說「日語真好」",
 lis3:"不寫空洞的稱讚。對方聽懂的部分，會附上理由寫明「聽懂了」。",
 lisPhoto:"示意圖片，並非實際的聆聽者。",
 dReplay:"再看一次",
-aiNote:"逐字稿等環節會使用 AI，但做判斷的是日本人。"
+aiNote:"逐字稿等環節會使用 AI，但做判斷的是日本人。",
+lisName:"聆聽者（範例）",
+lisRole:"日語母語者 · 東京"
 },
 "ko": {
 langLabel:"한국어",
@@ -607,6 +619,8 @@ lis3t:"“잘하시네요” 금지",
 lis3:"내용 없는 칭찬은 쓰지 않아요. 전달된 곳은 이유와 함께 “전달됐다”고 써요.",
 lisPhoto:"이해를 돕기 위한 사진이며, 실제 평가자가 아닙니다.",
 dReplay:"다시 보기",
-aiNote:"받아쓰기 등에는 AI를 쓰지만, 판단은 일본인이 합니다."
+aiNote:"받아쓰기 등에는 AI를 쓰지만, 판단은 일본인이 합니다.",
+lisName:"듣는 사람(견본)",
+lisRole:"일본어 원어민 · 도쿄"
 }
 };
