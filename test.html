@@ -117,8 +117,8 @@ try {
     fetch(new URL("/api/exam/seats", base), { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(n => {
       if (!n || typeof n.left !== "number") return;
       if (n.left <= 0) return full();
-      $("seatsJa").innerHTML = "いま無料・残り <b>" + n.left + "</b> / " + n.total + "席";
-      $("seatsEn").innerHTML = "Free now · <b>" + n.left + "</b> of " + n.total + " seats left";
+      $("seatsJa").innerHTML = "いま無料・残り <b>" + n.left + "</b> 席";
+      $("seatsEn").innerHTML = "Free now · <b>" + n.left + "</b> seats left";
     }).catch(() => {});
   } else {
     full();
