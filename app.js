@@ -112,7 +112,10 @@ const depth = () => {
 };
 addEventListener("scroll", depth, { passive: true });
 addEventListener("load", depth);
-document.querySelectorAll('a[href="#signup"]').forEach(a => a.addEventListener("click", () => track("cta")));
+document.querySelectorAll('a[href="#signup"], a[href="test.html"]').forEach(a => a.addEventListener("click", () => track("cta")));
+// Keep the visitor's source tag when they move on to the test page.
+const tag = src();
+if (!tag.startsWith("ref:") && tag !== "direct" && tag !== "other") document.querySelectorAll('a[href="test.html"]').forEach(a => { a.href = "test.html?src=" + encodeURIComponent(tag); });
 
 // Hero demo: plays the sample result once like a short video, then stays on the result.
 const demo = document.getElementById("demo");

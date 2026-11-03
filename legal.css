@@ -6,7 +6,7 @@ a{color:var(--red)}
 .bar-in{max-width:860px;margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
 .seal{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--red2);color:#fff;font-weight:700;font-size:13px;writing-mode:vertical-rl;letter-spacing:2px}
-.brand-name{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:18px;letter-spacing:6px}
+.brand-name{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;letter-spacing:6px}
 .switch{display:flex;gap:6px}
 .switch button{min-height:40px;padding:6px 14px;background:transparent;color:var(--fg);border:1px solid #3A3A3A;font:inherit;font-size:14px;cursor:pointer}
 .switch button[aria-pressed="true"]{border-color:var(--red2);color:#E8735F}
@@ -28,7 +28,7 @@ html[lang="ja"] [data-l="ja"]{display:revert}
 html:not([lang="ja"]) [data-l="en"]{display:revert}
 .form{display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--line);padding:28px;margin-top:8px}
 .form label{font-size:15px;font-weight:800;margin-top:6px}
-.form input,.form textarea,.form select{font-size:17px;padding:13px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);font-family:'Inter Tight','Noto Sans SC','Noto Sans TC','Noto Sans KR',sans-serif;width:100%}
+.form input,.form textarea,.form select{font-size:17px;padding:13px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);font-family:'Archivo','Noto Sans SC','Noto Sans TC','Noto Sans KR',sans-serif;width:100%}
 .form .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:15px;line-height:1.7}
 .form .check input{width:20px;height:20px;margin-top:4px;flex:none;accent-color:var(--red)}
 .btn{display:inline-block;background:var(--red2);color:#fff;border:0;padding:16px 28px;font:inherit;font-weight:800;font-size:17px;letter-spacing:2px;cursor:pointer;min-height:56px}
@@ -38,3 +38,11 @@ html:not([lang="ja"]) [data-l="en"]{display:revert}
 .msg.err{color:var(--red);font-weight:700}
 @media (max-width:640px){h1{font-size:27px}th{width:36%}main{padding-top:40px}}
 body{display:flex;flex-direction:column;min-height:100svh}main{flex:1;width:100%}
+body{font-family:'Zen Kaku Gothic New','Archivo',sans-serif}
+h1,h2{font-family:'Zen Old Mincho',serif;font-weight:900}
+.brand{gap:10px}
+.logo-mark{width:40px;height:35px;display:block}
+.brand-name{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:2.5px}
+.btn{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;letter-spacing:1px}
+a.btn{text-decoration:none;display:inline-flex;align-items:center}
+a.btn[hidden]{display:none}
