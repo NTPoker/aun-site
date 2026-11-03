@@ -314,3 +314,8 @@ h2,.big{font-weight:900}
 .consent-bar button[data-v=granted]{background:#C93D27;border-color:#C93D27}
 /* Vietnamese: the Japanese fonts have no Vietnamese accents, so translated text uses Archivo (Japanese examples keep their fonts) */
 html:lang(vi) [data-i],html:lang(vi) [data-i-html]{font-family:'Archivo','Noto Sans',sans-serif!important;letter-spacing:0}
+/* hero kept to one line of pain, the headline, one question and one button (NT 11/3); the explanation moved under 赤ペン */
+.res-lead{max-width:38em;margin:-6px 0 32px;font-family:'Zen Kaku Gothic New','Archivo',sans-serif;font-size:17px;line-height:1.95;color:#3A3A3A}
+.hero .lead{margin-bottom:6px}
+@media (max-width:720px){.h-photo{display:none}.hero{gap:28px}}
+@media (max-width:720px){.hero{padding-top:28px}}
