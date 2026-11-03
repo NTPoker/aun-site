@@ -1,6 +1,7 @@
 // Wording for test.html in the site's 7 languages. {n} = free seats left. Keys ending in H hold HTML.
 window.AUN_TEST = {
   ja: {
+    startBtn: "はじめる",
     doH: "質問を聞いて、<br>声で答える。", doSub: "あなたの回答を日本人が聞き、結果をメールで送ります。", tenH: "約<b>10分</b>", askStart: "近いものをタップすると、テストが始まります。", noteH: "画面は日本語です（N4くらいから）。静かな場所でどうぞ。録音の扱いは<a href=\"privacy.html\">こちら</a>。",
     seatsDefault: "いま無料・先着20名", seatsLeftH: "いま無料・残り <b>{n}</b> 席", seatsFull: "今回の無料枠は満席です",
     h1H: "話すのは、<br><em>10分</em>だけ。", lead: "質問を聞いて、声で答えるだけ。日本人が聞いて、結果をメールで返します。", fx1: "約10分", fx2: "13問", fx3: "声で答える", fx4: "結果はメールで", askSub: "選ぶと、すぐ始まります。", starting: "はじめます…", tip: "静かな場所で、音量を上げてからどうぞ。", pen: "準備はいりません",
@@ -16,6 +17,7 @@ window.AUN_TEST = {
     fineH: "録音は<a href=\"privacy.html\">プライバシーポリシー</a>のとおりに扱います。"
   },
   en: {
+    startBtn: "Start",
     doH: "Hear the questions.<br>Answer out loud.", doSub: "A Japanese listener hears your answers and emails you the result.", tenH: "About <b>10 min</b>", askStart: "Tap the closest one and the test starts.", noteH: "The test screens are in Japanese (about N4 and up). Find a quiet place. How we handle recordings: <a href=\"privacy.html\">Privacy</a>.",
     seatsDefault: "Free now · first 20 people", seatsLeftH: "Free now · <b>{n}</b> seats left", seatsFull: "Free seats taken for now",
     h1H: "Just <em>10 minutes</em><br>of speaking.", lead: "Hear the questions and answer out loud. A Japanese listener hears it and emails you the result.", fx1: "About 10 min", fx2: "13 questions", fx3: "Spoken answers", fx4: "Result by email", askSub: "Pick one and the test starts.", starting: "Starting…", tip: "Find a quiet place and turn the volume up.", pen: "No prep needed",
@@ -31,6 +33,7 @@ window.AUN_TEST = {
     fineH: "Recordings are handled as described in our <a href=\"privacy.html\">Privacy Policy</a>."
   },
   id: {
+    startBtn: "Mulai",
     doH: "Dengarkan pertanyaan.<br>Jawab dengan suara.", doSub: "Orang Jepang mendengarkan jawabanmu dan mengirim hasilnya lewat email.", tenH: "Sekitar <b>10 menit</b>", askStart: "Ketuk yang paling dekat, tes langsung dimulai.", noteH: "Layar ujian berbahasa Jepang (sekitar N4 ke atas). Cari tempat yang tenang. Tentang rekaman: <a href=\"privacy.html\">Privasi</a>.",
     seatsDefault: "Gratis sekarang · 20 orang pertama", seatsLeftH: "Gratis sekarang · sisa <b>{n}</b> kursi", seatsFull: "Kursi gratis sudah penuh",
     h1H: "Cukup bicara<br><em>10 menit</em>.", lead: "Dengarkan pertanyaan dan jawab dengan suara. Orang Jepang mendengarkan dan mengirim hasilnya lewat email.", fx1: "Sekitar 10 menit", fx2: "13 pertanyaan", fx3: "Jawab dengan suara", fx4: "Hasil lewat email", askSub: "Pilih satu, tes langsung dimulai.", starting: "Memulai…", tip: "Cari tempat yang tenang dan besarkan volume.", pen: "Tanpa persiapan",
@@ -46,6 +49,7 @@ window.AUN_TEST = {
     fineH: "Rekaman ditangani sesuai <a href=\"privacy.html\">Kebijakan Privasi</a> kami."
   },
   vi: {
+    startBtn: "Bắt đầu",
     doH: "Nghe câu hỏi.<br>Trả lời bằng giọng nói.", doSub: "Người Nhật nghe câu trả lời của bạn và gửi kết quả qua email.", tenH: "Khoảng <b>10 phút</b>", askStart: "Chạm vào mục gần nhất là bài thi bắt đầu.", noteH: "Màn hình bài thi bằng tiếng Nhật (khoảng N4 trở lên). Hãy tìm nơi yên tĩnh. Về bản ghi âm: <a href=\"privacy.html\">Quyền riêng tư</a>.",
     seatsDefault: "Miễn phí · 20 người đầu tiên", seatsLeftH: "Miễn phí · còn <b>{n}</b> chỗ", seatsFull: "Đã hết chỗ miễn phí",
     h1H: "Chỉ cần nói<br><em>10 phút</em>.", lead: "Nghe câu hỏi và trả lời bằng giọng nói. Người Nhật nghe và gửi kết quả qua email.", fx1: "Khoảng 10 phút", fx2: "13 câu hỏi", fx3: "Trả lời bằng giọng nói", fx4: "Kết quả qua email", askSub: "Chọn một mục là bắt đầu ngay.", starting: "Đang bắt đầu…", tip: "Hãy tìm nơi yên tĩnh và tăng âm lượng.", pen: "Không cần chuẩn bị",
@@ -61,6 +65,7 @@ window.AUN_TEST = {
     fineH: "Bản ghi âm được xử lý theo <a href=\"privacy.html\">Chính sách quyền riêng tư</a>."
   },
   zh: {
+    startBtn: "开始",
     doH: "听问题，<br>用声音回答。", doSub: "日本人听你的回答，结果用邮件发给你。", tenH: "约<b>10分钟</b>", askStart: "点最接近的一项，测试就会开始。", noteH: "考试画面是日语（约N4以上）。请在安静的地方。录音的处理见<a href=\"privacy.html\">隐私政策</a>。",
     seatsDefault: "目前免费 · 限前20名", seatsLeftH: "目前免费 · 剩余 <b>{n}</b> 个名额", seatsFull: "本轮免费名额已满",
     h1H: "只需要说<br><em>10分钟</em>。", lead: "听问题，用声音回答就好。日本人来听，结果用邮件发给你。", fx1: "约10分钟", fx2: "13题", fx3: "用声音回答", fx4: "结果用邮件", askSub: "选一个，马上开始。", starting: "正在开始…", tip: "请在安静的地方，调大音量。", pen: "不需要准备",
@@ -76,6 +81,7 @@ window.AUN_TEST = {
     fineH: "录音按照<a href=\"privacy.html\">隐私政策</a>处理。"
   },
   "zh-TW": {
+    startBtn: "開始",
     doH: "聽問題，<br>用聲音回答。", doSub: "日本人聽你的回答，結果以電子郵件寄給你。", tenH: "約<b>10分鐘</b>", askStart: "點最接近的一項，測驗就會開始。", noteH: "考試畫面是日語（約N4以上）。請在安靜的地方。錄音的處理見<a href=\"privacy.html\">隱私權政策</a>。",
     seatsDefault: "目前免費 · 限前20名", seatsLeftH: "目前免費 · 剩餘 <b>{n}</b> 個名額", seatsFull: "本輪免費名額已滿",
     h1H: "只需要說<br><em>10分鐘</em>。", lead: "聽問題，用聲音回答就好。日本人來聽，結果以電子郵件寄給你。", fx1: "約10分鐘", fx2: "13題", fx3: "用聲音回答", fx4: "結果以郵件寄送", askSub: "選一個，馬上開始。", starting: "正在開始…", tip: "請在安靜的地方，調大音量。", pen: "不需要準備",
@@ -91,6 +97,7 @@ window.AUN_TEST = {
     fineH: "錄音依照<a href=\"privacy.html\">隱私權政策</a>處理。"
   },
   ko: {
+    startBtn: "시작하기",
     doH: "질문을 듣고,<br>말로 답하세요.", doSub: "일본인이 답변을 듣고 결과를 이메일로 보내 드려요.", tenH: "약 <b>10분</b>", askStart: "가장 가까운 것을 누르면 시험이 시작돼요.", noteH: "시험 화면은 일본어예요(N4 정도부터). 조용한 곳에서 해 주세요. 녹음 처리: <a href=\"privacy.html\">개인정보 처리방침</a>.",
     seatsDefault: "지금 무료 · 선착순 20명", seatsLeftH: "지금 무료 · <b>{n}</b>자리 남음", seatsFull: "이번 무료 자리는 마감됐어요",
     h1H: "말하는 건<br><em>10분</em>뿐.", lead: "질문을 듣고 말로 답하기만 하면 돼요. 일본인이 듣고 결과를 이메일로 보내 드려요.", fx1: "약 10분", fx2: "13문제", fx3: "말로 답하기", fx4: "결과는 이메일로", askSub: "하나를 고르면 바로 시작해요.", starting: "시작하는 중…", tip: "조용한 곳에서 볼륨을 올려 주세요.", pen: "준비는 필요 없어요",

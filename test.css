@@ -127,3 +127,10 @@ html:lang(vi) .go1 h1,html:lang(vi) .why4 button{font-family:'Archivo','Noto San
 .go1 .ten{margin:18px 0 0;font-size:22px;font-weight:700;letter-spacing:.04em;color:var(--ink)}
 .go1 .ten b{font-family:'Archivo','Zen Kaku Gothic New',sans-serif;font-size:34px;font-weight:800;color:var(--red2);margin:0 2px}
 .go1 .ten + .sub{margin-top:8px;font-size:16px}
+/* v4 (NT: options are not start buttons): pick one, then start */
+.why4 button{background:#fff;color:var(--ink);border:1.5px solid var(--line);min-height:54px;font-size:16px}
+.why4 button:hover{background:#fff;border-color:var(--ink)}
+.why4 button[aria-pressed="true"]{background:#141414;color:#fff;border-color:#141414}
+.go1 .startbtn{display:flex;align-items:center;justify-content:center;width:100%;min-height:62px;margin-top:18px;border:0;background:#C93D27;color:#fff;font:inherit;font-size:19px;font-weight:700;letter-spacing:.12em;cursor:pointer}
+.go1 .startbtn:hover{background:#B8321E}
+.go1 .startbtn[hidden]{display:none}
