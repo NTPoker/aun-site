@@ -274,3 +274,4 @@ h2{font-size:28px}
 @media (max-width:1040px){.hero-visual{padding-bottom:250px}}
 @media (max-width:720px){.hero-visual{padding-bottom:0}}
 .foot-links{display:flex;flex-wrap:wrap;gap:8px 20px}.foot-links a{color:var(--muted)}
+.signup .op a,.qa a{color:inherit;text-decoration:underline}.signup .op{margin-top:6px}

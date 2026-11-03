@@ -37,3 +37,4 @@ html:not([lang="ja"]) [data-l="en"]{display:revert}
 .msg.ok{color:#1E6B3A;font-weight:700}
 .msg.err{color:var(--red);font-weight:700}
 @media (max-width:640px){h1{font-size:27px}th{width:36%}main{padding-top:40px}}
+body{display:flex;flex-direction:column;min-height:100svh}main{flex:1;width:100%}
