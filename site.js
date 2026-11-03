@@ -57,8 +57,8 @@
   }
   function draw() {
     const top = document.getElementById("site-top"), foot = document.getElementById("site-foot");
-    if (top) drawTop(top);
-    if (foot) drawFoot(foot);
+    if (top) { top.lang = lang; drawTop(top); }
+    if (foot) { foot.lang = lang; drawFoot(foot); }
   }
   function set(l, chosen) {
     if (!ok(l)) return;

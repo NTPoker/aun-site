@@ -85,3 +85,8 @@ main.t{max-width:none;padding:0;overflow-x:hidden;overflow-x:clip}
   .t-body{margin-top:-48px}
 }
 @media (prefers-reduced-motion:reduce){.seats i,.listen .mic::before,.listen .mic::after,.ico.rec::before,.ico .eq i{animation:none}.stamp{transition:none}}
+/* Vietnamese: the Japanese fonts have no Vietnamese accents, so use Archivo throughout */
+html:lang(vi) .t,html:lang(vi) .t :is(h1,h2,.tk-title,.lead,.seats,.go,.why2 label,.tk-rows li,.flow,.ready,.jp-note){font-family:'Archivo','Noto Sans',sans-serif}
+html:lang(vi) .t-hero h1{font-weight:800;letter-spacing:-.5px}
+html:lang(vi) .tk-title{letter-spacing:1px}
+html:lang(vi) .pen{font-family:'Archivo',sans-serif;font-style:italic}

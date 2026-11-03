@@ -53,3 +53,5 @@ html.s-intro-on{overflow:hidden}
 .s-intro b{font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:8px;padding-left:8px;color:#8A8478;opacity:0;animation:s-fade .5s ease 1s forwards}
 @keyframes s-fade{to{opacity:1}}
 .s-intro.plain .s-intro-c img{-webkit-mask:none;mask:none;opacity:0;animation:s-fade .5s ease .1s forwards}
+/* Vietnamese: the Japanese fonts have no Vietnamese accents */
+.s-top:lang(vi),.s-foot:lang(vi),.s-top:lang(vi) *,.s-foot:lang(vi) *{font-family:'Archivo','Noto Sans',sans-serif}
