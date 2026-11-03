@@ -50,7 +50,7 @@
     el.innerHTML = '<div class="s-foot-in">' +
       '<div class="s-foot-brand"><a href="./" class="s-brand" aria-label="AUN 阿吽">' + MARK + '<span>AUN</span></a><p>' + d.op + '</p><p class="s-free">' + d.free + '</p><p><a href="mailto:hello@aunjapanese.com">hello@aunjapanese.com</a></p></div>' +
       '<nav class="s-foot-cols" aria-label="Footer">' +
-      '<div><h2>' + d.svc + '</h2>' + a("test.html", "cta") + a("./#signup", "signup") + a("./#faq", "faq") + "</div>" +
+      '<div><h2>' + d.svc + '</h2>' + a("test.html", "cta") + a("./#faq", "faq") + "</div>" +
       '<div><h2>' + d.co + '</h2>' + a("about.html", "about") + a("contact.html", "contact") + "</div>" +
       '<div><h2>' + d.rules + '</h2>' + a("privacy.html", "privacy") + a("terms.html", "terms") + a("tokushoho.html", "legal") + "</div></nav>" +
       '<p class="s-copy">© 2026 1900 Co., Ltd.</p></div>';

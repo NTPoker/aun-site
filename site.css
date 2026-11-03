@@ -1,5 +1,6 @@
 /* Shared header and footer (site.js) */
-.s-top{background:#0F0F0F;color:#EFECE4;font-family:'Zen Kaku Gothic New','Archivo',sans-serif;position:relative;z-index:20}
+.s-top{background:#0F0F0F;color:#EFECE4;font-family:'Zen Kaku Gothic New','Archivo',sans-serif;position:sticky;top:0;z-index:40;border-bottom:1px solid #222}
+html{scroll-padding-top:84px}
 .s-top-in{max-width:1120px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:80px}
 .s-brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#EFECE4}
 .s-brand span{font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;letter-spacing:2.5px}
