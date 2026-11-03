@@ -137,3 +137,15 @@ html:lang(vi) .go1 h1,html:lang(vi) .why4 button{font-family:'Archivo','Noto San
 .go1 h1 .r{color:var(--red2)}
 .go1 h1{font-size:clamp(40px,11vw,60px)}
 .go1 .sub{font-size:18px;color:#141414;font-weight:500}
+/* v5 (NT: options as one block) */
+.why4{gap:0;border:1.5px solid #141414;background:#fff;border-radius:6px;overflow:hidden}
+.why4 button{border:0;border-radius:0;min-height:56px;padding:14px 18px;background:#fff;border-bottom:1px solid #E4DFD3}
+.why4 button:last-child{border-bottom:0}
+.why4 button:hover{background:#F7F5F0;border-color:#E4DFD3}
+.why4 button[aria-pressed="true"]{background:#141414;color:#fff;border-bottom-color:#141414}
+.why4 button::before{content:"";flex:none;width:18px;height:18px;margin-right:14px;border:1.5px solid #8A8478;border-radius:50%;box-sizing:border-box}
+.why4 button[aria-pressed="true"]::before{border:5px solid #E8735F;background:#fff}
+.why4 button{justify-content:flex-start}
+.go1 .prep{margin:16px 0 0;font-size:14px;line-height:1.7;color:#3A3A3A}
+.go1 .prep + .startbtn{margin-top:10px}
+.go1 h1{margin-top:8px}
