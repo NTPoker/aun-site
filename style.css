@@ -550,3 +550,11 @@ html:not([lang="ja"]) .hero2 h1{font-size:clamp(40px,5vw,72px);line-height:1.15}
 .vs6-card .note{font-size:12px;line-height:1.6}
 .vs6 .vs6-card .x::before,.vs6 .vs6-card .x::after{left:12%;right:12%}
 }
+/* hero on phones: more breathing room, lighter lead (NT 2026-11-03; PC unchanged) */
+@media (max-width:820px){
+  .hero2 h1{line-height:1.2}
+  .hero2 .lead{font-size:17px;margin-top:22px;font-weight:400;color:#B9B4A8;letter-spacing:.04em}
+  .hero2 .cta{margin-top:32px}
+  .hero2 .meta{margin-top:20px}
+  .hero2 .c{padding-bottom:48px}
+}
