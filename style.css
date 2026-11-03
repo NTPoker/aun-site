@@ -319,3 +319,5 @@ html:lang(vi) [data-i],html:lang(vi) [data-i-html]{font-family:'Archivo','Noto S
 .hero .lead{margin-bottom:6px}
 @media (max-width:720px){.h-photo{display:none}.hero{gap:28px}}
 @media (max-width:720px){.hero{padding-top:28px}}
+/* real listener photo: keep the face clear of the sample card on wide screens */
+@media (min-width:1041px){.hero-visual{padding-bottom:300px}}
