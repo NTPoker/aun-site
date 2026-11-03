@@ -48,3 +48,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
 a.btn[hidden]{display:none}
 
 .why{border:1px solid var(--line);background:#fff;padding:18px 20px;margin:24px 0 8px}.why legend{font-weight:700;padding:0 6px}.why label{display:flex;gap:10px;align-items:center;padding:8px 0;font-size:16px;cursor:pointer}.why input{width:20px;height:20px;accent-color:var(--red)}
+.consent-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:640px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;padding:14px 16px;background:#141414;color:#EFECE4;font-size:14px;line-height:1.6}
+.consent-bar p{margin:0}.consent-bar a{color:#E8735F}
+.consent-bar button{font:inherit;padding:8px 14px;margin-left:8px;border:1px solid #3A3A3A;background:transparent;color:#EFECE4;cursor:pointer}
+.consent-bar button[data-v=granted]{background:#C93D27;border-color:#C93D27}

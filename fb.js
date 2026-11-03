@@ -34,6 +34,9 @@ export const track = (t, extra = {}) => {
   const ev = { t, page: page.slice(0, 39), lang: (document.documentElement.lang || "").slice(0, 9), src: src(), w: Math.min(10000, Math.round(innerWidth)), ...extra };
   if (t !== "signup") ev.sid = sid;
   save("events", ev).catch(err => { if (location.hostname === "localhost") console.warn("track", err); });
+  // Mirror the meaningful actions to Google Analytics (page views and scrolls it measures itself).
+  const GA = { cta: "cta_click", signup: "sign_up", lang: "select_language" };
+  if (GA[t] && typeof window.gtag === "function") window.gtag("event", GA[t], { page: ev.page, src: ev.src, lang: ev.lang });
 };
 
 // Shows a "still sending" note if the database has not confirmed within a few seconds.

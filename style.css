@@ -307,3 +307,7 @@ h2,.big{font-weight:900}
 @media (max-width:720px){.when{grid-template-columns:1fr;gap:12px}.wt{font-size:19px}}
 .mini-mark{width:28px;height:24px;flex:none}
 .kicker{margin:0 0 -6px;font-family:"Zen Kaku Gothic New","Archivo",sans-serif;font-weight:700;font-size:18px;color:#EFECE4;letter-spacing:.04em}
+.consent-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:640px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;padding:14px 16px;background:#141414;color:#EFECE4;border:1px solid #3A3A3A;font-size:14px;line-height:1.6}
+.consent-bar p{margin:0}.consent-bar a{color:#E8735F}
+.consent-bar button{font:inherit;padding:8px 14px;margin-left:8px;border:1px solid #3A3A3A;background:transparent;color:#EFECE4;cursor:pointer}
+.consent-bar button[data-v=granted]{background:#C93D27;border-color:#C93D27}
