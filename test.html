@@ -85,6 +85,9 @@ try {
 } catch (e) {
   document.getElementById("err").hidden = false;
 }
+const pre = new URLSearchParams(location.search).get("why");
+const box = pre && document.querySelector('input[name="why"][value="' + pre.replace(/[^a-z]/g, "") + '"]');
+if (box) box.checked = true;
 track("view");
 </script>
 </body>

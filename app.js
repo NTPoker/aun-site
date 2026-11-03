@@ -84,8 +84,18 @@ form.addEventListener("submit", async e => {
       src: src()
     });
     track("signup");
+    const why = form.why.value;
     form.reset();
-    msg.textContent = d.msgOk;
+    msg.textContent = d.msgOk + " ";
+    const go = document.createElement("a");
+    go.className = "msg-go";
+    const q = new URLSearchParams({ why });
+    const tag = src();
+    if (!tag.startsWith("ref:") && tag !== "direct" && tag !== "other") q.set("src", tag);
+    go.href = "test.html?" + q;
+    go.textContent = d.msgGo;
+    go.addEventListener("click", () => track("cta"));
+    msg.append(document.createElement("br"), go);
     msg.classList.add("ok");
   } catch (err) {
     console.error(err);
