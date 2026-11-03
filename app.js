@@ -1,32 +1,7 @@
 import { save, src, track, slowNote } from "./fb.js";
 
 const T = window.AUN_I18N;
-const LANGS = Object.keys(T);
 let lang = "ja";
-
-const ok = l => LANGS.includes(l);
-
-function fromBrowser(tag) {
-  const n = tag.toLowerCase();
-  if (n.startsWith("zh")) {
-    if (n.includes("hant")) return "zh-TW";
-    if (n.includes("hans")) return "zh";
-    return /-(tw|hk|mo)\b/.test(n) ? "zh-TW" : "zh";
-  }
-  const base = n.split("-")[0];
-  return ok(base) ? base : null;
-}
-
-function pickLang() {
-  const q = new URLSearchParams(location.search).get("lang");
-  if (ok(q)) return q;
-  try { const s = localStorage.getItem("aun-lang"); if (ok(s)) return s; } catch (e) {}
-  for (const tag of navigator.languages || [navigator.language || ""]) {
-    const l = fromBrowser(tag);
-    if (l) return l;
-  }
-  return "en";
-}
 
 function apply(l) {
   lang = l;
@@ -34,29 +9,10 @@ function apply(l) {
   document.documentElement.lang = l;
   document.querySelectorAll("[data-i]").forEach(el => { el.textContent = d[el.dataset.i] ?? ""; });
   document.querySelectorAll("[data-i-html]").forEach(el => { el.innerHTML = d[el.dataset.iHtml] ?? ""; });
-  document.getElementById("langLabel").textContent = d.langLabel;
-  document.querySelectorAll("#langMenu button").forEach(b => b.setAttribute("aria-current", String(b.dataset.lang === l)));
-  try { localStorage.setItem("aun-lang", l); } catch (e) {}
 }
 
-const btn = document.getElementById("langBtn");
-const menu = document.getElementById("langMenu");
-btn.addEventListener("click", () => {
-  const open = menu.hidden;
-  menu.hidden = !open;
-  btn.setAttribute("aria-expanded", String(open));
-});
-menu.addEventListener("click", e => {
-  const b = e.target.closest("button[data-lang]");
-  if (!b) return;
-  apply(b.dataset.lang);
-  track("lang");
-  menu.hidden = true;
-  btn.setAttribute("aria-expanded", "false");
-});
-document.addEventListener("click", e => {
-  if (!e.target.closest(".lang")) { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); }
-});
+// the language picker lives in the shared header (site.js)
+document.addEventListener("aun:lang", e => { apply(e.detail.lang); if (e.detail.chosen) track("lang"); });
 
 const form = document.getElementById("form");
 const msg = document.getElementById("msg");
@@ -107,7 +63,7 @@ form.addEventListener("submit", async e => {
   }
 });
 
-apply(pickLang());
+apply(window.AUN_SITE.lang);
 
 // Anonymous measurement: page view, how far people scroll, and which buttons they press.
 track("view");
