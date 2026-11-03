@@ -134,3 +134,6 @@ html:lang(vi) .go1 h1,html:lang(vi) .why4 button{font-family:'Archivo','Noto San
 .go1 .startbtn{display:flex;align-items:center;justify-content:center;width:100%;min-height:62px;margin-top:18px;border:0;background:#C93D27;color:#fff;font:inherit;font-size:19px;font-weight:700;letter-spacing:.12em;cursor:pointer}
 .go1 .startbtn:hover{background:#B8321E}
 .go1 .startbtn[hidden]{display:none}
+.go1 h1 .r{color:var(--red2)}
+.go1 h1{font-size:clamp(40px,11vw,60px)}
+.go1 .sub{font-size:18px;color:#141414;font-weight:500}
