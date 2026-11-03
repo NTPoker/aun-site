@@ -324,3 +324,30 @@ html:lang(vi) [data-i],html:lang(vi) [data-i-html]{font-family:'Archivo','Noto S
 /* the listener photo melts into the black hero: soft edges, colour pulled toward the page's black */
 .h-photo img{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 62%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 66%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 62%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 66%,transparent 100%);mask-composite:intersect;filter:saturate(.8) brightness(.94) contrast(1.06)!important;box-shadow:none}
 .h-photo{background:none}
+/* hero v3 (NT 11/3): one question, one line, one button; the listener's photo fills the right half */
+.hero2{position:relative;min-height:calc(100svh - 80px);display:flex;align-items:center;overflow:hidden;background:#000;color:#EFECE4}
+.hero2 .ph{position:absolute;top:0;right:0;bottom:0;width:62%;overflow:hidden}
+.hero2 .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block}
+.hero2 .ph::after{content:"";position:absolute;inset:0 0 -2px;background:linear-gradient(90deg,#000 0,rgba(0,0,0,.55) 22%,rgba(0,0,0,0) 48%),linear-gradient(0deg,rgba(0,0,0,.6),transparent 30%)}
+.hero2 .c{position:relative;z-index:1;max-width:1180px;width:100%;margin:0 auto;padding:48px 48px 64px}
+.hero2 .c>*{max-width:600px}
+.hero2 h1{font-family:'Zen Old Mincho',serif;font-weight:900;font-size:clamp(56px,7vw,104px);line-height:1.1;margin:0;letter-spacing:0}
+.hero2 .red{color:#E8735F}
+.hero2 .lead{margin:26px 0 0;font-family:'Zen Kaku Gothic New',sans-serif;font-size:21px;line-height:1.75;font-weight:500;color:#EDE9DF;letter-spacing:.02em}
+.hero2 .nw{display:inline-block}
+.hero2 .cta{display:inline-flex;align-items:center;justify-content:center;margin-top:34px;padding:18px 34px;background:#C93D27;color:#fff;text-decoration:none;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:17px;letter-spacing:.08em}
+.hero2 .cta:hover{background:#B8321E}
+.hero2 .meta{margin:16px 0 0;font-family:'Zen Kaku Gothic New',sans-serif;font-size:14px;color:#BDB8AC;letter-spacing:.08em}
+html:not([lang="ja"]) .hero2 h1{font-size:clamp(40px,5vw,72px);line-height:1.15}
+@media (max-width:820px){
+  .hero2{display:block;min-height:0}
+  .hero2 .ph{position:relative;width:100%;height:56vh}
+  .hero2 .ph::after{display:none}
+  .hero2 .ph img{object-position:54% 16%;-webkit-mask-image:linear-gradient(to bottom,#000 40%,transparent 100%);mask-image:linear-gradient(to bottom,#000 40%,transparent 100%)}
+  .hero2 .c{padding:0 20px 36px;margin-top:-88px}
+  .hero2 h1{font-size:clamp(48px,14vw,68px)}
+  html:not([lang="ja"]) .hero2 h1{font-size:clamp(32px,9vw,46px)}
+  .hero2 .lead{font-size:19px;margin-top:18px}
+  .hero2 .cta{display:flex;width:100%;margin-top:26px}
+  .hero2 .meta{font-size:13px;text-align:center}
+}

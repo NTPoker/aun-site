@@ -37,7 +37,7 @@
 
   function drawTop(el) {
     const d = T[lang];
-    el.innerHTML = '<div class="s-top-in"><a href="./" class="s-brand" aria-label="AUN 阿吽">' + MARK + '<span>AUN</span></a>' +
+    el.innerHTML = '<div class="s-top-in"><a href="./" class="s-brand" aria-label="AUN 阿吽">' + MARK + '<span>AUN</span><em class="s-kanji" aria-hidden="true">阿吽</em></a>' +
       '<div class="s-right">' + (page === "test.html" ? "" : '<a class="s-cta" href="test.html">' + d.cta + '</a>') +
       '<div class="s-lang"><button type="button" class="s-lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Language">' + GLOBE + '<span>' + NAMES[lang] + '</span></button>' +
       '<ul class="s-lang-menu" hidden>' + Object.keys(NAMES).map(l => '<li><button type="button" lang="' + l + '" data-lang="' + l + '" aria-current="' + (l === lang) + '">' + NAMES[l] + '</button></li>').join("") + '</ul></div></div></div>';
