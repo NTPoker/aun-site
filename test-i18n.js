@@ -1,11 +1,12 @@
 // Wording for test.html in the site's 7 languages. {n} = free seats left. Keys ending in H hold HTML.
 window.AUN_TEST = {
   ja: {
+    doH: "質問を聞いて、<br>声で答える。", doSub: "あなたの回答を日本人が聞き、結果をメールで送ります。", tenH: "約<b>10分</b>", askStart: "近いものをタップすると、テストが始まります。", noteH: "画面は日本語です（N4くらいから）。静かな場所でどうぞ。録音の扱いは<a href=\"privacy.html\">こちら</a>。",
     seatsDefault: "いま無料・先着20名", seatsLeftH: "いま無料・残り <b>{n}</b> 席", seatsFull: "今回の無料枠は満席です",
     h1H: "話すのは、<br><em>10分</em>だけ。", lead: "質問を聞いて、声で答えるだけ。日本人が聞いて、結果をメールで返します。", fx1: "約10分", fx2: "13問", fx3: "声で答える", fx4: "結果はメールで", askSub: "選ぶと、すぐ始まります。", starting: "はじめます…", tip: "静かな場所で、音量を上げてからどうぞ。", pen: "準備はいりません",
     pass: "受験票", rTime: "時間", vTimeH: "<b>約10分</b>（スマホで）", rQ: "質問", vQH: "練習1問 ＋ <b>12問</b>。最後は絵を見て話します",
     rA: "答え方", vAH: "聞いて、その場で声で（1問 <b>20〜60秒</b>）", rL: "聞く人", vL: "日本語を母語とする聞き手", rR: "結果", vR: "メールで届きます（数日かかることも）",
-    ask: "いちばん知りたいことは？", legend: "受けたい理由", w1: "自分の日本語が、通じるか", w2: "今の、自分のレベル", w3: "来日・面接の前に、確かめたい", w4: "弱いところと、練習のしかた", wOther: "その他",
+    ask: "いちばん知りたいことは？", legend: "受けたい理由", w1: "自分の日本語が、通じるか", w2: "今の、自分のレベル", w3: "来日・面接の前に、確かめたい", w4: "弱いところと、練習のしかた", wOther: "その他・まだ決まっていない",
     go: "通じるか、確かめる", goSmall: "約10分・無料", pick: "いちばん知りたいことを、ひとつ選んでください。",
     err: "いま受験ページを開けません。少し待ってから、もう一度お試しください。", full: "今回の無料枠は埋まりました。次の回は、このサイトでお知らせします。",
     jpNote: "画面は日本語です（N4くらいから）。",
@@ -15,11 +16,12 @@ window.AUN_TEST = {
     fineH: "録音は<a href=\"privacy.html\">プライバシーポリシー</a>のとおりに扱います。"
   },
   en: {
+    doH: "Hear the questions.<br>Answer out loud.", doSub: "A Japanese listener hears your answers and emails you the result.", tenH: "About <b>10 min</b>", askStart: "Tap the closest one and the test starts.", noteH: "The test screens are in Japanese (about N4 and up). Find a quiet place. How we handle recordings: <a href=\"privacy.html\">Privacy</a>.",
     seatsDefault: "Free now · first 20 people", seatsLeftH: "Free now · <b>{n}</b> seats left", seatsFull: "Free seats taken for now",
     h1H: "Just <em>10 minutes</em><br>of speaking.", lead: "Hear the questions and answer out loud. A Japanese listener hears it and emails you the result.", fx1: "About 10 min", fx2: "13 questions", fx3: "Spoken answers", fx4: "Result by email", askSub: "Pick one and the test starts.", starting: "Starting…", tip: "Find a quiet place and turn the volume up.", pen: "No prep needed",
     pass: "Your pass", rTime: "Time", vTimeH: "<b>About 10 min</b> on your phone", rQ: "Questions", vQH: "1 practice + <b>12</b>. The last one: talk about a picture",
     rA: "Answers", vAH: "Listen, then answer out loud (<b>20–60 s</b> each)", rL: "Listener", vL: "A native speaker of Japanese", rR: "Result", vR: "By email (it may take a few days)",
-    ask: "What do you most want to know?", legend: "Your reason", w1: "Does my Japanese get through?", w2: "My current level", w3: "A check before Japan or an interview", w4: "My weak points and how to practice", wOther: "Something else",
+    ask: "What do you most want to know?", legend: "Your reason", w1: "Does my Japanese get through?", w2: "My current level", w3: "A check before Japan or an interview", w4: "My weak points and how to practice", wOther: "Something else / not sure yet",
     go: "Check if I get through", goSmall: "About 10 min · free", pick: "Pick the one thing you most want to know.",
     err: "The test page can’t be opened right now. Please try again in a little while.", full: "The free seats are taken for this round. We’ll announce the next one on this site.",
     jpNote: "The test screens are in Japanese (about N4 and up).",
@@ -29,11 +31,12 @@ window.AUN_TEST = {
     fineH: "Recordings are handled as described in our <a href=\"privacy.html\">Privacy Policy</a>."
   },
   id: {
+    doH: "Dengarkan pertanyaan.<br>Jawab dengan suara.", doSub: "Orang Jepang mendengarkan jawabanmu dan mengirim hasilnya lewat email.", tenH: "Sekitar <b>10 menit</b>", askStart: "Ketuk yang paling dekat, tes langsung dimulai.", noteH: "Layar ujian berbahasa Jepang (sekitar N4 ke atas). Cari tempat yang tenang. Tentang rekaman: <a href=\"privacy.html\">Privasi</a>.",
     seatsDefault: "Gratis sekarang · 20 orang pertama", seatsLeftH: "Gratis sekarang · sisa <b>{n}</b> kursi", seatsFull: "Kursi gratis sudah penuh",
     h1H: "Cukup bicara<br><em>10 menit</em>.", lead: "Dengarkan pertanyaan dan jawab dengan suara. Orang Jepang mendengarkan dan mengirim hasilnya lewat email.", fx1: "Sekitar 10 menit", fx2: "13 pertanyaan", fx3: "Jawab dengan suara", fx4: "Hasil lewat email", askSub: "Pilih satu, tes langsung dimulai.", starting: "Memulai…", tip: "Cari tempat yang tenang dan besarkan volume.", pen: "Tanpa persiapan",
     pass: "Kartu ujian", rTime: "Waktu", vTimeH: "<b>Sekitar 10 menit</b> di ponsel", rQ: "Pertanyaan", vQH: "1 latihan + <b>12</b>. Yang terakhir: bicara tentang gambar",
     rA: "Cara jawab", vAH: "Dengarkan, lalu jawab dengan suara (<b>20–60 detik</b> per soal)", rL: "Pendengar", vL: "Penutur asli bahasa Jepang", rR: "Hasil", vR: "Lewat email (bisa makan waktu beberapa hari)",
-    ask: "Apa yang paling ingin kamu ketahui?", legend: "Alasanmu", w1: "Apakah bahasa Jepangku dimengerti?", w2: "Levelku sekarang", w3: "Cek sebelum ke Jepang atau wawancara", w4: "Kelemahanku dan cara berlatih", wOther: "Lainnya",
+    ask: "Apa yang paling ingin kamu ketahui?", legend: "Alasanmu", w1: "Apakah bahasa Jepangku dimengerti?", w2: "Levelku sekarang", w3: "Cek sebelum ke Jepang atau wawancara", w4: "Kelemahanku dan cara berlatih", wOther: "Lainnya / belum tahu",
     go: "Cek apakah aku dimengerti", goSmall: "Sekitar 10 menit · gratis", pick: "Pilih satu hal yang paling ingin kamu ketahui.",
     err: "Halaman ujian tidak bisa dibuka sekarang. Coba lagi sebentar lagi.", full: "Kursi gratis putaran ini sudah penuh. Putaran berikutnya akan kami umumkan di situs ini.",
     jpNote: "Layar ujian berbahasa Jepang (sekitar N4 ke atas).",
@@ -43,11 +46,12 @@ window.AUN_TEST = {
     fineH: "Rekaman ditangani sesuai <a href=\"privacy.html\">Kebijakan Privasi</a> kami."
   },
   vi: {
+    doH: "Nghe câu hỏi.<br>Trả lời bằng giọng nói.", doSub: "Người Nhật nghe câu trả lời của bạn và gửi kết quả qua email.", tenH: "Khoảng <b>10 phút</b>", askStart: "Chạm vào mục gần nhất là bài thi bắt đầu.", noteH: "Màn hình bài thi bằng tiếng Nhật (khoảng N4 trở lên). Hãy tìm nơi yên tĩnh. Về bản ghi âm: <a href=\"privacy.html\">Quyền riêng tư</a>.",
     seatsDefault: "Miễn phí · 20 người đầu tiên", seatsLeftH: "Miễn phí · còn <b>{n}</b> chỗ", seatsFull: "Đã hết chỗ miễn phí",
     h1H: "Chỉ cần nói<br><em>10 phút</em>.", lead: "Nghe câu hỏi và trả lời bằng giọng nói. Người Nhật nghe và gửi kết quả qua email.", fx1: "Khoảng 10 phút", fx2: "13 câu hỏi", fx3: "Trả lời bằng giọng nói", fx4: "Kết quả qua email", askSub: "Chọn một mục là bắt đầu ngay.", starting: "Đang bắt đầu…", tip: "Hãy tìm nơi yên tĩnh và tăng âm lượng.", pen: "Không cần chuẩn bị",
     pass: "Phiếu dự thi", rTime: "Thời gian", vTimeH: "<b>Khoảng 10 phút</b> trên điện thoại", rQ: "Câu hỏi", vQH: "1 câu luyện tập + <b>12</b> câu. Câu cuối: nói về một bức tranh",
     rA: "Cách trả lời", vAH: "Nghe rồi trả lời bằng giọng nói (<b>20–60 giây</b> mỗi câu)", rL: "Người nghe", vL: "Người bản ngữ tiếng Nhật", rR: "Kết quả", vR: "Gửi qua email (có thể mất vài ngày)",
-    ask: "Bạn muốn biết điều gì nhất?", legend: "Lý do của bạn", w1: "Tiếng Nhật của mình có được hiểu không", w2: "Trình độ hiện tại của mình", w3: "Kiểm tra trước khi sang Nhật hoặc phỏng vấn", w4: "Điểm yếu và cách luyện tập", wOther: "Khác",
+    ask: "Bạn muốn biết điều gì nhất?", legend: "Lý do của bạn", w1: "Tiếng Nhật của mình có được hiểu không", w2: "Trình độ hiện tại của mình", w3: "Kiểm tra trước khi sang Nhật hoặc phỏng vấn", w4: "Điểm yếu và cách luyện tập", wOther: "Khác / chưa rõ",
     go: "Kiểm tra xem có được hiểu không", goSmall: "Khoảng 10 phút · miễn phí", pick: "Hãy chọn một điều bạn muốn biết nhất.",
     err: "Hiện không mở được trang làm bài. Vui lòng thử lại sau ít phút.", full: "Đợt miễn phí này đã hết chỗ. Đợt tiếp theo sẽ được thông báo trên trang này.",
     jpNote: "Màn hình bài thi bằng tiếng Nhật (khoảng N4 trở lên).",
@@ -57,11 +61,12 @@ window.AUN_TEST = {
     fineH: "Bản ghi âm được xử lý theo <a href=\"privacy.html\">Chính sách quyền riêng tư</a>."
   },
   zh: {
+    doH: "听问题，<br>用声音回答。", doSub: "日本人听你的回答，结果用邮件发给你。", tenH: "约<b>10分钟</b>", askStart: "点最接近的一项，测试就会开始。", noteH: "考试画面是日语（约N4以上）。请在安静的地方。录音的处理见<a href=\"privacy.html\">隐私政策</a>。",
     seatsDefault: "目前免费 · 限前20名", seatsLeftH: "目前免费 · 剩余 <b>{n}</b> 个名额", seatsFull: "本轮免费名额已满",
     h1H: "只需要说<br><em>10分钟</em>。", lead: "听问题，用声音回答就好。日本人来听，结果用邮件发给你。", fx1: "约10分钟", fx2: "13题", fx3: "用声音回答", fx4: "结果用邮件", askSub: "选一个，马上开始。", starting: "正在开始…", tip: "请在安静的地方，调大音量。", pen: "不需要准备",
     pass: "准考证", rTime: "时间", vTimeH: "用手机<b>约10分钟</b>", rQ: "题目", vQH: "练习1题 ＋ <b>12</b>题。最后一题看图说话",
     rA: "回答方式", vAH: "听完后当场用声音回答（每题<b>20〜60秒</b>）", rL: "听的人", vL: "以日语为母语的听者", rR: "结果", vR: "通过邮件发送（可能需要几天）",
-    ask: "你最想知道什么？", legend: "参加的理由", w1: "我的日语能不能让人听懂", w2: "我现在的水平", w3: "去日本或面试前想确认一下", w4: "我的弱点和练习方法", wOther: "其他",
+    ask: "你最想知道什么？", legend: "参加的理由", w1: "我的日语能不能让人听懂", w2: "我现在的水平", w3: "去日本或面试前想确认一下", w4: "我的弱点和练习方法", wOther: "其他 / 还没想好",
     go: "确认我的日语能否被听懂", goSmall: "约10分钟 · 免费", pick: "请选一个你最想知道的。",
     err: "现在无法打开考试页面。请稍后再试。", full: "本轮免费名额已满。下一轮会在本网站公布。",
     jpNote: "考试画面是日语（约N4以上）。",
@@ -71,11 +76,12 @@ window.AUN_TEST = {
     fineH: "录音按照<a href=\"privacy.html\">隐私政策</a>处理。"
   },
   "zh-TW": {
+    doH: "聽問題，<br>用聲音回答。", doSub: "日本人聽你的回答，結果以電子郵件寄給你。", tenH: "約<b>10分鐘</b>", askStart: "點最接近的一項，測驗就會開始。", noteH: "考試畫面是日語（約N4以上）。請在安靜的地方。錄音的處理見<a href=\"privacy.html\">隱私權政策</a>。",
     seatsDefault: "目前免費 · 限前20名", seatsLeftH: "目前免費 · 剩餘 <b>{n}</b> 個名額", seatsFull: "本輪免費名額已滿",
     h1H: "只需要說<br><em>10分鐘</em>。", lead: "聽問題，用聲音回答就好。日本人來聽，結果以電子郵件寄給你。", fx1: "約10分鐘", fx2: "13題", fx3: "用聲音回答", fx4: "結果以郵件寄送", askSub: "選一個，馬上開始。", starting: "正在開始…", tip: "請在安靜的地方，調大音量。", pen: "不需要準備",
     pass: "准考證", rTime: "時間", vTimeH: "用手機<b>約10分鐘</b>", rQ: "題目", vQH: "練習1題 ＋ <b>12</b>題。最後一題看圖說話",
     rA: "回答方式", vAH: "聽完後當場用聲音回答（每題<b>20〜60秒</b>）", rL: "聽的人", vL: "以日語為母語的聽者", rR: "結果", vR: "透過電子郵件寄送（可能需要幾天）",
-    ask: "你最想知道什麼？", legend: "參加的理由", w1: "我的日語能不能讓人聽懂", w2: "我現在的程度", w3: "去日本或面試前想確認一下", w4: "我的弱點和練習方法", wOther: "其他",
+    ask: "你最想知道什麼？", legend: "參加的理由", w1: "我的日語能不能讓人聽懂", w2: "我現在的程度", w3: "去日本或面試前想確認一下", w4: "我的弱點和練習方法", wOther: "其他 / 還沒想好",
     go: "確認我的日語能否被聽懂", goSmall: "約10分鐘 · 免費", pick: "請選一個你最想知道的。",
     err: "現在無法開啟考試頁面。請稍後再試。", full: "本輪免費名額已滿。下一輪會在本網站公布。",
     jpNote: "考試畫面是日語（約N4以上）。",
@@ -85,11 +91,12 @@ window.AUN_TEST = {
     fineH: "錄音依照<a href=\"privacy.html\">隱私權政策</a>處理。"
   },
   ko: {
+    doH: "질문을 듣고,<br>말로 답하세요.", doSub: "일본인이 답변을 듣고 결과를 이메일로 보내 드려요.", tenH: "약 <b>10분</b>", askStart: "가장 가까운 것을 누르면 시험이 시작돼요.", noteH: "시험 화면은 일본어예요(N4 정도부터). 조용한 곳에서 해 주세요. 녹음 처리: <a href=\"privacy.html\">개인정보 처리방침</a>.",
     seatsDefault: "지금 무료 · 선착순 20명", seatsLeftH: "지금 무료 · <b>{n}</b>자리 남음", seatsFull: "이번 무료 자리는 마감됐어요",
     h1H: "말하는 건<br><em>10분</em>뿐.", lead: "질문을 듣고 말로 답하기만 하면 돼요. 일본인이 듣고 결과를 이메일로 보내 드려요.", fx1: "약 10분", fx2: "13문제", fx3: "말로 답하기", fx4: "결과는 이메일로", askSub: "하나를 고르면 바로 시작해요.", starting: "시작하는 중…", tip: "조용한 곳에서 볼륨을 올려 주세요.", pen: "준비는 필요 없어요",
     pass: "수험표", rTime: "시간", vTimeH: "스마트폰으로 <b>약 10분</b>", rQ: "질문", vQH: "연습 1문제 + <b>12</b>문제. 마지막은 그림을 보고 말하기",
     rA: "답하는 법", vAH: "듣고 그 자리에서 말로 답하기(문제당 <b>20~60초</b>)", rL: "듣는 사람", vL: "일본어가 모국어인 청자", rR: "결과", vR: "이메일로 보내 드려요(며칠 걸릴 수 있어요)",
-    ask: "가장 알고 싶은 건?", legend: "보는 이유", w1: "내 일본어가 통하는지", w2: "지금 내 레벨", w3: "일본행·면접 전에 확인하고 싶어요", w4: "약한 부분과 연습 방법", wOther: "기타",
+    ask: "가장 알고 싶은 건?", legend: "보는 이유", w1: "내 일본어가 통하는지", w2: "지금 내 레벨", w3: "일본행·면접 전에 확인하고 싶어요", w4: "약한 부분과 연습 방법", wOther: "기타 / 아직 잘 모르겠어요",
     go: "통하는지 확인하기", goSmall: "약 10분 · 무료", pick: "가장 알고 싶은 것을 하나 골라 주세요.",
     err: "지금은 시험 페이지를 열 수 없어요. 잠시 후 다시 시도해 주세요.", full: "이번 무료 자리는 마감됐어요. 다음 회차는 이 사이트에서 알려 드려요.",
     jpNote: "시험 화면은 일본어예요(N4 정도부터).",

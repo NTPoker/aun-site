@@ -17,50 +17,34 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;800&family=Zen+Old+Mincho:wght@700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Yomogi&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap">
 <link rel="stylesheet" href="legal.css?v=20261103q">
 <link rel="stylesheet" href="site.css?v=20261103q">
-<link rel="stylesheet" href="test.css?v=20261103q">
+<link rel="stylesheet" href="test.css?v=20261103s">
 </head>
 <body>
 <header id="site-top" class="s-top"></header><script src="site.js?v=20261103q"></script>
-<main class="t">
-<section class="t-hero"><div class="t-hero-in">
+<main class="go1">
 <p class="seats"><i></i><span id="seatsTxt" data-t="seatsDefault"></span></p>
-<h1 data-t="h1H"></h1>
-<p class="lead" data-t="lead"></p>
-<div class="listen-col"><div class="listen" aria-hidden="true"><img src="mark.svg" alt=""><div class="mic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V22h2v-3.1A7 7 0 0 0 19 12h-2z"/></svg></div></div>
-<p class="pen" data-t="pen"></p></div>
-</div></section>
-
-<div class="t-body">
-<div class="ticket">
-<div class="tk-top"><div class="tk-title"><span data-t="pass"></span><small>AUN SPEAKING TEST</small></div><img class="stamp" id="stamp" src="mark.svg" alt=""></div>
-<ul class="tk-facts"><li data-t="fx1"></li><li data-t="fx2"></li><li data-t="fx3"></li><li data-t="fx4"></li></ul>
-<div class="perf"><i></i></div>
-<div class="tk-ask" id="ask">
-<h2 data-t="ask"></h2>
-<p class="asksub" data-t="askSub"></p>
-<div class="why3" id="whyBox" role="group">
-<button type="button" data-why="talk"><span class="ic">01</span><span data-t="w1"></span></button>
-<button type="button" data-why="level"><span class="ic">02</span><span data-t="w2"></span></button>
-<button type="button" data-why="before"><span class="ic">03</span><span data-t="w3"></span></button>
-<button type="button" data-why="practice"><span class="ic">04</span><span data-t="w4"></span></button>
-<button type="button" class="other" data-why="other"><span data-t="wOther"></span></button>
+<h1 data-t="doH"></h1>
+<p class="ten" data-t="tenH"></p>
+<p class="sub" data-t="doSub"></p>
+<p class="ask" data-t="askStart"></p>
+<div class="why4" id="whyBox" role="group">
+<button type="button" data-why="talk" data-t="w1"></button>
+<button type="button" data-why="level" data-t="w2"></button>
+<button type="button" data-why="before" data-t="w3"></button>
+<button type="button" data-why="practice" data-t="w4"></button>
+<button type="button" class="other" data-why="other" data-t="wOther"></button>
 </div>
-<p id="state" class="msg" role="status" aria-live="polite"></p>
+<p id="state" class="state" role="status" aria-live="polite"></p>
 <p id="err" class="shut" hidden data-t="err"></p>
 <p id="full" class="shut" hidden data-t="full"></p>
-<p class="jp-note" data-t="jpNote"></p>
-</div>
-</div>
-<p class="tip" data-t="tip"></p>
-<p class="fine" data-t="fineH"></p>
-</div>
+<p class="note" data-t="noteH"></p>
 </main>
 <footer id="site-foot" class="s-foot"></footer>
-<script src="test-i18n.js?v=20261103q"></script>
+<script src="test-i18n.js?v=20261103t"></script>
 <script type="module">
 let track = () => {}, src = () => "direct";
 const $ = id => document.getElementById(id);
-const box = $("whyBox"), stamp = $("stamp");
+const box = $("whyBox");
 const D = window.AUN_TEST;
 let seatsLeft = null, seatsFull = false;
 // draw the page in the language picked in the shared header
@@ -73,8 +57,7 @@ function apply(l) {
 const t = k => (D[window.AUN_SITE.lang] || D.en)[k];
 apply(window.AUN_SITE.lang);
 document.addEventListener("aun:lang", e => { apply(e.detail.lang); if (e.detail.chosen) track("lang"); });
-// picking a reason stamps the pass with the red circle and starts the test
-const stampOn = () => stamp.classList.add("on");
+// picking a reason starts the test
 let base = null, closed = false, pending = null;
 const go = why => {
   const u = new URL(base);
@@ -86,13 +69,12 @@ box.addEventListener("click", e => {
   const b = e.target.closest("button[data-why]");
   if (!b || closed) return;
   box.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-  stampOn();
   $("state").textContent = t("starting");
   if (base) setTimeout(() => go(b.dataset.why), 450); else pending = b.dataset.why;
 });
 const full = () => { closed = true; seatsFull = true; $("full").hidden = false; box.hidden = true; $("seatsTxt").textContent = t("seatsFull"); };
 // back from the test (page restored from cache): clear the "starting" state
-addEventListener("pageshow", e => { if (e.persisted) { $("state").textContent = ""; stamp.classList.remove("on"); box.querySelectorAll("button").forEach(x => x.removeAttribute("aria-pressed")); } });
+addEventListener("pageshow", e => { if (e.persisted) { $("state").textContent = ""; box.querySelectorAll("button").forEach(x => x.removeAttribute("aria-pressed")); } });
 // analytics load after the text is on screen, and never block the test link
 ({ track, src } = await import("./fb.js").catch(() => ({ track() {}, src: () => "direct" })));
 
