@@ -321,3 +321,6 @@ html:lang(vi) [data-i],html:lang(vi) [data-i-html]{font-family:'Archivo','Noto S
 @media (max-width:720px){.hero{padding-top:28px}}
 /* real listener photo: keep the face clear of the sample card on wide screens */
 @media (min-width:1041px){.hero-visual{padding-bottom:300px}}
+/* the listener photo melts into the black hero: soft edges, colour pulled toward the page's black */
+.h-photo img{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 62%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 66%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 62%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 66%,transparent 100%);mask-composite:intersect;filter:saturate(.8) brightness(.94) contrast(1.06)!important;box-shadow:none}
+.h-photo{background:none}
