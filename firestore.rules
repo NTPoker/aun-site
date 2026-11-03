@@ -4,7 +4,7 @@ service cloud.firestore {
     function optStr(d, k, n) { return !(k in d) || (d[k] is string && d[k].size() < n); }
 
     match /signups/{id} {
-      allow create: if request.resource.data.keys().hasOnly(['email','lang','country','firstLanguage','jlpt','want','consent','createdAt','ua','src'])
+      allow create: if request.resource.data.keys().hasOnly(['email','lang','country','firstLanguage','jlpt','want','consent','createdAt','ua','src','why'])
         && request.resource.data.email is string
         && request.resource.data.email.size() > 3 && request.resource.data.email.size() < 200
         && request.resource.data.email.matches('.+@.+\\..+')
@@ -16,6 +16,7 @@ service cloud.firestore {
         && optStr(request.resource.data, 'lang', 10)
         && optStr(request.resource.data, 'ua', 400)
         && optStr(request.resource.data, 'src', 41)
+        && optStr(request.resource.data, 'why', 20)
         && request.resource.data.createdAt == request.time;
       allow read, update, delete: if false;
     }

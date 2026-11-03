@@ -77,6 +77,7 @@ form.addEventListener("submit", async e => {
       firstLanguage: form.firstLanguage.value.trim(),
       country: form.country.value.trim(),
       jlpt: form.jlpt.value,
+      why: form.why.value,
       want: form.want.value.trim(),
       consent: true,
       ua: navigator.userAgent.slice(0, 390),

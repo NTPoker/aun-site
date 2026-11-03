@@ -34,6 +34,14 @@
 <li>Recordings are handled as described in our <a href="privacy.html">Privacy Policy</a>.</li>
 </ul>
 </section>
+<fieldset class="why" id="whyBox">
+<legend><span data-l="ja">受けたい理由を、ひとつ選んでください</span><span data-l="en">Pick your main reason</span></legend>
+<label><input type="radio" name="why" value="talk"> <span data-l="ja">自分の日本語が通じるか知りたい</span><span data-l="en">Find out if my Japanese gets through</span></label>
+<label><input type="radio" name="why" value="level"> <span data-l="ja">今のレベルを知りたい</span><span data-l="en">Know my current level</span></label>
+<label><input type="radio" name="why" value="before"> <span data-l="ja">来日・面接の前に確かめたい</span><span data-l="en">Check before coming to Japan or an interview</span></label>
+<label><input type="radio" name="why" value="practice"> <span data-l="ja">弱いところと練習のしかたを知りたい</span><span data-l="en">Learn my weak points and how to practice</span></label>
+<label><input type="radio" name="why" value="other"> <span data-l="ja">その他</span><span data-l="en">Other</span></label>
+</fieldset>
 <p id="state" class="msg"></p>
 <p><a class="btn" id="go" href="#" hidden><span data-l="ja">はじめる</span><span data-l="en">Start</span></a></p>
 <p id="err" hidden><span data-l="ja">いま受験ページを開けません。少し待ってから、もう一度お試しください。</span><span data-l="en">The test page can’t be opened right now. Please try again in a little while.</span></p>
@@ -47,11 +55,22 @@ const go = document.getElementById("go");
 try {
   const cfg = await (await fetch("test-link.json?v=" + Date.now(), { cache: "no-store" })).json();
   if (cfg.open && cfg.url) {
-    const u = new URL(cfg.url);
-    u.searchParams.set("ref", ("site-" + src()).slice(0, 40));
-    go.href = u.toString();
+    const base = cfg.url;
     go.hidden = false;
-    go.addEventListener("click", () => track("cta"));
+    go.addEventListener("click", e => {
+      const why = document.querySelector('input[name="why"]:checked');
+      if (!why) {
+        e.preventDefault();
+        const st = document.getElementById("state");
+        st.className = "msg err";
+        st.textContent = document.documentElement.lang === "ja" ? "理由をひとつ選んでください。" : "Please pick a reason.";
+        return;
+      }
+      const u = new URL(base);
+      u.searchParams.set("ref", ("site-" + why.value + "-" + src()).slice(0, 40));
+      go.href = u.toString();
+      track("cta");
+    });
   } else {
     document.getElementById("full").hidden = false;
   }

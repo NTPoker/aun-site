@@ -46,3 +46,5 @@ h1,h2{font-family:'Zen Old Mincho',serif;font-weight:900}
 .btn{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;letter-spacing:1px}
 a.btn{text-decoration:none;display:inline-flex;align-items:center}
 a.btn[hidden]{display:none}
+
+.why{border:1px solid var(--line);background:#fff;padding:18px 20px;margin:24px 0 8px}.why legend{font-weight:700;padding:0 6px}.why label{display:flex;gap:10px;align-items:center;padding:8px 0;font-size:16px;cursor:pointer}.why input{width:20px;height:20px;accent-color:var(--red)}
