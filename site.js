@@ -26,7 +26,14 @@
   // landing pages per language (/, /en/, …) declare themselves with <html data-fixed-lang> and <link rel="alternate" data-lang>
   const fixed = document.documentElement.getAttribute("data-fixed-lang");
   const alt = l => document.querySelector('link[rel="alternate"][data-lang="' + l + '"]');
-  const home = () => ({ ja: "/", "zh-TW": "/zh-tw/" })[lang] || "/" + lang + "/";
+  const home = () => ({ en: "/", "zh-TW": "/zh-tw/" })[lang] || "/" + lang + "/";
+  // / is the English page. A visitor who chose another language before, or whose browser is in another of ours, goes there.
+  if (document.documentElement.hasAttribute("data-lang-home")) {
+    let pref = new URLSearchParams(location.search).get("lang");
+    if (!ok(pref)) { try { pref = localStorage.getItem("aun-lang"); } catch (e) {} }
+    if (!ok(pref)) { for (const tag of navigator.languages || [navigator.language || ""]) { pref = fromBrowser(tag); if (pref) break; } }
+    if (ok(pref) && pref !== "en" && alt(pref)) { location.replace(new URL(alt(pref).href).pathname + location.hash); return; }
+  }
   const pick = () => {
     if (ok(fixed)) { try { localStorage.setItem("aun-lang", fixed); } catch (e) {} return fixed; }
     const q = new URLSearchParams(location.search).get("lang");

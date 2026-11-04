@@ -1,10 +1,10 @@
 {
-"ja":{"path":"/","hreflang":"ja","locale":"ja_JP",
+"ja":{"path":"/ja/","hreflang":"ja","locale":"ja_JP",
  "title":"阿吽 AUN｜日本人に伝わる？ 日本人が聞く日本語スピーキングテスト",
  "desc":"AIじゃなく、日本人があなたの日本語を聞きます。スマホで約10分。どこで伝わらなかったか、なぜ、どう言えば伝わるかを、お世辞なしで返します。いまは無料。",
  "ogTitle":"日本人に伝わる？｜阿吽 AUN",
  "ogDesc":"AIじゃなく、日本人が聞く。お世辞なし。スマホで約10分、いまは無料。"},
-"en":{"path":"/en/","hreflang":"en","locale":"en_US",
+"en":{"path":"/","hreflang":"en","locale":"en_US",
  "title":"AUN | Does your Japanese get through? A Japanese speaking test judged by Japanese people",
  "desc":"Not AI: a Japanese person listens to your spoken Japanese. About 10 minutes on your phone. See where you lost them, why, and how to say it so it gets through. No flattery. Free for now.",
  "ogTitle":"Does your Japanese get through? | AUN",
