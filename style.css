@@ -627,3 +627,7 @@ html:not([lang="ja"]) .hero2 h1{font-size:clamp(34px,3.7vw,54px);line-height:1.2
   .hero2 .lead{margin-top:16px}.hero2 .cta{margin-top:22px}.hero2 .meta{margin-top:12px}
 }
 .hero2 .slip .res-chart polygon.g{stroke:#4a463f}.hero2 .slip .res-chart line{stroke:#3a3732}
+/* 札は体に重ねず、顔の横の暗い所に（NT 11/4「成績のカードの位置は調整した方がいい」） */
+@media (min-width:821px){.hero2 .slip{left:auto;right:3.5%;top:15%;bottom:auto;transform:rotate(4deg)}}
+@media (max-width:820px){.hero2 .slip{left:auto;right:10px;top:22px;bottom:auto;transform:rotate(4deg)}.hero2 .c{padding-top:8px}}
+@media (min-width:821px){.hero2 .ph img{object-position:66% 28%}.hero2 .slip{width:244px;right:3%}}
