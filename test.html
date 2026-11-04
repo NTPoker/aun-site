@@ -61,6 +61,7 @@ let base = null, closed = false, chosen = null;
 const go = why => {
   const u = new URL(base);
   u.searchParams.set("ref", ("site-" + why + "-" + src()).slice(0, 40));
+  u.searchParams.set("lang", window.AUN_SITE.lang);  // the test shows its instructions in the language picked here
   track("cta");
   location.href = u.toString();
 };
