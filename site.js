@@ -23,7 +23,12 @@
     const base = n.split("-")[0];
     return ok(base) ? base : null;
   };
+  // landing pages per language (/, /en/, …) declare themselves with <html data-fixed-lang> and <link rel="alternate" data-lang>
+  const fixed = document.documentElement.getAttribute("data-fixed-lang");
+  const alt = l => document.querySelector('link[rel="alternate"][data-lang="' + l + '"]');
+  const home = () => ({ ja: "/", "zh-TW": "/zh-tw/" })[lang] || "/" + lang + "/";
   const pick = () => {
+    if (ok(fixed)) { try { localStorage.setItem("aun-lang", fixed); } catch (e) {} return fixed; }
     const q = new URLSearchParams(location.search).get("lang");
     if (ok(q)) { try { localStorage.setItem("aun-lang", q); } catch (e) {} return q; }
     try { const s = localStorage.getItem("aun-lang"); if (ok(s)) return s; } catch (e) {}
@@ -31,14 +36,14 @@
     return "en";
   };
   const page = location.pathname.split("/").pop() || "index.html";
-  const MARK = '<img class="s-mark" src="mark.svg" alt="" width="46" height="40">';
+  const MARK = '<img class="s-mark" src="/mark.svg" alt="" width="46" height="40">';
   const GLOBE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.8 3 2.8 16 0 19M12 2.5c-2.8 3-2.8 16 0 19"/></svg>';
   let lang = pick();
 
   function drawTop(el) {
     const d = T[lang];
-    el.innerHTML = '<div class="s-top-in"><a href="./" class="s-brand" aria-label="AUN 阿吽">' + MARK + '<span>AUN</span><em class="s-kanji" aria-hidden="true">阿吽</em></a>' +
-      '<div class="s-right">' + (page === "test.html" ? "" : '<a class="s-cta" href="test.html">' + d.cta + '</a>') +
+    el.innerHTML = '<div class="s-top-in"><a href="' + home() + '" class="s-brand" aria-label="AUN 阿吽">' + MARK + '<span>AUN</span><em class="s-kanji" aria-hidden="true">阿吽</em></a>' +
+      '<div class="s-right">' + (page === "test.html" ? "" : '<a class="s-cta" href="/test.html">' + d.cta + '</a>') +
       '<div class="s-lang"><button type="button" class="s-lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Language">' + GLOBE + '<span>' + NAMES[lang] + '</span></button>' +
       '<ul class="s-lang-menu" hidden>' + Object.keys(NAMES).map(l => '<li><button type="button" lang="' + l + '" data-lang="' + l + '" aria-current="' + (l === lang) + '">' + NAMES[l] + '</button></li>').join("") + '</ul></div></div></div>';
     const btn = el.querySelector(".s-lang-btn"), menu = el.querySelector(".s-lang-menu");
@@ -48,11 +53,11 @@
   function drawFoot(el) {
     const d = T[lang], a = (href, k) => '<a href="' + href + '">' + d[k] + "</a>";
     el.innerHTML = '<div class="s-foot-in">' +
-      '<div class="s-foot-brand"><a href="./" class="s-brand" aria-label="AUN 阿吽">' + MARK + '<span>AUN</span></a><p>' + d.op + '</p><p class="s-free">' + d.free + '</p><p><a href="mailto:hello@aunjapanese.com">hello@aunjapanese.com</a></p></div>' +
+      '<div class="s-foot-brand"><a href="' + home() + '" class="s-brand" aria-label="AUN 阿吽">' + MARK + '<span>AUN</span></a><p>' + d.op + '</p><p class="s-free">' + d.free + '</p><p><a href="mailto:hello@aunjapanese.com">hello@aunjapanese.com</a></p></div>' +
       '<nav class="s-foot-cols" aria-label="Footer">' +
-      '<div><h2>' + d.svc + '</h2>' + a("test.html", "cta") + a("./#faq", "faq") + "</div>" +
-      '<div><h2>' + d.co + '</h2>' + a("about.html", "about") + a("contact.html", "contact") + "</div>" +
-      '<div><h2>' + d.rules + '</h2>' + a("privacy.html", "privacy") + a("terms.html", "terms") + a("tokushoho.html", "legal") + "</div></nav>" +
+      '<div><h2>' + d.svc + '</h2>' + a("/test.html", "cta") + a(home() + "#faq", "faq") + "</div>" +
+      '<div><h2>' + d.co + '</h2>' + a("/about.html", "about") + a("/contact.html", "contact") + "</div>" +
+      '<div><h2>' + d.rules + '</h2>' + a("/privacy.html", "privacy") + a("/terms.html", "terms") + a("/tokushoho.html", "legal") + "</div></nav>" +
       '<p class="s-copy">© 2026 1900 Co., Ltd.</p></div>';
   }
   function draw() {
@@ -64,6 +69,7 @@
     if (!ok(l)) return;
     lang = l;
     try { localStorage.setItem("aun-lang", l); } catch (e) {}
+    if (chosen && alt(l) && new URL(alt(l).href).pathname !== location.pathname) { location.href = new URL(alt(l).href).pathname + location.hash; return; }
     draw();
     if (chosen) { const b = document.querySelector("#site-top .s-lang-btn"); if (b) b.focus(); }
     document.dispatchEvent(new CustomEvent("aun:lang", { detail: { lang: l, chosen: !!chosen } }));
@@ -81,7 +87,7 @@
     const el = document.createElement("div");
     el.className = "s-intro";
     el.setAttribute("aria-hidden", "true");
-    el.innerHTML = '<div class="s-intro-c"><img src="mark.svg" alt=""><p><span>阿</span><span>吽</span></p></div><b>AUN</b>';
+    el.innerHTML = '<div class="s-intro-c"><img src="/mark.svg" alt=""><p><span>阿</span><span>吽</span></p></div><b>AUN</b>';
     if (!(window.CSS && CSS.registerProperty)) el.classList.add("plain");  // no animatable mask: fade the circle in instead
     document.body.appendChild(el);
     document.documentElement.classList.add("s-intro-on");
