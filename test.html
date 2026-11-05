@@ -51,10 +51,13 @@ try {
   if (!cfg.open || !cfg.url) shut("full");
   else {
     // real seats left, from the test server; if it does not answer in time, go on
-    const n = await Promise.race([fetch(new URL("/api/exam/seats", cfg.url), { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null), wait(2500)]);
+    const seats = url => Promise.race([fetch(new URL("/api/exam/seats", url), { cache: "no-store" }).then(r => r.ok ? r.json() : null, () => "down"), wait(2500)]);
+    let url = cfg.url, n = await seats(url);
+    // some networks still look the test address up in the old DNS for a day or two after the move (11/5): use the spare address then
+    if (n === "down" && cfg.fallback) { const m = await seats(cfg.fallback); if (m && m !== "down") { url = cfg.fallback; n = m; } }
     if (n && typeof n.left === "number" && n.left <= 0) shut("full");
     else {
-      const u = new URL(cfg.url);
+      const u = new URL(url);
       u.searchParams.set("ref", ("site-" + src()).slice(0, 40));
       u.searchParams.set("lang", window.AUN_SITE.lang);  // the test shows its instructions in the language picked on the site
       track("cta");
