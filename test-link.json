@@ -1,1 +1,1 @@
-{"open": true, "url": "https://test.aunjapanese.com/exam", "seats": 20}
+{"open": true, "url": "https://test.aunjapanese.com/exam", "fallback": "https://chemistry-permissions-qualifying-banana.trycloudflare.com/exam", "seats": 20}
