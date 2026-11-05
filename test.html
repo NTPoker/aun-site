@@ -22,87 +22,50 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <body>
 <header id="site-top" class="s-top"></header><script src="site.js?v=20261104o"></script>
 <main class="go1">
-<h1 data-t="doH"></h1>
-<p class="sub" data-t="doSub"></p>
-<p class="ask" data-t="ask"></p>
-<div class="why4" id="whyBox" role="group">
-<button type="button" data-why="talk" data-t="w1"></button>
-<button type="button" data-why="level" data-t="w2"></button>
-<button type="button" data-why="before" data-t="w3"></button>
-<button type="button" data-why="practice" data-t="w4"></button>
-<button type="button" class="other" data-why="other" data-t="wOther"></button>
-</div>
-<p class="prep" data-t="prep"></p>
-<button type="button" class="startbtn" id="start" data-t="startBtn"></button>
-<p id="state" class="state" role="status" aria-live="polite"></p>
+<p id="state" class="state" role="status" aria-live="polite" data-t="starting"></p>
 <p id="err" class="shut" hidden data-t="err"></p>
 <p id="full" class="shut" hidden data-t="full"></p>
-<p class="note" data-t="noteH"></p>
 </main>
 <footer id="site-foot" class="s-foot"></footer>
 <script src="test-i18n.js?v=20261103x"></script>
 <script type="module">
-let track = () => {}, src = () => "direct";
+// No questions here: opening this page goes straight to the test's start screen (NT 11/5: fewer taps).
+import { src } from "./src.js";
 const $ = id => document.getElementById(id);
-const box = $("whyBox");
 const D = window.AUN_TEST;
-let seatsLeft = null, seatsFull = false;
-// draw the page in the language picked in the shared header
 function apply(l) {
   const d = D[l] || D.en;
   document.documentElement.lang = l;
-  document.querySelectorAll("[data-t]").forEach(el => { const k = el.dataset.t; if (k.endsWith("H")) el.innerHTML = d[k]; else el.textContent = d[k]; });
+  document.querySelectorAll("[data-t]").forEach(el => { el.textContent = d[el.dataset.t]; });
 }
-const t = k => (D[window.AUN_SITE.lang] || D.en)[k];
 apply(window.AUN_SITE.lang);
-document.addEventListener("aun:lang", e => { apply(e.detail.lang); if (e.detail.chosen) track("lang"); });
-// pick a reason, then start
-let base = null, closed = false, chosen = null;
-const go = why => {
-  const u = new URL(base);
-  u.searchParams.set("ref", ("site-" + why + "-" + src()).slice(0, 40));
-  u.searchParams.set("lang", window.AUN_SITE.lang);  // the test shows its instructions in the language picked here
-  track("cta");
-  location.href = u.toString();
-};
-box.addEventListener("click", e => {
-  const b = e.target.closest("button[data-why]");
-  if (!b || closed) return;
-  chosen = b.dataset.why;
-  box.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-  $("state").textContent = "";
-});
-$("start").addEventListener("click", () => {
-  if (closed) return;
-  if (!chosen) { $("state").textContent = t("pick"); box.querySelector("button").focus(); return; }
-  if (!base) { $("state").textContent = t("starting"); return; }
-  $("state").textContent = t("starting");
-  go(chosen);
-});
-const full = () => { closed = true; seatsFull = true; $("full").hidden = false; box.hidden = true; $("start").hidden = true; };
-// back from the test (page restored from cache): clear the "starting" state
-addEventListener("pageshow", e => { if (e.persisted) $("state").textContent = ""; });
-// analytics load after the text is on screen, and never block the test link
-({ track, src } = await import("./fb.js").catch(() => ({ track() {}, src: () => "direct" })));
-
+document.addEventListener("aun:lang", e => apply(e.detail.lang));
+const shut = id => { $("state").hidden = true; $(id).hidden = false; };
+const wait = ms => new Promise(r => setTimeout(r, ms));
+// analytics load in the background and never hold the test link for long
+const fb = import("./fb.js").catch(() => null);
+const track = (...a) => fb.then(m => m && m.track(...a));
+track("view");
 try {
   const cfg = await (await fetch("test-link.json?v=" + Date.now(), { cache: "no-store" })).json();
-  if (cfg.open && cfg.url) {
-    base = cfg.url;
-    // real seats left, from the test server; the page works without it
-    fetch(new URL("/api/exam/seats", base), { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(n => {
-      if (!n || typeof n.left !== "number") return;
-      if (n.left <= 0) return full();
-      seatsLeft = n.left;
-    }).catch(() => {});
-  } else {
-    full();
+  if (!cfg.open || !cfg.url) shut("full");
+  else {
+    // real seats left, from the test server; if it does not answer in time, go on
+    const n = await Promise.race([fetch(new URL("/api/exam/seats", cfg.url), { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null), wait(2500)]);
+    if (n && typeof n.left === "number" && n.left <= 0) shut("full");
+    else {
+      const u = new URL(cfg.url);
+      u.searchParams.set("ref", ("site-" + src()).slice(0, 40));
+      u.searchParams.set("lang", window.AUN_SITE.lang);  // the test shows its instructions in the language picked on the site
+      track("cta");
+      await Promise.race([fb, wait(1200)]);
+      await wait(300);  // a moment for the events to be sent
+      location.replace(u.toString());  // replace: Back from the test returns to the page before this one
+    }
   }
 } catch (e) {
-  closed = true;
-  $("err").hidden = false;
+  shut("err");
 }
-track("view");
 </script>
 </body>
 </html>

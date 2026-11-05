@@ -1,4 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { src } from "./src.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const app = initializeApp({
@@ -13,18 +14,8 @@ const db = getFirestore(app);
 
 export const save = (name, data) => addDoc(collection(db, name), { ...data, createdAt: serverTimestamp() });
 
-// Which link brought the visitor. Only our own tags count (?src=tiktok-0103, ?src=reddit-wed);
-// anything else is recorded as "other" so free text never reaches the database.
-const TAG = /^(tiktok|ig|yt|reddit|wk|discord|x|fb|line|qr|mail|trial|test)(-[a-z0-9]{1,16}){0,2}$/;
-export const src = () => {
-  const p = new URLSearchParams(location.search);
-  const v = (p.get("src") || p.get("ref") || "").toLowerCase();
-  if (v) return TAG.test(v) ? v : "other";
-  let host = "";
-  try { host = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) {}
-  if (!host || host === location.hostname) return "direct";
-  return "ref:" + host.replace(/[^a-z0-9.-]/g, "").slice(0, 36);
-};
+// Which link brought the visitor: in src.js so pages can read it without waiting for Firebase.
+export { src };
 
 // Anonymous page events. A random id per page load only; nothing is stored in the browser.
 const sid = Math.random().toString(36).slice(2, 12);
