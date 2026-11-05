@@ -18,7 +18,7 @@ export const save = (name, data) => addDoc(collection(db, name), { ...data, crea
 export { src };
 
 // Anonymous page events. A random id per page load only; nothing is stored in the browser.
-const sid = Math.random().toString(36).slice(2, 12);
+export const sid = Math.random().toString(36).slice(2, 12);  // test.html also hands it to the test, so a tap can be followed there (NT 11/5)
 const page = location.pathname.split("/").pop() || "index";
 // The sign-up event carries no visit id, so browsing is never tied to a person.
 export const track = (t, extra = {}) => {
