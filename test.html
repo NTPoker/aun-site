@@ -61,7 +61,8 @@ try {
       u.searchParams.set("ref", ("site-" + src()).slice(0, 40));
       u.searchParams.set("lang", window.AUN_SITE.lang);  // the test shows its instructions in the language picked on the site
       track("cta");
-      await Promise.race([fb, wait(1200)]);
+      const m = await Promise.race([fb, wait(1200)]);
+      if (m && m.sid) u.searchParams.set("v", m.sid);  // the same id as this tap's event, so the test server can tell which taps arrived
       await wait(300);  // a moment for the events to be sent
       location.replace(u.toString());  // replace: Back from the test returns to the page before this one
     }
