@@ -26,6 +26,7 @@ html{scroll-padding-top:84px}
 .s-foot-in{max-width:1120px;margin:0 auto;padding:48px 24px 32px;display:grid;grid-template-columns:1fr;gap:36px}
 .s-foot-brand p{margin:12px 0 0;font-size:14px;line-height:1.8}
 .s-foot-brand a:not(.s-brand){color:#E8735F}
+.s-social a{display:inline-flex;align-items:center;gap:8px;text-decoration:none}.s-social svg{width:16px;height:16px;fill:currentColor}
 .s-free{display:inline-block;padding:3px 10px;border:1px solid #C93D27;color:#E8735F!important;font-weight:700;font-size:13px!important}
 .s-foot-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px}
 .s-foot-cols h2{margin:0 0 10px;padding:0;border:0;font-family:'Archivo','Zen Kaku Gothic New',sans-serif;font-size:12px;font-weight:800;letter-spacing:2px;color:#8A8478;text-transform:uppercase}
