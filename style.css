@@ -647,18 +647,11 @@ html:not([lang="ja"]) .hero2 h1{font-size:clamp(38px,4.2vw,62px);line-height:1.1
 @media (min-width:821px){.hero2 .c>h1{max-width:600px}.hero2 h1{font-size:clamp(44px,4.8vw,68px)}html:not([lang="ja"]) .hero2 h1{font-size:clamp(38px,4vw,58px)}}
 
 
-/* the app: icon, name, one line, the official badges */
-.appblock{display:flex;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap;max-width:600px}
-.appicon{width:56px;height:56px;border-radius:13px;box-shadow:0 2px 12px rgba(0,0,0,.4)}
-.apptxt{flex:1;min-width:200px;font-family:'Zen Kaku Gothic New',sans-serif}
-.apptxt b{display:block;font-family:'Archivo',sans-serif;font-size:16px;letter-spacing:.02em;color:#F3EFE6}
-.apptxt span{display:block;font-size:13px;color:#BDB8AC;line-height:1.5;margin-top:2px}
-.badges{display:flex;align-items:center;gap:12px;width:100%}
+
+/* the official store badges under the CTA */
+.badges{display:flex;align-items:center;gap:12px;margin-top:22px}
 .badges a{display:inline-flex;line-height:0}
 .badges img.apple{height:46px;width:auto}
 .badges img.play{height:69px;width:auto;margin:-11px -10px}
-.appblock.center{justify-content:center;text-align:center;margin:28px auto 0}
-.appblock.center .apptxt{flex:0 1 auto}
-.appblock.center .badges{justify-content:center}
-.v6-light .apptxt b{color:#111}.v6-light .apptxt span{color:#6b665c}
+.badges.center{justify-content:center;margin:26px auto 0}
 @media (max-width:420px){.badges img.apple{height:40px}.badges img.play{height:60px;margin:-10px -9px}}
