@@ -31,6 +31,18 @@ const depth = () => {
 addEventListener("scroll", depth, { passive: true });
 addEventListener("load", depth);
 document.querySelectorAll('a[href="test.html"]').forEach(a => a.addEventListener("click", () => track("cta")));
+// The store badge for this device only; both when the device is unknown. Detection is a hint for display, never a redirect.
+const os = (() => {
+  const p = (navigator.userAgentData && navigator.userAgentData.platform) || "";
+  const ua = navigator.userAgent || "";
+  if (/android/i.test(p) || /Android/.test(ua)) return "android";
+  if (/iphone|ipod/i.test(p) || /iPhone|iPod/.test(ua)) return "ios";
+  return "";
+})();
+if (os) document.documentElement.dataset.os = os;
+document.querySelectorAll(".allstores").forEach(a => a.addEventListener("click", e => { e.preventDefault(); a.closest(".appsec")?.querySelector(".badges")?.classList.add("all"); a.parentElement.hidden = true; track("store_other", { os }); }));
+document.querySelectorAll(".badges a").forEach(a => a.addEventListener("click", () => track("store", { dest: /apple/.test(a.href) ? "ios" : "android", os, place: a.closest("#app") ? "app" : "other" })));
+document.querySelectorAll(".applink").forEach(a => a.addEventListener("click", () => track("applink", { os })));
 // Keep the visitor's source tag when they move on to the test page.
 const tag = src();
 if (!tag.startsWith("ref:") && tag !== "direct" && tag !== "other") document.querySelectorAll('a[href="test.html"]').forEach(a => { a.href = "test.html?src=" + encodeURIComponent(tag); });
