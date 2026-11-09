@@ -645,3 +645,15 @@ html:not([lang="ja"]) .hero2 h1{font-size:clamp(38px,4.2vw,62px);line-height:1.1
 @media (min-width:1441px){.hero2 .ph::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(270deg,#000 0,rgba(0,0,0,0) 14%)}}
 @media (min-width:821px){.hero2 .c>h1{max-width:720px}}
 @media (min-width:821px){.hero2 .c>h1{max-width:600px}.hero2 h1{font-size:clamp(44px,4.8vw,68px)}html:not([lang="ja"]) .hero2 h1{font-size:clamp(38px,4vw,58px)}}
+
+/* store buttons under the CTA */
+.appline{margin:22px 0 0;font-family:'Zen Kaku Gothic New',sans-serif;font-size:14px;color:#BDB8AC;letter-spacing:.04em}
+.stores{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.store{display:inline-flex;flex-direction:column;justify-content:center;min-width:150px;padding:9px 16px;border:1px solid #7a746a;border-radius:10px;background:rgba(0,0,0,.45);color:#F3EFE6;text-decoration:none;line-height:1.15}
+.store small{font-size:10px;letter-spacing:.08em;color:#BDB8AC;text-transform:uppercase}
+.store b{font-size:17px;font-weight:700;font-family:'Archivo',sans-serif}
+.store:hover{border-color:#F3EFE6}
+.appline.center,.stores.center{justify-content:center;text-align:center}
+.v6-light .appline,.v6-end .appline{color:#6b665c}
+.v6-light .store,.v6-end .store{background:#fff;color:#111;border-color:#c9c3b6}
+.v6-light .store small,.v6-end .store small{color:#6b665c}
