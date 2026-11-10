@@ -14,12 +14,14 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-
 a{color:inherit}
 
 /* shared header, LP colours */
-body.lp .s-top{background:var(--paper);color:var(--ink);border-bottom:1px solid #E3DDCF}
+body.lp .s-top{background:transparent;color:var(--ink);border-bottom:0;padding:10px 12px 0}
+body.lp .s-top-in{background:rgba(255,255,255,.96);border-radius:999px;box-shadow:0 6px 24px rgba(40,25,10,.10);min-height:60px;padding:8px 8px 8px 20px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+body.lp .s-lang-btn{border-radius:999px}
 body.lp .s-top .s-brand{color:var(--ink)}
 body.lp .s-lang-btn{color:var(--ink);border-color:#D6CFC0}
 body.lp .s-lang-menu{background:#fff;border-color:#D6CFC0}
 body.lp .s-lang-menu button{color:var(--ink)}
-body.lp .s-cta{border-radius:10px}
+body.lp .s-cta{border-radius:999px}
 
 .lp-sec{padding:44px 24px 60px}
 .lp-in{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
@@ -29,7 +31,7 @@ body.lp .s-cta{border-radius:10px}
 .lp-cap em{font-style:normal;color:var(--red)}
 .lp-note{margin:-8px 0 0;font-size:15px;line-height:1.7;color:var(--ink2)}
 .lp-lab{margin:-12px 0 0;font-size:13px;font-weight:700;letter-spacing:1px;color:var(--ink2)}
-.lp-cta{display:flex;align-items:center;justify-content:center;min-height:58px;padding:12px 18px;text-align:center;background:var(--red);color:#fff;font-size:18px;font-weight:800;letter-spacing:1px;text-decoration:none;border-radius:14px}
+.lp-cta{display:flex;align-items:center;justify-content:center;min-height:58px;padding:12px 18px;text-align:center;background:var(--red);color:#fff;font-size:18px;font-weight:800;letter-spacing:1px;text-decoration:none;border-radius:999px}
 .lp-cta:hover{background:var(--red-d)}
 .lp-cta:focus-visible,.lp-faq summary:focus-visible{outline:3px solid #2F7DD1;outline-offset:3px}
 
@@ -39,7 +41,7 @@ body.lp .s-cta{border-radius:10px}
 .lp-hero .lp-cap{font-size:34px;margin-top:-8px}
 .lp-sub{margin:-6px 0 0;font-size:16px;line-height:1.65;font-weight:700;color:var(--ink2)}
 .lp-photo{margin:0;display:flex;flex-direction:column;gap:8px}
-.lp-photo div{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);height:260px;background:#d9cfc2}
+.lp-photo>div{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);height:260px;background:#d9cfc2}
 .lp-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
 .lp-photo figcaption{font-size:13px;color:var(--ink2)}
 
@@ -86,6 +88,44 @@ body.lp .s-cta{border-radius:10px}
 .lp-phone .chart i b{font-family:'Archivo',sans-serif;font-style:normal;font-weight:800;font-size:17px;color:#fff}
 .lp-phone .dt{margin:16px 0 0 18px;display:flex;justify-content:space-between;font-family:'Archivo',sans-serif;font-weight:700;font-size:11px;color:#8A8478}
 .o6{order:6}
+
+
+/* hero: the result card sits on the photo (Speak-style product card over a real photo) */
+.lp-photo>div{position:relative;overflow:visible!important}
+.lp-photo img{border-radius:inherit}
+.lp-over{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(255,255,255,.97);border-radius:18px;box-shadow:0 14px 34px rgba(0,0,0,.22);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.lp-over p{margin:0}
+.lp-over .b{font-family:'Zen Old Mincho',serif;font-weight:900;font-size:19px;line-height:1.45}
+.lp-over .ul{background:linear-gradient(var(--red),var(--red)) 0 100%/100% 4px no-repeat;padding-bottom:3px}
+.lp-over .ba-arrow{width:20px;height:20px;margin:0 auto;color:var(--red);rotate:0deg}
+.lp-over .g{background:var(--pink);border-left:4px solid var(--red);border-radius:10px;padding:6px 12px;font-weight:700;font-size:17px;line-height:1.4}
+.lp-over rt{font-size:.42em}
+
+/* band: one line said big */
+.lp-band{background:var(--red);color:#fff;padding:56px 24px;text-align:center}
+.lp-band .lp-in{gap:12px;align-items:center}
+.lp-band-h{margin:0;font-family:var(--serif);font-weight:900;font-size:30px;line-height:1.3;text-wrap:balance}
+.lp-band-s{margin:0;font-size:15px;opacity:.9}
+
+/* method: three big rounded cards */
+.lp-method{background:var(--paper)}
+.lp-method .lp-in{gap:18px}
+.lp-mk{text-align:center}
+.lp-mh{text-align:center;margin-bottom:10px}
+.lp-step{background:#fff;border-radius:28px;box-shadow:0 10px 30px rgba(40,25,10,.07);padding:24px 20px 20px;display:flex;flex-direction:column;gap:18px}
+.lp-st{display:flex;flex-direction:column;gap:10px}
+.lp-sl{margin:0;display:flex;align-items:center;gap:10px;font-family:'Archivo',var(--sans);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--red)}
+.lp-sl b{width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:0}
+.lp-st h3{margin:0;font-family:var(--serif);font-weight:900;font-size:28px;line-height:1.25;font-feature-settings:"palt";overflow-wrap:break-word}
+.lp-st h3 em{font-style:normal;color:var(--red)}
+.lp-sd{margin:0;font-size:15px;line-height:1.7;color:var(--ink2)}
+.lp-sv{background:var(--paper);border-radius:20px;padding:12px}
+.lp-sv .lp-q{box-shadow:0 8px 20px rgba(40,25,10,.08)}
+.lp-ai{background:#fff;border-radius:18px;box-shadow:0 8px 20px rgba(40,25,10,.08);padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px}
+.lp-ai small{font-size:12px;font-weight:800;letter-spacing:1.5px;color:#A39C8E}
+.lp-ai p{margin:0;font-family:'Zen Old Mincho',serif;font-weight:700;font-size:19px;line-height:1.7}
+.lp-ai mark{background:linear-gradient(transparent 45%,#F6DE8F 45%);color:inherit;padding:0 2px;display:inline-block}
+.lp-ai .tip{align-self:flex-start;font-size:13px;font-weight:700;color:#8A6A10;background:#FBF0CC;border-radius:999px;padding:4px 12px}
 
 /* end */
 .lp-end{background:var(--ink);color:#F6F4EF}
@@ -135,14 +175,14 @@ html[data-os] .badges.all ~ .lp-other{display:none}
   .lp-cap{font-size:64px;line-height:1.14}
   .lp-note{font-size:18px;margin:0}
   .lp-lab{font-size:15px;margin:0}
-  .lp-cta{max-width:420px;min-height:66px;font-size:20px;border-radius:16px}
+  .lp-cta{max-width:420px;min-height:66px;font-size:20px;border-radius:999px}
   /* hero */
   .lp-hero{padding:64px 56px 112px}
   .lp-hero .lp-in{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);column-gap:72px}
   .lp-hero .lp-cap{font-size:66px;margin:0}
   .lp-sub{font-size:20px;margin:0}
   .lp-kick{font-size:16px}
-  .lp-photo div{height:640px;border-radius:28px}
+  .lp-photo>div{height:640px;border-radius:28px}
   .lp-photo figcaption{font-size:14px}
   /* speak */
   .lp-q{padding:40px 40px 30px;border-radius:30px}
@@ -177,6 +217,22 @@ html[data-os] .badges.all ~ .lp-other{display:none}
   .lp-phone .chart i{width:46px;height:46px;margin:0 0 -23px -23px}
   .lp-phone .chart i b{font-size:20px}
   .lp-app .lp-note{max-width:440px}
+  /* hero card and band and method */
+  .lp-over{left:auto;right:-28px;bottom:36px;width:300px;padding:18px 20px}
+  .lp-over .b{font-size:22px}.lp-over .g{font-size:20px}
+  .lp-band{padding:110px 56px}
+  .lp-band .lp-in{display:flex;flex-direction:column;align-items:center;max-width:960px}
+  .lp-band-h{font-size:56px}
+  .lp-band-s{font-size:19px}
+  .lp-method .lp-in{display:flex;flex-direction:column;gap:28px}
+  .lp-mh{margin-bottom:24px}
+  .lp-step{padding:40px;border-radius:40px}
+  .lp-st h3{font-size:40px}
+  .lp-sd{font-size:18px}
+  .lp-sv{padding:36px;border-radius:28px}
+  .lp-ai{padding:30px 30px 26px}.lp-ai p{font-size:28px}.lp-ai .tip{font-size:15px}
+  .lp-step .ba-bad{font-size:30px;padding:28px 28px 30px}.lp-step .ba-good{font-size:28px;padding:22px 26px}
+  .lp-step .lp-ba{flex-direction:column;align-items:stretch;gap:12px}.lp-step .ba-arrow{width:34px;height:34px;rotate:0deg}
   /* end */
   .lp-end{padding:140px 56px}
   .lp-end .lp-in,.lp-more .lp-in{display:flex;flex-direction:column;max-width:760px;text-align:center;align-items:center}
@@ -199,7 +255,6 @@ html[data-os] .badges.all ~ .lp-other{display:none}
 .mo .lp-hero [data-a].on:nth-child(2){animation-delay:.12s}
 .mo .lp-hero .lp-cta[data-a].on{animation-delay:.24s}
 .mo .lp-photo[data-a].on{animation:up 1s cubic-bezier(.2,.7,.2,1) .1s both}
-.mo .lp-photo.on img{animation:zoom 7s cubic-bezier(.2,.6,.2,1) forwards}
 /* example: the red line is drawn, then the better sentence arrives */
 .mo .lp-ba.on{animation:none;opacity:1}
 .mo .lp-ba .ba-bad,.mo .lp-ba .ba-arrow,.mo .lp-ba .ba-good{opacity:0}
@@ -226,11 +281,26 @@ html[data-os] .badges.all ~ .lp-other{display:none}
 .mo .lp-phone.on{animation:up .8s cubic-bezier(.2,.7,.2,1) both}
 .mo .lp-phone .chart i{opacity:0}
 .mo .lp-phone.on .chart i{animation:pop .5s cubic-bezier(.2,.8,.3,1.2) calc(.5s + var(--n) * .28s) both}
+/* hero card and AI card motion */
+.mo .lp-photo.on .lp-over{animation:up .7s cubic-bezier(.2,.7,.2,1) .5s both}
+.mo .lp-photo.on .lp-over .ul{animation:draw .5s 1.1s cubic-bezier(.6,0,.3,1) both}
+.mo .lp-photo.on .lp-over .g{animation:up .5s 1.5s both}
+.mo .lp-ai.on mark{animation:hl .6s .5s cubic-bezier(.6,0,.3,1) both}
+.mo .lp-ai.on .tip{animation:up .4s 1s both}
+@keyframes hl{from{background-size:0 100%}to{background-size:100% 100%}}
+.lp-ai mark{background-repeat:no-repeat;background-size:100% 100%}
 /* the first screen is never hidden: it only rises and settles (keeps the first frame complete) */
 @keyframes rise{from{transform:translateY(18px)}to{transform:none}}
 .mo .lp-hero [data-a]{opacity:1}
 .mo .lp-hero [data-a].on{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
 .mo .lp-hero .lp-photo[data-a].on{animation:none}
-@media (prefers-reduced-motion:reduce){.mo [data-a],.mo [data-a] *{animation:none!important;opacity:1!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}.mo .lp-phone .chart i{opacity:1!important}}
+@media (prefers-reduced-motion:reduce){.mo [data-a],.mo [data-a] *{animation:none!important;opacity:1!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}.mo .lp-phone .chart i{opacity:1!important}.lp-over *{opacity:1!important}}
 /* print: show everything, no motion */
-@media print{.mo [data-a],.mo [data-a] *{opacity:1!important;animation:none!important;transform:none!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}.mo .lp-phone .chart i{opacity:1!important}}
+@media print{.mo [data-a],.mo [data-a] *{opacity:1!important;animation:none!important;transform:none!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}.mo .lp-phone .chart i{opacity:1!important}.lp-over *{opacity:1!important}}
+
+/* method cards: side by side only when there is room */
+@media (min-width:1100px){.lp-step{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center;padding:48px}.lp-st h3{font-size:46px}}
+/* labels on the sample so non-Japanese readers can follow it */
+.lp-lbl{display:block;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:1px;color:#A39C8E;margin-bottom:2px}
+.lp-mean{margin:2px 0 0;font-size:13px;color:var(--ink2);font-style:italic}
+.lp-mean:empty{display:none}
