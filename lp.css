@@ -41,8 +41,9 @@ body.lp .s-cta{border-radius:999px}
 .lp-hero .lp-cap{font-size:34px;margin-top:-8px}
 .lp-sub{margin:-6px 0 0;font-size:16px;line-height:1.65;font-weight:700;color:var(--ink2)}
 .lp-photo{margin:0;display:flex;flex-direction:column;gap:8px}
-.lp-photo>div{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);height:260px;background:#d9cfc2}
-.lp-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
+.lp-photo>div{border-radius:22px;box-shadow:var(--shadow);height:340px;background:#d9cfc2}
+.lp-clip{position:absolute;inset:0;border-radius:inherit;overflow:hidden}
+.lp-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;display:block}
 .lp-photo figcaption{font-size:13px;color:var(--ink2)}
 
 
@@ -93,7 +94,9 @@ body.lp .s-cta{border-radius:999px}
 /* hero: the result card sits on the photo (Speak-style product card over a real photo) */
 .lp-photo>div{position:relative;overflow:visible!important}
 .lp-photo img{border-radius:inherit}
-.lp-over{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(255,255,255,.97);border-radius:18px;box-shadow:0 14px 34px rgba(0,0,0,.22);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.lp-photo{position:relative;margin-bottom:64px}
+.lp-photo figcaption{position:absolute;left:12px;top:12px;background:rgba(255,255,255,.94);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--ink)}
+.lp-over{position:absolute;left:auto;right:12px;bottom:-60px;width:min(86%,320px);background:rgba(255,255,255,.97);border-radius:18px;box-shadow:0 14px 34px rgba(0,0,0,.22);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
 .lp-over p{margin:0}
 .lp-over .b{font-family:'Zen Old Mincho',serif;font-weight:900;font-size:19px;line-height:1.45}
 .lp-over .ul{background:linear-gradient(var(--red),var(--red)) 0 100%/100% 4px no-repeat;padding-bottom:3px}
@@ -182,7 +185,7 @@ html[data-os] .badges.all ~ .lp-other{display:none}
   .lp-hero .lp-cap{font-size:66px;margin:0}
   .lp-sub{font-size:20px;margin:0}
   .lp-kick{font-size:16px}
-  .lp-photo>div{height:640px;border-radius:28px}
+  .lp-photo>div{height:600px;border-radius:28px}
   .lp-photo figcaption{font-size:14px}
   /* speak */
   .lp-q{padding:40px 40px 30px;border-radius:30px}
@@ -218,7 +221,8 @@ html[data-os] .badges.all ~ .lp-other{display:none}
   .lp-phone .chart i b{font-size:20px}
   .lp-app .lp-note{max-width:440px}
   /* hero card and band and method */
-  .lp-over{left:auto;right:-28px;bottom:36px;width:300px;padding:18px 20px}
+  .lp-photo{margin-bottom:0}
+  .lp-over{left:-80px;right:auto;bottom:40px;width:310px;padding:18px 20px}
   .lp-over .b{font-size:22px}.lp-over .g{font-size:20px}
   .lp-band{padding:110px 56px}
   .lp-band .lp-in{display:flex;flex-direction:column;align-items:center;max-width:960px}
@@ -299,8 +303,14 @@ html[data-os] .badges.all ~ .lp-other{display:none}
 @media print{.mo [data-a],.mo [data-a] *{opacity:1!important;animation:none!important;transform:none!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}.mo .lp-phone .chart i{opacity:1!important}.lp-over *{opacity:1!important}}
 
 /* method cards: side by side only when there is room */
-@media (min-width:1100px){.lp-step{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center;padding:48px}.lp-st h3{font-size:46px}}
+.lp-steps{display:grid;gap:18px}
+.lp-step{width:100%}.lp-st,.lp-sv{min-width:0}
+@media (min-width:1100px){.lp-steps{grid-auto-rows:1fr;gap:28px}.lp-step{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:stretch;padding:48px}.lp-st{justify-content:center}.lp-st h3{font-size:46px}.lp-sv{display:flex;flex-direction:column;justify-content:center}.lp-sv .lp-q p{font-size:32px}}
 /* labels on the sample so non-Japanese readers can follow it */
-.lp-lbl{display:block;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:1px;color:#A39C8E;margin-bottom:2px}
+.lp-lbl{display:block;font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:1px;color:var(--ink2);margin-bottom:2px}
 .lp-mean{margin:2px 0 0;font-size:13px;color:var(--ink2);font-style:italic}
 .lp-mean:empty{display:none}
+
+/* PC: the listener's upper body fills the frame */
+@media (min-width:900px){.lp-clip img{transform:scale(1.32);transform-origin:50% 8%}}
+@media (max-width:360px){.lp-over{left:12px;right:12px;width:auto}}
