@@ -1500,3 +1500,17 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
   };
   for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
 })();
+
+// LP v8 (2026-11-10): hero asks the question; the old hero line moves to the closing section.
+(function () {
+  const add = {
+    ja: { v7kick2: "約10分の日本語スピーキングテスト", v7heroQ: '<span class="nw">あなたの日本語、</span><br><span class="nw"><em>日本人</em>に伝わる？</span>', v7sub: '<span class="nw">頼めば日本人が聞いて、</span><span class="nw">伝わりにくい所を教えます。</span>' },
+    en: { v7kick2: "A 10-minute Japanese speaking test", v7heroQ: "Can a Japanese listener<br><em>understand you?</em>", v7sub: "Ask, and a Japanese listener shows you what was hard to understand." },
+    id: { v7kick2: "Tes bicara bahasa Jepang 10 menit", v7heroQ: "Apakah bahasa Jepangmu<br><em>dimengerti orang Jepang?</em>", v7sub: "Jika diminta, orang Jepang mendengarkan dan menunjukkan bagian yang sulit dipahami." },
+    vi: { v7kick2: "Bài kiểm tra nói tiếng Nhật 10 phút", v7heroQ: "Người Nhật có hiểu<br><em>tiếng Nhật của bạn?</em>", v7sub: "Nếu bạn yêu cầu, người Nhật sẽ nghe và chỉ ra chỗ khó hiểu." },
+    zh: { v7kick2: "约10分钟的日语口语测试", v7heroQ: "你的日语，<br><em>日本人听得懂吗？</em>", v7sub: "申请后，日本人会听你说，告诉你哪里不好懂。" },
+    "zh-TW": { v7kick2: "約10分鐘的日文口說測驗", v7heroQ: "你的日文，<br><em>日本人聽得懂嗎？</em>", v7sub: "申請後，日本人會聽你說，告訴你哪裡不好懂。" },
+    ko: { v7kick2: "약 10분 일본어 말하기 테스트", v7heroQ: "당신의 일본어,<br><em>일본인에게 통할까요?</em>", v7sub: "요청하면 일본인이 듣고, 알아듣기 어려운 부분을 알려 드립니다." }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();
