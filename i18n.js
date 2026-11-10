@@ -1605,3 +1605,17 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
   };
   for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
 })();
+
+// LP v8.6 (2026-11-10, NT「頼めば〜なんていらない」): no "on request" wording in the band, hero line or step label.
+(function () {
+  const add = {
+    ja: { v8bandH: '<span class="nw">ふつうの日本人が、</span><span class="nw">あなたの録音を聞く。</span>', v7sub: '<span class="nw">日本人が聞いて、</span><span class="nw">伝わりにくい所を教えます。</span>', v8s3L: "数日で" },
+    en: { v8bandH: "A real Japanese person<br>listens to you.", v7sub: "A Japanese listener shows you what was hard to understand.", v8s3L: "In a few days" },
+    id: { v8bandH: "Orang Jepang sungguhan<br>mendengarkanmu.", v7sub: "Orang Jepang mendengarkan dan menunjukkan bagian yang sulit dipahami.", v8s3L: "Dalam beberapa hari" },
+    vi: { v8bandH: "Một người Nhật thật<br>lắng nghe bạn.", v7sub: "Người Nhật sẽ nghe và chỉ ra chỗ khó hiểu.", v8s3L: "Sau vài ngày" },
+    zh: { v8bandH: "真正的日本人，<br>听你说。", v7sub: "日本人会听你说，告诉你哪里不好懂。", v8s3L: "几天内" },
+    "zh-TW": { v8bandH: "真正的日本人，<br>聽你說。", v7sub: "日本人會聽你說，告訴你哪裡不好懂。", v8s3L: "幾天內" },
+    ko: { v8bandH: "진짜 일본인이<br>당신의 말을 듣습니다.", v7sub: "일본인이 듣고, 알아듣기 어려운 부분을 알려 드립니다.", v8s3L: "며칠 안에" }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();
