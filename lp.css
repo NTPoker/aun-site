@@ -71,9 +71,25 @@ body.lp .s-cta{border-radius:10px}
 .lp-stairs .me .nm{color:var(--red)}
 :lang(en) .lp-stairs .nm,:lang(id) .lp-stairs .nm,:lang(vi) .lp-stairs .nm{font-family:'Archivo',sans-serif;font-weight:700;font-size:11px;overflow-wrap:normal;hyphens:manual;letter-spacing:-.01em}
 
+
+/* app: the record screen shows the level moving over time */
+.lp-app{background:var(--paper)}
+.lp-app .lp-kick{display:flex;align-items:center;gap:8px}
+.lp-app .badges{margin-top:-4px}
+.lp-phone{width:min(250px,70vw);margin:0 auto;aspect-ratio:9/17;border-radius:40px;background:#141414;padding:10px;box-shadow:0 30px 60px rgba(40,25,10,.22)}
+.lp-phone .scr{height:100%;border-radius:31px;background:#FAF8F3;padding:26px 18px 18px;display:flex;flex-direction:column}
+.lp-phone .rt{margin:0 0 10px;font-weight:800;font-size:17px}
+.lp-phone .chart{position:relative;flex:1;margin:4px 0 6px 18px}
+.lp-phone .ln{position:absolute;left:0;right:0;bottom:calc((var(--y) - 1) * 25%);border-top:1px solid #E3DDCF}
+.lp-phone .ln em{position:absolute;left:-18px;top:-9px;font-style:normal;font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;color:#B5AD9F}
+.lp-phone .chart i{position:absolute;left:var(--x);bottom:calc((var(--y) - 1) * 25%);width:38px;height:38px;margin:0 0 -19px -19px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 16px rgba(201,61,39,.3)}
+.lp-phone .chart i b{font-family:'Archivo',sans-serif;font-style:normal;font-weight:800;font-size:17px;color:#fff}
+.lp-phone .dt{margin:16px 0 0 18px;display:flex;justify-content:space-between;font-family:'Archivo',sans-serif;font-weight:700;font-size:11px;color:#8A8478}
+.o6{order:6}
+
 /* end */
 .lp-end{background:var(--ink);color:#F6F4EF}
-.lp-end .lp-cap{color:#F6F4EF}
+.lp-end .lp-cap{color:#F6F4EF;font-size:32px}
 .lp-end .lp-cap em{color:#FF7A60}
 .lp-more{padding-top:40px}
 .lp-more .lp-in{gap:16px}
@@ -109,7 +125,7 @@ html[data-os] .badges.all ~ .lp-other{display:none}
 .ba-good rt{font-size:.42em}
 
 /* phone: text and picture blocks flow as one column in the order set below */
-@media (max-width:899px){.lp-txt{display:contents}.lp-vis{display:flex;flex-direction:column;gap:22px}.o1{order:1}.o2{order:2}.o3{order:3}.o4{order:4}.o5{order:5}}
+@media (max-width:899px){.lp-app .lp-txt{display:contents}.lp-txt{display:contents}.lp-vis{display:flex;flex-direction:column;gap:22px}.o1{order:1}.o2{order:2}.o3{order:3}.o4{order:4}.o5{order:5}}
 
 /* PC: wide, big type, big pictures, sections alternate paper / white */
 @media (min-width:900px){
@@ -156,6 +172,11 @@ html[data-os] .badges.all ~ .lp-other{display:none}
   .lp-stairs .me b{font-size:40px}
   .lp-stairs .nm{font-size:19px}
   :lang(en) .lp-stairs .nm,:lang(id) .lp-stairs .nm,:lang(vi) .lp-stairs .nm{font-size:16px}
+  /* app */
+  .lp-phone{width:340px}
+  .lp-phone .chart i{width:46px;height:46px;margin:0 0 -23px -23px}
+  .lp-phone .chart i b{font-size:20px}
+  .lp-app .lp-note{max-width:440px}
   /* end */
   .lp-end{padding:140px 56px}
   .lp-end .lp-in,.lp-more .lp-in{display:flex;flex-direction:column;max-width:760px;text-align:center;align-items:center}
@@ -200,11 +221,16 @@ html[data-os] .badges.all ~ .lp-other{display:none}
 .mo .lp-stairs.on .bar{animation:rise2 .5s cubic-bezier(.2,.7,.2,1) calc(var(--h) * .09s) both}
 .mo .lp-stairs.on .nm{animation:up .4s calc(var(--h) * .09s + .2s) both}
 .mo .lp-stairs.on .me .bar{animation:growland 1s cubic-bezier(.2,.7,.2,1) .36s both}
+/* app: the level dots appear one after another */
+@keyframes pop{0%{opacity:0;transform:scale(.4)}70%{opacity:1;transform:scale(1.12)}100%{opacity:1;transform:none}}
+.mo .lp-phone.on{animation:up .8s cubic-bezier(.2,.7,.2,1) both}
+.mo .lp-phone .chart i{opacity:0}
+.mo .lp-phone.on .chart i{animation:pop .5s cubic-bezier(.2,.8,.3,1.2) calc(.5s + var(--n) * .28s) both}
 /* the first screen is never hidden: it only rises and settles (keeps the first frame complete) */
 @keyframes rise{from{transform:translateY(18px)}to{transform:none}}
 .mo .lp-hero [data-a]{opacity:1}
 .mo .lp-hero [data-a].on{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
 .mo .lp-hero .lp-photo[data-a].on{animation:none}
-@media (prefers-reduced-motion:reduce){.mo [data-a],.mo [data-a] *{animation:none!important;opacity:1!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}}
+@media (prefers-reduced-motion:reduce){.mo [data-a],.mo [data-a] *{animation:none!important;opacity:1!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}.mo .lp-phone .chart i{opacity:1!important}}
 /* print: show everything, no motion */
-@media print{.mo [data-a],.mo [data-a] *{opacity:1!important;animation:none!important;transform:none!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}}
+@media print{.mo [data-a],.mo [data-a] *{opacity:1!important;animation:none!important;transform:none!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}.mo .lp-phone .chart i{opacity:1!important}}

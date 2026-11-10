@@ -1514,3 +1514,17 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
   };
   for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
 })();
+
+// LP v8.2 (2026-11-10): the app gets its own section (level over time).
+(function () {
+  const add = {
+    ja: { v7appK: "アプリなら", v7appH: "レベルの<em>動き</em>が<br>見える。", v7appN: "結果が届いたら、通知でお知らせ。ログインは Apple か Google で。", v7recT: "記録" },
+    en: { v7appK: "In the app", v7appH: "Track<br>your <em>level.</em>", v7appN: "Get a notification when your result arrives. Sign in with Apple or Google.", v7recT: "History" },
+    id: { v7appK: "Di aplikasi", v7appH: "Pantau<br><em>levelmu.</em>", v7appN: "Dapat notifikasi saat hasil tiba. Masuk dengan Apple atau Google.", v7recT: "Riwayat" },
+    vi: { v7appK: "Trên ứng dụng", v7appH: "Theo dõi <em>trình độ</em><br>qua từng lần.", v7appN: "Nhận thông báo khi có kết quả. Đăng nhập bằng Apple hoặc Google.", v7recT: "Lịch sử" },
+    zh: { v7appK: "在应用里", v7appH: "看到水平的<br><em>变化</em>", v7appN: "结果送达时会通知你。可用 Apple 或 Google 登录。", v7recT: "记录" },
+    "zh-TW": { v7appK: "在 App 裡", v7appH: "看見程度的<br><em>變化</em>", v7appN: "結果送達時會通知你。可用 Apple 或 Google 登入。", v7recT: "紀錄" },
+    ko: { v7appK: "앱에서는", v7appH: "레벨 <em>변화</em>가<br>한눈에 보입니다.", v7appN: "결과가 도착하면 알림으로 알려 드립니다. Apple 또는 Google로 로그인할 수 있습니다.", v7recT: "기록" }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();
