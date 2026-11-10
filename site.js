@@ -10,7 +10,7 @@
     vi: { app: "Ứng dụng", cta: "Làm bài miễn phí", svc: "Dịch vụ", co: "Công ty", rules: "Chính sách", signup: "Đăng ký trước", faq: "Câu hỏi thường gặp", about: "Về chúng tôi", contact: "Liên hệ", privacy: "Chính sách quyền riêng tư", terms: "Điều khoản", legal: "Thông báo pháp lý", op: "Vận hành bởi 1900 Co., Ltd. (Ginza, Tokyo)", free: "Hiện đang miễn phí" },
     zh: { app: "应用", cta: "免费参加", svc: "服务", co: "公司", rules: "使用须知", signup: "提前登记", faq: "常见问题", about: "运营公司", contact: "联系我们", privacy: "隐私政策", terms: "使用条款", legal: "法律声明", op: "运营：株式会社1900（东京・银座）", free: "目前可免费参加" },
     "zh-TW": { app: "應用程式", cta: "免費參加", svc: "服務", co: "公司", rules: "使用須知", signup: "提前登記", faq: "常見問題", about: "營運公司", contact: "聯絡我們", privacy: "隱私權政策", terms: "使用條款", legal: "法律聲明", op: "營運：株式会社1900（東京・銀座）", free: "目前可免費參加" },
-    ko: { app: "앱", cta: "무료로 보기", svc: "서비스", co: "회사", rules: "이용 안내", signup: "사전 등록", faq: "자주 묻는 질문", about: "운영 회사", contact: "문의", privacy: "개인정보 처리방침", terms: "이용약관", legal: "특정상거래법에 따른 표기", op: "운영: 1900 Co., Ltd.(도쿄 긴자)", free: "지금은 무료로 볼 수 있어요" }
+    ko: { app: "앱", cta: "무료로 응시", svc: "서비스", co: "회사", rules: "이용 안내", signup: "사전 등록", faq: "자주 묻는 질문", about: "운영 회사", contact: "문의", privacy: "개인정보 처리방침", terms: "이용약관", legal: "특정상거래법에 따른 표기", op: "운영: 1900 Co., Ltd.(도쿄 긴자)", free: "지금은 무료로 볼 수 있어요" }
   };
   const ok = l => Object.prototype.hasOwnProperty.call(NAMES, l);
   const fromBrowser = tag => {

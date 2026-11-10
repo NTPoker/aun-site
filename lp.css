@@ -1,0 +1,119 @@
+/* LP (2026-11-10): Duolingo structure in the store-screenshot look. Each section = one big headline + one picture. Text never sits on the photo. */
+:root{--paper:#F2EEE4;--card:#FFFFFF;--ink:#141414;--ink2:#55514A;--row:#E6E0D3;--rowfg:#6E675B;--pink:#F5E9E5;--red:#C93D27;--red-d:#B8321E;
+--shadow:0 18px 40px rgba(60,40,20,.10),0 1px 0 rgba(60,40,20,.04);
+--serif:'Zen Old Mincho','Hiragino Mincho ProN',serif;--sans:'Zen Kaku Gothic New','Archivo','Hiragino Sans',system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+:lang(zh) body{--serif:'Noto Sans SC',sans-serif;--sans:'Noto Sans SC','Archivo',sans-serif}
+:lang(zh-TW) body{--serif:'Noto Sans TC',sans-serif;--sans:'Noto Sans TC','Archivo',sans-serif}
+:lang(ko) body{--serif:'Noto Sans KR',sans-serif;--sans:'Noto Sans KR','Archivo',sans-serif}
+:lang(en) body,:lang(id) body,:lang(vi) body{--serif:'Archivo',sans-serif}
+.jp{font-family:'Zen Old Mincho','Hiragino Mincho ProN',serif!important}
+.nw{display:inline-block}
+a{color:inherit}
+
+/* shared header, LP colours */
+body.lp .s-top{background:var(--paper);color:var(--ink);border-bottom:1px solid #E3DDCF}
+body.lp .s-top .s-brand{color:var(--ink)}
+body.lp .s-lang-btn{color:var(--ink);border-color:#D6CFC0}
+body.lp .s-lang-menu{background:#fff;border-color:#D6CFC0}
+body.lp .s-lang-menu button{color:var(--ink)}
+body.lp .s-cta{border-radius:10px}
+
+.lp-sec{padding:44px 24px 60px}
+.lp-in{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+.lp-kick{margin:0;font-family:'Archivo',var(--sans);font-weight:800;font-size:13px;letter-spacing:1px;color:var(--red)}
+.lp-cap{margin:0;font-family:var(--serif);font-weight:900;font-size:38px;line-height:1.2;letter-spacing:.01em;font-feature-settings:"palt";text-wrap:balance}
+:lang(en) .lp-cap,:lang(id) .lp-cap,:lang(vi) .lp-cap{font-weight:800;letter-spacing:-.01em;line-height:1.12}
+.lp-cap em{font-style:normal;color:var(--red)}
+.lp-note{margin:-8px 0 0;font-size:15px;line-height:1.7;color:var(--ink2)}
+.lp-lab{margin:-12px 0 0;font-size:13px;font-weight:700;letter-spacing:1px;color:var(--ink2)}
+.lp-cta{display:flex;align-items:center;justify-content:center;min-height:58px;padding:12px 18px;text-align:center;background:var(--red);color:#fff;font-size:18px;font-weight:800;letter-spacing:1px;text-decoration:none;border-radius:14px}
+.lp-cta:hover{background:var(--red-d)}
+.lp-cta:focus-visible,.lp-faq summary:focus-visible{outline:3px solid #2F7DD1;outline-offset:3px}
+
+/* hero */
+.lp-hero{padding-top:22px}
+.lp-hero .lp-in{gap:20px}
+.lp-hero .lp-cap{font-size:34px;margin-top:-8px}
+.lp-photo{margin:0;display:flex;flex-direction:column;gap:8px}
+.lp-photo div{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);height:300px;background:#d9cfc2}
+.lp-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
+.lp-photo figcaption{font-size:13px;color:var(--ink2)}
+
+/* speak */
+.lp-q{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:22px 22px 26px}
+.lp-q small{display:block;font-size:13px;font-weight:800;letter-spacing:2px;color:#A39C8E;margin-bottom:10px}
+.lp-q p{margin:0;font-family:'Zen Old Mincho',serif;font-weight:900;font-size:27px;line-height:1.45}
+.lp-mic{width:84px;height:84px;margin:-4px auto 0;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center}
+.lp-mic svg{width:34px;height:34px}
+.lp-center{text-align:center}
+
+/* example */
+.lp-sp{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:24px 22px;display:flex;flex-direction:column;gap:12px}
+.lp-sp .bad{margin:0;font-family:'Zen Old Mincho',serif;font-weight:900;font-size:27px;line-height:1.5}
+.lp-sp .ul{background:linear-gradient(var(--red),var(--red)) 0 100%/100% 5px no-repeat;padding-bottom:4px}
+.lp-sp svg{width:30px;height:30px;margin:0 auto;color:var(--red)}
+.lp-sp .good{margin:0;background:var(--pink);border-left:5px solid var(--red);border-radius:12px;padding:14px 18px;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:25px;line-height:1.45}
+.lp-sp rt{font-size:.42em}
+
+/* level ladder */
+.lp-lad{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.lp-lad li{display:flex;align-items:center;gap:20px;background:var(--row);color:var(--rowfg);border-radius:14px;padding:10px 20px}
+.lp-lad b{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;width:20px}
+.lp-lad span{font-family:var(--serif);font-weight:900;font-size:22px}
+.lp-lad .on{background:var(--card);color:var(--ink);box-shadow:var(--shadow);border-left:5px solid var(--red);padding:18px 20px 18px 15px}
+.lp-lad .on b{color:var(--red);font-size:34px}
+.lp-lad .on span{font-size:30px}
+
+/* end */
+.lp-end{background:var(--ink);color:#F6F4EF}
+.lp-end .lp-cap{color:#F6F4EF}
+.lp-end .lp-cap em{color:#FF7A60}
+.lp-more{padding-top:40px}
+.lp-more .lp-in{gap:16px}
+.lp-apl{margin:0;font-size:15px;font-weight:700;color:var(--ink2)}
+.badges{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badges a{display:inline-flex;line-height:0}
+.badges img.apple{height:42px;width:auto}
+.badges img.play{height:62px;width:auto;margin:-10px -9px}
+html[data-os="ios"] .badges .st-android,html[data-os="android"] .badges .st-ios{display:none}
+html[data-os="ios"] .badges.all .st-android,html[data-os="android"] .badges.all .st-ios{display:inline-flex}
+.lp-other{display:none;margin:0;font-size:14px}
+html[data-os] .lp-other{display:block}
+html[data-os] .badges.all ~ .lp-other{display:none}
+.lp-other a{color:var(--ink2);text-underline-offset:3px}
+.lp-faq{margin-top:22px}
+.lp-faq h2{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--ink2)}
+.lp-faq details{border-top:1px solid #DDD7CB}
+.lp-faq details:last-child{border-bottom:1px solid #DDD7CB}
+.lp-faq summary{list-style:none;cursor:pointer;padding:16px 0;font-size:16px;font-weight:700;display:flex;justify-content:space-between;gap:12px}
+.lp-faq summary::-webkit-details-marker{display:none}
+.lp-faq summary::after{content:"+";font-weight:500;font-size:20px;line-height:1;color:var(--ink2)}
+.lp-faq details[open] summary::after{content:"−"}
+.lp-faq p{margin:0 0 16px;font-size:15px;line-height:1.75;color:var(--ink2)}
+.lp-faq p a{color:var(--ink)}
+
+/* PC: headline and picture side by side; pictures alternate sides */
+@media (min-width:900px){
+  .lp-sec{padding:88px 48px 96px}
+  .lp-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px;row-gap:22px;align-items:center}
+  .lp-in>.lp-txt{display:flex;flex-direction:column;gap:22px}
+  .lp-in>.lp-vis{display:flex;flex-direction:column;gap:22px}
+  .lp-sec.flip .lp-txt{order:2}
+  .lp-cap{font-size:52px}
+  .lp-hero{padding-top:56px}
+  .lp-hero .lp-cap{font-size:54px}
+  .lp-photo div{height:520px}
+  .lp-cta{max-width:380px}
+  .lp-sec.solo .lp-in{display:flex;flex-direction:column;max-width:560px;align-items:stretch}
+  .lp-sec.solo .lp-txt{display:contents}
+  .lp-sec.solo .o1{order:1}.lp-sec.solo .o2{order:2}.lp-sec.solo .o3{order:3}
+  .lp-end .lp-in,.lp-more .lp-in{display:flex;max-width:720px;text-align:center;align-items:center}
+  .lp-end .lp-cta{width:100%}
+  .lp-more .badges{justify-content:center}
+  .lp-faq{width:100%;text-align:left}
+}
+/* phone: text and picture blocks flow as one column in the order set below */
+@media (max-width:899px){.lp-txt{display:contents}.lp-vis{display:flex;flex-direction:column;gap:22px}.o1{order:1}.o2{order:2}.o3{order:3}.o4{order:4}.o5{order:5}}
