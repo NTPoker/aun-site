@@ -1619,3 +1619,17 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
   };
   for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
 })();
+
+// LP v9.1 (2026-11-10): app line without the login detail.
+(function () {
+  const add = {
+    ja: { v7appN: "結果が届いたら、通知でお知らせします。" },
+    en: { v7appN: "Get a notification when your result arrives." },
+    id: { v7appN: "Dapat notifikasi saat hasil tiba." },
+    vi: { v7appN: "Nhận thông báo khi có kết quả." },
+    zh: { v7appN: "结果送达时会通知你。" },
+    "zh-TW": { v7appN: "結果送達時會通知你。" },
+    ko: { v7appN: "결과가 도착하면 알림으로 알려 드립니다." }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();
