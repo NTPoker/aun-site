@@ -117,8 +117,8 @@ body.lp .s-cta{border-radius:999px}
 .lp-mh{text-align:center;margin-bottom:10px}
 .lp-step{background:#fff;border-radius:28px;box-shadow:0 10px 30px rgba(40,25,10,.07);padding:24px 20px 20px;display:flex;flex-direction:column;gap:18px}
 .lp-st{display:flex;flex-direction:column;gap:10px}
-.lp-sl{margin:0;display:flex;align-items:center;gap:10px;font-family:'Archivo',var(--sans);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--red)}
-.lp-sl b{width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:0}
+.lp-sl{margin:0;display:flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:16px;letter-spacing:0;color:var(--ink)}
+.lp-sl b{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-size:15px}
 .lp-st h3{margin:0;font-family:var(--serif);font-weight:900;font-size:28px;line-height:1.25;font-feature-settings:"palt";overflow-wrap:break-word}
 .lp-st h3 em{font-style:normal;color:var(--red)}
 .lp-sd{margin:0;font-size:15px;line-height:1.7;color:var(--ink2)}
@@ -141,11 +141,7 @@ body.lp .s-cta{border-radius:999px}
 .badges a{display:inline-flex;line-height:0}
 .badges img.apple{height:42px;width:auto}
 .badges img.play{height:54.7px;width:auto;margin:-6.4px 0 -6.3px}
-html[data-os="ios"] .badges .st-android,html[data-os="android"] .badges .st-ios{display:none}
-html[data-os="ios"] .badges.all .st-android,html[data-os="android"] .badges.all .st-ios{display:inline-flex}
-.lp-other{display:none;margin:0;font-size:14px}
-html[data-os] .lp-other{display:block}
-html[data-os] .badges.all ~ .lp-other{display:none}
+.lp-other{display:none!important}
 .lp-other a{color:var(--ink2);text-underline-offset:3px}
 .lp-faq{margin-top:22px}
 .lp-faq h2{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--ink2)}
@@ -314,3 +310,11 @@ html[data-os] .badges.all ~ .lp-other{display:none}
 /* PC: the listener's upper body fills the frame */
 @media (min-width:900px){.lp-clip img{transform:scale(1.32);transform-origin:50% 8%}}
 @media (max-width:360px){.lp-over{left:12px;right:12px;width:auto}}
+
+/* phones: fewer words (NT 11/10). The picture and headline carry each section. */
+@media (max-width:899px){
+  .lp-sub,.lp-band-s,.lp-step:not(.me) .lp-sd{display:none}
+  .lp-sv .lp-q p{font-size:23px}
+  .lp-sv .lp-q{padding:18px 18px 16px}
+  .lp-hero .lp-in{gap:18px}
+}
