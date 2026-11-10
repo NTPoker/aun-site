@@ -1,18 +1,18 @@
 {"ja": {"path": "/ja/",
 "hreflang": "ja",
 "locale": "ja_JP",
-"title": "阿吽 AUN｜伝わりにくい所がわかる、日本人が聞く日本語スピーキングテスト",
+"title": "阿吽 AUN｜あなたの日本語、日本人に伝わる？ 約10分の日本語スピーキングテスト",
 "desc": "スマホで約10分、声で答えるだけ。すぐに AI の振り返りが届き、日本人が聞いて、伝わりにくい所・伝わる言い方・話す力のレベルを教えます。いまは無料。",
-"ogTitle": "伝わりにくい所が、わかる。｜阿吽 AUN",
-"ogDesc": "日本人が聞く、約10分のスピーキングテスト。いまは無料。"
+"ogTitle": "あなたの日本語、日本人に伝わる？｜阿吽 AUN",
+"ogDesc": "約10分の日本語スピーキングテスト。日本人が聞いて、伝わりにくい所を教えます。いまは無料。"
 },
 "en": {"path": "/",
 "hreflang": "en",
 "locale": "en_US",
-"title": "AUN | See where your Japanese gets lost. A speaking test heard by a Japanese person",
+"title": "AUN | Can a Japanese listener understand you? A 10-minute Japanese speaking test",
 "desc": "Answer out loud on your phone for about 10 minutes. Get an AI review right away, and a Japanese listener shows you where they got lost, a better way to say it, and your speaking level. Free for now.",
-"ogTitle": "See where your Japanese gets lost | AUN",
-"ogDesc": "A 10-minute speaking test, heard by a Japanese person. Free for now."
+"ogTitle": "Can a Japanese listener understand you? | AUN",
+"ogDesc": "A 10-minute Japanese speaking test. A Japanese listener shows you what was hard to understand. Free for now."
 },
 "id": {"path": "/id/",
 "hreflang": "id",
