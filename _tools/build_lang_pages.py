@@ -44,7 +44,7 @@ def head_block(lang: str) -> str:
 <meta property="og:url" content="{url}">
 <meta property="og:locale" content="{m["locale"]}">
 {others}
-<meta property="og:image" content="{SITE}/og/og-{lang.lower()}.png">
+<meta property="og:image" content="{SITE}/og/og2-{lang.lower()}.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">

@@ -9,6 +9,7 @@ function apply(l) {
   document.documentElement.lang = l;
   document.querySelectorAll("[data-i]").forEach(el => { el.textContent = d[el.dataset.i] ?? ""; });
   document.querySelectorAll("[data-i-html]").forEach(el => { el.innerHTML = d[el.dataset.iHtml] ?? ""; });
+  document.querySelectorAll("[data-i-alt]").forEach(el => { el.alt = d[el.dataset.iAlt] ?? ""; });
 }
 
 // the language picker lives in the shared header (site.js)
@@ -30,7 +31,9 @@ const depth = () => {
 };
 addEventListener("scroll", depth, { passive: true });
 addEventListener("load", depth);
-document.querySelectorAll('a[href="test.html"]').forEach(a => a.addEventListener("click", () => track("cta")));
+// generated pages use /test.html (absolute), the source uses test.html
+const ctas = document.querySelectorAll('main a[href$="test.html"]');
+ctas.forEach(a => a.addEventListener("click", () => track("cta")));
 // The store badge for this device only; both when the device is unknown. Detection is a hint for display, never a redirect.
 const os = (() => {
   const p = (navigator.userAgentData && navigator.userAgentData.platform) || "";
@@ -45,7 +48,7 @@ document.querySelectorAll(".badges a").forEach(a => a.addEventListener("click", 
 document.querySelectorAll(".applink").forEach(a => a.addEventListener("click", () => track("applink", { os })));
 // Keep the visitor's source tag when they move on to the test page.
 const tag = src();
-if (!tag.startsWith("ref:") && tag !== "direct" && tag !== "other") document.querySelectorAll('a[href="test.html"]').forEach(a => { a.href = "test.html?src=" + encodeURIComponent(tag); });
+if (!tag.startsWith("ref:") && tag !== "direct" && tag !== "other") ctas.forEach(a => { a.href = "/test.html?src=" + encodeURIComponent(tag); });
 
 // Hero demo: plays the sample result once like a short video, then stays on the result.
 const demo = document.getElementById("demo");
