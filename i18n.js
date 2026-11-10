@@ -1500,3 +1500,122 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
   };
   for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
 })();
+
+// LP v8 (2026-11-10): hero asks the question; the old hero line moves to the closing section.
+(function () {
+  const add = {
+    ja: { v7kick2: "約10分の日本語スピーキングテスト", v7heroQ: '<span class="nw">あなたの日本語、</span><br><span class="nw"><em>日本人</em>に伝わる？</span>', v7sub: '<span class="nw">頼めば日本人が聞いて、</span><span class="nw">伝わりにくい所を教えます。</span>' },
+    en: { v7kick2: "A 10-minute Japanese speaking test", v7heroQ: "Can a Japanese listener<br><em>understand you?</em>", v7sub: "Ask, and a Japanese listener shows you what was hard to understand." },
+    id: { v7kick2: "Tes bicara bahasa Jepang 10 menit", v7heroQ: "Apakah bahasa Jepangmu<br><em>dimengerti orang Jepang?</em>", v7sub: "Jika diminta, orang Jepang mendengarkan dan menunjukkan bagian yang sulit dipahami." },
+    vi: { v7kick2: "Bài kiểm tra nói tiếng Nhật 10 phút", v7heroQ: "Người Nhật có hiểu<br><em>tiếng Nhật của bạn?</em>", v7sub: "Nếu bạn yêu cầu, người Nhật sẽ nghe và chỉ ra chỗ khó hiểu." },
+    zh: { v7kick2: "约10分钟的日语口语测试", v7heroQ: "你的日语，<br><em>日本人听得懂吗？</em>", v7sub: "申请后，日本人会听你说，告诉你哪里不好懂。" },
+    "zh-TW": { v7kick2: "約10分鐘的日文口說測驗", v7heroQ: "你的日文，<br><em>日本人聽得懂嗎？</em>", v7sub: "申請後，日本人會聽你說，告訴你哪裡不好懂。" },
+    ko: { v7kick2: "약 10분 일본어 말하기 테스트", v7heroQ: "당신의 일본어,<br><em>일본인에게 통할까요?</em>", v7sub: "요청하면 일본인이 듣고, 알아듣기 어려운 부분을 알려 드립니다." }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();
+
+// LP v8.2 (2026-11-10): the app gets its own section (level over time).
+(function () {
+  const add = {
+    ja: { v7appK: "アプリなら", v7appH: "レベルの<em>動き</em>が<br>見える。", v7appN: "結果が届いたら、通知でお知らせ。ログインは Apple か Google で。", v7recT: "記録" },
+    en: { v7appK: "In the app", v7appH: "Track<br>your <em>level.</em>", v7appN: "Get a notification when your result arrives. Sign in with Apple or Google.", v7recT: "History" },
+    id: { v7appK: "Di aplikasi", v7appH: "Pantau<br><em>levelmu.</em>", v7appN: "Dapat notifikasi saat hasil tiba. Masuk dengan Apple atau Google.", v7recT: "Riwayat" },
+    vi: { v7appK: "Trên ứng dụng", v7appH: "Theo dõi <em>trình độ</em><br>qua từng lần.", v7appN: "Nhận thông báo khi có kết quả. Đăng nhập bằng Apple hoặc Google.", v7recT: "Lịch sử" },
+    zh: { v7appK: "在应用里", v7appH: "看到水平的<br><em>变化</em>", v7appN: "结果送达时会通知你。可用 Apple 或 Google 登录。", v7recT: "记录" },
+    "zh-TW": { v7appK: "在 App 裡", v7appH: "看見程度的<br><em>變化</em>", v7appN: "結果送達時會通知你。可用 Apple 或 Google 登入。", v7recT: "紀錄" },
+    ko: { v7appK: "앱에서는", v7appH: "레벨 <em>변화</em>가<br>한눈에 보입니다.", v7appN: "결과가 도착하면 알림으로 알려 드립니다. Apple 또는 Google로 로그인할 수 있습니다.", v7recT: "기록" }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();
+
+// LP v8.3 (2026-11-10): Speak-style band and three method cards.
+(function () {
+  const add = {
+    ja: {
+      v8bandH: '<span class="nw">ふつうの日本人が、</span><span class="nw">あなたの録音を聞く。</span>', v8bandS: '<span class="nw">日本語の先生ではなく、</span><span class="nw">ふつうの日本人の耳で。</span>',
+      v8mK: "阿吽のしくみ", v8mH: "受けてから、<br><em>結果</em>まで。",
+      v8s1L: "話す", v8s1D: "スマホで質問を聞いて、その場で声で答えます。",
+      v8s2L: "すぐに", v8s2H: "AI の<br><em>振り返り</em>が届く。", v8s2D: "聞き取った言葉と、伝わりにくいかもしれない所が、出したその場で届きます。",
+      v8aiT: "AI の振り返り", v8aiTip: "伝わりにくいかも",
+      v8s3L: "頼めば", v8s3H: "<em>日本人</em>が聞いて、<br>教えます。", v8s3D: "伝わりにくい所・伝わる言い方・レベルが、数日で届きます。週1回・無料。"
+    },
+    en: {
+      v8bandH: "A real Japanese person<br>listens to you.", v8bandS: "Not a teacher. An everyday Japanese ear.",
+      v8mK: "HOW AUN WORKS", v8mH: "From your answers<br>to your <em>result.</em>",
+      v8s1L: "Speak", v8s1D: "Listen to each question on your phone and answer out loud.",
+      v8s2L: "Right away", v8s2H: "Get an<br><em>AI review.</em>", v8s2D: "What we heard, and spots that might be hard to understand, right after you submit.",
+      v8aiT: "AI review", v8aiTip: "Might be unclear",
+      v8s3L: "On request", v8s3H: "A Japanese listener<br><em>shows you.</em>", v8s3D: "Unclear spots, a better way to say it, and your level, in a few days. Once a week, free."
+    },
+    id: {
+      v8bandH: "Orang Jepang sungguhan<br>mendengarkanmu.", v8bandS: "Bukan guru, tapi telinga orang Jepang biasa.",
+      v8mK: "CARA KERJA AUN", v8mH: "Dari jawabanmu<br>sampai <em>hasilnya.</em>",
+      v8s1L: "Bicara", v8s1D: "Dengarkan pertanyaan di ponsel dan jawab secara lisan.",
+      v8s2L: "Langsung", v8s2H: "Dapatkan<br><em>ulasan AI.</em>", v8s2D: "Kata-kata yang terdengar dan bagian yang mungkin sulit dipahami, langsung setelah dikirim.",
+      v8aiT: "Ulasan AI", v8aiTip: "Mungkin kurang jelas",
+      v8s3L: "Jika diminta", v8s3H: "Orang Jepang<br><em>menunjukkannya.</em>", v8s3D: "Bagian yang sulit dipahami, cara bicara yang lebih baik, dan levelmu, dalam beberapa hari. Seminggu sekali, gratis."
+    },
+    vi: {
+      v8bandH: "Một người Nhật thật<br>lắng nghe bạn.", v8bandS: "Không phải giáo viên, mà là đôi tai của một người Nhật bình thường.",
+      v8mK: "CÁCH AUN HOẠT ĐỘNG", v8mH: "Từ câu trả lời<br>đến <em>kết quả.</em>",
+      v8s1L: "Nói", v8s1D: "Nghe câu hỏi trên điện thoại và trả lời bằng giọng nói.",
+      v8s2L: "Ngay lập tức", v8s2H: "Nhận<br><em>nhận xét từ AI.</em>", v8s2D: "Những gì AI nghe được và chỗ có thể khó hiểu, ngay sau khi nộp.",
+      v8aiT: "Nhận xét từ AI", v8aiTip: "Có thể khó hiểu",
+      v8s3L: "Khi yêu cầu", v8s3H: "Người Nhật<br><em>chỉ cho bạn.</em>", v8s3D: "Chỗ khó hiểu, cách nói tốt hơn và trình độ của bạn, sau vài ngày. Mỗi tuần 1 lần, miễn phí."
+    },
+    zh: {
+      v8bandH: "真正的日本人，<br>听你说。", v8bandS: "不是日语老师，而是普通日本人的耳朵。",
+      v8mK: "阿吽的流程", v8mH: "从回答，<br>到<em>结果</em>。",
+      v8s1L: "说", v8s1D: "用手机听问题，当场开口回答。",
+      v8s2L: "马上", v8s2H: "收到<br><em>AI 的回顾</em>", v8s2D: "听到的内容，以及可能不好懂的地方，提交后马上送达。",
+      v8aiT: "AI 的回顾", v8aiTip: "可能不好懂",
+      v8s3L: "申请后", v8s3H: "<em>日本人</em>来听，<br>告诉你。", v8s3D: "不好懂的地方、更好的说法和你的水平，几天内送达。每周1次，免费。"
+    },
+    "zh-TW": {
+      v8bandH: "真正的日本人，<br>聽你說。", v8bandS: "不是日文老師，而是一般日本人的耳朵。",
+      v8mK: "阿吽的流程", v8mH: "從回答，<br>到<em>結果</em>。",
+      v8s1L: "說", v8s1D: "用手機聽問題，當場開口回答。",
+      v8s2L: "馬上", v8s2H: "收到<br><em>AI 的回顧</em>", v8s2D: "聽到的內容，以及可能不好懂的地方，送出後馬上送達。",
+      v8aiT: "AI 的回顧", v8aiTip: "可能不好懂",
+      v8s3L: "申請後", v8s3H: "<em>日本人</em>來聽，<br>告訴你。", v8s3D: "不好懂的地方、更好的說法和你的程度，幾天內送達。每週1次，免費。"
+    },
+    ko: {
+      v8bandH: "진짜 일본인이<br>당신의 말을 듣습니다.", v8bandS: "일본어 선생님이 아니라, 평범한 일본인의 귀로.",
+      v8mK: "AUN은 이렇게", v8mH: "답변부터<br><em>결과</em>까지.",
+      v8s1L: "말하기", v8s1D: "휴대폰으로 질문을 듣고, 그 자리에서 말로 답합니다.",
+      v8s2L: "바로", v8s2H: "<em>AI 리뷰</em>가<br>도착합니다.", v8s2D: "알아들은 말과 알아듣기 어려울 수 있는 부분이 제출 직후 도착합니다.",
+      v8aiT: "AI 리뷰", v8aiTip: "알아듣기 어려울 수 있음",
+      v8s3L: "요청하면", v8s3H: "<em>일본인</em>이 듣고<br>알려 드립니다.", v8s3D: "알아듣기 어려운 부분, 더 나은 표현, 레벨이 며칠 안에 도착합니다. 주 1회, 무료."
+    }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();
+
+// LP v8.4 (2026-11-10): band says "on request", step 3 is the request, sample labels.
+(function () {
+  const add = {
+    ja: { v8bandH: '<span class="nw">頼めば、ふつうの日本人が</span><span class="nw">あなたの録音を聞く。</span>', v8s3H: "<em>日本人</em>に<br>聞いてもらう。", v8s2D: "聞き取った言葉と、伝わりにくいかもしれない所が、出したその場で届きます（レベルは出ません）。", v8lblSaid: "あなたの答え", v8lblFix: "こう言えば伝わる", v8mean: "" },
+    en: { v8bandH: "Ask, and a real Japanese person<br>listens to you.", v8s3H: "Ask a<br><em>Japanese listener.</em>", v8s2D: "What we heard, and spots that might be hard to understand, right after you submit (no level).", v8lblSaid: "WHAT YOU SAID", v8lblFix: "SAY IT LIKE THIS", v8mean: "“I was late for work.”" },
+    id: { v8bandH: "Jika diminta, orang Jepang sungguhan<br>mendengarkanmu.", v8s3H: "Minta<br><em>orang Jepang mendengarkan.</em>", v8s2D: "Kata-kata yang terdengar dan bagian yang mungkin sulit dipahami, langsung setelah dikirim (tanpa level).", v8lblSaid: "JAWABANMU", v8lblFix: "LEBIH JELAS BEGINI", v8mean: "“Saya terlambat masuk kerja.”" },
+    vi: { v8bandH: "Khi bạn yêu cầu, một người Nhật thật<br>lắng nghe bạn.", v8s3H: "Nhờ<br><em>người Nhật nghe.</em>", v8s2D: "Những gì AI nghe được và chỗ có thể khó hiểu, ngay sau khi nộp (không có trình độ).", v8lblSaid: "BẠN NÓI", v8lblFix: "NÓI THẾ NÀY SẼ RÕ", v8mean: "“Tôi đã đi làm muộn.”" },
+    zh: { v8bandH: "申请后，真正的日本人<br>听你说。", v8s3H: "请<em>日本人</em><br>来听。", v8s2D: "听到的内容，以及可能不好懂的地方，提交后马上送达（不显示水平）。", v8lblSaid: "你的回答", v8lblFix: "这样说更好懂", v8mean: "“我上班迟到了。”" },
+    "zh-TW": { v8bandH: "申請後，真正的日本人<br>聽你說。", v8s3H: "請<em>日本人</em><br>來聽。", v8s2D: "聽到的內容，以及可能不好懂的地方，送出後馬上送達（不顯示程度）。", v8lblSaid: "你的回答", v8lblFix: "這樣說更好懂", v8mean: "「我上班遲到了。」" },
+    ko: { v8bandH: "요청하면 진짜 일본인이<br>당신의 말을 듣습니다.", v8s3H: "<em>일본인</em>에게<br>들어 달라고 요청.", v8s2D: "알아들은 말과 알아듣기 어려울 수 있는 부분이 제출 직후 도착합니다(레벨은 나오지 않습니다).", v8lblSaid: "당신의 답", v8lblFix: "이렇게 말하면 통해요", v8mean: "“회사에 지각했어요.”" }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();
+
+// LP v8.6 (2026-11-10, NT「頼めば〜なんていらない」): no "on request" wording in the band, hero line or step label.
+(function () {
+  const add = {
+    ja: { v8bandH: '<span class="nw">ふつうの日本人が、</span><span class="nw">あなたの録音を聞く。</span>', v7sub: '<span class="nw">日本人が聞いて、</span><span class="nw">伝わりにくい所を教えます。</span>', v8s3L: "数日で" },
+    en: { v8bandH: "A real Japanese person<br>listens to you.", v7sub: "A Japanese listener shows you what was hard to understand.", v8s3L: "In a few days" },
+    id: { v8bandH: "Orang Jepang sungguhan<br>mendengarkanmu.", v7sub: "Orang Jepang mendengarkan dan menunjukkan bagian yang sulit dipahami.", v8s3L: "Dalam beberapa hari" },
+    vi: { v8bandH: "Một người Nhật thật<br>lắng nghe bạn.", v7sub: "Người Nhật sẽ nghe và chỉ ra chỗ khó hiểu.", v8s3L: "Sau vài ngày" },
+    zh: { v8bandH: "真正的日本人，<br>听你说。", v7sub: "日本人会听你说，告诉你哪里不好懂。", v8s3L: "几天内" },
+    "zh-TW": { v8bandH: "真正的日本人，<br>聽你說。", v7sub: "日本人會聽你說，告訴你哪裡不好懂。", v8s3L: "幾天內" },
+    ko: { v8bandH: "진짜 일본인이<br>당신의 말을 듣습니다.", v7sub: "일본인이 듣고, 알아듣기 어려운 부분을 알려 드립니다.", v8s3L: "며칠 안에" }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();

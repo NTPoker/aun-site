@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Open Graph images per language: og/og2-<lang>.png (1200x630), the LP headline next to the listener photo (2026-11-10).
-Uses v7kick and v7heroH from i18n.js. Needs Google Chrome. Run: python3 _tools/build_og_images.py"""
+"""Open Graph images per language: og/og3-<lang>.png (1200x630), the LP headline next to the listener photo (2026-11-10).
+Uses v7kick2 and v7heroQ from i18n.js. Needs Google Chrome. Run: python3 _tools/build_og_images.py"""
 import json
 import subprocess
 import tempfile
@@ -21,7 +21,7 @@ LATIN = "'Archivo',sans-serif"
 PAGE = """<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><link rel="stylesheet" href="{fonts}">
 <style>
 html,body{{margin:0;width:1200px;height:630px;overflow:hidden;background:#F2EEE4}}
-.ph{{position:absolute;top:56px;right:64px;bottom:56px;width:420px;border-radius:24px;background:url('{photo}') 50% 18%/cover no-repeat;box-shadow:0 24px 50px rgba(60,40,20,.14)}}
+.ph{{position:absolute;top:56px;right:64px;bottom:56px;width:420px;border-radius:24px;background:url('{photo}') 50% 14%/cover no-repeat;box-shadow:0 24px 50px rgba(60,40,20,.14)}}
 .c{{position:absolute;left:72px;top:64px;right:520px;bottom:64px;display:flex;flex-direction:column;color:#141414;font-family:'Zen Kaku Gothic New',{latin}}}
 .brand{{display:flex;align-items:center;gap:14px;font-family:{latin};font-weight:800;font-size:30px;letter-spacing:.14em}}
 .brand img{{width:50px}}
@@ -36,12 +36,12 @@ out_dir = ROOT / "og"
 out_dir.mkdir(exist_ok=True)
 for lang, d in T.items():
     latin_head = lang in ("en", "id", "vi")
-    page = PAGE.format(lang=lang, fonts=FONTS, photo=(ROOT / "listener-nt.jpg").as_uri(), mark=(ROOT / "mark.svg").as_uri(),
+    page = PAGE.format(lang=lang, fonts=FONTS, photo=(ROOT / "listener-nt2.jpg").as_uri(), mark=(ROOT / "mark.svg").as_uri(),
                        latin=LATIN, head=LATIN if latin_head else HEAD_FONT[lang], hw=800 if latin_head else 900,
-                       size=68 if latin_head else 62, kick=24 if latin_head else 26, h=d["v7heroH"], k=d["v7kick"])
+                       size=68 if latin_head else 62, kick=24 if latin_head else 26, h=d["v7heroQ"], k=d["v7kick2"])
     with tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, encoding="utf-8") as f:
         f.write(page)
-    target = out_dir / f"og2-{lang.lower()}.png"
+    target = out_dir / f"og3-{lang.lower()}.png"
     subprocess.run([CHROME, "--headless=new", "--hide-scrollbars", "--force-device-scale-factor=1", "--window-size=1200,630",
                     "--virtual-time-budget=6000", f"--screenshot={target}", Path(f.name).as_uri()],
                    check=True, capture_output=True)

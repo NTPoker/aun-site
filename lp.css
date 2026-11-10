@@ -14,12 +14,14 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-
 a{color:inherit}
 
 /* shared header, LP colours */
-body.lp .s-top{background:var(--paper);color:var(--ink);border-bottom:1px solid #E3DDCF}
+body.lp .s-top{background:transparent;color:var(--ink);border-bottom:0;padding:10px 12px 0}
+body.lp .s-top-in{background:rgba(255,255,255,.96);border-radius:999px;box-shadow:0 6px 24px rgba(40,25,10,.10);min-height:60px;padding:8px 8px 8px 20px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+body.lp .s-lang-btn{border-radius:999px}
 body.lp .s-top .s-brand{color:var(--ink)}
 body.lp .s-lang-btn{color:var(--ink);border-color:#D6CFC0}
 body.lp .s-lang-menu{background:#fff;border-color:#D6CFC0}
 body.lp .s-lang-menu button{color:var(--ink)}
-body.lp .s-cta{border-radius:10px}
+body.lp .s-cta{border-radius:999px}
 
 .lp-sec{padding:44px 24px 60px}
 .lp-in{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
@@ -29,7 +31,7 @@ body.lp .s-cta{border-radius:10px}
 .lp-cap em{font-style:normal;color:var(--red)}
 .lp-note{margin:-8px 0 0;font-size:15px;line-height:1.7;color:var(--ink2)}
 .lp-lab{margin:-12px 0 0;font-size:13px;font-weight:700;letter-spacing:1px;color:var(--ink2)}
-.lp-cta{display:flex;align-items:center;justify-content:center;min-height:58px;padding:12px 18px;text-align:center;background:var(--red);color:#fff;font-size:18px;font-weight:800;letter-spacing:1px;text-decoration:none;border-radius:14px}
+.lp-cta{display:flex;align-items:center;justify-content:center;min-height:58px;padding:12px 18px;text-align:center;background:var(--red);color:#fff;font-size:18px;font-weight:800;letter-spacing:1px;text-decoration:none;border-radius:999px}
 .lp-cta:hover{background:var(--red-d)}
 .lp-cta:focus-visible,.lp-faq summary:focus-visible{outline:3px solid #2F7DD1;outline-offset:3px}
 
@@ -37,39 +39,100 @@ body.lp .s-cta{border-radius:10px}
 .lp-hero{padding-top:22px}
 .lp-hero .lp-in{gap:20px}
 .lp-hero .lp-cap{font-size:34px;margin-top:-8px}
+.lp-sub{margin:-6px 0 0;font-size:16px;line-height:1.65;font-weight:700;color:var(--ink2)}
 .lp-photo{margin:0;display:flex;flex-direction:column;gap:8px}
-.lp-photo div{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);height:300px;background:#d9cfc2}
-.lp-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
+.lp-photo>div{border-radius:22px;box-shadow:var(--shadow);height:340px;background:#d9cfc2}
+.lp-clip{position:absolute;inset:0;border-radius:inherit;overflow:hidden}
+.lp-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;display:block}
 .lp-photo figcaption{font-size:13px;color:var(--ink2)}
 
-/* speak */
-.lp-q{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:22px 22px 26px}
+
+/* sections alternate paper / white */
+.lp-speak,.lp-level{background:#FBF9F5}
+
+/* speak: the question card is the app screen, the recorder sits inside it */
+.lp-q{background:var(--card);border-radius:22px;box-shadow:var(--shadow);padding:22px 22px 18px}
 .lp-q small{display:block;font-size:13px;font-weight:800;letter-spacing:2px;color:#A39C8E;margin-bottom:10px}
 .lp-q p{margin:0;font-family:'Zen Old Mincho',serif;font-weight:900;font-size:27px;line-height:1.45}
-.lp-mic{width:84px;height:84px;margin:-4px auto 0;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center}
-.lp-mic svg{width:34px;height:34px}
-.lp-center{text-align:center}
+.lp-rec{display:flex;align-items:center;gap:12px;margin-top:20px;padding:10px 14px 10px 10px;background:var(--paper);border-radius:999px}
+.lp-mic{flex:none;width:44px;height:44px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center}
+.lp-mic svg{width:22px;height:22px}
+.lp-wave{flex:1;min-width:0;display:flex;align-items:center;gap:3px;height:28px;overflow:hidden}
+.lp-wave i{flex:1;max-width:4px;height:100%;border-radius:2px;background:var(--red);opacity:.75;transform:scaleY(var(--s))}
+.lp-time{flex:none;font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums}
 
-/* example */
-.lp-sp{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:24px 22px;display:flex;flex-direction:column;gap:12px}
-.lp-sp .bad{margin:0;font-family:'Zen Old Mincho',serif;font-weight:900;font-size:27px;line-height:1.5}
-.lp-sp .ul{background:linear-gradient(var(--red),var(--red)) 0 100%/100% 5px no-repeat;padding-bottom:4px}
-.lp-sp svg{width:30px;height:30px;margin:0 auto;color:var(--red)}
-.lp-sp .good{margin:0;background:var(--pink);border-left:5px solid var(--red);border-radius:12px;padding:14px 18px;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:25px;line-height:1.45}
-.lp-sp rt{font-size:.42em}
+/* level: five steps going up, your level stands out */
+.lp-level .lp-in{gap:18px;text-align:center}
+.lp-level .lp-lab{margin:-6px 0 4px}
+.lp-stairs{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;align-items:end}
+.lp-stairs li{display:flex;flex-direction:column;align-items:stretch;gap:8px;text-align:center}
+.lp-stairs .bar{display:flex;align-items:flex-start;justify-content:center;height:calc(var(--h) * 34px + 18px);background:var(--row);border-radius:12px 12px 6px 6px;padding-top:8px;transform-origin:50% 100%}
+.lp-stairs b{font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;color:var(--rowfg)}
+.lp-stairs .nm{font-family:var(--serif);font-weight:900;font-size:13px;line-height:1.25;color:var(--rowfg);height:3.9em;overflow-wrap:anywhere;hyphens:auto}
+.lp-stairs .me .bar{background:var(--red);box-shadow:0 12px 26px rgba(201,61,39,.28)}
+.lp-stairs .me b{color:#fff;font-size:26px}
+.lp-stairs .me .nm{color:var(--red)}
+:lang(en) .lp-stairs .nm,:lang(id) .lp-stairs .nm,:lang(vi) .lp-stairs .nm{font-family:'Archivo',sans-serif;font-weight:700;font-size:11px;overflow-wrap:normal;hyphens:manual;letter-spacing:-.01em}
 
-/* level ladder */
-.lp-lad{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
-.lp-lad li{display:flex;align-items:center;gap:20px;background:var(--row);color:var(--rowfg);border-radius:14px;padding:10px 20px}
-.lp-lad b{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;width:20px}
-.lp-lad span{font-family:var(--serif);font-weight:900;font-size:22px}
-.lp-lad .on{background:var(--card);color:var(--ink);box-shadow:var(--shadow);border-left:5px solid var(--red);padding:18px 20px 18px 15px}
-.lp-lad .on b{color:var(--red);font-size:34px}
-.lp-lad .on span{font-size:30px}
+
+/* app: the record screen shows the level moving over time */
+.lp-app{background:var(--paper)}
+.lp-app .lp-kick{display:flex;align-items:center;gap:8px}
+.lp-app .badges{margin-top:-4px}
+.lp-phone{width:min(250px,70vw);margin:0 auto;aspect-ratio:9/17;border-radius:40px;background:#141414;padding:10px;box-shadow:0 30px 60px rgba(40,25,10,.22)}
+.lp-phone .scr{height:100%;border-radius:31px;background:#FAF8F3;padding:26px 18px 18px;display:flex;flex-direction:column}
+.lp-phone .rt{margin:0 0 10px;font-weight:800;font-size:17px}
+.lp-phone .chart{position:relative;flex:1;margin:4px 0 6px 18px}
+.lp-phone .ln{position:absolute;left:0;right:0;bottom:calc((var(--y) - 1) * 25%);border-top:1px solid #E3DDCF}
+.lp-phone .ln em{position:absolute;left:-18px;top:-9px;font-style:normal;font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;color:#B5AD9F}
+.lp-phone .chart i{position:absolute;left:var(--x);bottom:calc((var(--y) - 1) * 25%);width:38px;height:38px;margin:0 0 -19px -19px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 16px rgba(201,61,39,.3)}
+.lp-phone .chart i b{font-family:'Archivo',sans-serif;font-style:normal;font-weight:800;font-size:17px;color:#fff}
+.lp-phone .dt{margin:16px 0 0 18px;display:flex;justify-content:space-between;font-family:'Archivo',sans-serif;font-weight:700;font-size:11px;color:#8A8478}
+.o6{order:6}
+
+
+/* hero: the result card sits on the photo (Speak-style product card over a real photo) */
+.lp-photo>div{position:relative;overflow:visible!important}
+.lp-photo img{border-radius:inherit}
+.lp-photo{position:relative;margin-bottom:64px}
+.lp-photo figcaption{position:absolute;left:12px;top:12px;background:rgba(255,255,255,.94);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--ink)}
+.lp-over{position:absolute;left:auto;right:12px;bottom:-60px;width:min(86%,320px);background:rgba(255,255,255,.97);border-radius:18px;box-shadow:0 14px 34px rgba(0,0,0,.22);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.lp-over p{margin:0}
+.lp-over .b{font-family:'Zen Old Mincho',serif;font-weight:900;font-size:19px;line-height:1.45}
+.lp-over .ul{background:linear-gradient(var(--red),var(--red)) 0 100%/100% 4px no-repeat;padding-bottom:3px}
+.lp-over .ba-arrow{width:20px;height:20px;margin:0 auto;color:var(--red);rotate:0deg}
+.lp-over .g{background:var(--pink);border-left:4px solid var(--red);border-radius:10px;padding:6px 12px;font-weight:700;font-size:17px;line-height:1.4}
+.lp-over rt{font-size:.42em}
+
+/* band: one line said big */
+.lp-band{background:var(--red);color:#fff;padding:56px 24px;text-align:center}
+.lp-band .lp-in{gap:12px;align-items:center}
+.lp-band-h{margin:0;font-family:var(--serif);font-weight:900;font-size:30px;line-height:1.3;text-wrap:balance}
+.lp-band-s{margin:0;font-size:15px;opacity:.9}
+
+/* method: three big rounded cards */
+.lp-method{background:var(--paper)}
+.lp-method .lp-in{gap:18px}
+.lp-mk{text-align:center}
+.lp-mh{text-align:center;margin-bottom:10px}
+.lp-step{background:#fff;border-radius:28px;box-shadow:0 10px 30px rgba(40,25,10,.07);padding:24px 20px 20px;display:flex;flex-direction:column;gap:18px}
+.lp-st{display:flex;flex-direction:column;gap:10px}
+.lp-sl{margin:0;display:flex;align-items:center;gap:10px;font-family:'Archivo',var(--sans);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--red)}
+.lp-sl b{width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:0}
+.lp-st h3{margin:0;font-family:var(--serif);font-weight:900;font-size:28px;line-height:1.25;font-feature-settings:"palt";overflow-wrap:break-word}
+.lp-st h3 em{font-style:normal;color:var(--red)}
+.lp-sd{margin:0;font-size:15px;line-height:1.7;color:var(--ink2)}
+.lp-sv{background:var(--paper);border-radius:20px;padding:12px}
+.lp-sv .lp-q{box-shadow:0 8px 20px rgba(40,25,10,.08)}
+.lp-ai{background:#fff;border-radius:18px;box-shadow:0 8px 20px rgba(40,25,10,.08);padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px}
+.lp-ai small{font-size:12px;font-weight:800;letter-spacing:1.5px;color:#A39C8E}
+.lp-ai p{margin:0;font-family:'Zen Old Mincho',serif;font-weight:700;font-size:19px;line-height:1.7}
+.lp-ai mark{background:linear-gradient(transparent 45%,#F6DE8F 45%);color:inherit;padding:0 2px;display:inline-block}
+.lp-ai .tip{align-self:flex-start;font-size:13px;font-weight:700;color:#8A6A10;background:#FBF0CC;border-radius:999px;padding:4px 12px}
 
 /* end */
 .lp-end{background:var(--ink);color:#F6F4EF}
-.lp-end .lp-cap{color:#F6F4EF}
+.lp-end .lp-cap{color:#F6F4EF;font-size:32px}
 .lp-end .lp-cap em{color:#FF7A60}
 .lp-more{padding-top:40px}
 .lp-more .lp-in{gap:16px}
@@ -77,7 +140,7 @@ body.lp .s-cta{border-radius:10px}
 .badges{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .badges a{display:inline-flex;line-height:0}
 .badges img.apple{height:42px;width:auto}
-.badges img.play{height:62px;width:auto;margin:-10px -9px}
+.badges img.play{height:54.7px;width:auto;margin:-6.4px 0 -6.3px}
 html[data-os="ios"] .badges .st-android,html[data-os="android"] .badges .st-ios{display:none}
 html[data-os="ios"] .badges.all .st-android,html[data-os="android"] .badges.all .st-ios{display:inline-flex}
 .lp-other{display:none;margin:0;font-size:14px}
@@ -95,25 +158,159 @@ html[data-os] .badges.all ~ .lp-other{display:none}
 .lp-faq p{margin:0 0 16px;font-size:15px;line-height:1.75;color:var(--ink2)}
 .lp-faq p a{color:var(--ink)}
 
-/* PC: headline and picture side by side; pictures alternate sides */
+/* example: before -> after */
+.lp-ba{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.lp-ba p{margin:0}
+.ba-bad{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:22px 22px 24px;font-family:'Zen Old Mincho',serif;font-weight:900;font-size:27px;line-height:1.5}
+.ba-bad .ul{background:linear-gradient(var(--red),var(--red)) 0 100%/100% 5px no-repeat;padding-bottom:4px}
+.ba-arrow{width:30px;height:30px;margin:0 auto;color:var(--red)}
+.ba-good{background:var(--pink);border-left:5px solid var(--red);border-radius:16px;padding:16px 20px;font-weight:700;font-size:25px;line-height:1.45}
+.ba-good rt{font-size:.42em}
+
+/* phone: text and picture blocks flow as one column in the order set below */
+@media (max-width:899px){.lp-app .lp-txt{display:contents}.lp-txt{display:contents}.lp-vis{display:flex;flex-direction:column;gap:22px}.o1{order:1}.o2{order:2}.o3{order:3}.o4{order:4}.o5{order:5}}
+
+/* PC: wide, big type, big pictures, sections alternate paper / white */
 @media (min-width:900px){
-  .lp-sec{padding:88px 48px 96px}
-  .lp-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px;row-gap:22px;align-items:center}
-  .lp-in>.lp-txt{display:flex;flex-direction:column;gap:22px}
-  .lp-in>.lp-vis{display:flex;flex-direction:column;gap:22px}
-  .lp-sec.flip .lp-txt{order:2}
-  .lp-cap{font-size:52px}
-  .lp-hero{padding-top:56px}
-  .lp-hero .lp-cap{font-size:54px}
-  .lp-photo div{height:520px}
-  .lp-cta{max-width:380px}
-  .lp-sec.solo .lp-in{display:flex;flex-direction:column;max-width:560px;align-items:stretch}
+  .lp-sec{padding:120px 56px}
+  .lp-in{max-width:1120px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:96px;row-gap:28px;align-items:center}
+  .lp-in>.lp-txt,.lp-in>.lp-vis{display:flex;flex-direction:column;gap:28px}
+  .lp-cap{font-size:64px;line-height:1.14}
+  .lp-note{font-size:18px;margin:0}
+  .lp-lab{font-size:15px;margin:0}
+  .lp-cta{max-width:420px;min-height:66px;font-size:20px;border-radius:999px}
+  /* hero */
+  .lp-hero{padding:64px 56px 112px}
+  .lp-hero .lp-in{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);column-gap:72px}
+  .lp-hero .lp-cap{font-size:66px;margin:0}
+  .lp-sub{font-size:20px;margin:0}
+  .lp-kick{font-size:16px}
+  .lp-photo>div{height:600px;border-radius:28px}
+  .lp-photo figcaption{font-size:14px}
+  /* speak */
+  .lp-q{padding:40px 40px 30px;border-radius:30px}
+  .lp-q small{font-size:15px}
+  .lp-q p{font-size:42px}
+  .lp-rec{margin-top:32px;padding:12px 20px 12px 12px;gap:16px}
+  .lp-mic{width:60px;height:60px}.lp-mic svg{width:28px;height:28px}
+  .lp-wave{height:38px;gap:5px}.lp-wave i{max-width:6px}
+  .lp-time{font-size:17px}
+  /* example: one wide row */
+  .lp-sec.solo .lp-in{display:flex;flex-direction:column;max-width:1120px;align-items:center;text-align:center;gap:36px}
   .lp-sec.solo .lp-txt{display:contents}
-  .lp-sec.solo .o1{order:1}.lp-sec.solo .o2{order:2}.lp-sec.solo .o3{order:3}
-  .lp-end .lp-in,.lp-more .lp-in{display:flex;max-width:720px;text-align:center;align-items:center}
+  .lp-sec.solo .o1{order:1}.lp-sec.solo .o2{order:2;width:100%}.lp-sec.solo .o3{order:3}
+  .lp-sec.solo .lp-lab{font-family:'Archivo',var(--sans);font-weight:800;font-size:16px;color:var(--red);letter-spacing:1px}
+  .lp-ba{flex-direction:row;align-items:center;gap:28px;text-align:left}
+  .lp-ba>div{flex:1}
+  .ba-bad{font-size:44px;padding:44px 44px 48px;border-radius:28px}
+  .ba-good{font-size:42px;padding:40px 44px;border-radius:24px;border-left-width:8px}
+  .ba-bad .ul{background-size:100% 7px}
+  .ba-arrow{width:56px;height:56px;rotate:-90deg;flex:none}
+  /* level: one wide centred row of steps */
+  .lp-level .lp-in{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:960px;gap:20px}
+  .lp-level .lp-lab{margin-top:4px}
+  .lp-stairs{width:100%;gap:18px;margin-top:20px}
+  .lp-stairs .bar{height:calc(var(--h) * 56px + 30px);border-radius:18px 18px 8px 8px;padding-top:16px}
+  .lp-stairs b{font-size:30px}
+  .lp-stairs .me b{font-size:40px}
+  .lp-stairs .nm{font-size:19px}
+  :lang(en) .lp-stairs .nm,:lang(id) .lp-stairs .nm,:lang(vi) .lp-stairs .nm{font-size:16px}
+  /* app */
+  .lp-phone{width:340px}
+  .lp-phone .chart i{width:46px;height:46px;margin:0 0 -23px -23px}
+  .lp-phone .chart i b{font-size:20px}
+  .lp-app .lp-note{max-width:440px}
+  /* hero card and band and method */
+  .lp-photo{margin-bottom:0}
+  .lp-over{left:-80px;right:auto;bottom:40px;width:310px;padding:18px 20px}
+  .lp-over .b{font-size:22px}.lp-over .g{font-size:20px}
+  .lp-band{padding:110px 56px}
+  .lp-band .lp-in{display:flex;flex-direction:column;align-items:center;max-width:960px}
+  .lp-band-h{font-size:56px}
+  .lp-band-s{font-size:19px}
+  .lp-method .lp-in{display:flex;flex-direction:column;gap:28px}
+  .lp-mh{margin-bottom:24px}
+  .lp-step{padding:40px;border-radius:40px}
+  .lp-st h3{font-size:40px}
+  .lp-sd{font-size:18px}
+  .lp-sv{padding:36px;border-radius:28px}
+  .lp-ai{padding:30px 30px 26px}.lp-ai p{font-size:28px}.lp-ai .tip{font-size:15px}
+  .lp-step .ba-bad{font-size:30px;padding:28px 28px 30px}.lp-step .ba-good{font-size:28px;padding:22px 26px}
+  .lp-step .lp-ba{flex-direction:column;align-items:stretch;gap:12px}.lp-step .ba-arrow{width:34px;height:34px;rotate:0deg}
+  /* end */
+  .lp-end{padding:140px 56px}
+  .lp-end .lp-in,.lp-more .lp-in{display:flex;flex-direction:column;max-width:760px;text-align:center;align-items:center}
+  .lp-end .lp-cap{font-size:80px}
   .lp-end .lp-cta{width:100%}
+  .lp-more{padding:72px 56px 96px}
   .lp-more .badges{justify-content:center}
   .lp-faq{width:100%;text-align:left}
 }
-/* phone: text and picture blocks flow as one column in the order set below */
-@media (max-width:899px){.lp-txt{display:contents}.lp-vis{display:flex;flex-direction:column;gap:22px}.o1{order:1}.o2{order:2}.o3{order:3}.o4{order:4}.o5{order:5}}
+
+/* motion: only when html.mo is set (JS on, motion allowed). Everything is visible without it. */
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes zoom{from{transform:none}to{transform:scale(1.05)}}
+@keyframes draw{from{background-size:0% 5px}to{background-size:100% 5px}}
+@keyframes drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes ring{0%{transform:scale(1);opacity:.45}100%{transform:scale(1.9);opacity:0}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:none}}
+.mo [data-a]{opacity:0}
+.mo [data-a].on{opacity:1;animation:up .8s cubic-bezier(.2,.7,.2,1) both}
+.mo .lp-hero [data-a].on:nth-child(2){animation-delay:.12s}
+.mo .lp-hero .lp-cta[data-a].on{animation-delay:.24s}
+.mo .lp-photo[data-a].on{animation:up 1s cubic-bezier(.2,.7,.2,1) .1s both}
+/* example: the red line is drawn, then the better sentence arrives */
+.mo .lp-ba.on{animation:none;opacity:1}
+.mo .lp-ba .ba-bad,.mo .lp-ba .ba-arrow,.mo .lp-ba .ba-good{opacity:0}
+.mo .lp-ba.on .ba-bad{animation:up .5s both}
+.mo .lp-ba.on .ba-bad .ul{animation:draw .5s .25s cubic-bezier(.6,0,.3,1) both}
+.mo .lp-ba.on .ba-arrow{animation:drop .3s .6s both}
+.mo .lp-ba.on .ba-good{animation:up .5s .75s cubic-bezier(.2,.7,.2,1) both}
+@media (min-width:900px){@keyframes draw{from{background-size:0% 7px}to{background-size:100% 7px}}}
+/* speak: the recorder wave moves while the card is on screen */
+@keyframes talk{0%,100%{transform:scaleY(calc(var(--s) * .35))}50%{transform:scaleY(var(--s))}}
+.mo .lp-q.on .lp-wave i{animation:talk 1.1s ease-in-out var(--d) infinite;animation-play-state:paused}
+.mo .lp-q.on.live .lp-wave i{animation-play-state:running}
+/* level: steps grow one by one, then your level lands */
+@keyframes rise2{from{transform:scaleY(0)}to{transform:none}}
+@keyframes growland{0%{transform:scaleY(0)}55%{transform:scaleY(1.06)}75%{transform:scaleY(.98)}100%{transform:none}}
+.mo .lp-stairs.on{animation:none;opacity:1}
+.mo .lp-stairs .bar{transform:scaleY(0)}
+.mo .lp-stairs .nm{opacity:0}
+.mo .lp-stairs.on .bar{animation:rise2 .5s cubic-bezier(.2,.7,.2,1) calc(var(--h) * .09s) both}
+.mo .lp-stairs.on .nm{animation:up .4s calc(var(--h) * .09s + .2s) both}
+.mo .lp-stairs.on .me .bar{animation:growland 1s cubic-bezier(.2,.7,.2,1) .36s both}
+/* app: the level dots appear one after another */
+@keyframes pop{0%{opacity:0;transform:scale(.4)}70%{opacity:1;transform:scale(1.12)}100%{opacity:1;transform:none}}
+.mo .lp-phone.on{animation:up .8s cubic-bezier(.2,.7,.2,1) both}
+.mo .lp-phone .chart i{opacity:0}
+.mo .lp-phone.on .chart i{animation:pop .5s cubic-bezier(.2,.8,.3,1.2) calc(.5s + var(--n) * .28s) both}
+/* hero card and AI card motion */
+.mo .lp-photo.on .lp-over{animation:up .7s cubic-bezier(.2,.7,.2,1) .5s both}
+.mo .lp-photo.on .lp-over .ul{animation:draw .5s 1.1s cubic-bezier(.6,0,.3,1) both}
+.mo .lp-photo.on .lp-over .g{animation:up .5s 1.5s both}
+.mo .lp-ai.on mark{animation:hl .6s .5s cubic-bezier(.6,0,.3,1) both}
+.mo .lp-ai.on .tip{animation:up .4s 1s both}
+@keyframes hl{from{background-size:0 100%}to{background-size:100% 100%}}
+.lp-ai mark{background-repeat:no-repeat;background-size:100% 100%}
+/* the first screen is never hidden: it only rises and settles (keeps the first frame complete) */
+@keyframes rise{from{transform:translateY(18px)}to{transform:none}}
+.mo .lp-hero [data-a]{opacity:1}
+.mo .lp-hero [data-a].on{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.mo .lp-hero .lp-photo[data-a].on{animation:none}
+@media (prefers-reduced-motion:reduce){.mo [data-a],.mo [data-a] *{animation:none!important;opacity:1!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}.mo .lp-phone .chart i{opacity:1!important}.lp-over *{opacity:1!important}}
+/* print: show everything, no motion */
+@media print{.mo [data-a],.mo [data-a] *{opacity:1!important;animation:none!important;transform:none!important}.lp-wave i{animation:none!important}.mo .lp-stairs .bar{transform:none!important}.mo .lp-stairs .nm{opacity:1!important}.mo .lp-phone .chart i{opacity:1!important}.lp-over *{opacity:1!important}}
+
+/* method cards: side by side only when there is room */
+.lp-steps{display:grid;gap:18px}
+.lp-step{width:100%}.lp-st,.lp-sv{min-width:0}
+@media (min-width:1100px){.lp-steps{grid-auto-rows:1fr;gap:28px}.lp-step{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:stretch;padding:48px}.lp-st{justify-content:center}.lp-st h3{font-size:46px}.lp-sv{display:flex;flex-direction:column;justify-content:center}.lp-sv .lp-q p{font-size:32px}}
+/* labels on the sample so non-Japanese readers can follow it */
+.lp-lbl{display:block;font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:1px;color:var(--ink2);margin-bottom:2px}
+.lp-mean{margin:2px 0 0;font-size:13px;color:var(--ink2);font-style:italic}
+.lp-mean:empty{display:none}
+
+/* PC: the listener's upper body fills the frame */
+@media (min-width:900px){.lp-clip img{transform:scale(1.32);transform-origin:50% 8%}}
+@media (max-width:360px){.lp-over{left:12px;right:12px;width:auto}}

@@ -7,8 +7,8 @@ function apply(l) {
   lang = l;
   const d = T[l];
   document.documentElement.lang = l;
-  document.querySelectorAll("[data-i]").forEach(el => { el.textContent = d[el.dataset.i] ?? ""; });
-  document.querySelectorAll("[data-i-html]").forEach(el => { el.innerHTML = d[el.dataset.iHtml] ?? ""; });
+  document.querySelectorAll("[data-i]").forEach(el => { const v = d[el.dataset.i]; if (v !== undefined) el.textContent = v; });
+  document.querySelectorAll("[data-i-html]").forEach(el => { const v = d[el.dataset.iHtml]; if (v !== undefined) el.innerHTML = v; });
   document.querySelectorAll("[data-i-alt]").forEach(el => { el.alt = d[el.dataset.iAlt] ?? ""; });
 }
 
