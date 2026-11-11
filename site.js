@@ -32,7 +32,7 @@
     let pref = new URLSearchParams(location.search).get("lang");
     if (!ok(pref)) { try { pref = localStorage.getItem("aun-lang"); } catch (e) {} }
     if (!ok(pref)) { for (const tag of navigator.languages || [navigator.language || ""]) { pref = fromBrowser(tag); if (pref) break; } }
-    if (ok(pref) && pref !== "en" && alt(pref)) { location.replace(new URL(alt(pref).href).pathname + location.hash); return; }
+    if (ok(pref) && pref !== "en" && alt(pref)) { location.replace(new URL(alt(pref).href).pathname + location.search + location.hash); return; }
   }
   const pick = () => {
     if (ok(fixed)) { try { localStorage.setItem("aun-lang", fixed); } catch (e) {} return fixed; }
@@ -76,7 +76,7 @@
     if (!ok(l)) return;
     lang = l;
     try { localStorage.setItem("aun-lang", l); } catch (e) {}
-    if (chosen && alt(l) && new URL(alt(l).href).pathname !== location.pathname) { location.href = new URL(alt(l).href).pathname + location.hash; return; }
+    if (chosen && alt(l) && new URL(alt(l).href).pathname !== location.pathname) { location.href = new URL(alt(l).href).pathname + location.search + location.hash; return; }
     draw();
     if (chosen) { const b = document.querySelector("#site-top .s-lang-btn"); if (b) b.focus(); }
     document.dispatchEvent(new CustomEvent("aun:lang", { detail: { lang: l, chosen: !!chosen } }));
