@@ -1633,3 +1633,80 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
   };
   for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
 })();
+
+// LP v10 (2026-11-11, NT「今回の変更を簡潔に、ワクワクするように」): AI asks back (form S), six skills instead of levels, situations you can handle.
+(function () {
+  const add = {
+    ja: {
+      v10s1H: "AI が、<br><em>聞き返す。</em>", v10s1D: "スマホで約10分。あなたの答えを聞いて、AI が聞き返したり、次の質問をあなたに合わせて変えたりします。",
+      v8s2D: "聞き取った言葉と、伝わりにくいかもしれない所が、出したその場で届きます。",
+      v10s3D: "6つの力の点と、いま困らずに話せる場面が、数日で届きます。週1回・無料。",
+      v10sceneL: "いま困らずに話せる場面", v10sceneA: "雑談", v10nearL: "あと少し", v10nearA: "面接",
+      v10sixH: '<span class="nw">6つの力で、</span><br><span class="nw"><em>いまの日本語</em>が</span><span class="nw">わかる。</span>', v10sixL: "結果の例（それぞれ0〜5）", v7recT: "記録・伝わる内容", v10next: "次に直す",
+      v10m1: "伝わる内容", v10m2: "まとまり", v10m3: "流暢さ", v10m4: "文法", v10m5: "語彙", v10m6: "発音",
+      v10appH: "6つの力の<br><em>伸び</em>が見える。",
+      v7a2: "テストのあと、頼んだ回だけ聞きます。頼めるのは週1回まで、無料です。結果は数日で、アプリかメールに届きます。出した直後には、AI の振り返りが届きます（点は出ません）。"
+    },
+    en: {
+      v10s1H: "The AI<br><em>asks back.</em>", v10s1D: "About 10 minutes on your phone. The AI listens to your answer, asks follow-up questions, and adapts the next question to you.",
+      v8s2D: "What we heard, and spots that might be hard to understand, right after you submit.",
+      v10s3D: "Scores for six skills, and the situations you can already handle, in a few days. Once a week, free.",
+      v10sceneL: "You can handle this now", v10sceneA: "Small talk", v10nearL: "Almost", v10nearA: "Job interview",
+      v10sixH: "See your<br><em>six skills.</em>", v10sixL: "Sample result (each 0–5)", v7recT: "History · Content", v10next: "Fix next",
+      v10m1: "Content", v10m2: "Organisation", v10m3: "Fluency", v10m4: "Grammar", v10m5: "Vocabulary", v10m6: "Pronunciation",
+      v10appH: "Watch your<br><em>skills grow.</em>",
+      v7a2: "Only when you ask, after the test. You can ask once a week, for free. Results arrive in a few days in the app or by email. Right after you submit, you get an AI review (no scores)."
+    },
+    id: {
+      v10s1H: "AI<br><em>bertanya balik.</em>", v10s1D: "Sekitar 10 menit di ponsel. AI mendengarkan jawabanmu, bertanya balik, dan menyesuaikan pertanyaan berikutnya untukmu.",
+      v8s2D: "Kata-kata yang terdengar dan bagian yang mungkin sulit dipahami, langsung setelah dikirim.",
+      v10s3D: "Nilai 6 kemampuan dan situasi yang sudah bisa kamu hadapi, dalam beberapa hari. Seminggu sekali, gratis.",
+      v10sceneL: "Sudah bisa sekarang", v10sceneA: "Obrolan santai", v10nearL: "Hampir", v10nearA: "Wawancara",
+      v10sixH: "<em>6 kemampuan</em><br>bicaramu.", v10sixL: "Contoh hasil (masing-masing 0–5)", v7recT: "Riwayat · Isi", v10next: "Perbaiki berikutnya",
+      v10m1: "Isi yang tersampaikan", v10m2: "Susunan", v10m3: "Kelancaran", v10m4: "Tata bahasa", v10m5: "Kosakata", v10m6: "Pengucapan",
+      v10appH: "Lihat <em>6 kemampuanmu</em><br>berkembang.",
+      v7a2: "Hanya jika Anda memintanya setelah tes. Bisa diminta seminggu sekali, gratis. Hasilnya tiba dalam beberapa hari lewat aplikasi atau email. Langsung setelah dikirim, Anda menerima ulasan dari AI (tanpa nilai)."
+    },
+    vi: {
+      v10s1H: "AI<br><em>hỏi lại bạn.</em>", v10s1D: "Khoảng 10 phút trên điện thoại. AI nghe câu trả lời, hỏi lại và đổi câu hỏi tiếp theo cho hợp với bạn.",
+      v8s2D: "Những gì AI nghe được và chỗ có thể khó hiểu, ngay sau khi nộp.",
+      v10s3D: "Điểm 6 kỹ năng và những tình huống bạn đã nói được, sau vài ngày. Mỗi tuần 1 lần, miễn phí.",
+      v10sceneL: "Đã nói được", v10sceneA: "Trò chuyện", v10nearL: "Sắp được", v10nearA: "Phỏng vấn",
+      v10sixH: "Biết rõ<br><em>6 kỹ năng</em> nói.", v10sixL: "Ví dụ kết quả (mỗi mục 0–5)", v7recT: "Lịch sử · Nội dung", v10next: "Cần sửa tiếp",
+      v10m1: "Nội dung", v10m2: "Bố cục", v10m3: "Độ trôi chảy", v10m4: "Ngữ pháp", v10m5: "Từ vựng", v10m6: "Phát âm",
+      v10appH: "Thấy <em>6 kỹ năng</em><br>tiến bộ.",
+      v7a2: "Chỉ những lần bạn yêu cầu sau bài kiểm tra. Mỗi tuần được yêu cầu 1 lần, miễn phí. Kết quả đến sau vài ngày qua ứng dụng hoặc email. Ngay sau khi nộp, bạn sẽ nhận nhận xét từ AI (không có điểm)."
+    },
+    zh: {
+      v10s1H: "AI 会<br><em>追问你。</em>", v10s1D: "用手机约10分钟。AI 听你的回答，会追问，也会按你的情况调整下一个问题。",
+      v8s2D: "听到的内容，以及可能不好懂的地方，提交后马上送达。",
+      v10s3D: "6项能力的分数，以及你现在已经能应对的场景，几天内送达。每周1次，免费。",
+      v10sceneL: "现在能应对的场景", v10sceneA: "闲聊", v10nearL: "差一点", v10nearA: "面试",
+      v10sixH: "用6项能力，<br>看清<em>现在的日语</em>。", v10sixL: "结果示例（各0〜5）", v7recT: "记录・表达内容", v10next: "下一步改进",
+      v10m1: "表达内容", v10m2: "条理性", v10m3: "流利度", v10m4: "语法", v10m5: "词汇", v10m6: "发音",
+      v10appH: "看见6项能力的<br><em>进步</em>",
+      v7a2: "只听你在测试后申请的那一次。每周可申请1次，免费。结果几天内通过应用或邮件送达。提交后会马上收到 AI 的回顾（不显示分数）。"
+    },
+    "zh-TW": {
+      v10s1H: "AI 會<br><em>追問你。</em>", v10s1D: "用手機約10分鐘。AI 聽你的回答，會追問，也會依你的情況調整下一題。",
+      v8s2D: "聽到的內容，以及可能不好懂的地方，送出後馬上送達。",
+      v10s3D: "6項能力的分數，以及你現在已經能應對的場景，幾天內送達。每週1次，免費。",
+      v10sceneL: "現在能應對的場景", v10sceneA: "閒聊", v10nearL: "差一點", v10nearA: "面試",
+      v10sixH: "用6項能力，<br>看清<em>現在的日文</em>。", v10sixL: "結果範例（各0〜5）", v7recT: "紀錄・表達內容", v10next: "下一步改進",
+      v10m1: "表達內容", v10m2: "組織", v10m3: "流暢度", v10m4: "文法", v10m5: "詞彙", v10m6: "發音",
+      v10appH: "看見6項能力的<br><em>進步</em>",
+      v7a2: "只聽你在測驗後申請的那一次。每週可申請1次，免費。結果幾天內透過 App 或電子郵件送達。送出後會馬上收到 AI 的回顧（不顯示分數）。"
+    },
+    ko: {
+      v10s1H: "AI가<br><em>되묻습니다.</em>", v10s1D: "휴대폰으로 약 10분. AI가 답을 듣고 되묻거나, 다음 질문을 당신에게 맞게 바꿉니다.",
+      v8s2D: "알아들은 말과 알아듣기 어려울 수 있는 부분이 제출 직후 도착합니다.",
+      v10s3D: "6가지 능력의 점수와 지금 문제없이 말할 수 있는 상황이 며칠 안에 도착합니다. 주 1회, 무료.",
+      v10sceneL: "지금 문제없이 말할 수 있는 상황", v10sceneA: "잡담", v10nearL: "조금만 더", v10nearA: "면접",
+      v10sixH: '<span class="nw">6가지 능력으로</span><br><span class="nw"><em>지금의 일본어</em>를</span> <span class="nw">압니다.</span>', v10sixL: "결과 예시 (각 0~5)", v7recT: "기록 · 내용", v10next: "다음에 고칠 점",
+      v10m1: "내용", v10m2: "구성", v10m3: "유창성", v10m4: "문법", v10m5: "어휘", v10m6: "발음",
+      v10appH: "6가지 능력의<br><em>성장</em>이 보입니다.",
+      v7a2: "테스트 후 요청한 회차만 듣습니다. 주 1회까지 무료로 요청할 수 있습니다. 결과는 며칠 안에 앱이나 이메일로 도착합니다. 제출 직후에는 AI 리뷰를 받습니다(점수는 나오지 않습니다)."
+    }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();

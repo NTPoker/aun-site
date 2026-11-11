@@ -318,3 +318,46 @@ body.lp .s-cta{border-radius:999px}
   .lp-sv .lp-q{padding:18px 18px 16px}
   .lp-hero .lp-in{gap:18px}
 }
+
+/* LP v10 (2026-11-11): AI asks back, situation card, six skills (form S) */
+.lp-fu{display:flex;align-items:flex-start;gap:10px;margin-top:14px}
+.lp-fu-t{flex:none;font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;letter-spacing:1px;color:#fff;background:var(--ink);border-radius:999px;padding:5px 10px;margin-top:3px}
+.lp-q .lp-fu p{font-family:'Zen Old Mincho',serif;font-weight:700;font-size:17px;line-height:1.5;background:var(--paper);border-radius:4px 16px 16px 16px;padding:8px 14px}
+.lp-scn{background:#fff;border-radius:18px;box-shadow:0 8px 20px rgba(40,25,10,.08);padding:18px 20px 18px;display:flex;flex-direction:column;gap:6px}
+.lp-scn small{font-size:12px;font-weight:800;letter-spacing:1px;color:#A39C8E}
+.lp-scn .big{margin:0 0 4px;font-family:var(--serif);font-weight:900;font-size:34px;line-height:1.2;display:flex;align-items:center;gap:10px}
+.lp-scn .big::before{content:"";flex:none;width:22px;height:22px;border-radius:50%;border:4px solid #2E8B57}
+.lp-scn .near{margin:0;display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;color:var(--ink2)}
+:lang(en) .lp-scn .big,:lang(id) .lp-scn .big,:lang(vi) .lp-scn .big{font-size:28px}
+.lp-scn .near .tag{font-size:12px;font-weight:800;color:var(--red);background:var(--pink);border-radius:999px;padding:3px 10px}
+.lp-six .lp-in{gap:14px}
+.lp-hexbox{width:100%;max-width:420px;margin:4px auto 0;background:#fff;border-radius:28px;box-shadow:var(--shadow);padding:18px 16px 18px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.lp-hexbox .hex{width:min(240px,70vw);height:auto;overflow:visible}
+.hex .g{fill:none;stroke:#E6E0D3;stroke-width:1.2}
+.hex .ax{stroke:#EFEAE0;stroke-width:1}
+.hex .poly{fill:rgba(201,61,39,.14);stroke:var(--red);stroke-width:3;stroke-linejoin:round;transform-box:view-box;transform-origin:150px 150px}
+.hex .dot{fill:var(--red)}.hex .dot.nx{fill:#fff;stroke:var(--red);stroke-width:3}
+.lp-hexv{list-style:none;margin:0;padding:0;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.lp-hexv li{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#F7F4EE;border-radius:14px;padding:12px 14px;text-align:left}
+.lp-hexv .nm{font-weight:700;font-size:15px;line-height:1.3}
+.lp-hexv b{font-family:'Archivo',sans-serif;font-weight:800;font-size:22px}
+.lp-hexv li.nx{background:#fff;box-shadow:inset 0 0 0 2px var(--red)}
+.lp-hexv li.nx b{color:var(--red)}
+.lp-hexv .tag{position:absolute;top:-10px;right:10px;font-size:11px;font-weight:800;color:#fff;background:var(--red);border-radius:999px;padding:2px 9px;white-space:nowrap}
+@media (min-width:900px){
+  .lp-fu{margin-top:22px;gap:14px}.lp-fu-t{font-size:14px;padding:6px 12px;margin-top:6px}.lp-q .lp-fu p{font-size:26px;padding:10px 18px}
+  .lp-scn{padding:30px 30px 28px;gap:10px}.lp-scn small{font-size:14px}.lp-scn .big{font-size:52px}.lp-scn .big::before{width:30px;height:30px;border-width:5px}.lp-scn .near{font-size:19px}.lp-scn .near .tag{font-size:14px}
+  .lp-six .lp-in{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:960px;gap:18px}
+  .lp-hexbox{max-width:760px;flex-direction:row;gap:36px;padding:36px 40px;border-radius:36px;margin-top:16px}
+  .lp-hexbox .hex{width:280px;flex:none}
+  .lp-hexv{gap:12px}.lp-hexv li{padding:16px 18px}.lp-hexv .nm{font-size:18px}.lp-hexv b{font-size:28px}
+}
+.mo .lp-q .lp-fu{opacity:0}
+.mo .lp-q.on .lp-fu{animation:up .5s 1.6s cubic-bezier(.2,.7,.2,1) both}
+.mo .lp-scn.on .near{animation:up .4s .6s both}
+.mo .lp-hexbox.on .poly{animation:hexin .9s .25s cubic-bezier(.2,.8,.3,1.1) both}
+.mo .lp-hexbox.on .dot{animation:fadein .3s 1s both}
+.mo .lp-hexbox.on .lp-hexv li{animation:up .4s calc(.5s + var(--i,0) * .06s) both}
+@keyframes hexin{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.lp-q .lp-fu{opacity:1}}
