@@ -1369,7 +1369,7 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
       v7q1: "料金は？", v7a1: "いまは無料です。",
       v7q2: "日本人は、毎回聞くの？", v7a2: "テストのあと、頼んだ回だけ聞きます。頼めるのは週1回まで、無料です。結果は数日で、アプリかメールに届きます。出した直後には、AI の振り返りが届きます（レベルは出ません）。",
       v7q3: "誰が聞くの？", v7a3: "阿吽 代表の難波です。日本語の先生ではなく、ふつうの日本人の耳で聞きます。",
-      v7q4: "録音は、どうなる？", v7a4: `東京の Google Cloud に保存します。頼んだ回は結果が届いてから30日後、頼まなかった回は1年後に消します。いつでも<a href="${DEL}">削除を頼めます</a>。`
+      v7q4: "録音は、どうなる？", v7a4: `東京の Google Cloud に保存します。頼んだ回は結果が届いてから30日後、頼まなかった回は1年後に消します。採点の改善に使ってよいと選んだ回は、最長5年残します（あとで変えられます）。いつでも<a href="${DEL}">削除を頼めます</a>。`
     },
     en: {
       v7kick: "A 10-minute speaking test, heard by a Japanese person",
@@ -1390,7 +1390,7 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
       v7q1: "How much does it cost?", v7a1: "It's free for now.",
       v7q2: "Does a Japanese person listen every time?", v7a2: "Only when you ask, after the test. You can ask once a week, for free. Results arrive in a few days in the app or by email. Right after you submit, you get an AI review (it doesn't show a level).",
       v7q3: "Who listens?", v7a3: "Namba, AUN's founder. Not a Japanese teacher: an everyday Japanese listener.",
-      v7q4: "What happens to my recordings?", v7a4: `They're stored on Google Cloud in Tokyo. Sessions you asked us to listen to are deleted 30 days after your result; the rest after 1 year. You can <a href="${DEL}">ask us to delete them</a> anytime.`
+      v7q4: "What happens to my recordings?", v7a4: `They're stored on Google Cloud in Tokyo. Sessions you asked us to listen to are deleted 30 days after your result; the rest after 1 year. If you chose to let us keep them to improve the scoring, they are kept for up to 5 years (you can change this later). You can <a href="${DEL}">ask us to delete them</a> anytime.`
     },
     id: {
       v7kick: "Tes bicara 10 menit, didengar orang Jepang",
@@ -1411,7 +1411,7 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
       v7q1: "Berapa biayanya?", v7a1: "Saat ini gratis.",
       v7q2: "Apakah orang Jepang mendengarkan setiap kali?", v7a2: "Hanya jika Anda memintanya setelah tes. Bisa diminta seminggu sekali, gratis. Hasilnya tiba dalam beberapa hari lewat aplikasi atau email. Langsung setelah dikirim, Anda menerima ulasan dari AI (tanpa level).",
       v7q3: "Siapa yang mendengarkan?", v7a3: "Namba, pendiri AUN. Bukan guru bahasa Jepang, melainkan telinga orang Jepang biasa.",
-      v7q4: "Bagaimana dengan rekaman saya?", v7a4: `Disimpan di Google Cloud di Tokyo. Rekaman yang Anda minta untuk didengarkan dihapus 30 hari setelah hasil tiba; lainnya setelah 1 tahun. Anda bisa <a href="${DEL}">meminta penghapusan</a> kapan saja.`
+      v7q4: "Bagaimana dengan rekaman saya?", v7a4: `Disimpan di Google Cloud di Tokyo. Rekaman yang Anda minta untuk didengarkan dihapus 30 hari setelah hasil tiba; lainnya setelah 1 tahun. Jika Anda mengizinkan rekaman dipakai untuk memperbaiki penilaian, rekaman disimpan hingga 5 tahun (bisa diubah nanti). Anda bisa <a href="${DEL}">meminta penghapusan</a> kapan saja.`
     },
     vi: {
       v7kick: "Bài kiểm tra nói 10 phút, do người Nhật nghe",
@@ -1432,7 +1432,7 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
       v7q1: "Phí bao nhiêu?", v7a1: "Hiện tại miễn phí.",
       v7q2: "Người Nhật có nghe mọi lần không?", v7a2: "Chỉ những lần bạn yêu cầu sau bài kiểm tra. Mỗi tuần được yêu cầu 1 lần, miễn phí. Kết quả đến sau vài ngày qua ứng dụng hoặc email. Ngay sau khi nộp, bạn sẽ nhận nhận xét từ AI (không có trình độ).",
       v7q3: "Ai là người nghe?", v7a3: "Namba, nhà sáng lập AUN. Không phải giáo viên tiếng Nhật, mà là đôi tai của một người Nhật bình thường.",
-      v7q4: "Bản ghi âm của tôi được xử lý thế nào?", v7a4: `Lưu trên Google Cloud tại Tokyo. Những lần bạn yêu cầu nghe sẽ bị xóa 30 ngày sau khi có kết quả; những lần khác sau 1 năm. Bạn có thể <a href="${DEL}">yêu cầu xóa</a> bất cứ lúc nào.`
+      v7q4: "Bản ghi âm của tôi được xử lý thế nào?", v7a4: `Lưu trên Google Cloud tại Tokyo. Những lần bạn yêu cầu nghe sẽ bị xóa 30 ngày sau khi có kết quả; những lần khác sau 1 năm. Nếu bạn đồng ý cho dùng bản ghi để cải thiện việc chấm điểm, bản ghi được giữ tối đa 5 năm (có thể đổi sau). Bạn có thể <a href="${DEL}">yêu cầu xóa</a> bất cứ lúc nào.`
     },
     zh: {
       v7kick: "由日本人来听的10分钟口语测试",
@@ -1453,7 +1453,7 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
       v7q1: "收费吗？", v7a1: "目前免费。",
       v7q2: "每次都有日本人听吗？", v7a2: "只听你在测试后申请的那一次。每周可申请1次，免费。结果几天内通过应用或邮件送达。提交后会马上收到 AI 的回顾（不显示水平）。",
       v7q3: "谁来听？", v7a3: "阿吽的创始人难波。不是日语老师，而是用普通日本人的耳朵来听。",
-      v7q4: "录音会怎样处理？", v7a4: `保存在东京的 Google Cloud。申请过的录音在结果送达30天后删除，未申请的在1年后删除。可以随时<a href="${DEL}">申请删除</a>。`
+      v7q4: "录音会怎样处理？", v7a4: `保存在东京的 Google Cloud。申请过的录音在结果送达30天后删除，未申请的在1年后删除。如果你同意将录音用于改进评分，则最长保存5年（之后可以更改）。可以随时<a href="${DEL}">申请删除</a>。`
     },
     "zh-TW": {
       v7kick: "由日本人來聽的10分鐘口說測驗",
@@ -1474,7 +1474,7 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
       v7q1: "要付費嗎？", v7a1: "目前免費。",
       v7q2: "每次都有日本人聽嗎？", v7a2: "只聽你在測驗後申請的那一次。每週可申請1次，免費。結果幾天內透過 App 或電子郵件送達。送出後會馬上收到 AI 的回顧（不顯示程度）。",
       v7q3: "誰來聽？", v7a3: "阿吽的創辦人難波。不是日文老師，而是用一般日本人的耳朵來聽。",
-      v7q4: "錄音會怎麼處理？", v7a4: `保存在東京的 Google Cloud。申請過的錄音在結果送達30天後刪除，未申請的在1年後刪除。可以隨時<a href="${DEL}">申請刪除</a>。`
+      v7q4: "錄音會怎麼處理？", v7a4: `保存在東京的 Google Cloud。申請過的錄音在結果送達30天後刪除，未申請的在1年後刪除。如果你同意將錄音用於改進評分，則最長保存5年（之後可以更改）。可以隨時<a href="${DEL}">申請刪除</a>。`
     },
     ko: {
       v7kick: "일본인이 듣는 10분 말하기 테스트",
@@ -1495,7 +1495,7 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
       v7q1: "요금은요?", v7a1: "지금은 무료입니다.",
       v7q2: "일본인이 매번 듣나요?", v7a2: "테스트 후 요청한 회차만 듣습니다. 주 1회까지 무료로 요청할 수 있습니다. 결과는 며칠 안에 앱이나 이메일로 도착합니다. 제출 직후에는 AI 리뷰를 받습니다(레벨은 나오지 않습니다).",
       v7q3: "누가 듣나요?", v7a3: "AUN 대표 난바입니다. 일본어 선생님이 아니라, 평범한 일본인의 귀로 듣습니다.",
-      v7q4: "녹음은 어떻게 되나요?", v7a4: `도쿄의 Google Cloud에 저장합니다. 요청한 회차는 결과가 도착한 지 30일 후, 요청하지 않은 회차는 1년 후에 삭제합니다. 언제든지 <a href="${DEL}">삭제를 요청</a>할 수 있습니다.`
+      v7q4: "녹음은 어떻게 되나요?", v7a4: `도쿄의 Google Cloud에 저장합니다. 요청한 회차는 결과가 도착한 지 30일 후, 요청하지 않은 회차는 1년 후에 삭제합니다. 채점 개선에 사용해도 된다고 선택한 회차는 최대 5년간 보관합니다(나중에 변경할 수 있습니다). 언제든지 <a href="${DEL}">삭제를 요청</a>할 수 있습니다.`
     }
   };
   for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
@@ -1707,6 +1707,20 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
       v10appH: "6가지 능력의<br><em>성장</em>이 보입니다.",
       v7a2: "테스트 후 요청한 회차만 듣습니다. 주 1회까지 무료로 요청할 수 있습니다. 결과는 며칠 안에 앱이나 이메일로 도착합니다. 제출 직후에는 AI 리뷰를 받습니다(점수는 나오지 않습니다)."
     }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();
+
+// LP v11 (2026-11-11): the three steps show the real screens in a phone. Labels inside the phone follow the product's own wording where it exists (AI review: instant-i18n.js).
+(function () {
+  const add = {
+    ja: { v11probe: "もう少し聞かせてください", v11speak: "話してください", v11left: "残り 19秒", v11spots: "伝わりにくかった所", v11whyK: "なぜ", v11whyT: "何が起きたのか、一瞬分かりません。", v11fixK: "こう言うと伝わる", v11ex: "聞き手：難波　｜　結果の例", v11ok: "○ 話せる 7", v11near: "△ あと少し 3", v11not: "× まだ 3", v11eg: "例" },
+    en: { v11probe: "Tell me a little more", v11speak: "Speak now", v11left: "19 s left", v11spots: "Where it was hard to follow", v11whyK: "Why", v11whyT: "For a moment, it's unclear what happened.", v11fixK: "Say it like this", v11ex: "Listener: Namba | Sample result", v11ok: "○ OK 7", v11near: "△ Almost 3", v11not: "× Not yet 3", v11eg: "Sample" },
+    id: { v11probe: "Ceritakan sedikit lagi", v11speak: "Silakan bicara", v11left: "sisa 19 detik", v11spots: "Bagian yang sulit dipahami", v11whyK: "Mengapa", v11whyT: "Sesaat tidak jelas apa yang terjadi.", v11fixK: "Katakan seperti ini", v11ex: "Pendengar: Namba | Contoh hasil", v11ok: "○ Bisa 7", v11near: "△ Hampir 3", v11not: "× Belum 3", v11eg: "Contoh" },
+    vi: { v11probe: "Hãy kể thêm một chút", v11speak: "Hãy nói", v11left: "còn 19 giây", v11spots: "Chỗ khó hiểu", v11whyK: "Vì sao", v11whyT: "Trong giây lát, không rõ chuyện gì đã xảy ra.", v11fixK: "Nói thế này sẽ dễ hiểu", v11ex: "Người nghe: Namba | Ví dụ kết quả", v11ok: "○ Đã nói được 7", v11near: "△ Sắp được 3", v11not: "× Chưa 3", v11eg: "Ví dụ" },
+    zh: { v11probe: "请再多说一点", v11speak: "请开始说", v11left: "还剩 19 秒", v11spots: "不容易听懂的地方", v11whyK: "原因", v11whyT: "一时听不出发生了什么。", v11fixK: "这样说更容易懂", v11ex: "聆听者：难波｜结果示例", v11ok: "○ 能应对 7", v11near: "△ 差一点 3", v11not: "× 还不行 3", v11eg: "示例" },
+    "zh-TW": { v11probe: "請再多說一點", v11speak: "請開始說", v11left: "還剩 19 秒", v11spots: "不容易聽懂的地方", v11whyK: "原因", v11whyT: "一時聽不出發生了什麼。", v11fixK: "這樣說更容易懂", v11ex: "聆聽者：難波｜結果範例", v11ok: "○ 能應對 7", v11near: "△ 差一點 3", v11not: "× 還不行 3", v11eg: "範例" },
+    ko: { v11probe: "조금 더 들려주세요", v11speak: "말해 주세요", v11left: "19초 남음", v11spots: "전달이 어려웠던 부분", v11whyK: "이유", v11whyT: "무슨 일이 있었는지 순간 알기 어렵습니다.", v11fixK: "이렇게 말하면 전달됩니다", v11ex: "듣는 사람: 난바 | 결과 예시", v11ok: "○ 말할 수 있음 7", v11near: "△ 조금만 더 3", v11not: "× 아직 3", v11eg: "예시" }
   };
   for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
 })();

@@ -362,3 +362,73 @@ body.lp .s-cta{border-radius:999px}
 @keyframes hexin{from{transform:scale(0)}to{transform:scale(1)}}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.lp-q .lp-fu{opacity:1}}
+
+/* v11 (2026-11-11, NT「スマホのところがチープでワクワクが弱い」): the three steps show the real screens in a phone, cut off at the bottom so the screen is large. */
+.lp-sv.pz{position:relative;margin:4px -20px -20px;padding:22px 0 0;border-radius:0 0 28px 28px;background:linear-gradient(180deg,#F7F3EA 0,#EDE7D9 100%);display:flex;justify-content:center;height:430px;overflow:hidden}
+.pz::before{content:"";position:absolute;left:50%;top:40px;width:300px;height:300px;margin-left:-150px;border-radius:50%;background:radial-gradient(circle,rgba(201,61,39,.16),rgba(201,61,39,0) 70%)}
+.pz .ph{position:relative;flex:none;width:272px;height:560px;border-radius:44px;background:#17130F;padding:9px;box-shadow:0 30px 50px rgba(40,25,10,.28),0 4px 10px rgba(40,25,10,.2)}
+.pz .scr{position:relative;height:100%;border-radius:36px;background:#F4F5F7;overflow:hidden;padding:18px 18px 0;display:flex;flex-direction:column;font-family:var(--sans);color:#17130F;text-align:left}
+.pz .scr::before{content:"";position:absolute;top:8px;left:50%;width:78px;height:22px;margin-left:-39px;border-radius:12px;background:#17130F}
+.pz [lang="ja"]{font-family:'Zen Kaku Gothic New','Hiragino Sans',sans-serif}
+.pz p{margin:0}
+.pz-bar{display:flex;align-items:center;gap:10px;margin-top:26px}
+.pz-x{flex:none;width:30px;height:30px;border-radius:50%;background:#E9EAEE;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.pz-prog{flex:1;display:flex;gap:4px}
+.pz-prog i{flex:1;height:5px;border-radius:3px;background:#E1E2E7}
+.pz-prog i.on{background:var(--red)}
+.pz-chip{align-self:flex-start;max-width:100%;margin-top:22px;font-size:12px;font-weight:700;line-height:1.3;background:var(--red);color:#fff;border-radius:999px;padding:5px 12px}
+.pz .pz-q{margin-top:12px;font-weight:900;font-size:23px;line-height:1.45;white-space:nowrap}
+.pz-micw{margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.pz-mic{position:relative;width:74px;height:74px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 22px rgba(201,61,39,.35)}
+.pz-mic::before,.pz-mic::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--red);opacity:0}
+.pz-mic svg{width:32px;height:32px}
+.pz-micw p{font-size:14px;font-weight:700;text-align:center}
+.pz-micw .t{color:#6E717B;font-weight:500;margin-left:6px}
+.pz .pz-tags{display:flex;align-items:center;gap:8px;margin-top:26px;font-size:11px;font-weight:700;color:var(--ink2)}
+.pz-tag{font-size:11px;font-weight:800;border:1.5px solid #17130F;border-radius:999px;padding:2px 10px}
+.pz .pz-h{margin-top:12px;font-size:15px;font-weight:700;line-height:1.35;color:var(--ink2)}
+.pz-spot{margin-top:10px;background:#fff;border-radius:18px;padding:14px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.pz .pz-you{margin-top:4px;font-weight:900;font-size:16px;line-height:1.5;white-space:nowrap}
+.pz-you u{text-decoration:none;background:linear-gradient(var(--red),var(--red)) 0 100%/100% 3px no-repeat;padding-bottom:2px}
+.pz .k{display:block;font-size:12px;font-weight:800;color:var(--red);margin-bottom:2px}
+.pz .pz-why{margin-top:14px;font-size:14px;font-weight:700;line-height:1.55;color:var(--ink2)}
+.pz .pz-fix{margin-top:12px;background:#FBF1EE;border-radius:12px;padding:10px 12px;font-weight:900;font-size:16px;line-height:1.5}
+.pz-fix [lang="ja"]{white-space:nowrap}
+.pz-fix small{display:block;font-size:12px;font-weight:500;font-style:italic;color:var(--ink2)}
+.pz-fix small:empty{display:none}
+.pz .pz-who{display:flex;align-items:center;gap:8px;margin-top:26px;font-size:11px;font-weight:700;line-height:1.3;color:var(--ink2)}
+.pz-who img{flex:none;width:26px;height:26px;border-radius:50%;object-fit:cover;object-position:50% 18%}
+.pz-top{margin-top:8px;background:#fff;border-radius:18px;padding:12px 16px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.pz-top small{display:block;font-size:11.5px;font-weight:700;line-height:1.35;color:#6E717B}
+.pz .pz-top .big{margin:4px 0 6px;font-weight:900;font-size:28px;line-height:1.2;display:flex;align-items:center;gap:8px}
+.pz-top .big::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;border:4px solid #2E8B57}
+.pz .cnt{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:11px;font-weight:700;color:var(--ink2)}
+.pz-six{margin-top:10px;background:#fff;border-radius:18px;padding:12px 14px 60px;box-shadow:0 4px 12px rgba(0,0,0,.05);display:grid;grid-template-columns:112px minmax(0,1fr);gap:8px;align-items:center}
+.pz-six svg{width:112px;height:112px}
+.pz-six .g{fill:none;stroke:#D9DAE0;stroke-width:1.5}
+.pz-six .poly{fill:rgba(201,61,39,.18);stroke:var(--red);stroke-width:4;stroke-linejoin:round}
+.pz .pz-six .nxt{grid-column:1/-1;grid-row:1;justify-self:start;margin-bottom:2px;font-size:12px;font-weight:800;color:var(--red);background:#FBF1EE;border-radius:999px;padding:4px 12px}
+.pz-six ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-size:11px;font-weight:700;min-width:0}
+.pz-six li{display:flex;justify-content:space-between;gap:6px;min-width:0}
+.pz-six li span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pz-six li b{font-family:'Archivo',sans-serif;font-weight:800}
+.pz-six li.nx{color:var(--red)}
+@keyframes pzring{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.9);opacity:0}}
+.mo .pz.on .pz-mic::before{animation:pzring 2.2s ease-out infinite}
+.mo .pz.on .pz-mic::after{animation:pzring 2.2s ease-out 1.1s infinite}
+@keyframes pzdraw{from{background-size:0% 3px}to{background-size:100% 3px}}
+.mo .pz.on .pz-you u{animation:pzdraw .5s .7s cubic-bezier(.6,0,.3,1) both}
+.mo .pz.on .pz-fix{animation:up .5s 1.2s both}
+.mo .pz.on .pz-six .poly{animation:up .6s .6s both}
+@media (prefers-reduced-motion:reduce){.pz *,.pz *::before,.pz *::after{animation:none!important;opacity:1}.pz-mic::before,.pz-mic::after{opacity:0!important}}
+@media (min-width:1100px){.lp-sv.pz{margin:0;border-radius:28px;height:500px;padding-top:34px}.pz .ph{transform:scale(1.12);transform-origin:50% 0}}
+/* longer words (en, id, vi): smaller hexagon, names may wrap instead of being cut */
+:lang(en) .pz-six,:lang(id) .pz-six,:lang(vi) .pz-six{grid-template-columns:90px minmax(0,1fr)}
+:lang(en) .pz-six svg,:lang(id) .pz-six svg,:lang(vi) .pz-six svg{width:90px;height:90px}
+:lang(en) .pz-six li span,:lang(id) .pz-six li span,:lang(vi) .pz-six li span{white-space:normal;line-height:1.2}
+:lang(en) .pz-six ul,:lang(id) .pz-six ul,:lang(vi) .pz-six ul{font-size:10.5px;gap:3px}
+:lang(en) .pz .pz-six .nxt,:lang(id) .pz .pz-six .nxt,:lang(vi) .pz .pz-six .nxt{font-size:11px;padding:3px 10px}
+:lang(en) .pz .pz-top .big,:lang(id) .pz .pz-top .big,:lang(vi) .pz .pz-top .big{font-size:22px}
+/* wider screens: the card's padding grows at 900px, and at 1100px the picture sits beside the words */
+@media (min-width:900px){.lp-sv.pz{margin:4px -40px -40px;padding:28px 0 0;border-radius:0 0 40px 40px;height:470px}}
+@media (min-width:1100px){.lp-sv.pz{flex-direction:row;justify-content:center;align-items:flex-start;margin:0;padding:34px 0 0;border-radius:28px;height:500px}}
