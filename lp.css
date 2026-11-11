@@ -432,3 +432,49 @@ body.lp .s-cta{border-radius:999px}
 /* wider screens: the card's padding grows at 900px, and at 1100px the picture sits beside the words */
 @media (min-width:900px){.lp-sv.pz{margin:4px -40px -40px;padding:28px 0 0;border-radius:0 0 40px 40px;height:470px}}
 @media (min-width:1100px){.lp-sv.pz{flex-direction:row;justify-content:center;align-items:flex-start;margin:0;padding:34px 0 0;border-radius:28px;height:500px}}
+
+/* v12 (2026-11-12): the app section's phone shows the app's real record screen: what changed since last time. */
+.lp-phone .scr.rec{background:#F4F5F7;padding:30px 14px 0;gap:10px;overflow:hidden;font-family:var(--sans);color:#17130F}
+.lp-phone .scr.rec .rt{margin:0 4px 2px;font-weight:900;font-size:22px}
+.lp-phone .rc{background:#fff;border-radius:18px;padding:14px 14px 12px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.lp-phone .rc p{margin:0}
+.lp-phone .rh{font-size:12px;font-weight:700;color:#6E717B;margin-bottom:8px!important}
+.lp-phone .gr{display:flex;align-items:center;gap:8px;padding:7px 0;font-weight:700;font-size:15px;border-top:1px solid #EEEFF2}
+.lp-phone .gr span{flex:1;min-width:0}
+.lp-phone .gr b{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px}
+.lp-phone .gr .was{color:#A0A3AD}
+.lp-phone .gr .ar{width:16px;height:2px;background:#C8CAD1;position:relative}
+.lp-phone .gr .ar::after{content:"";position:absolute;right:0;top:-3px;width:6px;height:6px;border-top:2px solid #C8CAD1;border-right:2px solid #C8CAD1;transform:rotate(45deg)}
+.lp-phone .gr .now{width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 6px 12px rgba(201,61,39,.3)}
+.lp-phone .gn{margin-top:10px!important;padding:9px 12px;border-radius:12px;background:#E9F5EE;color:#1F6B43;font-size:13px;font-weight:700;line-height:1.45}
+.lp-phone .gn strong{font-weight:900;font-size:15px}
+.lp-phone .rc.hx{flex:1;display:flex;justify-content:center;padding:6px 0 0;border-radius:18px 18px 0 0}
+.lp-phone .hx svg{width:78%;max-width:190px;height:auto;align-self:flex-start}
+.lp-phone .hx .g{fill:none;stroke:#D9DAE0;stroke-width:1.5}
+.lp-phone .hx .pv{fill:none;stroke:#C8CAD1;stroke-width:2;stroke-dasharray:5 5}
+.lp-phone .hx .poly{fill:rgba(201,61,39,.18);stroke:var(--red);stroke-width:4;stroke-linejoin:round}
+@keyframes v12pop{0%{transform:scale(.3);opacity:0}100%{transform:scale(1);opacity:1}}
+.mo .lp-phone.on .gr .now{animation:v12pop .5s cubic-bezier(.2,.8,.3,1.4) .6s both}
+.mo .lp-phone.on .gr + .gr .now{animation-delay:.9s}
+.mo .lp-phone.on .gn{animation:up .5s 1.3s both}
+@media (prefers-reduced-motion:reduce){.lp-phone .gr .now,.lp-phone .gn{animation:none!important;opacity:1!important}}
+@media (min-width:900px){
+  .lp-phone .scr.rec{padding:38px 18px 0;gap:12px}
+  .lp-phone .scr.rec .rt{font-size:26px}
+  .lp-phone .gr{font-size:18px;padding:9px 0}.lp-phone .gr b{font-size:20px}.lp-phone .gr .now{width:38px;height:38px}
+  .lp-phone .rh{font-size:13px}.lp-phone .gn{font-size:15px}.lp-phone .gn strong{font-size:17px}
+  /* store badges: larger beside a large headline (NT 11/12「PC だと小さい」) */
+  .badges{gap:16px}
+  .badges img.apple{height:58px}
+  .badges img.play{height:75.5px;margin:-8.8px 0 -8.7px}
+}
+.lp-phone .gn{font-size:12.5px}
+.lp-phone .gn strong{display:block;font-size:19px;line-height:1.3}
+.lp-phone .gn strong::before{content:"";display:inline-block;width:13px;height:13px;border-radius:50%;border:3px solid #2E8B57;margin-right:7px;vertical-align:-1px}
+@media (min-width:900px){.lp-phone .gn{font-size:14px}.lp-phone .gn strong{font-size:22px}}
+
+/* the app shows the hexagon (now) first, then what changed since last time: same order here, and no "last time" outline (the app does not draw one) */
+.lp-phone .rc.hx{flex:none;border-radius:18px;padding:8px 0 6px}
+.lp-phone .hx svg{width:46%;max-width:150px}
+.lp-phone .gr .was{color:#8A8D97}
+@media (min-width:900px){.lp-phone .hx svg{width:66%;max-width:215px}.lp-phone .rc.hx{padding:14px 0 10px}}
