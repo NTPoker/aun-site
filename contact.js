@@ -1,4 +1,4 @@
-import { save, slowNote } from "./fb.js";
+import { save, slowNote } from "./fb.js?v=20261111c";
 
 const form = document.getElementById("cform");
 const out = document.getElementById("cmsgout");
