@@ -1724,3 +1724,17 @@ kicker:"일본에 가나요? 면접이 다가오나요?"
   };
   for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
 })();
+
+// LP v12 (2026-11-12, NT「これが弱い」): the app section shows the app's real record screen (what changed since last time), not a line chart the app does not have. Wording is the app's own (app/mobile/www/i18n-*.js).
+(function () {
+  const add = {
+    ja: { v12rec: "記録", v12gh: "前回からの変化", v12gnA: "新しく ○ になった場面：", v12gnB: "" },
+    en: { v12rec: "Record", v12gh: "Since last time", v12gnA: "Newly ○: ", v12gnB: "" },
+    id: { v12rec: "Catatan", v12gh: "Dibanding tes sebelumnya", v12gnA: "Baru menjadi ○: ", v12gnB: "" },
+    vi: { v12rec: "Hồ sơ", v12gh: "So với lần trước", v12gnA: "Tình huống mới đạt ○: ", v12gnB: "" },
+    zh: { v12rec: "记录", v12gh: "与上次相比", v12gnA: "新达到 ○ 的场景：", v12gnB: "" },
+    "zh-TW": { v12rec: "紀錄", v12gh: "與上次相比", v12gnA: "新達到 ○ 的情境：", v12gnB: "" },
+    ko: { v12rec: "기록", v12gh: "지난번과 비교", v12gnA: "새로 ○가 된 상황: ", v12gnB: "" }
+  };
+  for (const l in add) Object.assign(window.AUN_I18N[l], add[l]);
+})();
