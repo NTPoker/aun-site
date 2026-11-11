@@ -472,3 +472,9 @@ body.lp .s-cta{border-radius:999px}
 .lp-phone .gn strong{display:block;font-size:19px;line-height:1.3}
 .lp-phone .gn strong::before{content:"";display:inline-block;width:13px;height:13px;border-radius:50%;border:3px solid #2E8B57;margin-right:7px;vertical-align:-1px}
 @media (min-width:900px){.lp-phone .gn{font-size:14px}.lp-phone .gn strong{font-size:22px}}
+
+/* the app shows the hexagon (now) first, then what changed since last time: same order here, and no "last time" outline (the app does not draw one) */
+.lp-phone .rc.hx{flex:none;border-radius:18px;padding:8px 0 6px}
+.lp-phone .hx svg{width:46%;max-width:150px}
+.lp-phone .gr .was{color:#8A8D97}
+@media (min-width:900px){.lp-phone .hx svg{width:66%;max-width:215px}.lp-phone .rc.hx{padding:14px 0 10px}}
