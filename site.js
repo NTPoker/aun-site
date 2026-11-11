@@ -26,13 +26,15 @@
   // landing pages per language (/, /en/, …) declare themselves with <html data-fixed-lang> and <link rel="alternate" data-lang>
   const fixed = document.documentElement.getAttribute("data-fixed-lang");
   const alt = l => document.querySelector('link[rel="alternate"][data-lang="' + l + '"]');
+  // Only the source tag travels with a language change. ?lang= must not: the picker would bounce straight back.
+  const keep = () => { const q = new URLSearchParams(location.search), o = new URLSearchParams(); ["src", "ref"].forEach(k => { if (q.get(k)) o.set(k, q.get(k)); }); const t = o.toString(); return t ? "?" + t : ""; };
   const home = () => ({ en: "/", "zh-TW": "/zh-tw/" })[lang] || "/" + lang + "/";
   // / is the English page. A visitor who chose another language before, or whose browser is in another of ours, goes there.
   if (document.documentElement.hasAttribute("data-lang-home")) {
     let pref = new URLSearchParams(location.search).get("lang");
     if (!ok(pref)) { try { pref = localStorage.getItem("aun-lang"); } catch (e) {} }
     if (!ok(pref)) { for (const tag of navigator.languages || [navigator.language || ""]) { pref = fromBrowser(tag); if (pref) break; } }
-    if (ok(pref) && pref !== "en" && alt(pref)) { location.replace(new URL(alt(pref).href).pathname + location.search + location.hash); return; }
+    if (ok(pref) && pref !== "en" && alt(pref)) { location.replace(new URL(alt(pref).href).pathname + keep() + location.hash); return; }
   }
   const pick = () => {
     if (ok(fixed)) { try { localStorage.setItem("aun-lang", fixed); } catch (e) {} return fixed; }
@@ -76,7 +78,7 @@
     if (!ok(l)) return;
     lang = l;
     try { localStorage.setItem("aun-lang", l); } catch (e) {}
-    if (chosen && alt(l) && new URL(alt(l).href).pathname !== location.pathname) { location.href = new URL(alt(l).href).pathname + location.search + location.hash; return; }
+    if (chosen && alt(l) && new URL(alt(l).href).pathname !== location.pathname) { location.href = new URL(alt(l).href).pathname + keep() + location.hash; return; }
     draw();
     if (chosen) { const b = document.querySelector("#site-top .s-lang-btn"); if (b) b.focus(); }
     document.dispatchEvent(new CustomEvent("aun:lang", { detail: { lang: l, chosen: !!chosen } }));

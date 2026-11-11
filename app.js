@@ -35,8 +35,8 @@ addEventListener("load", depth);
 const tag = src();
 const tagged = !tag.startsWith("ref:") && tag !== "direct" && tag !== "other";
 document.addEventListener("click", e => {
-  const a = e.target.closest && e.target.closest('a[href*="test.html"]');
-  if (!a) return;
+  const a = e.target.closest && e.target.closest("a[href]");
+  if (!a || !/(^|\/)test\.html($|[?#])/.test(a.getAttribute("href"))) return;
   // Keep the visitor's source tag when they move on to the test page (header and footer links too).
   if (tagged && !/[?&]src=/.test(a.getAttribute("href"))) a.href = "/test.html?src=" + encodeURIComponent(tag);
   const sec = a.closest("header") ? "header" : a.closest("footer") ? "footer" : a.closest(".lp-hero") ? "hero" : a.closest(".lp-end") ? "end" : "body";
