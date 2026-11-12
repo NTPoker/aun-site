@@ -108,8 +108,8 @@ body.lp .s-cta{border-radius:999px}
 
 .badges{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .badges a{display:inline-flex;line-height:0}
-.badges img.apple{height:42px;width:auto}
-.badges img.play{height:54.7px;width:auto;margin:-6.4px 0 -6.3px}
+.badges img.apple{height:44px;width:auto}
+.badges img.play{height:57.3px;width:auto;margin:-6.7px 0 -6.6px}
 
 .lp-faq{margin-top:22px}
 .lp-faq h2{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--ink2)}
