@@ -20,7 +20,7 @@ T = json.loads(subprocess.run(
 SRC = (ROOT / "_tools/index.src.html").read_text(encoding="utf-8")
 LP = (ROOT / "ja/index.html").read_text(encoding="utf-8")
 V = lambda name: re.search(re.escape(name) + r"\?v=([0-9a-z]+)", LP).group(1)
-CSS_V = "20261112j"
+CSS_V = "20261112k"
 
 
 def fill(s: str, d: dict) -> str:
@@ -132,6 +132,27 @@ SCORING = {
 }
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+# Article 3: does the JLPT have a speaking test? (answers a question people search for; facts from the official sites)
+# ---------------------------------------------------------------------------------------------------------------------
+JLPT = {
+"ja": dict(
+    title="JLPT に話す試験はある？ 日本語の話す力を確かめる3つの方法",
+    desc="日本語能力試験（JLPT）に話す試験はありません。測るのは読む力と聞く力で、追加の予定も今のところありません。JLPT が測るもの、N2・N1 でも話せるとは限らない理由、話す力を確かめる3つの方法をまとめました。",
+    kick="JLPT と話す力", h1="JLPT に話す試験はある？<br>日本語の話す力を確かめる3つの方法",
+    cta="無料でテストを受ける", by="阿吽（AUN）運営・株式会社1900", upd="最終更新日",
+    toc="この記事の内容", rel="あわせて読む", rel_link=("how-it-works.html", "阿吽（AUN）とは：日本人が聞く、約10分の日本語スピーキングテスト"),
+    body=None),
+"en": dict(
+    title="Does the JLPT have a speaking test? No: three ways to check your spoken Japanese",
+    desc="The JLPT has no speaking test. It measures reading and listening, and there are currently no plans to add speaking. What the JLPT measures, why passing N2 or N1 does not mean you can speak, and three ways to check your spoken Japanese.",
+    kick="The JLPT and speaking", h1="Does the JLPT have a speaking test?<br>Three ways to check your spoken Japanese",
+    cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
+    toc="In this article", rel="Read next", rel_link=("how-it-works.html", "What is AUN? A 10-minute Japanese speaking test, scored by a Japanese listener"),
+    body=None),
+}
+
+
 def label_cells(body: str) -> str:
     """Comparison tables: copy each column heading onto its cells (data-label), so phones can show a row as a stacked card."""
     def table(m):
@@ -148,13 +169,13 @@ def label_cells(body: str) -> str:
     return re.sub(r'<table class="art-cmp[^"]*">.*?</table>', table, body, flags=re.S)
 
 
-for _name, _c in (("how", HOW), ("scoring", SCORING)):   # the article text lives in _tools/articles/<name>.<lang>.html
+for _name, _c in (("how", HOW), ("scoring", SCORING), ("jlpt", JLPT)):   # the article text lives in _tools/articles/<name>.<lang>.html
     for _lang in ("ja", "en"):
         _c[_lang]["body"] = (ROOT / f"_tools/articles/{_name}.{_lang}.html").read_text(encoding="utf-8")
 
 
 PREFIX = {"ja": "/ja/", "en": "/"}   # like the landing page: English at the root, Japanese under /ja/
-ARTICLES = ("how-it-works.html", "scoring.html")
+ARTICLES = ("how-it-works.html", "scoring.html", "jlpt-speaking-test.html")
 
 
 def link(href: str, lang: str) -> str:
@@ -252,7 +273,7 @@ def page(name: str, content: dict, extras) -> None:
 {section(c, lang, extras(lang), PREFIX["en" if lang == "ja" else "ja"] + name)}
 </main>
 <footer id="site-foot" class="s-foot"></footer>
-<script type="module" src="/art.js?v=20261112d"></script>
+<script type="module" src="/art.js?v=20261112e"></script>
 </body>
 </html>
 '''
@@ -287,4 +308,5 @@ def how_extras(lang):
 
 page("how-it-works.html", HOW, how_extras)
 page("scoring.html", SCORING, lambda lang: {"LEVELS": levels(lang), "CARDS": cards(lang)})
+page("jlpt-speaking-test.html", JLPT, lambda lang: {"CARDS": cards(lang)})
 sitemap()

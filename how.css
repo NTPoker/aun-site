@@ -8,6 +8,7 @@ html[lang="ja"] [data-l="ja"],html:not([lang="ja"]) [data-l="en"]{display:block}
 .art:lang(en) h1{font-family:'Archivo',var(--sans);font-weight:800;letter-spacing:-.01em;line-height:1.2}
 .art-meta{margin:0;font-size:13px;color:var(--rowfg)}
 .art-meta a{color:inherit;text-underline-offset:3px}
+.art p.art-note{margin-top:28px;padding-top:16px;border-top:1px solid #DDD7CB;font-size:13.5px;line-height:1.8;color:var(--rowfg)}
 .art-lead{font-size:18px;line-height:1.9;margin:0 0 20px}
 .art p{margin:0 0 18px}
 .art a{color:var(--red-d)}

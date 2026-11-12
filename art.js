@@ -16,7 +16,7 @@ document.addEventListener("click", e => {
   const a = e.target.closest && e.target.closest("a[href]");
   if (!a) return;
   // The source tag also travels to the articles, so a visitor who reads one first is still counted under their source.
-  const art = /^(\/ja)?\/(how-it-works|scoring)\.html(#.*)?$/.exec(a.getAttribute("href"));
+  const art = /^(\/ja)?\/(how-it-works|scoring|jlpt-speaking-test)\.html(#.*)?$/.exec(a.getAttribute("href"));
   if (art && tagged) { a.href = a.getAttribute("href").replace(/(#.*)?$/, "?src=" + encodeURIComponent(tag) + (art[3] || "")); return; }
   if (!/(^|\/)test\.html($|[?#])/.test(a.getAttribute("href"))) return;
   if (tagged && !/[?&]src=/.test(a.getAttribute("href"))) a.href = "/test.html?src=" + encodeURIComponent(tag);
