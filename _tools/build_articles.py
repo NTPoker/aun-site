@@ -138,15 +138,15 @@ SCORING = {
 JLPT = {
 "ja": dict(
     title="JLPT に話す試験はある？ 日本語の話す力を確かめる3つの方法",
-    desc="日本語能力試験（JLPT）に話す試験はありません。測るのは読む力と聞く力で、追加の予定も今のところありません。JLPT が測るもの、N2・N1 でも話せるとは限らない理由、話す力を確かめる3つの方法をまとめました。",
-    kick="JLPT と話す力", h1="JLPT に話す試験はある？<br>日本語の話す力を確かめる3つの方法",
+    desc="日本語能力試験（JLPT）には、N1〜N5 のどのレベルにも話す試験がありません。科目は言語知識・読解・聴解で、追加の予定も今のところありません。N2・N1 でも話せるとは限らない理由と、話す力を確かめる3つの方法。",
+    top_cta=False, kick="JLPT と話す力", h1='<span class="nw">JLPT に</span><span class="nw">話す試験はある？</span><br><span class="nw">日本語の話す力を</span><span class="nw">確かめる3つの方法</span>',
     cta="無料でテストを受ける", by="阿吽（AUN）運営・株式会社1900", upd="最終更新日",
     toc="この記事の内容", rel="あわせて読む", rel_link=("how-it-works.html", "阿吽（AUN）とは：日本人が聞く、約10分の日本語スピーキングテスト"),
     body=None),
 "en": dict(
     title="Does the JLPT have a speaking test? No: three ways to check your spoken Japanese",
-    desc="The JLPT has no speaking test. It measures reading and listening, and there are currently no plans to add speaking. What the JLPT measures, why passing N2 or N1 does not mean you can speak, and three ways to check your spoken Japanese.",
-    kick="The JLPT and speaking", h1="Does the JLPT have a speaking test?<br>Three ways to check your spoken Japanese",
+    desc="The JLPT has no speaking test at any level, N1 to N5. Its sections are language knowledge, reading and listening, and there are currently no plans to add speaking. Why passing N2 or N1 does not necessarily mean you can speak, and three ways to check your spoken Japanese.",
+    top_cta=False, kick="The JLPT and speaking", h1="Does the JLPT have a speaking test?<br>Three ways to check your spoken Japanese",
     cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
     toc="In this article", rel="Read next", rel_link=("how-it-works.html", "What is AUN? A 10-minute Japanese speaking test, scored by a Japanese listener"),
     body=None),
@@ -199,7 +199,8 @@ def section(c: dict, lang: str, extra: dict, other: str) -> str:
     body = re.sub(r'<a href="([^"]+)"', lambda m: f'<a href="{link(m.group(1), lang)}"', body)
     t = toc(body, c["toc"])
     assert body.count("{TOC}") == 1   # where the button and the contents list go: after the lead (and the facts table)
-    body = body.replace("{TOC}", f'<p class="art-ctaw"><a href="/test.html" class="lp-cta">{c["cta"]}</a></p>\n' + t)
+    # The button sits above the contents list, except where the article has not yet said what the test is (top_cta=False).
+    body = body.replace("{TOC}", (f'<p class="art-ctaw"><a href="/test.html" class="lp-cta">{c["cta"]}</a></p>\n' if c.get("top_cta", True) else "") + t)
     return f'''<article class="art" lang="{lang}">
 <header class="art-head">
 <p class="lp-kick">{c["kick"]}</p>
