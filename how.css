@@ -52,6 +52,9 @@ html[lang="ja"] [data-l="ja"],html:not([lang="ja"]) [data-l="en"]{display:block}
 .art-rel{margin:56px 0 0;padding:18px 22px;background:#fff;border-radius:20px;box-shadow:0 6px 20px rgba(40,25,10,.06)}
 .art-rel p{margin:0 0 4px;font-size:13px;font-weight:700;color:var(--rowfg)}
 .art-rel a{font-weight:700;font-size:18px;line-height:1.5;color:var(--ink)}
+.art-faq h3{margin:26px 0 6px;font-size:18px;font-weight:700;line-height:1.6}
+.art-faq h3:first-child{margin-top:8px}
+.art-faq p{margin:0 0 6px;color:var(--ink2)}
 .art .lp-faq{margin-top:0}
 .art .lp-faq summary{font-size:17px}
 .art .lp-faq p{font-size:16px;line-height:1.85}
