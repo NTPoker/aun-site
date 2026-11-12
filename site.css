@@ -19,7 +19,7 @@ html{scroll-padding-top:84px}
   .s-top-in{padding:14px 16px;min-height:68px}
   .s-mark{width:38px;height:33px}.s-brand span{font-size:19px}
   .s-cta{padding:8px 12px;font-size:14px;letter-spacing:0}
-  .s-lang-btn span{display:none}.s-lang-btn{padding:8px 11px}
+  .s-lang-btn span{display:none}.s-lang-btn{padding:8px 11px;min-width:44px;justify-content:center}
 }
 @media (max-width:350px){
   .s-right{gap:6px}.s-cta{padding:8px 10px;font-size:13px}
