@@ -12,7 +12,8 @@ html[lang="ja"] [data-l="ja"],html:not([lang="ja"]) [data-l="en"]{display:block}
 .hw-eg{position:absolute;top:16px;left:22px;margin:0;font-size:12px;font-weight:700;color:var(--rowfg);background:var(--paper);border-radius:999px;padding:3px 10px}
 .hw-note{margin:0;font-size:15px;line-height:1.75;color:var(--ink2)}
 /* six skills: the hexagon and the six scores */
-.hw-six{background:var(--paper)}
+.hw-res{background:var(--paper)}
+.hw-cards{display:grid;gap:18px}
 .hw-sixc{display:flex;flex-direction:column;gap:6px}
 .hw-hex{display:flex;justify-content:center}
 .hw-hex svg{width:210px;height:auto}
@@ -34,7 +35,7 @@ html[lang="ja"] [data-l="ja"],html:not([lang="ja"]) [data-l="en"]{display:block}
 .hw-scl .n i{background:#FBF0D9;color:#9A6400}
 .hw-scl .x i{background:#EFEDE8;color:#7A746A}
 .hw-scl strong{font-weight:700}
-.hw-scl span{margin-left:auto;font-size:13px;font-weight:700;color:#9A6400;text-align:right}
+.hw-scl span{margin-left:auto;font-size:13px;font-weight:700;color:#9A6400;text-align:right;white-space:nowrap}
 .hw-scl .x strong{color:var(--rowfg)}
 .hw-next{margin:14px 0 0;display:flex;align-items:center;gap:10px;background:var(--pink);border-radius:14px;padding:12px 14px;border-left:4px solid var(--red)}
 .hw-next span{font-size:13px;font-weight:700;color:var(--ink2)}
@@ -47,15 +48,17 @@ html[lang="ja"] [data-l="ja"],html:not([lang="ja"]) [data-l="en"]{display:block}
 @media (min-width:900px){
   .hw-in{max-width:1120px;gap:28px}
   .hw-hero{padding-top:72px;padding-bottom:72px}
-  .hw-hero .hw-in,.hw-six .hw-in,.hw-sc .hw-in{align-items:center;text-align:center}
+  .hw-hero .hw-in,.hw-res .hw-in{align-items:center;text-align:center}
   .hw-hero .lp-cap{font-size:64px}
   .hw-chips{justify-content:center}
   .hw-chips li{font-size:16px;padding:10px 18px}
   .hw-hero .lp-cta{width:100%}
-  .hw-card{width:100%;max-width:640px;text-align:left;padding:52px 36px 30px}
-  .hw-sixc{max-width:760px;display:grid;grid-template-columns:260px minmax(0,1fr);align-items:center;column-gap:28px}
-  .hw-hex svg{width:250px}
-  .hw-note{max-width:640px;font-size:17px}
+  .hw-cards{width:100%;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:stretch}
+  .hw-card{text-align:left;padding:56px 40px 34px;border-radius:40px}
+  .hw-eg{top:22px;left:40px;font-size:13px}
+  .hw-hex svg{width:230px}
+  .hw-sixl strong{font-size:19px}.hw-sixl span{font-size:15px}
+  .hw-scl li{font-size:19px;padding:16px 0}.hw-scl span{font-size:14px}
   .hw .lp-more .hw-in{max-width:760px}
   .hw .lp-end .hw-in{align-items:center;text-align:center;max-width:760px}
 }
