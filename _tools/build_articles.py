@@ -19,7 +19,7 @@ T = json.loads(subprocess.run(
 SRC = (ROOT / "_tools/index.src.html").read_text(encoding="utf-8")
 LP = (ROOT / "ja/index.html").read_text(encoding="utf-8")
 V = lambda name: re.search(re.escape(name) + r"\?v=([0-9a-z]+)", LP).group(1)
-CSS_V = "20261112h"
+CSS_V = "20261112i"
 
 
 def fill(s: str, d: dict) -> str:
@@ -68,14 +68,14 @@ HOW = {
 "ja": dict(
     title="阿吽（AUN）とは：日本人が聞く、約10分の日本語スピーキングテスト",
     desc="阿吽（AUN）は、日本語を話す力を測る約10分のスピーキングテストです。誰に向くか、何を聞かれるか、AI の振り返りと日本人が聞いた結果に何が入っているか、料金、録音の扱いをまとめました。",
-    kick="テストの中身", h1="阿吽（AUN）とは<br>日本人が聞く、約10分の日本語スピーキングテスト",
+    kick="阿吽について", h1="阿吽（AUN）とは<br>日本人が聞く、約10分の日本語スピーキングテスト",
     cta="無料でテストを受ける", by="阿吽（AUN）運営・株式会社1900", upd="最終更新日",
     toc="この記事の内容", rel="あわせて読む", rel_link=("scoring.html", "阿吽の点の決まり方：6つの力と、0 から 5 の段"),
     body=None),
 "en": dict(
     title="What AUN is: a 10-minute Japanese speaking test that a Japanese person listens to",
     desc="AUN is a Japanese speaking test that takes about 10 minutes. Who it is for, what you are asked, what the AI review and the Japanese listener’s result contain, the price, and what happens to your recordings.",
-    kick="How the test works", h1="What AUN is: a 10-minute Japanese speaking test that a Japanese person listens to",
+    kick="About AUN", h1="What AUN is: a 10-minute Japanese speaking test that a Japanese person listens to",
     cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
     toc="In this article", rel="Read next", rel_link=("scoring.html", "How AUN results are decided: six skills, scored 0 to 5"),
     body=None),
@@ -105,10 +105,10 @@ LV = {
 
 
 def levels(lang: str) -> str:
-    zero = {"ja": "判断できる話がほとんどない（無言、母語だけ、聞き取れない）。", "en": "Almost nothing to judge (silence, only your first language, or inaudible)."}[lang]
+    """One table per skill, levels 1 to 5 (level 0 is the same for every skill and is explained once in the text)."""
     out = []
     for name, what, rows in LV[lang]:
-        trs = f"<tr><th>0</th><td>{zero}</td></tr>" + "".join(f"<tr><th>{i + 1}</th><td>{r}</td></tr>" for i, r in enumerate(rows))
+        trs = "".join(f"<tr><th>{i + 1}</th><td>{r}</td></tr>" for i, r in enumerate(rows))
         out.append(f'<h3>{name}</h3><p>{what}</p><table class="art-lv">{trs}</table>')
     return "\n".join(out)
 
@@ -161,12 +161,12 @@ def section(c: dict, lang: str, extra: dict) -> str:
     body = c["body"]
     for k, v in extra.items():
         body = body.replace("{" + k + "}", v)
-    assert not re.search(r"\{[A-Z0-9]+\}", body), re.findall(r"\{[A-Z0-9]+\}", body)
+    assert not re.search(r"\{(?!TOC\})[A-Z0-9]+\}", body), re.findall(r"\{[A-Z0-9]+\}", body)
     body = label_cells(body)
     t = toc(body, c["toc"]).replace("{L}", lang)
     body = re.sub(r'<h2 id="([\w-]+)">', lambda m: f'<h2 id="{lang}-{m.group(1)}">', body)
-    lead_end = body.index("</table>") + len("</table>")   # the contents list goes after the lead and the facts table
-    body = body[:lead_end] + "\n" + f'<p class="art-ctaw"><a href="/test.html" class="lp-cta">{c["cta"]}</a></p>\n' + t + body[lead_end:]
+    assert body.count("{TOC}") == 1   # where the button and the contents list go: after the lead (and the facts table)
+    body = body.replace("{TOC}", f'<p class="art-ctaw"><a href="/test.html" class="lp-cta">{c["cta"]}</a></p>\n' + t)
     return f'''<article class="art" data-l="{lang}" lang="{lang}">
 <header class="art-head">
 <p class="lp-kick">{c["kick"]}</p>
