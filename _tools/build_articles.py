@@ -19,7 +19,7 @@ T = json.loads(subprocess.run(
 SRC = (ROOT / "_tools/index.src.html").read_text(encoding="utf-8")
 LP = (ROOT / "ja/index.html").read_text(encoding="utf-8")
 V = lambda name: re.search(re.escape(name) + r"\?v=([0-9a-z]+)", LP).group(1)
-CSS_V = "20261112e"
+CSS_V = "20261112f"
 
 
 def fill(s: str, d: dict) -> str:
@@ -555,6 +555,22 @@ SCORING = {
 }
 
 
+def label_cells(body: str) -> str:
+    """Comparison tables: copy each column heading onto its cells (data-label), so phones can show a row as a stacked card."""
+    def table(m):
+        rows = re.findall(r"<tr>(.*?)</tr>", m.group(0), flags=re.S)
+        heads = re.findall(r"<th>(.*?)</th>", rows[0])
+        out = m.group(0)
+        for r in rows[1:]:
+            cells = re.findall(r"<td>(.*?)</td>", r, flags=re.S)
+            new = r
+            for h, c in zip(heads[1:], cells):
+                new = new.replace(f"<td>{c}</td>", f'<td data-label="{html.escape(re.sub("<[^>]+>", "", h), quote=True)}">{c}</td>', 1)
+            out = out.replace(r, new, 1)
+        return out
+    return re.sub(r'<table class="art-cmp[^"]*">.*?</table>', table, body, flags=re.S)
+
+
 def toc(body: str, label: str) -> str:
     items = re.findall(r'<h2 id="([\w-]+)">(.*?)</h2>', body)
     return f'<nav class="art-toc" aria-label="{label}"><p>{label}</p><ol>' + "".join(f'<li><a href="#{{L}}-{i}">{t}</a></li>' for i, t in items) + "</ol></nav>"
@@ -565,6 +581,7 @@ def section(c: dict, lang: str, extra: dict) -> str:
     for k, v in extra.items():
         body = body.replace("{" + k + "}", v)
     assert not re.search(r"\{[A-Z0-9]+\}", body), re.findall(r"\{[A-Z0-9]+\}", body)
+    body = label_cells(body)
     t = toc(body, c["toc"]).replace("{L}", lang)
     body = re.sub(r'<h2 id="([\w-]+)">', lambda m: f'<h2 id="{lang}-{m.group(1)}">', body)
     lead_end = body.index("</table>") + len("</table>")   # the contents list goes after the lead and the facts table

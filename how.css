@@ -98,4 +98,16 @@ html[lang="ja"] [data-l="ja"],html:not([lang="ja"]) [data-l="en"]{display:block}
   .art table:not(.art-cmp):not(.art-lv) td{border-top:0;padding-top:2px}
   .art table:not(.art-cmp):not(.art-lv) tr:last-child th{border-bottom:0}
   .art-facts th{padding-top:12px}
+  /* comparison tables: each row becomes a card; the column heading sits above each value */
+  .art-scroll{overflow:visible;margin:0 0 22px;padding:0}
+  .art table.art-cmp{min-width:0;display:block}
+  .art-cmp tbody{display:grid;gap:12px}
+  .art-cmp tr{display:block;background:#fff;border-radius:18px;padding:14px 16px;box-shadow:0 6px 20px rgba(40,25,10,.06)}
+  .art-cmp tr:first-child{display:none}
+  .art-cmp th,.art-cmp td{display:block;width:auto;padding:0;border:0!important;background:none!important}
+  .art-cmp th{font-size:17px;margin-bottom:6px}
+  .art-cmp td{padding-top:8px;font-size:15px;line-height:1.7}
+  .art-cmp td::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--rowfg)}
+  .art-cmp tr:last-child{background:var(--pink)}
+  .art-sets tr:last-child{background:#fff}
 }
