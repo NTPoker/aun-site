@@ -64,7 +64,7 @@
     el.innerHTML = '<div class="s-foot-in">' +
       '<div class="s-foot-brand"><a href="' + home() + '" class="s-brand" aria-label="AUN 阿吽">' + MARK + '<span>AUN</span></a><p>' + d.op + '</p><p class="s-free">' + d.free + '</p><p><a href="mailto:hello@aunjapanese.com">hello@aunjapanese.com</a></p><p class="s-social"><a href="https://x.com/aun_japanese" target="_blank" rel="noopener" aria-label="X @aun_japanese"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L2.8 2h6.4l4.4 5.9L18.9 2zm-1.1 18h1.7L8.3 3.9H6.5L17.8 20z"/></svg><span>@aun_japanese</span></a></p></div>' +
       '<nav class="s-foot-cols" aria-label="Footer">' +
-      '<div><h2>' + d.svc + '</h2>' + a("/test.html", "cta") + a("/how-it-works.html", "how") + a(home() + "#faq", "faq") + "</div>" +
+      '<div><h2>' + d.svc + '</h2>' + a("/test.html", "cta") + a((lang === "ja" ? "/ja" : "") + "/how-it-works.html", "how") + a(home() + "#faq", "faq") + "</div>" +
       '<div><h2>' + d.co + '</h2>' + a("/about.html", "about") + a("/contact.html", "contact") + "</div>" +
       '<div><h2>' + d.rules + '</h2>' + a("/privacy.html", "privacy") + a("/terms.html", "terms") + a("/tokushoho.html", "legal") + "</div></nav>" +
       '<p class="s-copy">© 2026 1900 Co., Ltd.</p></div>';

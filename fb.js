@@ -28,10 +28,11 @@ export const track = (t, extra = {}, ga = {}) => {
   if (LOCAL) return;
   const ev = { t, page: page.slice(0, 39), lang: (document.documentElement.lang || "").slice(0, 9), src: src(), w: Math.min(10000, Math.round(innerWidth)), ...extra };
   if (t !== "signup") ev.sid = sid;
-  save("events", ev).catch(() => {});
+  // The database keeps only these; the store taps go to Google Analytics alone.
+  if (["view", "scroll", "cta", "signup", "lang"].includes(t)) save("events", ev).catch(() => {});
   // Mirror the meaningful actions to Google Analytics (page views and scrolls it measures itself).
   // cta_click = a person tapped a button; test_redirect = test.html passed them on to the test (it happens by itself).
-  const GA = { cta: page === "test.html" ? "test_redirect" : "cta_click", signup: "sign_up", lang: "select_language" };
+  const GA = { cta: page === "test.html" ? "test_redirect" : "cta_click", signup: "sign_up", lang: "select_language", store: "store_click", store_other: "store_show_all", applink: "app_link_click" };
   if (GA[t] && typeof window.gtag === "function") window.gtag("event", GA[t], { page: ev.page, src: ev.src, lang: ev.lang, ...ga });
 };
 

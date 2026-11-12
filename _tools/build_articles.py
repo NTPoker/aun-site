@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://aunjapanese.com"
+PUBLISHED = "2026-11-12"
 UPDATED = {"iso": "2026-11-12", "ja": "2026年11月12日", "en": "12 November 2026"}
 T = json.loads(subprocess.run(
     ["node", "-e", 'global.window={};require("./i18n.js");process.stdout.write(JSON.stringify(window.AUN_I18N))'],
@@ -73,9 +74,9 @@ HOW = {
     toc="この記事の内容", rel="あわせて読む", rel_link=("scoring.html", "阿吽の点の決まり方：6つの力と、0 から 5 の段"),
     body=None),
 "en": dict(
-    title="What AUN is: a 10-minute Japanese speaking test that a Japanese person listens to",
+    title="AUN Japanese speaking test: 10 minutes, scored by a Japanese listener",
     desc="AUN is a Japanese speaking test that takes about 10 minutes. Who it is for, what you are asked, what the AI review and the Japanese listener’s result contain, the price, and what happens to your recordings.",
-    kick="About AUN", h1="What AUN is: a 10-minute Japanese speaking test that a Japanese person listens to",
+    kick="About AUN", h1="What is AUN?<br>A 10-minute Japanese speaking test, scored by a Japanese listener",
     cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
     toc="In this article", rel="Read next", rel_link=("scoring.html", "How AUN results are decided: six skills, scored 0 to 5"),
     body=None),
@@ -126,7 +127,7 @@ SCORING = {
     desc="How results on the AUN Japanese speaking test are decided: what each level from 0 to 5 sounds like for the six skills, how the Japanese listener listens, how the ○△× marks for each situation are set, what the AI does, and the limits.",
     kick="How scoring works", h1="How AUN results are decided:<br>six skills, scored 0 to 5",
     cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
-    toc="In this article", rel="Read next", rel_link=("how-it-works.html", "What AUN is: a 10-minute Japanese speaking test that a Japanese person listens to"),
+    toc="In this article", rel="Read next", rel_link=("how-it-works.html", "What is AUN? A 10-minute Japanese speaking test, scored by a Japanese listener"),
     body=None),
 }
 
@@ -152,9 +153,20 @@ for _name, _c in (("how", HOW), ("scoring", SCORING)):   # the article text live
         _c[_lang]["body"] = (ROOT / f"_tools/articles/{_name}.{_lang}.html").read_text(encoding="utf-8")
 
 
+PREFIX = {"ja": "/ja/", "en": "/"}   # like the landing page: English at the root, Japanese under /ja/
+ARTICLES = ("how-it-works.html", "scoring.html")
+
+
+def link(href: str, lang: str) -> str:
+    """Site-absolute link: the two articles live per language, everything else at the root."""
+    if re.match(r"https?:|/|#|mailto:", href):
+        return href
+    return (PREFIX[lang] if href in ARTICLES else "/") + href
+
+
 def toc(body: str, label: str) -> str:
     items = re.findall(r'<h2 id="([\w-]+)">(.*?)</h2>', body)
-    return f'<nav class="art-toc" aria-label="{label}"><p>{label}</p><ol>' + "".join(f'<li><a href="#{{L}}-{i}">{t}</a></li>' for i, t in items) + "</ol></nav>"
+    return f'<nav class="art-toc" aria-label="{label}"><p>{label}</p><ol>' + "".join(f'<li><a href="#{i}">{t}</a></li>' for i, t in items) + "</ol></nav>"
 
 
 def section(c: dict, lang: str, extra: dict) -> str:
@@ -163,47 +175,66 @@ def section(c: dict, lang: str, extra: dict) -> str:
         body = body.replace("{" + k + "}", v)
     assert not re.search(r"\{(?!TOC\})[A-Z0-9]+\}", body), re.findall(r"\{[A-Z0-9]+\}", body)
     body = label_cells(body)
-    t = toc(body, c["toc"]).replace("{L}", lang)
-    body = re.sub(r'<h2 id="([\w-]+)">', lambda m: f'<h2 id="{lang}-{m.group(1)}">', body)
+    body = re.sub(r'<a href="([^"]+)"', lambda m: f'<a href="{link(m.group(1), lang)}"', body)
+    t = toc(body, c["toc"])
     assert body.count("{TOC}") == 1   # where the button and the contents list go: after the lead (and the facts table)
     body = body.replace("{TOC}", f'<p class="art-ctaw"><a href="/test.html" class="lp-cta">{c["cta"]}</a></p>\n' + t)
-    return f'''<article class="art" data-l="{lang}" lang="{lang}">
+    return f'''<article class="art" lang="{lang}">
 <header class="art-head">
 <p class="lp-kick">{c["kick"]}</p>
 <h1>{c["h1"]}</h1>
 <p class="art-meta">{c["by"]}　｜　{c["upd"]}：<time datetime="{UPDATED["iso"]}">{UPDATED[lang]}</time></p>
 </header>
 {body}
-<aside class="art-rel"><p>{c["rel"]}</p><a href="/{c["rel_link"][0]}">{c["rel_link"][1]}</a></aside>
+<aside class="art-rel"><p>{c["rel"]}</p><a href="{link(c["rel_link"][0], lang)}">{c["rel_link"][1]}</a></aside>
 <p class="art-ctaw end"><a href="/test.html" class="lp-cta">{c["cta"]}</a></p>
 </article>'''
 
 
+OG_LOCALE = {"ja": "ja_JP", "en": "en_US"}
+SITE_NAME = {"ja": "阿吽 AUN", "en": "AUN"}
+OTHER_LANGS = ("id", "vi", "zh", "zh-TW", "ko")   # no article in these yet: the language picker sends them to the English one
+
+
 def page(name: str, content: dict, extras) -> None:
-    ja = content["ja"]
-    faq_html = re.search(r'<div class="art-faq">(.*?)</div>', ja["body"], flags=re.S).group(1)
-    faq = re.findall(r"<h3>(.*?)</h3>\s*<p>(.*?)</p>", faq_html, flags=re.S)
-    assert faq, name
     strip = lambda s: re.sub(r"<[^>]+>", "", s)
-    url = f"{SITE}/{name}"
-    ld = [{"@context": "https://schema.org", "@type": "Article", "headline": ja["title"], "description": ja["desc"], "inLanguage": ["ja", "en"],
-           "datePublished": UPDATED["iso"], "dateModified": UPDATED["iso"], "mainEntityOfPage": url,
-           "author": {"@type": "Organization", "name": "阿吽 AUN", "url": SITE + "/"},
-           "publisher": {"@type": "Organization", "name": "1900 Co., Ltd.", "url": SITE + "/about.html"}},
-          {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in faq]}]
-    head = LP.split("<title>")[0].split("<!-- meta:start -->")[0]
-    head = re.sub(r"<html[^>]*>", '<html lang="ja">', head)
-    head = re.sub(r"<!-- 生成ファイル.*?-->", "<!-- 生成ファイル（_tools/build_articles.py）。直すのは _tools/build_articles.py -->", head)
     e = lambda s: html.escape(s, quote=True)
-    out = head + f'''<title>{e(ja["title"])}｜阿吽 AUN</title>
-<meta name="description" content="{e(ja["desc"])}">
+    urls = {l: f"{SITE}{PREFIX[l]}{name}" for l in content}
+    for lang, c in content.items():
+        faq_html = re.search(r'<div class="art-faq">(.*?)</div>', c["body"], flags=re.S).group(1)
+        faq = re.findall(r"<h3>(.*?)</h3>\s*<p>(.*?)</p>", faq_html, flags=re.S)
+        assert faq, (name, lang)
+        url = urls[lang]
+        home = SITE + PREFIX[lang]
+        ld = [{"@context": "https://schema.org", "@type": "Article", "headline": c["title"], "description": c["desc"], "inLanguage": lang,
+               "datePublished": PUBLISHED, "dateModified": UPDATED["iso"], "mainEntityOfPage": url, "image": f"{SITE}/og/og3-{lang}.png",
+               "author": {"@type": "Organization", "name": "AUN (阿吽)", "url": SITE + "/"},
+               "publisher": {"@type": "Organization", "name": "1900 Co., Ltd.", "alternateName": "株式会社1900", "url": SITE + "/about.html"}},
+              {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": lang,
+               "mainEntity": [{"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in faq]},
+              {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+                  {"@type": "ListItem", "position": 1, "name": SITE_NAME[lang], "item": home},
+                  {"@type": "ListItem", "position": 2, "name": c["title"], "item": url}]}]
+        head = LP.split("<title>")[0].split("<!-- meta:start -->")[0]
+        # Japanese is its own page (fixed). The English page also serves the languages that have no article, so the
+        # header keeps the visitor's language; a visitor who reads Japanese is sent to the Japanese article (data-lang-home).
+        attrs = 'lang="ja" data-fixed-lang="ja"' if lang == "ja" else 'lang="en" data-lang-home'
+        head = re.sub(r"<html[^>]*>", f"<html {attrs}>", head)
+        head = re.sub(r"<!-- 生成ファイル.*?-->", "<!-- 生成ファイル（_tools/build_articles.py）。直すのは _tools/build_articles.py と _tools/articles/ -->", head)
+        alts = "".join(f'<link rel="alternate" hreflang="{l}" href="{u}" data-lang="{l}">\n' for l, u in urls.items())
+        alts += f'<link rel="alternate" hreflang="x-default" href="{urls["en"]}">\n'
+        if lang == "ja":   # for the language picker only (no hreflang: these are not translations)
+            alts += "".join(f'<link rel="alternate" href="{urls["en"]}" data-lang="{l}">\n' for l in OTHER_LANGS)
+        out = head + f'''<title>{e(c["title"])}｜{SITE_NAME[lang]}</title>
+<meta name="description" content="{e(c["desc"])}">
 <link rel="canonical" href="{url}">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="阿吽 AUN">
-<meta property="og:title" content="{e(ja["title"])}">
-<meta property="og:description" content="{e(ja["desc"])}">
+{alts}<meta property="og:type" content="article">
+<meta property="og:site_name" content="{SITE_NAME[lang]}">
+<meta property="og:locale" content="{OG_LOCALE[lang]}">
+<meta property="og:title" content="{e(c["title"])}">
+<meta property="og:description" content="{e(c["desc"])}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}/og/og3-ja.png">
+<meta property="og:image" content="{SITE}/og/og3-{lang}.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0F0F0F">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
@@ -218,17 +249,31 @@ def page(name: str, content: dict, extras) -> None:
 <body class="lp hw">
 <header id="site-top" class="s-top"></header><script src="/site.js?v={V("site.js")}"></script>
 <main>
-{section(content["ja"], "ja", extras("ja"))}
-{section(content["en"], "en", extras("en"))}
+{section(c, lang, extras(lang))}
 </main>
 <footer id="site-foot" class="s-foot"></footer>
-<script src="/legal.js?v=20261103q"></script>
+<script type="module" src="/art.js?v=20261112c"></script>
 </body>
 </html>
 '''
-    (ROOT / name).write_text(out, encoding="utf-8")
-    words = len(strip(content["en"]["body"]).split())
-    print(f"wrote {name}: {len(out)} bytes, ja {len(strip(ja['body']))} chars, en {words} words")
+        dest = ROOT / PREFIX[lang].strip("/") / name
+        dest.write_text(out, encoding="utf-8")
+        n = len(strip(c["body"])) if lang == "ja" else len(strip(c["body"]).split())
+        print(f"wrote {dest.relative_to(ROOT)}: {len(out)} bytes, {n} {'chars' if lang == 'ja' else 'words'}")
+
+
+def sitemap() -> None:
+    """The articles, each language with its alternates (build_lang_pages.py keeps whatever else is listed)."""
+    sm = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+    sm = re.sub(r"<url><loc>[^<]*/(?:" + "|".join(re.escape(a) for a in ARTICLES) + r")</loc>.*?</url>\n", "", sm)
+    add = ""
+    for name in ARTICLES:
+        urls = {l: f"{SITE}{PREFIX[l]}{name}" for l in PREFIX}
+        alts = "".join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{u}"/>' for l, u in urls.items())
+        alts += f'<xhtml:link rel="alternate" hreflang="x-default" href="{urls["en"]}"/>'
+        add += "".join(f"<url><loc>{u}</loc><lastmod>{UPDATED['iso']}</lastmod>{alts}</url>\n" for u in urls.values())
+    (ROOT / "sitemap.xml").write_text(sm.replace("</urlset>", add + "</urlset>"), encoding="utf-8")
+    print("updated sitemap.xml")
 
 
 CAP = {"ja": ["テスト中の画面。答えに足りない所があると、AI が聞き返します。", "AI の振り返りの例。伝わりにくいかもしれない所と、言い換えの例。", "日本人が聞いた結果の例。話せる場面と、6つの力の点。"],
@@ -242,3 +287,4 @@ def how_extras(lang):
 
 page("how-it-works.html", HOW, how_extras)
 page("scoring.html", SCORING, lambda lang: {"LEVELS": levels(lang), "CARDS": cards(lang)})
+sitemap()

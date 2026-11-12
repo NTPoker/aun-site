@@ -17,11 +17,11 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;800&family=Zen+Old+Mincho:wght@700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Yomogi&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap">
 <link rel="stylesheet" href="legal.css?v=20261103q">
-<link rel="stylesheet" href="site.css?v=20261112a">
+<link rel="stylesheet" href="site.css?v=20261112b">
 <link rel="stylesheet" href="test.css?v=20261103x">
 </head>
 <body>
-<header id="site-top" class="s-top"></header><script src="site.js?v=20261112a"></script>
+<header id="site-top" class="s-top"></header><script src="site.js?v=20261112b"></script>
 <main class="go1">
 <p id="state" class="state" role="status" aria-live="polite" data-t="starting"></p>
 <p id="err" class="shut" hidden data-t="err"></p>
@@ -44,7 +44,7 @@ document.addEventListener("aun:lang", e => apply(e.detail.lang));
 const shut = id => { $("state").hidden = true; $(id).hidden = false; };
 const wait = ms => new Promise(r => setTimeout(r, ms));
 // analytics load in the background and never hold the test link for long
-const fb = import("./fb.js?v=20261111c").catch(() => null);
+const fb = import("./fb.js?v=20261112c").catch(() => null);
 const track = (...a) => fb.then(m => m && m.track(...a));
 track("view");
 try {

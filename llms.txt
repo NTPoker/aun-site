@@ -1,0 +1,27 @@
+# AUN (阿吽)
+
+> AUN is a Japanese speaking test that takes about 10 minutes on a phone. Right after the test you get an AI review (no scores). If you ask, a Japanese listener hears your recording and returns scores for six skills (0 to 5), marks for 13 everyday situations, and the one thing to fix next. It is currently free. Run by 1900 Co., Ltd., Tokyo.
+
+Key facts:
+- What it measures: speaking only (content, organisation, fluency, grammar, vocabulary, pronunciation). It does not measure reading, listening, writing, keigo, or two-way interaction.
+- Who decides the scores: a Japanese listener, not AI. AI prepares the transcript and a draft.
+- The listener's result is available once a week, on request. It usually takes a few days.
+- No booking. Works in a phone browser, or in the iPhone and Android apps.
+- The result is a guide to your speaking. It is not an official certificate and cannot be used for visas, admissions or job applications.
+- AUN scores do not correspond to JLPT levels (N1 to N5) or CEFR levels. The JLPT has no speaking section; AUN can be taken alongside it.
+
+## Articles
+
+- [What is AUN? A 10-minute Japanese speaking test, scored by a Japanese listener](https://aunjapanese.com/how-it-works.html): what you get, who it is for, what you are asked, how recordings are handled
+- [How AUN results are decided: six skills, scored 0 to 5](https://aunjapanese.com/scoring.html): the six skills, how the listener scores, the situation marks, the level descriptions, the limits
+- [阿吽（AUN）とは（日本語）](https://aunjapanese.com/ja/how-it-works.html)
+- [阿吽の点の決まり方（日本語）](https://aunjapanese.com/ja/scoring.html)
+
+## Pages
+
+- [Home (English)](https://aunjapanese.com/)
+- [ホーム（日本語）](https://aunjapanese.com/ja/)
+- [Take the test](https://aunjapanese.com/test.html)
+- [About the company](https://aunjapanese.com/about.html)
+- [Privacy Policy](https://aunjapanese.com/privacy.html)
+- [Terms of Use](https://aunjapanese.com/terms.html)

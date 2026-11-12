@@ -66,3 +66,6 @@ html.s-intro-on{overflow:hidden}
 @media (max-width:759px){.s-kanji{display:none}}
 
 .s-app{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.s-app span{color:#BDB8AC}.s-app a{display:inline-flex;line-height:0}.s-app img.play{margin:-9px -8px}
+/* landing page: links to the articles, under the questions */
+.lp-read{margin:20px 0 0;display:flex;flex-wrap:wrap;gap:0 24px;font-size:15px;font-weight:700}
+.lp-read a{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:4px}

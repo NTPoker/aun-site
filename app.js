@@ -1,4 +1,10 @@
-import { src, track } from "./fb.js?v=20261111c";
+import { src } from "./src.js";
+
+// Measurement loads apart from the page: where Firebase cannot be reached, the page still works and nothing is counted.
+let send = null;
+const early = [];
+const track = (...a) => { if (send) send(...a); else if (early.length < 50) early.push(a); };
+import("./fb.js?v=20261112c").then(m => { send = m.track; early.splice(0).forEach(a => send(...a)); }).catch(() => { early.length = 0; });
 
 const T = window.AUN_I18N;
 let lang = "ja";
@@ -51,9 +57,9 @@ const os = (() => {
   return "";
 })();
 if (os) document.documentElement.dataset.os = os;
-document.querySelectorAll(".allstores").forEach(a => a.addEventListener("click", e => { e.preventDefault(); a.closest(".appsec")?.querySelector(".badges")?.classList.add("all"); a.parentElement.hidden = true; track("store_other", { os }); }));
-document.querySelectorAll(".badges a").forEach(a => a.addEventListener("click", () => track("store", { dest: /apple/.test(a.href) ? "ios" : "android", os, place: a.closest("#app") ? "app" : "other" })));
-document.querySelectorAll(".applink").forEach(a => a.addEventListener("click", () => track("applink", { os })));
+document.querySelectorAll(".allstores").forEach(a => a.addEventListener("click", e => { e.preventDefault(); a.closest(".appsec")?.querySelector(".badges")?.classList.add("all"); a.parentElement.hidden = true; track("store_other", {}, { os }); }));
+document.querySelectorAll(".badges a").forEach(a => a.addEventListener("click", () => track("store", {}, { dest: /apple/.test(a.href) ? "ios" : "android", os, placement: a.closest("#app") ? "app" : "other" })));
+document.querySelectorAll(".applink").forEach(a => a.addEventListener("click", () => track("applink", {}, { os })));
 // Hero demo: plays the sample result once like a short video, then stays on the result.
 const demo = document.getElementById("demo");
 if (demo) {
