@@ -113,6 +113,7 @@ body.lp .s-cta{border-radius:999px}
 
 /* method: three big rounded cards */
 .lp-method{background:var(--paper2)}
+.lp-method .lp-kick,.lp-app .lp-kick{color:var(--red-d)}
 .lp-method .lp-in{gap:18px}
 .lp-mk{text-align:center}
 .lp-mh{text-align:center;margin-bottom:10px}
