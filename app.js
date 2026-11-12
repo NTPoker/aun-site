@@ -42,7 +42,11 @@ const tag = src();
 const tagged = !tag.startsWith("ref:") && tag !== "direct" && tag !== "other";
 document.addEventListener("click", e => {
   const a = e.target.closest && e.target.closest("a[href]");
-  if (!a || !/(^|\/)test\.html($|[?#])/.test(a.getAttribute("href"))) return;
+  if (!a) return;
+  // The source tag also travels to the articles, so a visitor who reads one first is still counted under their source.
+  const art = /^(\/ja)?\/(how-it-works|scoring)\.html(#.*)?$/.exec(a.getAttribute("href"));
+  if (art && tagged) { a.href = a.getAttribute("href").replace(/(#.*)?$/, "?src=" + encodeURIComponent(tag) + (art[3] || "")); return; }
+  if (!/(^|\/)test\.html($|[?#])/.test(a.getAttribute("href"))) return;
   // Keep the visitor's source tag when they move on to the test page (header and footer links too).
   if (tagged && !/[?&]src=/.test(a.getAttribute("href"))) a.href = "/test.html?src=" + encodeURIComponent(tag);
   const sec = a.closest("header") ? "header" : a.closest("footer") ? "footer" : a.closest(".lp-hero") ? "hero" : a.closest(".lp-end") ? "end" : "body";

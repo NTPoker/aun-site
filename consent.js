@@ -15,8 +15,8 @@
   var bar = document.createElement("div");
   bar.className = "consent-bar";
   bar.innerHTML = (ja
-    ? '<p>利用状況の分析に Cookie（Google アナリティクス）を使ってもよいですか？ <a href="privacy.html">プライバシーポリシー</a></p>'
-    : '<p>May we use cookies (Google Analytics) to understand how the site is used? <a href="privacy.html">Privacy Policy</a></p>')
+    ? '<p>利用状況の分析に Cookie（Google アナリティクス）を使ってもよいですか？ <a href="/privacy.html">プライバシーポリシー</a></p>'
+    : '<p>May we use cookies (Google Analytics) to understand how the site is used? <a href="/privacy.html">Privacy Policy</a></p>')
     + '<div><button type="button" data-v="denied">' + (ja ? "使わない" : "No") + '</button>'
     + '<button type="button" data-v="granted">' + (ja ? "使ってよい" : "Yes") + '</button></div>';
   bar.addEventListener("click", function (e) {

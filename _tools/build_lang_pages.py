@@ -90,13 +90,14 @@ for lang, m in META.items():
     '<meta http-equiv="refresh" content="0; url=/"></head><body><a href="/">AUN</a></body></html>\n', encoding="utf-8")
 
 # sitemap: the landing page in every language (with alternates) + the legal pages
-sm = re.sub(r"<lastmod>.*?</lastmod>", "", (ROOT / "sitemap.xml").read_text(encoding="utf-8"))
+sm = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
 langs = {SITE + v["path"] for v in META.values()} | {SITE + "/en/"}
-others = [u for u in re.findall(r"<loc>(.*?)</loc>", sm) if u not in langs and u.rstrip("/") != SITE]
+# every other entry is kept whole (the articles carry their own alternates and dates: build_articles.py)
+others = [u for u in re.findall(r"<url>.*?</url>", sm, flags=re.S) if re.search(r"<loc>(.*?)</loc>", u).group(1) not in langs and re.search(r"<loc>(.*?)</loc>", u).group(1).rstrip("/") != SITE]
 alts = "".join(f'<xhtml:link rel="alternate" hreflang="{v["hreflang"]}" href="{SITE}{v["path"]}"/>' for v in META.values())
 alts += f'<xhtml:link rel="alternate" hreflang="x-default" href="{SITE}/"/>'
 urls = "".join(f"<url><loc>{SITE}{v['path']}</loc>{alts}</url>\n" for v in META.values())
-urls += "".join(f"<url><loc>{u}</loc></url>\n" for u in others)
+urls += "".join(u + "\n" for u in others)
 (ROOT / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
     'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + "</urlset>\n", encoding="utf-8")

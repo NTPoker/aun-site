@@ -20,7 +20,7 @@ T = json.loads(subprocess.run(
 SRC = (ROOT / "_tools/index.src.html").read_text(encoding="utf-8")
 LP = (ROOT / "ja/index.html").read_text(encoding="utf-8")
 V = lambda name: re.search(re.escape(name) + r"\?v=([0-9a-z]+)", LP).group(1)
-CSS_V = "20261112i"
+CSS_V = "20261112j"
 
 
 def fill(s: str, d: dict) -> str:
@@ -169,7 +169,7 @@ def toc(body: str, label: str) -> str:
     return f'<nav class="art-toc" aria-label="{label}"><p>{label}</p><ol>' + "".join(f'<li><a href="#{i}">{t}</a></li>' for i, t in items) + "</ol></nav>"
 
 
-def section(c: dict, lang: str, extra: dict) -> str:
+def section(c: dict, lang: str, extra: dict, other: str) -> str:
     body = c["body"]
     for k, v in extra.items():
         body = body.replace("{" + k + "}", v)
@@ -183,7 +183,7 @@ def section(c: dict, lang: str, extra: dict) -> str:
 <header class="art-head">
 <p class="lp-kick">{c["kick"]}</p>
 <h1>{c["h1"]}</h1>
-<p class="art-meta">{c["by"]}　｜　{c["upd"]}：<time datetime="{UPDATED["iso"]}">{UPDATED[lang]}</time></p>
+<p class="art-meta">{c["by"]}　｜　{c["upd"]}：<time datetime="{UPDATED["iso"]}">{UPDATED[lang]}</time>　｜　<a href="{other}" hreflang="{"en" if lang == "ja" else "ja"}" lang="{"en" if lang == "ja" else "ja"}">{"English" if lang == "ja" else "日本語"}</a></p>
 </header>
 {body}
 <aside class="art-rel"><p>{c["rel"]}</p><a href="{link(c["rel_link"][0], lang)}">{c["rel_link"][1]}</a></aside>
@@ -217,8 +217,8 @@ def page(name: str, content: dict, extras) -> None:
                   {"@type": "ListItem", "position": 2, "name": c["title"], "item": url}]}]
         head = LP.split("<title>")[0].split("<!-- meta:start -->")[0]
         # Japanese is its own page (fixed). The English page also serves the languages that have no article, so the
-        # header keeps the visitor's language; a visitor who reads Japanese is sent to the Japanese article (data-lang-home).
-        attrs = 'lang="ja" data-fixed-lang="ja"' if lang == "ja" else 'lang="en" data-lang-home'
+        # header keeps the visitor's language. No automatic redirect: each address always shows its own language (a link under the title leads to the other).
+        attrs = 'lang="ja" data-fixed-lang="ja"' if lang == "ja" else 'lang="en"'
         head = re.sub(r"<html[^>]*>", f"<html {attrs}>", head)
         head = re.sub(r"<!-- 生成ファイル.*?-->", "<!-- 生成ファイル（_tools/build_articles.py）。直すのは _tools/build_articles.py と _tools/articles/ -->", head)
         alts = "".join(f'<link rel="alternate" hreflang="{l}" href="{u}" data-lang="{l}">\n' for l, u in urls.items())
@@ -249,10 +249,10 @@ def page(name: str, content: dict, extras) -> None:
 <body class="lp hw">
 <header id="site-top" class="s-top"></header><script src="/site.js?v={V("site.js")}"></script>
 <main>
-{section(c, lang, extras(lang))}
+{section(c, lang, extras(lang), PREFIX["en" if lang == "ja" else "ja"] + name)}
 </main>
 <footer id="site-foot" class="s-foot"></footer>
-<script type="module" src="/art.js?v=20261112c"></script>
+<script type="module" src="/art.js?v=20261112d"></script>
 </body>
 </html>
 '''
