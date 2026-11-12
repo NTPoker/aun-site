@@ -30,6 +30,8 @@ html[lang="ja"] [data-l="ja"],html:not([lang="ja"]) [data-l="en"]{display:block}
 .art-cmp tr:first-child th{font-size:13px;color:var(--rowfg);border-top:0;width:auto}
 .art-cmp th{width:26%}
 .art-cmp tr:last-child th,.art-cmp tr:last-child td{background:var(--pink)}
+.art-sets tr:last-child th,.art-sets tr:last-child td{background:none}
+.art-sets{min-width:480px}
 .art table.art-lv th{width:44px;font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;text-align:center}
 .art-toc{background:var(--paper2);border-radius:20px;padding:18px 22px;margin:0 0 8px}
 .art-toc p{margin:0 0 6px;font-size:13px;font-weight:700;color:var(--rowfg)}

@@ -19,7 +19,7 @@ T = json.loads(subprocess.run(
 SRC = (ROOT / "_tools/index.src.html").read_text(encoding="utf-8")
 LP = (ROOT / "ja/index.html").read_text(encoding="utf-8")
 V = lambda name: re.search(re.escape(name) + r"\?v=([0-9a-z]+)", LP).group(1)
-CSS_V = "20261112d"
+CSS_V = "20261112e"
 
 
 def fill(s: str, d: dict) -> str:
@@ -73,6 +73,7 @@ HOW = {
     toc="この記事の内容", rel="あわせて読む", rel_link=("scoring.html", "阿吽の点はどう決まる？ 6つの力と 0〜5 の読み方"),
     body="""
 <p class="art-lead">阿吽（AUN）は、日本語を話す力を測るスピーキングテストです。スマホで約10分、質問を聞いて声で答えます。出した直後に AI の振り返りが届きます。頼めば、日本人があなたの録音を聞いて、6つの力の点と、困らずに話せる場面を返します。</p>
+<p>日本語能力試験（JLPT）には、話す試験がありません。阿吽は、読む・聞くはできるのに話すのに自信がない人が、話す力を日本人の耳で確かめるためのテストです。</p>
 
 <table class="art-facts">
 <tr><th>測るもの</th><td>日本語を話す力（6つの力：伝わる内容・まとまり・流暢さ・文法・語彙・発音）</td></tr>
@@ -107,8 +108,8 @@ HOW = {
 <p>分かることは3つです。</p>
 <ol>
 <li><strong>いまの位置</strong>：自己紹介、雑談、面接、会議など、どの場面なら日本人と困らずに話せるか。</li>
-<li><strong>次に直す所</strong>：6つの力のうち、先に直すと話せる場面が増えるものを1つ。</li>
-<li><strong>前との違い</strong>：2回目からは、アプリの記録で、6つの力の点が前回からどう変わったか。</li>
+<li><strong>次に直す所</strong>：話せる場面を増やすために、6つの力のうち先に直すとよいものを1つ。</li>
+<li><strong>前との違い</strong>：日本人が聞いた結果が2回分あると、アプリの「記録」で、6つの力の点が前回からどう変わったかが見られます。</li>
 </ol>
 <p>点の決まり方と、0〜5 のそれぞれが指す話し方は、<a href="scoring.html">阿吽の点はどう決まる？</a>にまとめています。</p>
 
@@ -119,11 +120,14 @@ HOW = {
 <li>マイクの確認をして、練習を1問します。</li>
 <li>全員が同じ3問に答えます：自分のこと、お店で頼む、最近あった出来事。</li>
 <li>ここまでの答えをもとに、残りの質問が「標準の組」か「やさしい組」に決まります。</li>
-<li>説明します。標準の組は、よく食べる料理を、食べたことがない人に説明します。やさしい組は、好きな食べ物を話します。</li>
-<li>意見を言います。標準の組は、そのあと反対の意見にも答えます。</li>
-<li>AI の聞き手が、あなたの答えを受けて4問、質問を続けます。</li>
-<li>考えを話します。標準の組は、少し込み入った話題です。よく話せた人には、さらに2問あります。</li>
 </ol>
+<div class="art-scroll"><table class="art-cmp art-sets">
+<tr><th>残りの質問</th><th>標準の組</th><th>やさしい組</th></tr>
+<tr><th>説明する</th><td>よく食べる料理を、食べたことがない人に説明する</td><td>好きな食べ物を話す</td></tr>
+<tr><th>意見を言う</th><td>意見を言い、そのあと反対の意見に答える</td><td>意見と理由を言う</td></tr>
+<tr><th>AI の聞き手と話す</th><td>あなたの答えを受けて、4問</td><td>あなたの答えを受けて、やさしい言葉で4問</td></tr>
+<tr><th>考えを話す</th><td>少し込み入った話題。よく話せた人には、さらに2問</td><td>身近な話題。意見がよく言えた人は、標準の組の話題に変わります</td></tr>
+</table></div>
 <table>
 <tr><th>答える時間</th><td>質問によって15〜75秒。上限なので、話し終えたら次へ進めます。</td></tr>
 <tr><th>準備の時間</th><td>質問によって0〜20秒。すぐ話しはじめてもかまいません。</td></tr>
@@ -154,7 +158,7 @@ HOW = {
 <table>
 <tr><th>頼める回数</th><td>週1回まで</td></tr>
 <tr><th>頼める期間</th><td>テストを受けてから14日以内</td></tr>
-<tr><th>届くまで</th><td>数日。届く見込みの日は、頼んだ時に表示します。</td></tr>
+<tr><th>届くまで</th><td>数日。受け付けた順に聞くので、混んでいる時は延びます。届く見込みの日は、頼んだ時に表示します。</td></tr>
 <tr><th>届く場所</th><td>アプリの「記録」、またはメール</td></tr>
 <tr><th>料金</th><td>いまは無料です。</td></tr>
 </table>
@@ -171,7 +175,7 @@ HOW = {
 <tr><th>試験官と話す会話テスト</th><td>人とのやりとりを含めた話す力。証明として使えるものもあります。</td><td>予約が要り、費用と時間がかかります。</td></tr>
 <tr><th>AI だけで採点する会話テスト</th><td>すぐに出る点。何度でも受けやすい。</td><td>日本人が実際に聞いて分かるか、とは別の物差しです。</td></tr>
 <tr><th>AI の会話アプリ、先生のレッスン</th><td>話す練習と、その場の直し。</td><td>いまの位置を、同じ物差しで測るものではありません。</td></tr>
-<tr><th>阿吽（AUN）</th><td>日本人が録音を聞いて分かるか。6つの力の点、話せる場面、次に直す所。</td><td>公的な証明ではありません。やりとりと敬語は測っていません。</td></tr>
+<tr><th>阿吽（AUN）</th><td>日本人が録音を聞いて分かるか。6つの力の点、話せる場面、次に直す所。</td><td>やりとりと敬語は測っていません。聞き手は、いまは1人です。</td></tr>
 </table></div>
 
 <h2 id="price">料金と、受け方は？</h2>
@@ -179,7 +183,7 @@ HOW = {
 <p>静かな場所で、マイクのあるスマホを用意してください。約10分、続けて話せる時間が必要です。</p>
 
 <h2 id="privacy">録音は、どうなりますか？</h2>
-<p>録音は、東京の Google Cloud に保存します。消す時期は次のとおりです。</p>
+<p>録音は、東京の Google Cloud に保存します。文字起こしと、AI の振り返り・下書きの作成には、OpenAI の API を使います（API で送ったデータは、同社の AI の学習には使われません）。消す時期は次のとおりです。</p>
 <table>
 <tr><th>日本人に頼んだ回</th><td>結果が届いてから30日後</td></tr>
 <tr><th>頼まなかった回</th><td>1年後</td></tr>
@@ -198,7 +202,8 @@ HOW = {
 
 <h2 id="faq">よくある質問</h2>
 <div class="lp-faq">
-<details><summary>日本語能力試験（JLPT）の代わりになりますか？</summary><p>なりません。阿吽は話す力だけを見るテストで、公的な証明ではありません。JLPT には話す試験がないので、話す力を知るために、あわせて使うことはできます。</p></details>
+<details><summary>日本語能力試験（JLPT）の代わりになりますか？</summary><p>なりません。JLPT は読む力と聞く力の試験で、阿吽は話す力だけを見ます。JLPT には話す試験がないので、話す力を知るために、あわせて使えます。</p></details>
+<details><summary>Duolingo English Test の日本語版のようなものですか？</summary><p>似ている所と、違う所があります。似ているのは、家からオンラインで短い時間で受けられる所です。違うのは、阿吽は日本語の話す力だけを見ること、点を決めるのが AI ではなく日本人の聞き手であること、結果が公的な証明ではないことです。</p></details>
 <details><summary>何回でも受けられますか？</summary><p>テストは何回でも受けられ、毎回 AI の振り返りが届きます。日本人に聞いてもらえるのは、週1回までです。</p></details>
 <details><summary>初級でも受けられますか？</summary><p>受けられます。最初の3問の答えをもとに、やさしい組の質問に切り替わります。</p></details>
 <details><summary>AI が点を付けるのですか？</summary><p>付けません。受けた人に届く点は、日本人が録音を聞いて決めます。AI は、聞き取った言葉と下書きを用意し、テストの中で質問を作ります。</p></details>
@@ -213,6 +218,7 @@ HOW = {
     toc="In this article", rel="Read next", rel_link=("scoring.html", "How AUN results are decided: six skills, scored 0 to 5"),
     body="""
 <p class="art-lead">AUN (阿吽) is a test of spoken Japanese. You listen to questions on your phone and answer out loud, for about 10 minutes. Right after you submit, you get an AI review. If you ask, a Japanese person listens to your recording and sends back scores for six skills and the situations you can already handle.</p>
+<p>The Japanese-Language Proficiency Test (JLPT) has no speaking section. AUN is for people who can read and listen but are not confident speaking, and who want a Japanese person’s ear on how well they speak.</p>
 
 <table class="art-facts">
 <tr><th>What it measures</th><td>Spoken Japanese, as six skills: content, organisation, fluency, grammar, vocabulary and pronunciation</td></tr>
@@ -247,8 +253,8 @@ HOW = {
 <p>Three things.</p>
 <ol>
 <li><strong>Where you are now</strong>: the situations, such as introducing yourself, small talk, a job interview or a meeting, in which you can talk with Japanese people without trouble.</li>
-<li><strong>What to fix next</strong>: the one skill, out of six, that would open up more situations if you improved it first.</li>
-<li><strong>What has changed</strong>: from your second test, the Record screen in the app shows how each of the six scores moved since last time.</li>
+<li><strong>What to fix next</strong>: the one skill, out of six, to work on first in order to open up more situations.</li>
+<li><strong>What has changed</strong>: once you have two results from a Japanese listener, the Record screen in the app shows how each of the six scores moved since last time.</li>
 </ol>
 <p>How the scores are decided, and what each level from 0 to 5 sounds like, is explained in <a href="scoring.html">How AUN results are decided</a>.</p>
 
@@ -259,11 +265,14 @@ HOW = {
 <li>You check your microphone and do one practice question.</li>
 <li>Everyone answers the same three questions: about yourself, asking for something in a shop, and something that happened recently.</li>
 <li>Based on those answers, the rest of the test is either the standard set or the easier set.</li>
-<li>You explain something. In the standard set, you explain a dish you often eat to someone who has never had it. In the easier set, you talk about a food you like.</li>
-<li>You give an opinion. In the standard set, you then respond to the opposite view.</li>
-<li>An AI interviewer asks four more questions based on your answers.</li>
-<li>You give your thinking on a topic. In the standard set, the topic is more complex, and people who handle it well get two more questions.</li>
 </ol>
+<div class="art-scroll"><table class="art-cmp art-sets">
+<tr><th>The rest of the test</th><th>Standard set</th><th>Easier set</th></tr>
+<tr><th>Explain</th><td>Explain a dish you often eat to someone who has never had it</td><td>Talk about a food you like</td></tr>
+<tr><th>Give an opinion</th><td>Give an opinion, then respond to the opposite view</td><td>Give an opinion and a reason</td></tr>
+<tr><th>Talk with an AI interviewer</th><td>Four questions based on your answers</td><td>Four questions based on your answers, in simple words</td></tr>
+<tr><th>Give your thinking</th><td>A more complex topic; two more questions if you handle it well</td><td>An everyday topic. If your opinion answer went well, you get the standard topic instead</td></tr>
+</table></div>
 <table>
 <tr><th>Answer time</th><td>15 to 75 seconds, depending on the question. It is an upper limit: when you finish speaking, you move on.</td></tr>
 <tr><th>Preparation time</th><td>0 to 20 seconds, depending on the question. You can start speaking straight away.</td></tr>
@@ -294,7 +303,7 @@ HOW = {
 <table>
 <tr><th>How often</th><td>Once a week</td></tr>
 <tr><th>When to ask</th><td>Within 14 days of taking the test</td></tr>
-<tr><th>How long it takes</th><td>A few days. You are shown the expected date when you ask.</td></tr>
+<tr><th>How long it takes</th><td>A few days. Recordings are listened to in the order received, so it takes longer when it is busy. You are shown the expected date when you ask.</td></tr>
 <tr><th>Where it arrives</th><td>On the Record screen in the app, or by email</td></tr>
 <tr><th>Price</th><td>Free for now.</td></tr>
 </table>
@@ -311,7 +320,7 @@ HOW = {
 <tr><th>Interview tests with a live examiner</th><td>Speaking, including real back-and-forth. Some can be used as proof.</td><td>You need to book, and they cost more time and money.</td></tr>
 <tr><th>Speaking tests scored only by AI</th><td>A score right away. Easy to retake.</td><td>It is a different yardstick from whether a Japanese person understands you.</td></tr>
 <tr><th>AI conversation apps and lessons with a teacher</th><td>Practice, and corrections on the spot.</td><td>They do not measure where you are on a fixed scale.</td></tr>
-<tr><th>AUN</th><td>Whether a Japanese person understands your recording: six scores, the situations you can handle, and what to fix next.</td><td>Not an official certificate. Back-and-forth and keigo are not measured.</td></tr>
+<tr><th>AUN</th><td>Whether a Japanese person understands your recording: six scores, the situations you can handle, and what to fix next.</td><td>Back-and-forth and keigo are not measured. There is one listener at present.</td></tr>
 </table></div>
 
 <h2 id="price">What does it cost, and how do you take it?</h2>
@@ -319,7 +328,7 @@ HOW = {
 <p>Find a quiet place and use a phone with a working microphone. You need about 10 minutes in which you can speak without interruption.</p>
 
 <h2 id="privacy">What happens to your recordings?</h2>
-<p>Recordings are stored on Google Cloud in Tokyo. They are deleted as follows.</p>
+<p>Recordings are stored on Google Cloud in Tokyo. Transcription, the AI review and the draft are produced with the OpenAI API (data sent through the API is not used to train its models). Recordings are deleted as follows.</p>
 <table>
 <tr><th>You asked for a listener</th><td>30 days after your result arrives</td></tr>
 <tr><th>You did not ask</th><td>After one year</td></tr>
@@ -338,7 +347,8 @@ HOW = {
 
 <h2 id="faq">Frequently asked questions</h2>
 <div class="lp-faq">
-<details><summary>Can AUN replace the JLPT?</summary><p>No. AUN looks only at speaking and is not an official certificate. The JLPT has no speaking section, so you can use AUN alongside it to find out how well you speak.</p></details>
+<details><summary>Can AUN replace the JLPT?</summary><p>No. The JLPT tests reading and listening; AUN looks only at speaking. The JLPT has no speaking section, so you can use AUN alongside it to find out how well you speak.</p></details>
+<details><summary>Is it like a Japanese version of the Duolingo English Test?</summary><p>In some ways. Like it, AUN is short and taken online from home. Unlike it, AUN looks only at spoken Japanese, the scores are decided by a Japanese listener rather than by AI, and the result is not an official certificate.</p></details>
 <details><summary>Can I take it as many times as I like?</summary><p>You can take the test as often as you like, and you get an AI review every time. You can ask for a Japanese listener once a week.</p></details>
 <details><summary>Can beginners take it?</summary><p>Yes. Based on your first three answers, the test switches to the easier set of questions.</p></details>
 <details><summary>Does AI give the scores?</summary><p>No. The scores you receive are decided by a Japanese person who listens to your recording. The AI prepares a transcript and a draft, and writes some of the questions during the test.</p></details>
@@ -403,7 +413,7 @@ SCORING = {
 <tr><th>力</th><th>見るもの</th><th>含めないもの</th></tr>
 <tr><th>伝わる内容</th><td>詳しさ、理由や気持ちが分かるか、誤解なく伝わったか</td><td>話の順番（まとまりで見ます）、意見の立派さ</td></tr>
 <tr><th>まとまり</th><td>出来事の順番、「だから」「でも」などのつなぎ、理由・例・結論の筋道</td><td>1つ1つの文の正しさ（文法で見ます）</td></tr>
-<tr><th>流暢さ</th><td>間の長さと数、言い直し、話す速さ</td><td>音の分かりやすさ（発音で見ます）</td></tr>
+<tr><th>流暢さ</th><td>間の長さと数、言い直し、話す速さ</td><td>言葉が出ずに止まった時間（語彙で見ます）、音の分かりやすさ（発音で見ます）</td></tr>
 <tr><th>文法</th><td>単語の並び → 短い文 → 文をつなぐ → 複雑な文。崩れで誤解しないか</td><td>言葉の選び方（語彙で見ます）。自然な省略では下げません</td></tr>
 <tr><th>語彙</th><td>言葉の広さ、合う言葉を選べるか、言い換えられるか</td><td>文の組み立て（文法で見ます）</td></tr>
 <tr><th>発音</th><td>別の言葉に聞こえないか、聞く側の負担、区切りや抑揚</td><td>間や速さ（流暢さで見ます）、なまりの強さそのもの</td></tr>
@@ -421,22 +431,22 @@ SCORING = {
 <li>質問ごとに、見る力は先に決めてあります。短い質問では一部の力だけを、長く話す質問では6つ全部を見ます。</li>
 <li>それぞれの力について、段ごとの説明と例に照らして、いちばん近い段を選びます。</li>
 <li>その答えの大半がどの段に近いかで選びます。一度の言い間違いや、一か所の詰まりでは下げません。</li>
-<li>何も話していない答えや、録音の問題で聞けない答えは、採点しません。</li>
+<li>何も話していない答えは、その質問で見る力を 0 として数えます。録音の問題で聞けない答えは、数えません。</li>
 </ol>
-<p>質問ごとに付けた段をまとめて、6つの力の点になります。</p>
+<p>力ごとの点は、2つ以上の答えで見せた、いちばん高い段です。1回だけうまく言えた段ではなく、くり返し出せる段を取るためです。AI の聞き返しのあとに出た答えは、伝わる内容とまとまりを1段下げて数えます。自分から話せた段と分けるためです。</p>
 
 <h2 id="scenes">場面の○△×は、どう決まりますか？</h2>
 <p>場面ごとに、「この場面で困らずに話すには、どの力がどの段まで要るか」を決めてあります。たとえば雑談は、相手を待たせずに話が続くことが大事なので、流暢さを高めに見ます。電話の予約は、顔が見えないので、発音を高めに見ます。</p>
 <table>
 <tr><th>○ 困らずに話せる</th><td>その場面に要る力が、全部その段以上</td></tr>
-<tr><th>△ あと少し</th><td>要る力のうち1つだけが、1段足りない</td></tr>
+<tr><th>△ あと少し</th><td>要る力のうち1つだけが、1段足りない（その力が 2 以上の時）</td></tr>
 <tr><th>× まだ</th><td>それ以外</td></tr>
-<tr><th>判定できない</th><td>要る力が、今回の答えからは見えなかった（やさしい組で受けた時の、上の場面など）</td></tr>
+<tr><th>判定できない</th><td>要る力が、今回の答えからは十分に見えなかった</td></tr>
 </table>
 <p>いまの場面は13個です：自己紹介、買い物、役所・病院、電話で予約、雑談、遊びの相談、飲み会で話す、指示を受けて動く、接客、面接、打ち合わせ・会議、授業で発言、ゼミで議論。</p>
 
 <h2 id="next">「次に直す所」は、どう選びますか？</h2>
-<p>△（あと少し）の場面で、いちばん多く足りていない力を選びます。その力を1段上げると、○になる場面が増えるからです。点がいちばん低い力とは限りません。結果には、いまの話し方と、1つ上の段の話し方をあわせて示します。</p>
+<p>△と×の場面で、足りていないことがいちばん多い力を選びます。△（あと少し）の場面は、×の場面より重く数えます。○に近い場面から先に届くようにするためです。同じ数の時は、点が低い方を選びます。点がいちばん低い力とは限りません。結果には、いまの話し方と、1つ上の段の話し方をあわせて示します。</p>
 
 <h2 id="ai">AI は、何をしていますか？</h2>
 <table>
@@ -484,7 +494,7 @@ SCORING = {
 <tr><th>Skill</th><th>What is looked at</th><th>What is left out</th></tr>
 <tr><th>Content</th><td>Detail, whether reasons and feelings are clear, whether it came across without misunderstanding</td><td>The order of the talk (that is organisation); how impressive the opinion is</td></tr>
 <tr><th>Organisation</th><td>The order of events, linking words such as “so” and “but”, the line from reason to example to conclusion</td><td>Whether each sentence is correct (that is grammar)</td></tr>
-<tr><th>Fluency</th><td>The length and number of pauses, restarts, speed</td><td>How clear the sounds are (that is pronunciation)</td></tr>
+<tr><th>Fluency</th><td>The length and number of pauses, restarts, speed</td><td>Time stopped because a word would not come (that is vocabulary); how clear the sounds are (that is pronunciation)</td></tr>
 <tr><th>Grammar</th><td>From words side by side, to short sentences, to joined sentences, to complex ones; whether errors mislead</td><td>Word choice (that is vocabulary). Natural omissions do not lower the score.</td></tr>
 <tr><th>Vocabulary</th><td>Range of words, whether the right word is chosen, whether you can rephrase</td><td>How the sentence is built (that is grammar)</td></tr>
 <tr><th>Pronunciation</th><td>Whether it sounds like a different word, the effort for the listener, phrasing and intonation</td><td>Pauses and speed (that is fluency); how strong an accent is in itself</td></tr>
@@ -502,22 +512,22 @@ SCORING = {
 <li>For each question, the skills to look at are fixed in advance. Short questions use only some of the skills; longer answers use all six.</li>
 <li>For each skill, he chooses the closest level by comparing your answer with the description and examples for each level.</li>
 <li>He chooses by what most of the answer is like. One slip or one stumble does not lower the level.</li>
-<li>Answers with no speech, or that cannot be heard because of a recording problem, are not scored.</li>
+<li>An answer with no speech counts as 0 for the skills that question looks at. An answer that cannot be heard because of a recording problem is not counted.</li>
 </ol>
-<p>The levels given question by question are combined into your six scores.</p>
+<p>Your score for each skill is the highest level you showed in at least two answers. This takes the level you can produce repeatedly, not one you reached once. Answers given after an AI follow-up count one level lower for content and organisation, to separate them from what you said unprompted.</p>
 
 <h2 id="scenes">How are the ○△× marks for each situation set?</h2>
 <p>For each situation, we have set which skills are needed, and at what level, to talk without trouble. Small talk, for example, depends on keeping the talk going without making the other person wait, so it asks more of fluency. Booking by phone asks more of pronunciation, because the other person cannot see your face.</p>
 <table>
 <tr><th>○ You can handle it</th><td>Every skill the situation needs is at or above the required level</td></tr>
-<tr><th>△ Almost</th><td>Just one of the needed skills is one level short</td></tr>
+<tr><th>△ Almost</th><td>Just one of the needed skills is one level short (and that skill is at 2 or above)</td></tr>
 <tr><th>× Not yet</th><td>Anything else</td></tr>
-<tr><th>Cannot judge</th><td>Your answers did not show a skill the situation needs (for example, the higher situations when you took the easier set)</td></tr>
+<tr><th>Cannot judge</th><td>Your answers did not show enough of a skill the situation needs</td></tr>
 </table>
 <p>There are 13 situations at present: introducing yourself, shopping, city office or hospital, booking by phone, small talk, making plans with friends, talking at a drinking party, following instructions at work, customer service, job interview, meetings, speaking up in class, and seminar discussion.</p>
 
 <h2 id="next">How is “what to fix next” chosen?</h2>
-<p>It is the skill that is most often the one missing in your △ (almost) situations, because raising it by one level turns the most situations into ○. It is not always your lowest score. The result shows how you speak now and how the next level up sounds.</p>
+<p>It is the skill that most often falls short across your △ and × situations. △ (almost) situations count for more than × ones, so that you reach the situations closest to ○ first. On a tie, the lower score is chosen. It is not always your lowest score. The result shows how you speak now and how the next level up sounds.</p>
 
 <h2 id="ai">What does the AI do?</h2>
 <table>
