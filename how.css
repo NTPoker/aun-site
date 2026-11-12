@@ -16,6 +16,7 @@ html[lang="ja"] [data-l="ja"],html:not([lang="ja"]) [data-l="en"]{display:block}
 .art ul,.art ol{margin:0 0 18px;padding-left:1.4em}
 .art li{margin:0 0 8px}
 .art strong{font-weight:700}
+.art mark{background:linear-gradient(transparent 62%,#F6D2C9 62%);color:inherit;font-weight:700;padding:0 1px}
 .art table{width:100%;border-collapse:collapse;margin:6px 0 22px;font-size:16px;line-height:1.75}
 .art th,.art td{text-align:left;vertical-align:top;padding:12px 10px;border-top:1px solid #DDD7CB}
 .art tr:last-child th,.art tr:last-child td{border-bottom:1px solid #DDD7CB}

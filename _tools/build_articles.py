@@ -19,7 +19,7 @@ T = json.loads(subprocess.run(
 SRC = (ROOT / "_tools/index.src.html").read_text(encoding="utf-8")
 LP = (ROOT / "ja/index.html").read_text(encoding="utf-8")
 V = lambda name: re.search(re.escape(name) + r"\?v=([0-9a-z]+)", LP).group(1)
-CSS_V = "20261112g"
+CSS_V = "20261112h"
 
 
 def fill(s: str, d: dict) -> str:
