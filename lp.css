@@ -1,5 +1,5 @@
 /* LP (2026-11-10): Duolingo structure in the store-screenshot look. Each section = one big headline + one picture. Text never sits on the photo. */
-:root{--paper:#F2EEE4;--card:#FFFFFF;--ink:#141414;--ink2:#55514A;--row:#E6E0D3;--rowfg:#6E675B;--pink:#F5E9E5;--red:#C93D27;--red-d:#B8321E;
+:root{--paper:#F2EEE4;--paper2:#E9E3D3;--card:#FFFFFF;--ink:#141414;--ink2:#55514A;--row:#E6E0D3;--rowfg:#6E675B;--pink:#F5E9E5;--red:#C93D27;--red-d:#B8321E;
 --shadow:0 18px 40px rgba(60,40,20,.10),0 1px 0 rgba(60,40,20,.04);
 --serif:'Zen Old Mincho','Hiragino Mincho ProN',serif;--sans:'Zen Kaku Gothic New','Archivo','Hiragino Sans',system-ui,sans-serif}
 *{box-sizing:border-box}
@@ -76,7 +76,7 @@ body.lp .s-cta{border-radius:999px}
 
 
 /* app: the record screen shows the level moving over time */
-.lp-app{background:var(--paper)}
+.lp-app{background:var(--paper2)}
 .lp-app .lp-kick{display:flex;align-items:center;gap:8px}
 .lp-app .badges{margin-top:-4px}
 .lp-phone{width:min(250px,70vw);margin:0 auto;aspect-ratio:9/17;border-radius:40px;background:#141414;padding:10px;box-shadow:0 30px 60px rgba(40,25,10,.22)}
@@ -112,7 +112,7 @@ body.lp .s-cta{border-radius:999px}
 .lp-band-s{margin:0;font-size:15px;opacity:.9}
 
 /* method: three big rounded cards */
-.lp-method{background:var(--paper)}
+.lp-method{background:var(--paper2)}
 .lp-method .lp-in{gap:18px}
 .lp-mk{text-align:center}
 .lp-mh{text-align:center;margin-bottom:10px}
