@@ -8,7 +8,7 @@ hreflang, absolute asset paths, and the page text filled in from i18n.js so craw
 /en/ (published briefly on 11/4) becomes a pointer to /.
   - writes sitemap.xml with the language alternates.
 Run after editing _tools/index.src.html, i18n.js or _tools/meta.json:  python3 _tools/build_lang_pages.py
-Open Graph images (og/og-<lang>.png) come from _tools/build_og_images.sh.
+Open Graph images (og/og3-<lang>.png) come from _tools/build_og_images.sh.
 """
 import html
 import json
