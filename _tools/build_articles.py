@@ -165,14 +165,14 @@ JLPT = {
 LEVELS_ART = {
 "ja": dict(
     title="日本語の話す力のレベル：CEFR の A1〜C2 は、どんな話し方か",
-    desc="日本語の話す力のレベルは、CEFR の A1〜C2 の6段階で表すのが主な目安です。各レベルがどんな話し方か、JLPT の N1〜N5 と CEFR の参考表示の関係、ACTFL のレベル、自分のレベルを知る3つの方法をまとめました。",
+    desc="日本語の話す力のレベルを表す目安の1つに、CEFR の A1〜C2 の6段階があります。各レベルがどんな話し方か、JLPT の N1〜N5 と CEFR の参考表示の関係、ACTFL のレベル、自分のレベルを知る3つの方法をまとめました。",
     iso="2026-11-13", top_cta=False, kick="話す力のレベル", h1='<span class="nw">日本語の</span><span class="nw">話す力のレベル</span><br><span class="nw">CEFR の A1〜C2 は、</span><span class="nw">どんな話し方か</span>',
     cta="無料でテストを受ける", by="阿吽（AUN）運営・株式会社1900", upd="最終更新日",
     toc="この記事の内容", rel="あわせて読む", more="記事の一覧", rels=("jlpt-speaking-test.html", "scoring.html"),
     body=None),
 "en": dict(
     title="Japanese speaking levels: what CEFR A1 to C2 sound like, and how JLPT levels relate",
-    desc="Japanese speaking levels are usually described on the CEFR scale, A1 to C2. What each level sounds like, how JLPT N5 to N1 and the CEFR reference on score reports relate to speaking, the ACTFL levels, and three ways to find out your own level.",
+    desc="One scale used to describe Japanese speaking levels is the CEFR, A1 to C2. What each level sounds like, how JLPT N5 to N1 and the CEFR reference on score reports relate to speaking, the ACTFL levels, and three ways to find out your own level.",
     iso="2026-11-13", top_cta=False, kick="Speaking levels", h1="Japanese speaking levels:<br>what CEFR A1 to C2 sound like",
     cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
     toc="In this article", rel="Read next", more="All articles", rels=("jlpt-speaking-test.html", "scoring.html"),
@@ -323,11 +323,11 @@ def write(name: str, lang: str, title: str, desc: str, urls: dict, ld: list, mai
 HUB_T = {
 "ja": dict(title="阿吽の記事：日本語の話す力と、その確かめ方", name="記事", kick="記事", h1="日本語の話す力と、<br>その確かめ方",
            desc="日本語の話す力について、阿吽（AUN）が書いた記事の一覧です。JLPT に話す試験はあるか、受かったのに話せない理由、話す力のレベルの目安、阿吽のテストの中身と点の決まり方。",
-           lead="日本語の話す力について、よく調べられている問いに答える記事です。ほかの試験についての説明は、公式サイトで確かめて、出典にリンクしています。",
+           lead="日本語の話す力について、よく調べられている問いに答える記事です。ほかの試験や枠組みについての説明は、公式サイトで確かめて、出典にリンクしています。",
            groups=("話す力を知る", "阿吽（AUN）について"), cta="無料でテストを受ける", upd="更新"),
 "en": dict(title="AUN articles: Japanese speaking, and how to check it", name="Articles", kick="Articles", h1="Japanese speaking,<br>and how to check it",
            desc="Articles by AUN about spoken Japanese: whether the JLPT has a speaking test, why you can pass and still not speak, what the speaking levels mean, and how the AUN test and its scoring work.",
-           lead="Articles that answer common questions about spoken Japanese. Statements about other tests are checked on the official sites and linked to the source.",
+           lead="Articles that answer common questions about spoken Japanese. Statements about other tests and frameworks are checked on the official sites and linked to the source.",
            groups=("Understanding your speaking", "About AUN"), cta="Take the test free", upd="Updated"),
 }
 
