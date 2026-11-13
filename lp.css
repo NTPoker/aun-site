@@ -359,3 +359,20 @@ body.lp .s-cta{border-radius:999px}
 .lp-phone .hx svg{width:46%;max-width:150px}
 .lp-phone .gr .was{color:#8A8D97}
 @media (min-width:900px){.lp-phone .hx svg{width:66%;max-width:215px}.lp-phone .rc.hx{padding:14px 0 10px}}
+
+/* what AUN is: between the hero and the steps, for a visitor who knows nothing yet */
+.lp-what{padding-top:52px}
+.lp-what .lp-in{gap:16px;max-width:760px}
+.lp-what .lp-kick{color:var(--red-d)}
+.lp-what .lp-cap{font-size:32px}
+.lp-wd{margin:4px 0 0;font-size:17px;line-height:1.9;color:var(--ink)}
+.lp-wf{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.lp-wf li{padding:8px 16px;border-radius:999px;background:#fff;font-size:15px;font-weight:700;box-shadow:0 4px 14px rgba(40,25,10,.06)}
+@media (min-width:900px){
+  .lp-what{padding:24px 56px 120px}
+  .lp-what .lp-in{display:flex;flex-direction:column;gap:24px;max-width:860px;align-items:center;text-align:center}
+  .lp-what .lp-cap{font-size:56px}
+  .lp-wd{font-size:20px;max-width:720px}
+  .lp-wf{justify-content:center;gap:12px}
+  .lp-wf li{font-size:17px;padding:10px 22px}
+}
