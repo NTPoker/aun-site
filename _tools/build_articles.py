@@ -12,15 +12,21 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://aunjapanese.com"
-PUBLISHED = "2026-11-12"
-UPDATED = {"iso": "2026-11-12", "ja": "2026年11月12日", "en": "12 November 2026"}
+DATE = "2026-11-12"   # published and last updated, unless the article sets iso=
+MONTHS = "January February March April May June July August September October November December".split()
+
+
+def day(iso: str, lang: str) -> str:
+    y, m, d = (int(x) for x in iso.split("-"))
+    return f"{y}年{m}月{d}日" if lang == "ja" else f"{d} {MONTHS[m - 1]} {y}"
 T = json.loads(subprocess.run(
     ["node", "-e", 'global.window={};require("./i18n.js");process.stdout.write(JSON.stringify(window.AUN_I18N))'],
     cwd=ROOT, check=True, capture_output=True, text=True).stdout)
 SRC = (ROOT / "_tools/index.src.html").read_text(encoding="utf-8")
 LP = (ROOT / "ja/index.html").read_text(encoding="utf-8")
 V = lambda name: re.search(re.escape(name) + r"\?v=([0-9a-z]+)", LP).group(1)
-CSS_V = "20261112k"
+CSS_V = "20261113a"
+ART_V = "20261113a"
 
 
 def fill(s: str, d: dict) -> str:
@@ -71,14 +77,14 @@ HOW = {
     desc="阿吽（AUN）は、日本語を話す力を測る約10分のスピーキングテストです。誰に向くか、何を聞かれるか、AI の振り返りと日本人が聞いた結果に何が入っているか、料金、録音の扱いをまとめました。",
     kick="阿吽について", h1="阿吽（AUN）とは<br>日本人が聞く、約10分の日本語スピーキングテスト",
     cta="無料でテストを受ける", by="阿吽（AUN）運営・株式会社1900", upd="最終更新日",
-    toc="この記事の内容", rel="あわせて読む", rel_link=("scoring.html", "阿吽の点の決まり方：6つの力と、0 から 5 の段"),
+    toc="この記事の内容", rel="あわせて読む", more="記事の一覧", rels=("scoring.html", "jlpt-speaking-test.html"),
     body=None),
 "en": dict(
     title="AUN Japanese speaking test: 10 minutes, scored by a Japanese listener",
     desc="AUN is a Japanese speaking test that takes about 10 minutes. Who it is for, what you are asked, what the AI review and the Japanese listener’s result contain, the price, and what happens to your recordings.",
     kick="About AUN", h1="What is AUN?<br>A 10-minute Japanese speaking test, scored by a Japanese listener",
     cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
-    toc="In this article", rel="Read next", rel_link=("scoring.html", "How AUN results are decided: six skills, scored 0 to 5"),
+    toc="In this article", rel="Read next", more="All articles", rels=("scoring.html", "jlpt-speaking-test.html"),
     body=None),
 }
 
@@ -120,14 +126,14 @@ SCORING = {
     desc="阿吽（AUN）の結果がどう決まるかを説明します。6つの力（伝わる内容・まとまり・流暢さ・文法・語彙・発音）の 0〜5 がどんな話し方を指すか、日本人の聞き手がどう聞くか、場面の○△×の決まり方、AI の役割、限界。",
     kick="点の決まり方", h1="阿吽の点の決まり方<br>6つの力と、0 から 5 の段",
     cta="無料でテストを受ける", by="阿吽（AUN）運営・株式会社1900", upd="最終更新日",
-    toc="この記事の内容", rel="あわせて読む", rel_link=("how-it-works.html", "阿吽（AUN）とは：日本人が聞く、約10分の日本語スピーキングテスト"),
+    toc="この記事の内容", rel="あわせて読む", more="記事の一覧", rels=("how-it-works.html", "japanese-speaking-levels.html"),
     body=None),
 "en": dict(
     title="How AUN results are decided: six skills, scored 0 to 5",
     desc="How results on the AUN Japanese speaking test are decided: what each level from 0 to 5 sounds like for the six skills, how the Japanese listener listens, how the ○△× marks for each situation are set, what the AI does, and the limits.",
     kick="How scoring works", h1="How AUN results are decided:<br>six skills, scored 0 to 5",
     cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
-    toc="In this article", rel="Read next", rel_link=("how-it-works.html", "What is AUN? A 10-minute Japanese speaking test, scored by a Japanese listener"),
+    toc="In this article", rel="Read next", more="All articles", rels=("how-it-works.html", "japanese-speaking-levels.html"),
     body=None),
 }
 
@@ -141,14 +147,55 @@ JLPT = {
     desc="日本語能力試験（JLPT）には、N1〜N5 のどのレベルにも話す試験がありません。科目は言語知識・読解・聴解で、追加の予定も今のところありません。N2・N1 でも話せるとは限らない理由と、話す力を確かめる3つの方法。",
     top_cta=False, kick="JLPT と話す力", h1='<span class="nw">JLPT に</span><span class="nw">話す試験はある？</span><br><span class="nw">日本語の話す力を</span><span class="nw">確かめる3つの方法</span>',
     cta="無料でテストを受ける", by="阿吽（AUN）運営・株式会社1900", upd="最終更新日",
-    toc="この記事の内容", rel="あわせて読む", rel_link=("how-it-works.html", "阿吽（AUN）とは：日本人が聞く、約10分の日本語スピーキングテスト"),
+    toc="この記事の内容", rel="あわせて読む", more="記事の一覧", rels=("passed-jlpt-cant-speak.html", "japanese-speaking-levels.html", "how-it-works.html"),
     body=None),
 "en": dict(
     title="Does the JLPT have a speaking test? No: three ways to check your spoken Japanese",
     desc="The JLPT has no speaking test at any level, N1 to N5. Its sections are language knowledge, reading and listening, and there are currently no plans to add speaking. Why passing N2 or N1 does not necessarily mean you can speak, and three ways to check your spoken Japanese.",
     top_cta=False, kick="The JLPT and speaking", h1="Does the JLPT have a speaking test?<br>Three ways to check your spoken Japanese",
     cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
-    toc="In this article", rel="Read next", rel_link=("how-it-works.html", "What is AUN? A 10-minute Japanese speaking test, scored by a Japanese listener"),
+    toc="In this article", rel="Read next", more="All articles", rels=("passed-jlpt-cant-speak.html", "japanese-speaking-levels.html", "how-it-works.html"),
+    body=None),
+}
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Article 4: speaking levels (CEFR, ACTFL, and what the JLPT's CEFR reference does not cover). Facts from the official sites.
+# ---------------------------------------------------------------------------------------------------------------------
+LEVELS_ART = {
+"ja": dict(
+    title="日本語の話す力のレベル：CEFR の A1〜C2 は、どんな話し方か",
+    desc="日本語の話す力のレベルは、CEFR の A1〜C2 の6段階で表すのが主な目安です。各レベルがどんな話し方か、JLPT の N1〜N5 と CEFR の参考表示の関係、ACTFL のレベル、自分のレベルを知る3つの方法をまとめました。",
+    iso="2026-11-13", top_cta=False, kick="話す力のレベル", h1='<span class="nw">日本語の</span><span class="nw">話す力のレベル</span><br><span class="nw">CEFR の A1〜C2 は、</span><span class="nw">どんな話し方か</span>',
+    cta="無料でテストを受ける", by="阿吽（AUN）運営・株式会社1900", upd="最終更新日",
+    toc="この記事の内容", rel="あわせて読む", more="記事の一覧", rels=("jlpt-speaking-test.html", "scoring.html"),
+    body=None),
+"en": dict(
+    title="Japanese speaking levels: what CEFR A1 to C2 sound like, and how JLPT levels relate",
+    desc="Japanese speaking levels are usually described on the CEFR scale, A1 to C2. What each level sounds like, how JLPT N5 to N1 and the CEFR reference on score reports relate to speaking, the ACTFL levels, and three ways to find out your own level.",
+    iso="2026-11-13", top_cta=False, kick="Speaking levels", h1="Japanese speaking levels:<br>what CEFR A1 to C2 sound like",
+    cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
+    toc="In this article", rel="Read next", more="All articles", rels=("jlpt-speaking-test.html", "scoring.html"),
+    body=None),
+}
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Article 5: passed the JLPT but cannot speak (the six skills as a way to see where one gets stuck, and a self-check)
+# ---------------------------------------------------------------------------------------------------------------------
+CANT = {
+"ja": dict(
+    title="JLPT N2 に受かったのに話せないのはなぜ？ 「話せない」を6つに分けて確かめる",
+    desc="JLPT は話す力を測っていないので、N2 や N1 に受かっても、話す力がどのくらいかは合格からは分かりません。「話せない」を6つ（伝わる内容・まとまり・流暢さ・文法・語彙・発音）に分けて、録音で自分で確かめる手順をまとめました。",
+    iso="2026-11-13", top_cta=False, kick="JLPT と話す力", h1='<span class="nw">JLPT N2 に受かったのに</span><span class="nw">話せないのはなぜ？</span><br><span class="nw">「話せない」を</span><span class="nw">6つに分けて確かめる</span>',
+    cta="無料でテストを受ける", by="阿吽（AUN）運営・株式会社1900", upd="最終更新日",
+    toc="この記事の内容", rel="あわせて読む", more="記事の一覧", rels=("jlpt-speaking-test.html", "japanese-speaking-levels.html"),
+    body=None),
+"en": dict(
+    title="Passed JLPT N2 but can’t speak Japanese? Six things to check",
+    desc="The JLPT does not measure speaking, so passing N2 or N1 does not tell you how well you speak. Split “can’t speak” into six skills (content, organisation, fluency, grammar, vocabulary, pronunciation) and check them yourself with a one-minute recording.",
+    iso="2026-11-13", top_cta=False, kick="The JLPT and speaking", h1="Passed JLPT N2 but can’t speak Japanese?<br>Six things to check",
+    cta="Take the test free", by="AUN, run by 1900 Co., Ltd.", upd="Last updated",
+    toc="In this article", rel="Read next", more="All articles", rels=("jlpt-speaking-test.html", "japanese-speaking-levels.html"),
     body=None),
 }
 
@@ -169,20 +216,25 @@ def label_cells(body: str) -> str:
     return re.sub(r'<table class="art-cmp[^"]*">.*?</table>', table, body, flags=re.S)
 
 
-for _name, _c in (("how", HOW), ("scoring", SCORING), ("jlpt", JLPT)):   # the article text lives in _tools/articles/<name>.<lang>.html
+for _name, _c in (("how", HOW), ("scoring", SCORING), ("jlpt", JLPT), ("levels", LEVELS_ART), ("cant", CANT)):   # the article text lives in _tools/articles/<name>.<lang>.html
     for _lang in ("ja", "en"):
         _c[_lang]["body"] = (ROOT / f"_tools/articles/{_name}.{_lang}.html").read_text(encoding="utf-8")
 
 
 PREFIX = {"ja": "/ja/", "en": "/"}   # like the landing page: English at the root, Japanese under /ja/
-ARTICLES = ("how-it-works.html", "scoring.html", "jlpt-speaking-test.html")
+HUB = "articles.html"
+# In the order of the list page: first the questions people search for, then the two about AUN itself.
+REG = {"jlpt-speaking-test.html": JLPT, "passed-jlpt-cant-speak.html": CANT, "japanese-speaking-levels.html": LEVELS_ART,
+       "how-it-works.html": HOW, "scoring.html": SCORING}
+ARTICLES = tuple(REG)
+iso_of = lambda c: c["ja"].get("iso", DATE)
 
 
 def link(href: str, lang: str) -> str:
     """Site-absolute link: the two articles live per language, everything else at the root."""
     if re.match(r"https?:|/|#|mailto:", href):
         return href
-    return (PREFIX[lang] if href in ARTICLES else "/") + href
+    return (PREFIX[lang] if href.split("#")[0] in ARTICLES + (HUB,) else "/") + href
 
 
 def toc(body: str, label: str) -> str:
@@ -205,10 +257,10 @@ def section(c: dict, lang: str, extra: dict, other: str) -> str:
 <header class="art-head">
 <p class="lp-kick">{c["kick"]}</p>
 <h1>{c["h1"]}</h1>
-<p class="art-meta">{c["by"]}　｜　{c["upd"]}：<time datetime="{UPDATED["iso"]}">{UPDATED[lang]}</time>　｜　<a href="{other}" hreflang="{"en" if lang == "ja" else "ja"}" lang="{"en" if lang == "ja" else "ja"}">{"English" if lang == "ja" else "日本語"}</a></p>
+<p class="art-meta">{c["by"]}　｜　{c["upd"]}：<time datetime="{c.get("iso", DATE)}">{day(c.get("iso", DATE), lang)}</time>　｜　<a href="{other}" hreflang="{"en" if lang == "ja" else "ja"}" lang="{"en" if lang == "ja" else "ja"}">{"English" if lang == "ja" else "日本語"}</a></p>
 </header>
 {body}
-<aside class="art-rel"><p>{c["rel"]}</p><a href="{link(c["rel_link"][0], lang)}">{c["rel_link"][1]}</a></aside>
+<aside class="art-rel"><p>{c["rel"]}</p>{"".join(f'<a href="{link(r, lang)}">{REG[r][lang]["title"]}</a>' for r in c["rels"])}<a class="more" href="{link(HUB, lang)}">{c["more"]}</a></aside>
 <p class="art-ctaw end"><a href="/test.html" class="lp-cta">{c["cta"]}</a></p>
 </article>'''
 
@@ -218,43 +270,28 @@ SITE_NAME = {"ja": "阿吽 AUN", "en": "AUN"}
 OTHER_LANGS = ("id", "vi", "zh", "zh-TW", "ko")   # no article in these yet: the language picker sends them to the English one
 
 
-def page(name: str, content: dict, extras) -> None:
-    strip = lambda s: re.sub(r"<[^>]+>", "", s)
+def write(name: str, lang: str, title: str, desc: str, urls: dict, ld: list, main: str, og_type: str) -> int:
+    """One page in one language: the landing page's head, this page's meta, the shared header and footer."""
     e = lambda s: html.escape(s, quote=True)
-    urls = {l: f"{SITE}{PREFIX[l]}{name}" for l in content}
-    for lang, c in content.items():
-        faq_html = re.search(r'<div class="art-faq">(.*?)</div>', c["body"], flags=re.S).group(1)
-        faq = re.findall(r"<h3>(.*?)</h3>\s*<p>(.*?)</p>", faq_html, flags=re.S)
-        assert faq, (name, lang)
-        url = urls[lang]
-        home = SITE + PREFIX[lang]
-        ld = [{"@context": "https://schema.org", "@type": "Article", "headline": c["title"], "description": c["desc"], "inLanguage": lang,
-               "datePublished": PUBLISHED, "dateModified": UPDATED["iso"], "mainEntityOfPage": url, "image": f"{SITE}/og/og3-{lang}.png",
-               "author": {"@type": "Organization", "name": "AUN (阿吽)", "url": SITE + "/"},
-               "publisher": {"@type": "Organization", "name": "1900 Co., Ltd.", "alternateName": "株式会社1900", "url": SITE + "/about.html"}},
-              {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": lang,
-               "mainEntity": [{"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in faq]},
-              {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-                  {"@type": "ListItem", "position": 1, "name": SITE_NAME[lang], "item": home},
-                  {"@type": "ListItem", "position": 2, "name": c["title"], "item": url}]}]
-        head = LP.split("<title>")[0].split("<!-- meta:start -->")[0]
-        # Japanese is its own page (fixed). The English page also serves the languages that have no article, so the
-        # header keeps the visitor's language. No automatic redirect: each address always shows its own language (a link under the title leads to the other).
-        attrs = 'lang="ja" data-fixed-lang="ja"' if lang == "ja" else 'lang="en"'
-        head = re.sub(r"<html[^>]*>", f"<html {attrs}>", head)
-        head = re.sub(r"<!-- 生成ファイル.*?-->", "<!-- 生成ファイル（_tools/build_articles.py）。直すのは _tools/build_articles.py と _tools/articles/ -->", head)
-        alts = "".join(f'<link rel="alternate" hreflang="{l}" href="{u}" data-lang="{l}">\n' for l, u in urls.items())
-        alts += f'<link rel="alternate" hreflang="x-default" href="{urls["en"]}">\n'
-        if lang == "ja":   # for the language picker only (no hreflang: these are not translations)
-            alts += "".join(f'<link rel="alternate" href="{urls["en"]}" data-lang="{l}">\n' for l in OTHER_LANGS)
-        out = head + f'''<title>{e(c["title"])}｜{SITE_NAME[lang]}</title>
-<meta name="description" content="{e(c["desc"])}">
+    url = urls[lang]
+    head = LP.split("<title>")[0].split("<!-- meta:start -->")[0]
+    # Japanese is its own page (fixed). The English page also serves the languages that have no article, so the
+    # header keeps the visitor's language. No automatic redirect: each address always shows its own language (a link under the title leads to the other).
+    attrs = 'lang="ja" data-fixed-lang="ja"' if lang == "ja" else 'lang="en"'
+    head = re.sub(r"<html[^>]*>", f"<html {attrs}>", head)
+    head = re.sub(r"<!-- 生成ファイル.*?-->", "<!-- 生成ファイル（_tools/build_articles.py）。直すのは _tools/build_articles.py と _tools/articles/ -->", head)
+    alts = "".join(f'<link rel="alternate" hreflang="{l}" href="{u}" data-lang="{l}">\n' for l, u in urls.items())
+    alts += f'<link rel="alternate" hreflang="x-default" href="{urls["en"]}">\n'
+    if lang == "ja":   # for the language picker only (no hreflang: these are not translations)
+        alts += "".join(f'<link rel="alternate" href="{urls["en"]}" data-lang="{l}">\n' for l in OTHER_LANGS)
+    out = head + f"""<title>{e(title)}｜{SITE_NAME[lang]}</title>
+<meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
-{alts}<meta property="og:type" content="article">
+{alts}<meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{SITE_NAME[lang]}">
 <meta property="og:locale" content="{OG_LOCALE[lang]}">
-<meta property="og:title" content="{e(c["title"])}">
-<meta property="og:description" content="{e(c["desc"])}">
+<meta property="og:title" content="{e(title)}">
+<meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{SITE}/og/og3-{lang}.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -271,29 +308,97 @@ def page(name: str, content: dict, extras) -> None:
 <body class="lp hw">
 <header id="site-top" class="s-top"></header><script src="/site.js?v={V("site.js")}"></script>
 <main>
-{section(c, lang, extras(lang), PREFIX["en" if lang == "ja" else "ja"] + name)}
+{main}
 </main>
 <footer id="site-foot" class="s-foot"></footer>
-<script type="module" src="/art.js?v=20261112e"></script>
+<script type="module" src="/art.js?v={ART_V}"></script>
 </body>
 </html>
-'''
-        dest = ROOT / PREFIX[lang].strip("/") / name
-        dest.write_text(out, encoding="utf-8")
+"""
+    dest = ROOT / PREFIX[lang].strip("/") / name
+    dest.write_text(out, encoding="utf-8")
+    return len(out)
+
+
+HUB_T = {
+"ja": dict(title="阿吽の記事：日本語の話す力と、その確かめ方", name="記事", kick="記事", h1="日本語の話す力と、<br>その確かめ方",
+           desc="日本語の話す力について、阿吽（AUN）が書いた記事の一覧です。JLPT に話す試験はあるか、受かったのに話せない理由、話す力のレベルの目安、阿吽のテストの中身と点の決まり方。",
+           lead="日本語の話す力について、よく調べられている問いに答える記事です。ほかの試験についての説明は、公式サイトで確かめて、出典にリンクしています。",
+           groups=("話す力を知る", "阿吽（AUN）について"), cta="無料でテストを受ける", upd="更新"),
+"en": dict(title="AUN articles: Japanese speaking, and how to check it", name="Articles", kick="Articles", h1="Japanese speaking,<br>and how to check it",
+           desc="Articles by AUN about spoken Japanese: whether the JLPT has a speaking test, why you can pass and still not speak, what the speaking levels mean, and how the AUN test and its scoring work.",
+           lead="Articles that answer common questions about spoken Japanese. Statements about other tests are checked on the official sites and linked to the source.",
+           groups=("Understanding your speaking", "About AUN"), cta="Take the test free", upd="Updated"),
+}
+
+
+def crumbs(lang: str, *more) -> dict:
+    items = [(SITE_NAME[lang], SITE + PREFIX[lang])] + list(more)
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(items)]}
+
+
+def page(name: str, extras) -> None:
+    content = REG[name]
+    strip = lambda s: re.sub(r"<[^>]+>", "", s)
+    urls = {l: f"{SITE}{PREFIX[l]}{name}" for l in content}
+    for lang, c in content.items():
+        faq_html = re.search(r'<div class="art-faq">(.*?)</div>', c["body"], flags=re.S).group(1)
+        faq = re.findall(r"<h3>(.*?)</h3>\s*<p>(.*?)</p>", faq_html, flags=re.S)
+        assert faq, (name, lang)
+        url, iso = urls[lang], c.get("iso", DATE)
+        ld = [{"@context": "https://schema.org", "@type": "Article", "headline": c["title"], "description": c["desc"], "inLanguage": lang,
+               "datePublished": iso, "dateModified": iso, "mainEntityOfPage": url, "image": f"{SITE}/og/og3-{lang}.png",
+               "author": {"@type": "Organization", "name": "AUN (阿吽)", "url": SITE + "/"},
+               "publisher": {"@type": "Organization", "name": "1900 Co., Ltd.", "alternateName": "株式会社1900", "url": SITE + "/about.html"}},
+              {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": lang,
+               "mainEntity": [{"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in faq]},
+              crumbs(lang, (HUB_T[lang]["name"], SITE + PREFIX[lang] + HUB), (c["title"], url))]
+        size = write(name, lang, c["title"], c["desc"], urls, ld,
+                     section(c, lang, extras(lang), PREFIX["en" if lang == "ja" else "ja"] + name), "article")
         n = len(strip(c["body"])) if lang == "ja" else len(strip(c["body"]).split())
-        print(f"wrote {dest.relative_to(ROOT)}: {len(out)} bytes, {n} {'chars' if lang == 'ja' else 'words'}")
+        print(f"wrote {PREFIX[lang].strip('/')}/{name}: {size} bytes, {n} {'chars' if lang == 'ja' else 'words'}")
+
+
+def hub() -> None:
+    """The list of articles: the way in for readers and for crawlers (every article is one link from here)."""
+    urls = {l: f"{SITE}{PREFIX[l]}{HUB}" for l in PREFIX}
+    names = list(REG)
+    for lang, t in HUB_T.items():
+        card = lambda n: (f'<li><a href="{PREFIX[lang]}{n}"><strong>{REG[n][lang]["title"]}</strong><span>{REG[n][lang]["desc"]}</span>'
+                          f'<time datetime="{iso_of(REG[n])}">{t["upd"]}：{day(iso_of(REG[n]), lang)}</time></a></li>')
+        other = "en" if lang == "ja" else "ja"
+        main = f"""<article class="art art-hub" lang="{lang}">
+<header class="art-head">
+<p class="lp-kick">{t["kick"]}</p>
+<h1>{t["h1"]}</h1>
+<p class="art-meta"><a href="{PREFIX[other]}{HUB}" hreflang="{other}" lang="{other}">{"English" if lang == "ja" else "日本語"}</a></p>
+</header>
+<p class="art-lead">{t["lead"]}</p>
+<h2>{t["groups"][0]}</h2>
+<ul class="art-list">{"".join(card(n) for n in names[:3])}</ul>
+<h2>{t["groups"][1]}</h2>
+<ul class="art-list">{"".join(card(n) for n in names[3:])}</ul>
+<p class="art-ctaw end"><a href="/test.html" class="lp-cta">{t["cta"]}</a></p>
+</article>"""
+        ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": t["title"], "description": t["desc"], "inLanguage": lang, "url": urls[lang],
+               "mainEntity": {"@type": "ItemList", "itemListElement": [
+                   {"@type": "ListItem", "position": i + 1, "url": f"{SITE}{PREFIX[lang]}{n}", "name": REG[n][lang]["title"]} for i, n in enumerate(names)]}},
+              crumbs(lang, (t["name"], urls[lang]))]
+        print(f"wrote {PREFIX[lang].strip('/')}/{HUB}: {write(HUB, lang, t['title'], t['desc'], urls, ld, main, 'website')} bytes")
 
 
 def sitemap() -> None:
-    """The articles, each language with its alternates (build_lang_pages.py keeps whatever else is listed)."""
+    """The articles and their list, each language with its alternates (build_lang_pages.py keeps whatever else is listed)."""
     sm = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
-    sm = re.sub(r"<url><loc>[^<]*/(?:" + "|".join(re.escape(a) for a in ARTICLES) + r")</loc>.*?</url>\n", "", sm)
+    sm = re.sub(r"<url><loc>[^<]*/(?:" + "|".join(re.escape(a) for a in ARTICLES + (HUB,)) + r")</loc>.*?</url>\n", "", sm)
     add = ""
-    for name in ARTICLES:
+    for name in (HUB,) + ARTICLES:
+        iso = max(iso_of(c) for c in REG.values()) if name == HUB else iso_of(REG[name])
         urls = {l: f"{SITE}{PREFIX[l]}{name}" for l in PREFIX}
         alts = "".join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{u}"/>' for l, u in urls.items())
         alts += f'<xhtml:link rel="alternate" hreflang="x-default" href="{urls["en"]}"/>'
-        add += "".join(f"<url><loc>{u}</loc><lastmod>{UPDATED['iso']}</lastmod>{alts}</url>\n" for u in urls.values())
+        add += "".join(f"<url><loc>{u}</loc><lastmod>{iso}</lastmod>{alts}</url>\n" for u in urls.values())
     (ROOT / "sitemap.xml").write_text(sm.replace("</urlset>", add + "</urlset>"), encoding="utf-8")
     print("updated sitemap.xml")
 
@@ -307,7 +412,9 @@ def how_extras(lang):
     return {"PIC1": fig(p[0], CAP[lang][0]), "PIC2": fig(p[1], CAP[lang][1]), "PIC3": fig(p[2], CAP[lang][2]), "CARDS": cards(lang)}
 
 
-page("how-it-works.html", HOW, how_extras)
-page("scoring.html", SCORING, lambda lang: {"LEVELS": levels(lang), "CARDS": cards(lang)})
-page("jlpt-speaking-test.html", JLPT, lambda lang: {"CARDS": cards(lang)})
+page("how-it-works.html", how_extras)
+page("scoring.html", lambda lang: {"LEVELS": levels(lang), "CARDS": cards(lang)})
+for _n in ("jlpt-speaking-test.html", "japanese-speaking-levels.html", "passed-jlpt-cant-speak.html"):
+    page(_n, lambda lang: {"CARDS": cards(lang)})
+hub()
 sitemap()
