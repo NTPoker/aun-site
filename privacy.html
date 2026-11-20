@@ -40,6 +40,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <li><b>お問い合わせ</b>：メールアドレス、内容、表示言語、日時。</li>
 <li><b>サイトの利用状況</b>：表示言語、どのリンクから来たか、ページのどこまで見たか、ボタンを押したか、日時、画面の幅。名前やメールアドレスとは別に記録し、結びつけません。ページを開くたびに変わる番号で、同じ閲覧の中の動きをまとめます。どのリンクから来たかは、当社が決めた印（例：動画ごとの印）だけを記録します。あわせて、Google アナリティクスで利用状況を計測します（下の「Cookie と外部への送信」をご覧ください）。</li>
 <li><b>有料提供の開始後</b>：お支払いの情報は決済代行会社（Stripe）が取得します。当社はカード番号を保持しません。当社が受け取るのは、支払いの有無、金額、日時、国などです。</li>
+<li><b>物語で話す機能</b>：あなたが書いた文と、話した声を文字にしたもの、物語の中の会話（AI の返事を含みます）、進み具合、ノート（言い方と単語）、設定（学ぶ言語・レベルなど）、プロフィール（性別・自己紹介。書いた場合）、返事への「良い／良くない」、利用の記録（日時と使った量）。ログインしていない間は、端末ごとの番号で区別します。<b>話した声そのものは保存しません</b>（文字にした後、すぐ消します）。</li>
 </ol>
 
 <h2>3. 利用目的</h2>
@@ -54,6 +55,8 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <li>利用状況の分析のため（個人を特定しない統計として）</li>
 <li>不正な利用を防ぐため</li>
 <li>有料提供の開始後、料金の請求と返金のため</li>
+<li>物語の中の人の返事、ヒント、訳、振り返りをつくり、お見せするため</li>
+<li>物語の返事と学習の仕組みを良くするため（会話と「良い／良くない」を、当社の中で読み、集計します）</li>
 </ol>
 <p>録音や結果を見本として公開する（動画など）ことは、別にご本人の同意をいただいた場合に限ります。</p>
 
@@ -65,8 +68,8 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <table>
 <tr><th>事業者</th><td>使い道</td></tr>
 <tr><th>Google LLC（Firebase／Google Cloud）</th><td>先行登録・お問い合わせ・利用状況の保存（保存先は東京リージョン）</td></tr>
-<tr><th>OpenAI, L.L.C.（OpenAI API）</th><td>受験の録音の文字起こしと、提出直後の AI の振り返り・聞き手が使う下書きの作成（同社の規約上、API で送ったデータは同社の AI の学習には使われません。保存の期間・条件は同社の規約に従います）</td></tr>
-<tr><th>Google LLC（Google アナリティクス）</th><td>サイトの利用状況の分析（下の「Cookie と外部への送信」）</td></tr>
+<tr><th>OpenAI, L.L.C.（OpenAI API）</th><td>受験の録音の文字起こしと、提出直後の AI の振り返り・聞き手が使う下書きの作成。物語で話す機能では、あなたが書いた文・話した声・プロフィール・会話の流れを送り、返事・ヒント・訳・振り返り・読み上げの音声をつくります。テーマを書いたときは、その言葉で記事を探します（同社の規約上、API で送ったデータは同社の AI の学習には使われません。保存の期間・条件は同社の規約に従います）</td></tr>
+<tr><th>Google LLC（Google アナリティクス）</th><td>サイトの利用状況の分析（下の「Cookie と外部への送信」）。物語のページ（test.aunjapanese.com/story）では、開いた画面、話の番号、押した操作の種類を送ります。会話の中身は送りません</td></tr>
 <tr><th>GitHub, Inc.（GitHub Pages）</th><td>このサイトの配信（アクセスの記録が同社に残ります）</td></tr>
 <tr><th>Cloudflare, Inc.（DNS／Cloudflare Tunnel）</th><td>このサイトのドメイン名の管理と、受験ページ（test.aunjapanese.com）との通信の中継（通信は暗号化されます。中継のとき、IP アドレスなどの通信の情報が同社のサーバーを通ります）</td></tr>
 <tr><th>Google LLC（Google Cloud Run／Cloud Storage）</th><td>試験サーバー本体と、受験の録音・文字起こし・結果・アプリのアカウントの保存（東京リージョン。通信は暗号化）</td></tr>
@@ -85,6 +88,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <h2>6. 保存期間</h2>
 <ul>
 <li>先行登録・お問い合わせ：取得した日から最長5年</li>
+<li>物語の会話・進み・ノート・「良い／良くない」：最後に使った日から1年（ログインしていない場合は30日）で削除します。アカウントを削除したときは、その時点で削除します。物語の「設定 → プライバシー → 記録を削除」でも、いつでも削除できます。</li>
 <li>録音・文字起こし・AI の下書きと振り返り：日本人の判定を依頼した受験は、結果を返した日から30日で削除します（依頼したのに結果を返せなかった受験は、取得した日から90日）。依頼しなかった受験は、取得した日から1年で削除します。「残して改善に協力する」を選んだ方は、取得した日から最長5年（この選択は「あなたの録音」のページで、いつでも変えられます）。</li>
 <li>アプリのアカウント（識別子・メールアドレス・結んだ受験の一覧・依頼の記録）：アカウントを削除するまで</li>
 <li>聞き手が書いた結果の文章（録音からの引用を含みます）、同意の記録、メールアドレス：取得した日から最長5年（録音を消しても残ります。ご請求があれば削除します）</li>
@@ -110,7 +114,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <p>アカウントと録音の削除はアプリの「設定 → アカウントを削除」または<a href="https://test.aunjapanese.com/account/delete">削除の請求のページ</a>で、録音の削除と残す期間の変更は「あなたの録音」のページで、ご自身で行えます。そのほか、ご自身の情報について、利用目的の通知、開示、訂正、追加、削除、利用の停止、第三者への提供の停止、提供の記録の開示をご請求いただけます。<a href="mailto:privacy@aunjapanese.com">privacy@aunjapanese.com</a> または<a href="contact.html">お問い合わせフォーム</a>から、ご登録のメールアドレスでお知らせください。ご本人の確認のため、そのメールアドレスに当社から連絡します。メールアドレスを使えなくなった場合や、代理人からのご請求は、フォームでご相談ください。別の方法でご本人や代理権を確認します。開示は、ご指定の方法（電子メールなど）で遅滞なく行います。その方法が難しい場合は理由をお知らせし、書面で開示します。ご請求に応じられない場合は、その理由をお知らせします。手数料はいただきません。</p>
 
 <h2>9. 18歳未満の方</h2>
-<p>18歳未満の方は、保護者の同意を得てからご利用ください。</p>
+<p>18歳未満の方は、保護者の同意を得てからご利用ください。物語で話す機能は、13歳未満の方はご利用いただけません。</p>
 
 <h2>10. 変更</h2>
 <p>この方針を変えるときは、このページでお知らせします。大事な変更は、事前にお知らせします。</p>
@@ -137,6 +141,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <li><b>Contact</b>: email, message, display language, time.</li>
 <li><b>Site usage</b>: display language, which link you came from, how far you scrolled, whether you pressed a button, time, screen width. We store this separately from, and do not link it to, your name or email. A number that changes every time you open the page groups actions within one visit. For “which link you came from,” we record only tags we set (for example, one per video). We also measure usage with Google Analytics (see “Cookies and data sent to outside services” below).</li>
 <li><b>After paid service starts</b>: payment details are collected by our payment processor (Stripe). We do not keep card numbers; we receive whether you paid, the amount, time, and country.</li>
+<li><b>Talking in stories</b>: what you type, the text of what you say, the conversations in the stories (including the AI’s replies), your progress, your notebook (phrases and words), settings (the language you are learning, level and so on), your profile (gender and a short self-introduction, if you write them), your “good / not good” marks on replies, and usage records (time and amount used). While you are not signed in, we tell devices apart by a number kept in your browser. <b>We do not keep the audio of what you say</b>: it is deleted as soon as it has been turned into text.</li>
 </ol>
 
 <h2>3. Why we use it</h2>
@@ -151,6 +156,8 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <li>To analyze usage (as statistics that do not identify you)</li>
 <li>To prevent misuse</li>
 <li>After paid service starts, to charge and refund</li>
+<li>To make and show you the replies of the people in the stories, hints, translations and reviews</li>
+<li>To improve the replies and the way the stories teach (we read and count conversations and “good / not good” marks inside our company)</li>
 </ol>
 <p>We publish recordings or results as examples (for example, in videos) only with your separate consent.</p>
 
@@ -162,8 +169,8 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <table>
 <tr><th>Provider</th><td>Purpose</td></tr>
 <tr><th>Google LLC (Firebase / Google Cloud)</th><td>Storing sign-ups, inquiries and usage data (Tokyo region)</td></tr>
-<tr><th>OpenAI, L.L.C. (OpenAI API)</th><td>Transcribing test recordings and creating the AI review shown right after you submit and the notes for listeners (under its terms, data sent through the API is not used to train its models; retention follows its terms)</td></tr>
-<tr><th>Google LLC (Google Analytics)</th><td>Analyzing site usage (see “Cookies and data sent to outside services”)</td></tr>
+<tr><th>OpenAI, L.L.C. (OpenAI API)</th><td>Transcribing test recordings and creating the AI review shown right after you submit and the notes for listeners. For talking in stories, we send what you type, what you say, your profile and the course of the conversation, and it makes the replies, hints, translations, reviews and the spoken audio. When you write a theme, it searches for articles with those words (under its terms, data sent through the API is not used to train its models; retention follows its terms)</td></tr>
+<tr><th>Google LLC (Google Analytics)</th><td>Analyzing site usage (see “Cookies and data sent to outside services”). On the story pages (test.aunjapanese.com/story) we send which screen was opened, which story, and the kind of action taken. We do not send what is said in a conversation</td></tr>
 <tr><th>GitHub, Inc. (GitHub Pages)</th><td>Serving this website (access logs are kept by GitHub)</td></tr>
 <tr><th>Cloudflare, Inc. (DNS / Cloudflare Tunnel)</th><td>Managing this site’s domain name, and relaying traffic to the test pages (test.aunjapanese.com), encrypted in transit; connection data such as your IP address passes through its servers</td></tr>
 <tr><th>Google LLC (Google Cloud Run / Cloud Storage)</th><td>The test server itself and storage of recordings, transcripts, results and app accounts (Tokyo region; encrypted in transit)</td></tr>
@@ -182,6 +189,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <h2>6. How long we keep it</h2>
 <ul>
 <li>Sign-ups and inquiries: up to 5 years from collection</li>
+<li>Story conversations, progress, notebook and “good / not good” marks: deleted 1 year after you last used the stories (30 days if you were not signed in). If you delete your account, they are deleted at that time. You can also delete them at any time in the stories under “Settings → Privacy → Delete records”.</li>
 <li>Recordings, transcripts, AI drafts and AI reviews: for tests you requested a Japanese listener’s result for, deleted 30 days after we return the result (90 days after collection if we could not return one). Tests you did not request a result for: deleted 1 year after collection. If you chose “Keep them to help improve the scoring”: up to 5 years from collection (you can change this at any time on the “Your recordings” page).</li>
 <li>App accounts (identifier, email address, linked tests, request records): until you delete the account</li>
 <li>The listener’s written result (including quotes from your recordings), consent records and your email address: up to 5 years from collection (they remain after the recordings are deleted; deleted on request)</li>
@@ -207,7 +215,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <p>You can delete your account and recordings yourself in the app (“Settings → Delete account”) or on the <a href="https://test.aunjapanese.com/account/delete">deletion request page</a>, and delete recordings or change how long we keep them on the “Your recordings” page. For anything else, you may ask us to tell you our purposes, disclose, correct, add to, or delete your data, stop using it or sharing it, or disclose records of sharing. Email <a href="mailto:privacy@aunjapanese.com">privacy@aunjapanese.com</a> or use the <a href="contact.html">contact form</a>, from the email you registered. We will contact that email to confirm it is you. If you can no longer use that email, or if an agent is making the request, tell us through the form and we will confirm identity or authority another way. We disclose in the way you specify (such as email) without delay; if that way is not possible, we tell you why and disclose in writing. We tell you the reason if we cannot meet a request. There is no fee.</p>
 
 <h2>9. Under 18</h2>
-<p>If you are under 18, please get a parent’s or guardian’s consent before using the Service.</p>
+<p>If you are under 18, please get a parent’s or guardian’s consent before using the Service. Talking in stories is not available to anyone under 13.</p>
 
 <h2>10. Changes</h2>
 <p>We will announce changes on this page, and give advance notice of important changes.</p>
