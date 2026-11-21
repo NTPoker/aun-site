@@ -56,9 +56,9 @@
 
   const MENU_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
   function menuItems(d) {
-    const items = lang === "ja" ? [[STORY_APP, d.story], [testOf(lang), d.test], ["/ja/how-it-works.html", d.how], ["/ja/articles.html", d.arts]]
-                                : [[testOf(lang), d.test], ["/how-it-works.html", d.how], ["/articles.html", d.arts]];
-    return items.map(([h, t]) => '<li><a href="' + h + '"' + (h === location.pathname ? ' aria-current="page"' : "") + ">" + t + "</a></li>").join("");
+    const items = lang === "ja" ? [[STORY_APP, d.story], [testOf(lang) + keep(), d.test], ["/ja/how-it-works.html", d.how], ["/ja/articles.html", d.arts]]
+                                : [[testOf(lang) + keep(), d.test], ["/how-it-works.html", d.how], ["/articles.html", d.arts]];
+    return items.map(([h, t]) => '<li><a href="' + h + '"' + (h.split("?")[0] === location.pathname ? ' aria-current="page"' : "") + ">" + t + "</a></li>").join("");
   }
   function drawTop(el) {
     const d = T[lang];
@@ -79,6 +79,11 @@
         menu.hidden = !open; btn.setAttribute("aria-expanded", String(open));
       });
     });
+    el.querySelectorAll(".s-lang").forEach(box => {
+      const btn = box.querySelector("button"), menu = box.querySelector("ul");
+      box.addEventListener("keydown", e => { if (e.key === "Escape" && !menu.hidden) { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); btn.focus(); } });
+      box.addEventListener("focusout", e => { if (!box.contains(e.relatedTarget)) { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); } });
+    });
     el.querySelector(".s-lang-menu").addEventListener("click", e => { const b = e.target.closest("button[data-lang]"); if (b) set(b.dataset.lang, true); });
   }
   function drawFoot(el) {
@@ -86,7 +91,7 @@
     el.innerHTML = '<div class="s-foot-in">' +
       '<div class="s-foot-brand"><a href="' + home() + '" class="s-brand" aria-label="AUN 阿吽">' + MARK + '<span>AUN</span></a><p>' + d.op + '</p><p class="s-free">' + (kind === "story" && d.storyFree ? d.storyFree : d.free) + '</p><p><a href="mailto:hello@aunjapanese.com">hello@aunjapanese.com</a></p><p class="s-social"><a href="https://x.com/aun_japanese" target="_blank" rel="noopener" aria-label="X @aun_japanese"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L2.8 2h6.4l4.4 5.9L18.9 2zm-1.1 18h1.7L8.3 3.9H6.5L17.8 20z"/></svg><span>@aun_japanese</span></a></p></div>' +
       '<nav class="s-foot-cols" aria-label="Footer">' +
-      '<div><h2>' + d.svc + '</h2>' + (lang === "ja" ? a(STORY_APP, "story") + a(testOf(lang), "test") : a("/test.html", "cta")) + a((lang === "ja" ? "/ja" : "") + "/how-it-works.html", "how") + a((lang === "ja" ? "/ja" : "") + "/articles.html", "arts") + a(home() + "#faq", "faq") + "</div>" +
+      '<div><h2>' + d.svc + '</h2>' + (lang === "ja" ? a(STORY_APP, "story") + a(testOf(lang) + keep(), "test") : a("/test.html", "cta")) + a((lang === "ja" ? "/ja" : "") + "/how-it-works.html", "how") + a((lang === "ja" ? "/ja" : "") + "/articles.html", "arts") + a((kind === "story" ? home() : testOf(lang)) + "#faq", "faq") + "</div>" +
       '<div><h2>' + d.co + '</h2>' + a("/about.html", "about") + a("/contact.html", "contact") + "</div>" +
       '<div><h2>' + d.rules + '</h2>' + a("/privacy.html", "privacy") + a("/terms.html", "terms") + a("/tokushoho.html", "legal") + "</div></nav>" +
       '<p class="s-copy">© 2026 1900 Co., Ltd.</p></div>';
