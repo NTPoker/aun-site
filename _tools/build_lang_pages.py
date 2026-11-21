@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Per-language landing pages and metadata (title, description, Open Graph, hreflang).
+"""Per-language landing pages of the speaking test and metadata (title, description, Open Graph, hreflang).
 
 _tools/index.src.html (Japanese) is the hand-edited source; the published pages are generated from it (NT 11/4: English at /).
-This script writes / (English, the default) and /ja/ /id/ /vi/ /zh/ /zh-tw/ /ko/: each with that language's metadata,
+This script writes / (English, the default) and /ja/test/ (since 11/21 the Japanese top /ja/ is the story page, ja/index.html, hand-edited) /id/ /vi/ /zh/ /zh-tw/ /ko/: each with that language's metadata,
 hreflang, absolute asset paths, and the page text filled in from i18n.js so crawlers and link previews see that language.
 / also carries data-lang-home: a first-time visitor whose browser language is another of ours is sent to that page once (site.js).
 /en/ (published briefly on 11/4) becomes a pointer to /.
@@ -91,12 +91,15 @@ for lang, m in META.items():
 
 # sitemap: the landing page in every language (with alternates) + the legal pages
 sm = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
-langs = {SITE + v["path"] for v in META.values()} | {SITE + "/en/"}
+# the story pages (hand-edited, not generated: ja/index.html) stand alone: they are not translations of the test page
+STORY_PAGES = ["/ja/"]
+langs = {SITE + v["path"] for v in META.values()} | {SITE + "/en/"} | {SITE + p for p in STORY_PAGES}
 # every other entry is kept whole (the articles carry their own alternates and dates: build_articles.py)
 others = [u for u in re.findall(r"<url>.*?</url>", sm, flags=re.S) if re.search(r"<loc>(.*?)</loc>", u).group(1) not in langs and re.search(r"<loc>(.*?)</loc>", u).group(1).rstrip("/") != SITE]
 alts = "".join(f'<xhtml:link rel="alternate" hreflang="{v["hreflang"]}" href="{SITE}{v["path"]}"/>' for v in META.values())
 alts += f'<xhtml:link rel="alternate" hreflang="x-default" href="{SITE}/"/>'
 urls = "".join(f"<url><loc>{SITE}{v['path']}</loc>{alts}</url>\n" for v in META.values())
+urls += "".join(f"<url><loc>{SITE}{p}</loc></url>\n" for p in STORY_PAGES)
 urls += "".join(u + "\n" for u in others)
 (ROOT / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '

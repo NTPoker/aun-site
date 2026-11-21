@@ -28,7 +28,8 @@ Key facts:
 ## Pages
 
 - [Home (English)](https://aunjapanese.com/)
-- [ホーム（日本語）](https://aunjapanese.com/ja/)
+- [ホーム（日本語、物語で英語を話す）](https://aunjapanese.com/ja/)
+- [阿吽のテスト（日本語）](https://aunjapanese.com/ja/test/)
 - [Take the test](https://aunjapanese.com/test.html)
 - [About the company](https://aunjapanese.com/about.html)
 - [Privacy Policy](https://aunjapanese.com/privacy.html)
