@@ -38,55 +38,46 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <link rel="stylesheet" href="/site.css?v=20261121a">
 <style>
 /* この版だけの部品：話の画面の見本、物語の並び */
-/* 冒頭：その場で遊べる物語（NT 11/22）。アプリと同じ形のチャットを主役に。絵は最初のメッセージ。押したら、見ていた物語の1話目へ直接 */
-.hp{background:var(--paper);color:var(--ink)}
-.hp-in{max-width:1120px;margin:0 auto;padding:16px 16px 22px;display:flex;flex-direction:column;gap:12px}
-.hp-kick{margin:0;font-weight:800;font-size:13px;letter-spacing:1px;color:var(--red)}
-.hp-h{margin:6px 0 0;font-family:var(--serif);font-weight:900;font-size:31px;line-height:1.22;font-feature-settings:"palt"}
-.hp-h em{font-style:normal;color:var(--red)}
-.hp-sub{display:none;margin:16px 0 0;font-size:17px;font-weight:700;line-height:1.75;color:var(--ink2)}
-.hp-tabs{display:flex;gap:6px}
-.hp-tabs button{flex:1;min-height:38px;border:1px solid var(--row);border-radius:999px;background:#fff;color:var(--ink2);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
-.hp-tabs button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.hp-chat{position:relative;background:#F4F5F7;border-radius:24px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:#111318}
-.hp-top{flex:none;display:flex;align-items:center;justify-content:center;height:42px;padding:0 44px;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hp-redo{position:absolute;top:4px;right:6px;width:36px;height:36px;border:0;border-radius:50%;background:#ECEEF2;color:#5F6672;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.hp-redo[hidden]{display:none}
-.hp-redo svg{width:18px;height:18px}
-.hp-log{height:364px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:2px 12px 12px;display:flex;flex-direction:column;gap:8px}
-.hp-log::-webkit-scrollbar{display:none}
-.hp-log>:first-child{margin-top:auto}
-.hp-pic{flex:none;width:100%;height:112px;border-radius:14px;object-fit:cover;display:block}
-.hp-m{flex:none;display:flex;gap:8px;align-items:flex-start;animation:hpIn .35s cubic-bezier(.2,.7,.2,1) both}
-.hp-m img{flex:none;width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:50% 20%}
-.hp-m div{max-width:84%}
-.hp-m small{display:block;margin:0 0 3px 2px;font-size:12px;font-weight:700;color:#5F6672}
-.hp-m p{margin:0;background:#fff;border-radius:4px 16px 16px 16px;padding:8px 12px;font-size:15px;line-height:1.45}
+/* 冒頭（NT 11/22「情報量を8割削る」「押したくなる」「選択肢が押せると見せる」）：絵の中の一言 → 光る答え3つ → ボタン。押すと返事と本音 */
+.hp{background:#121212;color:#fff}
+.hp-in{max-width:1120px;margin:0 auto;padding:18px 16px 24px;display:flex;flex-direction:column;gap:16px}
+.hp-h{margin:0;font-family:var(--serif);font-weight:900;font-size:31px;line-height:1.22;font-feature-settings:"palt"}
+.hp-h em{font-style:normal;color:#FF8E77}
+.hp-play{position:relative;display:flex;flex-direction:column;gap:12px}
+.hp-scene{position:relative;margin:0;border-radius:20px;overflow:hidden;aspect-ratio:3/2;background:#222}
+.hp-scene img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block}
+.hp-scene figcaption{position:absolute;left:12px;right:12px;bottom:12px;display:flex;gap:8px;align-items:flex-end}
+.hp-scene figcaption b{flex:none;width:34px;height:34px;border-radius:50%;background:url(/img/learn/officer_park.jpg) 50% 20%/cover;border:2px solid #fff}
+.hp-scene figcaption p{margin:0;background:#fff;color:#141414;border-radius:4px 16px 16px 16px;padding:9px 14px;font-family:'Archivo',var(--sans);font-size:18px;font-weight:600;line-height:1.3}
+.hp-q{margin:4px 0 0;font-size:15px;font-weight:800;color:#FF8E77;letter-spacing:.04em}
+.hp-area{min-height:172px;display:flex;flex-direction:column;gap:10px}
+.hp-ch{position:relative;min-height:50px;border:0;border-radius:16px;background:#fff;color:#141414;padding:10px 16px 10px 46px;text-align:left;font-family:'Archivo',var(--sans);font-size:17px;font-weight:700;cursor:pointer;animation:hpGlow 2.4s ease-in-out infinite;transition:transform .15s}
+.hp-ch:nth-child(2){animation-delay:.4s}.hp-ch:nth-child(3){animation-delay:.8s}
+.hp-ch::before{content:"";position:absolute;left:16px;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;border:2px solid var(--red)}
+.hp-ch:hover{transform:translateY(-2px)}.hp-ch:active{transform:scale(.98)}
+@keyframes hpGlow{0%,100%{box-shadow:0 0 0 0 rgba(255,110,80,0),0 0 18px rgba(255,110,80,.25)}50%{box-shadow:0 0 0 4px rgba(255,110,80,.35),0 0 30px rgba(255,110,80,.55)}}
+.hp-m{display:flex;gap:8px;align-items:flex-start;animation:hpIn .35s cubic-bezier(.2,.7,.2,1) both}
 .hp-m.me{justify-content:flex-end}
-.hp-m.me p{background:#C8371F;color:#fff;border-radius:16px 4px 16px 16px}
-.hp-m.dots p{letter-spacing:3px;color:#7C8490}
-.hp-n{flex:none;margin:0 0 0 40px;padding-left:10px;border-left:3px solid #C9CED6;font-size:14px;line-height:1.6;color:#5F6672;animation:hpIn .35s both}
-.hp-t{flex:none;margin:0 0 0 40px;background:#FBEDEA;border-radius:12px;padding:6px 12px;font-size:14px;font-weight:700;line-height:1.5;animation:hpIn .4s both}
-.hp-t b{display:block;font-size:11px;color:#A32A15;letter-spacing:.06em}
-.hp-ask{flex:none;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;margin-top:2px}
-.hp-ask button{min-height:38px;border:1.5px solid #C8371F;background:#fff;color:#A32A15;border-radius:20px;padding:6px 14px;font:inherit;font-size:15px;font-weight:600;line-height:1.3;text-align:left;cursor:pointer;animation:hpIn .35s both;transition:background .15s}
-.hp-ask button:hover{background:#FBEDEA}
-.hp-in-row{flex:none;display:flex;align-items:center;gap:8px;margin:0 10px 10px;min-height:48px;padding:0 5px 0 16px;border:1px solid #7C8490;border-radius:24px;background:#fff;color:#5F6672;text-decoration:none;font-size:15px}
-.hp-in-row span{flex:1}
-.hp-in-row i{flex:none;width:38px;height:38px;border-radius:50%;background:#C8371F;color:#fff;display:flex;align-items:center;justify-content:center}
-.hp-in-row svg{width:20px;height:20px}
-.hp-in-row.go{border-color:#C8371F;box-shadow:0 0 0 3px rgba(200,55,31,.18);color:#111318}
+.hp-m p{margin:0;max-width:86%;border-radius:4px 16px 16px 16px;padding:9px 14px;background:#fff;color:#141414;font-family:'Archivo',var(--sans);font-size:17px;font-weight:600;line-height:1.35}
+.hp-m.me p{background:var(--red);color:#fff;border-radius:16px 4px 16px 16px}
+.hp-m b{flex:none;width:34px;height:34px;border-radius:50%;background:url(/img/learn/officer_park.jpg) 50% 20%/cover}
+.hp-t{margin:0 0 0 42px;background:#3A1E19;border-left:4px solid #FF8E77;border-radius:12px;padding:8px 14px;font-size:16px;font-weight:700;line-height:1.5;animation:hpIn .4s both}
+.hp-t small{display:block;font-size:12px;color:#FF8E77;letter-spacing:.08em}
+.hp-redo{align-self:flex-end;flex:none;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.hp-redo[hidden]{display:none}.hp-redo svg{width:20px;height:20px}
+.hp-cta.go{animation:hpGlow 2.4s ease-in-out infinite}
 .hp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.hp-tabs button:focus-visible,.hp-ask button:focus-visible,.hp-redo:focus-visible,.hp-in-row:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.hp-area:focus{outline:none}.hp-ch:focus-visible,.hp-redo:focus-visible{outline:3px solid #FF8E77;outline-offset:3px}
 @keyframes hpIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (max-width:899px) and (max-height:720px){.hp-h{font-size:27px}.hp-log{height:300px}.hp-pic{height:104px}}
-@media (max-width:360px){.hp-h{font-size:27px}.hp-ask button{font-size:14px;padding:6px 11px}.hp-m p{font-size:14px}}
-@media (prefers-reduced-motion:reduce){.hp-m,.hp-n,.hp-t,.hp-ask button{animation:none}}
+@media (max-width:360px){.hp-h{font-size:27px}.hp-ch,.hp-m p{font-size:15px}.hp-scene figcaption p{font-size:16px}}
+@media (max-width:899px) and (max-height:700px){.hp-scene{aspect-ratio:2/1}}
+@media (prefers-reduced-motion:reduce){.hp-ch,.hp-cta.go{animation:none;box-shadow:0 0 0 3px rgba(255,110,80,.5)}.hp-m,.hp-t{animation:none}}
 @media (min-width:900px){
- .hp-in{padding:48px clamp(32px,4vw,56px) 64px;display:grid;grid-template-columns:minmax(0,1fr) 420px;grid-template-rows:auto 1fr auto 1fr;grid-template-areas:". tabs" ". chat" "txt chat" "cta chat";column-gap:72px;row-gap:12px}
- .hp-txt{grid-area:txt}.hp-tabs{grid-area:tabs}.hp-chat{grid-area:chat;align-self:start}.hp-cta{grid-area:cta;align-self:start;max-width:420px;margin-top:20px}
- .hp-kick{font-size:15px}.hp-h{font-size:clamp(40px,4.2vw,56px)}.hp-sub{display:block}
- .hp-log{height:400px}.hp-pic{height:170px}
+ .hp-in{padding:64px clamp(32px,4vw,56px) 72px;display:grid;grid-template-columns:minmax(0,1fr) 480px;grid-template-areas:"txt play" "txt cta";grid-template-rows:auto auto;column-gap:72px;row-gap:24px;align-items:center}
+ .hp-h{grid-area:txt;font-size:clamp(40px,3.9vw,56px)}.hp-play{grid-area:play}.hp-cta{grid-area:cta;align-self:start;max-width:none;width:100%}
+ .hp-ch{min-height:58px;font-size:19px;animation-name:hpGlowL}
+ .hp-q{font-size:16px}
+ @keyframes hpGlowL{0%,100%{box-shadow:0 0 0 0 rgba(255,110,80,0),0 0 24px rgba(255,110,80,.3)}50%{box-shadow:0 0 0 6px rgba(255,110,80,.35),0 0 48px rgba(255,110,80,.7)}}
 }
 
 .mlead{margin:0 auto;max-width:560px;text-align:left;font-size:16px;line-height:1.85;color:var(--ink)}
@@ -144,17 +135,12 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <main>
 <section class="hp" aria-label="物語の見本">
 <div class="hp-in">
-<div class="hp-txt">
-<p class="hp-kick">英語、言いたいのに出てこない。</p>
 <h1 class="hp-h"><span class="nw">入り込むから、</span><br><span class="nw"><em>英語が身につく。</em></span></h1>
-<p class="hp-sub"><span class="nw">物語の主人公になって、AI と英語で話す。</span><br><span class="nw">あなたの英語で、相手の返事も結末も変わる。</span></p>
-</div>
-<div class="hp-tabs" aria-label="物語"><button type="button" data-p="border" aria-pressed="true">入国審査</button><button type="button" data-p="film" aria-pressed="false">映画に出る</button><button type="button" data-p="magic" aria-pressed="false">魔法の島</button></div>
-<div class="hp-chat">
-<p class="hp-top" id="hp-top">第1話　別室送り</p>
-<button type="button" class="hp-redo" id="hp-redo" aria-label="最初から" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" fill="currentColor"/></svg></button>
-<div class="hp-log" id="hp-log"></div><p class="hp-sr" id="hp-sr" aria-live="polite"></p>
-<a class="hp-in-row" id="hp-row" href="https://app.aunjapanese.com/story/#/play/border/0" data-pos="hero_input" data-story="border"><span>英語か日本語で話す</span><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-2.1A7 7 0 0 0 19 12h-2z" fill="currentColor"/></svg></i></a>
+<div class="hp-play">
+<figure class="hp-scene"><img src="/img/learn/scene_border.jpg" alt="入国審査のブース。審査官が手を出している"><figcaption><p lang="en">Passport, please.</p></figcaption></figure>
+<button type="button" class="hp-redo" id="hp-redo" aria-label="もう一度" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" fill="currentColor"/></svg></button>
+<p class="hp-q" id="hp-q">あなたの英語で、返事が変わる。</p>
+<div class="hp-area" id="hp-area" tabindex="-1"></div><p class="hp-sr" id="hp-sr" aria-live="polite"></p>
 </div>
 <a href="https://app.aunjapanese.com/story/#/play/border/0" class="lp-cta hp-cta" id="hp-cta" data-pos="hero" data-story="border">無料で英語を話してみる</a>
 </div>
@@ -240,51 +226,27 @@ if(h.classList.contains("s-intro-on")){var mo=new MutationObserver(function(){if
 })();
 </script>
 <script>
-// 冒頭の物語の見本：各物語の第1話の本物の始まり。選んだ答えで、相手の返事と本音が変わる。自動では進まない（Codex 45）。
-// 「無料で英語を話してみる」と入力欄は、見ていた物語の第1話へ直接（NT 11/22「ホームには飛ばさない」）。
+// 冒頭の物語の見本：入国審査の一言に、3つの答えから返す。答えで、審査官の返事と本音が変わる（NT 11/22「8割削る」「押したくなる」）。
+// 「無料で英語を話してみる」は、この物語（border）の第1話へ直接。ゲストもログインなしで遊べる。
 (function(){
-var APP="https://app.aunjapanese.com/story/#/play/";
-var P={
- border:{id:"border",top:"第1話　別室送り",pic:"/img/learn/scene_border.jpg",pos:"50% 30%",
-  open:{w:"Officer Park",f:"officer_park",en:"Next. Good morning. Passport, please."},th:"次の人。さっさと済ませよう。",
-  ch:[{en:"Good morning! How are you?",re:"Fine. Passport, please.",th:"あいさつはいい。パスポートを。"},
-      {en:"Here you go.",re:"Thank you. What brings you to the US?",th:"落ち着いてる。目的を聞こう。"},
-      {en:"Uh... one second.",re:"Take your time.",th:"緊張してるな。急がせないでおこう。"}]},
- film:{id:"read",top:"第1話　台本の読み合わせ",pic:"/img/learn/scene_read.jpg",pos:"50% 42%",
-  open:{w:"Nina",f:"nina",en:"Hey, you're here! Come in, come in. Read-through day."},th:"来てくれた！ 今日を楽しみにしてた。",
-  ch:[{en:"Do I need to know my lines?",re:"Nope. The script's just a guide.",th:"まじめな人だ。それでいい。"},
-      {en:"Nice place!",re:"Thanks! It's a mess, but it's home.",th:"部屋をほめられた。うれしい。"},
-      {en:"I'm a little nervous.",re:"Don't be. There's no wrong answer today.",th:"かわいい。気楽にしてほしい。"}]},
- magic:{id:"fly",top:"第1話　空を飛ぶ靴",pic:"/img/learn/scene_fly.jpg",pos:"50% 22%",
-  open:{w:"Mina",f:"mina",en:"Oh, you're back! Today it's the flying shoes, right? Come on in."},th:"また来てくれた。うれしい。",
-  ch:[{en:"Can I try them right now?",re:"Right now? Okay, put them on!",th:"せっかちな人だ。好きだな。"},
-      {en:"Yes! I can't wait.",re:"Ha! Then let's get you in the air.",th:"わくわくしてる。いいお客さん。"},
-      {en:"Are they safe?",re:"Very safe. They only go where you tell them.",th:"ちょっとこわいのかな。"}]}
-};
-var root=document.querySelector(".hp");if(!root)return;
-var log=document.getElementById("hp-log"),sr=document.getElementById("hp-sr"),top=document.getElementById("hp-top"),redo=document.getElementById("hp-redo"),row=document.getElementById("hp-row"),cta=document.getElementById("hp-cta");
-var tabs=[].slice.call(root.querySelectorAll(".hp-tabs button"));
+var CH=[{en:"Here you go.",re:"Thanks. What brings you to the US?",th:"落ち着いてる。目的を聞こう。"},
+ {en:"Hi! How are you?",re:"Fine. Passport, please.",th:"あいさつはいい。パスポートを。"},
+ {en:"Uh... one second.",re:"Take your time.",th:"緊張してるな。急がせないでおこう。"}];
+var area=document.getElementById("hp-area");if(!area)return;
+var sr=document.getElementById("hp-sr"),q=document.getElementById("hp-q"),redo=document.getElementById("hp-redo"),cta=document.getElementById("hp-cta");
 var still=matchMedia("(prefers-reduced-motion: reduce)").matches,run=0,timers=[];
 function wait(ms){return new Promise(function(ok){timers.push(setTimeout(ok,still?0:ms))})}
 function esc(t){return t.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-function add(cls,html){var d=document.createElement("div");d.className=cls;d.innerHTML=html;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
-function say(m,en,id){if(id!==run)return Promise.resolve();var d=add("hp-m dots",'<img src="/img/learn/'+m.f+'.jpg" alt=""><div><small>'+esc(m.w)+'</small><p>・・・</p></div>');
- return wait(700).then(function(){if(id!==run)return;d.className="hp-m";var q=d.querySelector("p");q.textContent=en;q.setAttribute("lang","en");log.scrollTop=log.scrollHeight}).then(function(){return wait(450)})}
-function think(t,id){if(id!==run)return;add("hp-t","<b>本音</b>"+esc(t))}
-function play(k){var id=++run,s=P[k];timers.forEach(clearTimeout);timers=[];sr.textContent="";row.querySelector("span").textContent="英語か日本語で話す";
- tabs.forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-p")===k?"true":"false")});
- top.textContent=s.top;redo.hidden=true;row.classList.remove("go");
- [row,cta].forEach(function(a){a.href=APP+s.id+"/0";a.setAttribute("data-story",s.id)});
- log.innerHTML='<img class="hp-pic" src="'+s.pic+'" alt="" style="object-position:'+s.pos+'">';
- wait(350).then(function(){return say(s.open,s.open.en,id)}).then(function(){think(s.th,id);if(id===run)sr.innerHTML=esc(s.open.w)+"「<span lang=\"en\">"+esc(s.open.en)+"</span>」　本音："+esc(s.th);return wait(600)}).then(function(){if(id!==run)return;
-  var ask=add("hp-ask","");ask.setAttribute("role","group");ask.setAttribute("aria-label","あなたなら？");
-  s.ch.forEach(function(c,i){var b=document.createElement("button");b.type="button";b.lang="en";b.textContent=c.en;b.addEventListener("click",function(e){answer(k,i,id,ask,e.detail===0)});ask.appendChild(b)});log.scrollTop=log.scrollHeight})}
-function answer(k,i,id,ask,kb){if(id!==run)return;var s=P[k],c=s.ch[i];if(window.gtag)gtag("event","hero_play",{story:k,choice:i});
- if(kb)row.focus({preventScroll:true});ask.remove();add("hp-m me",'<div><p lang="en">'+esc(c.en)+'</p></div>');
- wait(450).then(function(){return say(s.open,c.re,id)}).then(function(){if(id!==run)return;think(c.th,id);sr.innerHTML=esc(s.open.w)+"「<span lang=\"en\">"+esc(c.re)+"</span>」　本音："+esc(c.th);redo.hidden=false;row.classList.add("go");row.querySelector("span").textContent="続きを話す"})}
-tabs.forEach(function(b){b.addEventListener("click",function(){play(b.getAttribute("data-p"))})});
-redo.addEventListener("click",function(){var t=tabs.filter(function(b){return b.getAttribute("aria-pressed")==="true"})[0];play(t.getAttribute("data-p"));t.focus({preventScroll:true})});
-play("border");
+function el(cls,html){var d=document.createElement("div");d.className=cls;d.innerHTML=html;area.appendChild(d);return d}
+function start(){run++;timers.forEach(clearTimeout);timers=[];area.innerHTML="";sr.textContent="";q.hidden=false;redo.hidden=true;document.querySelector(".hp-play").appendChild(redo);cta.classList.remove("go");
+ CH.forEach(function(c,i){var b=document.createElement("button");b.type="button";b.className="hp-ch";b.lang="en";b.textContent=c.en;b.addEventListener("click",function(e){pick(i,e.detail===0)});area.appendChild(b)})}
+function pick(i,kb){var id=run,c=CH[i];if(window.gtag)gtag("event","hero_play",{story:"border",choice:i});
+ area.innerHTML="";q.hidden=true;if(kb)area.focus({preventScroll:true});el("hp-m me",'<p lang="en">'+esc(c.en)+'</p>');
+ var d=el("hp-m",'<b aria-hidden="true"></b><p>・・・</p>');
+ wait(800).then(function(){if(id!==run)return;var p=d.querySelector("p");p.textContent=c.re;p.lang="en";return wait(700)})
+  .then(function(){if(id!==run)return;el("hp-t","<small>本音</small>"+esc(c.th));sr.innerHTML='審査官「<span lang="en">'+esc(c.re)+'</span>」　本音：'+esc(c.th);area.appendChild(redo);redo.hidden=false;cta.classList.add("go")})}
+redo.addEventListener("click",function(){start();var b=area.querySelector("button");if(b)b.focus({preventScroll:true})});
+start();
 })();
 </script>
 <script>
