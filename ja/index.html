@@ -232,19 +232,19 @@ if(h.classList.contains("s-intro-on")){var mo=new MutationObserver(function(){if
 })();
 </script>
 <script>
-// 冒頭の物語の見本：学ぶ言葉（英語・日本語）を切り替え、絵の一言に3つの答えから返す。英語は入国審査（本音は日本語）、日本語は寿司屋（本音は英語。いま開いている母語は日本語と英語）。答えで、審査官の返事と本音が変わる（NT 11/22「8割削る」「押したくなる」）。
-// ボタンは、見ている物語（border／sushi）の第1話へ直接。日本語は ?hl=en で英語の画面に。ゲストもログインなしで遊べる。
+// 冒頭の物語の見本：学ぶ言葉（英語・日本語）を切り替え、絵の一言に3つの答えから返す。英語は入国審査（本音は日本語）、日本語は秋葉原（本音は英語。いま開いている母語は日本語と英語）。答えで、審査官の返事と本音が変わる（NT 11/22「8割削る」「押したくなる」）。
+// 英語のボタンは border の第1話へ直接。日本語は ?hl=en で英語の画面の入口へ（初めての人は日本語の最初の話のチャットに直接入る。最初の話が変わってもリンクが切れない）。ゲストもログインなしで遊べる。
 (function(){
 var L={en:{goal:"英語が身につく。",q:"あなたの英語で、返事が変わる。",cta:"英語で第1話を始める",story:"border",href:"https://app.aunjapanese.com/story/#/play/border/0",
   img:"/img/learn/scene_border.jpg",alt:"入国審査のブース。審査官が手を出している",line:"Passport, please.",who:"審査官",face:"/img/learn/officer_park.jpg",say:"en",think:"ja",
   ch:[{say:"Here you go.",re:"Thanks. What brings you to the US?",th:"落ち着いてる。目的を聞こう。"},
    {say:"Hi! How are you?",re:"Fine. Passport, please.",th:"あいさつはいい。パスポートを。"},
    {say:"Uh... one second.",re:"Take your time.",th:"緊張してるな。急がせないでおこう。"}]},
- ja:{goal:"日本語が身につく。",q:"あなたの日本語で、返事が変わる。",cta:"日本語で第1話を始める",story:"sushi",href:"https://app.aunjapanese.com/story/?hl=en#/play/sushi/0",
-  img:"/img/learn/scene_sushi.jpg",alt:"寿司屋のカウンター。職人がほほえんでいる",line:"何を握りますか？",who:"早川",face:"/img/learn/hayakawa.jpg",say:"ja",think:"en",
-  ch:[{say:"サーモンでお願いします。",re:"サーモンですね。では、一緒に握りましょう。",th:"Salmon. Almost everyone from abroad starts there."},
-   {say:"まぐろ、ありますか？",re:"ありますよ。今日のまぐろは、いいですよ。",th:"Good eye. The tuna is the best thing today."},
-   {say:"えっと……もう一度、お願いします。",re:"はい。何を、握りますか？",th:"Too fast. I'll slow down."}]}};
+ ja:{goal:"日本語が身につく。",q:"あなたの日本語で、返事が変わる。",cta:"日本語で第1話を始める",story:"akiba",href:"https://app.aunjapanese.com/story/?hl=en",
+  img:"/img/learn/scene_akiba.jpg",alt:"秋葉原の駅前。友だちがスマホの写真を見せている",line:"ひさしぶり！ 何を見たい？",who:"森",face:"/img/learn/mori.jpg",say:"ja",think:"en",
+  ch:[{say:"ゲームを見たいです。",re:"いいね。じゃあ、先にゲームの店に行こう。",th:"Games first. The figure can wait."},
+   {say:"今日は見るだけにします。",re:"うん、それがいいよ。私は、いつも買っちゃうけど。",th:"Sensible. Unlike some people."},
+   {say:"すみません、もう一度。",re:"あ、ごめん。何を、見たい？",th:"Too fast. I always talk too fast here."}]}};
 var cur=L.en,CH=cur.ch;
 var area=document.getElementById("hp-area");if(!area)return;
 var sr=document.getElementById("hp-sr"),play=document.getElementById("hp-play"),img=document.getElementById("hp-img"),line=document.getElementById("hp-line"),goal=document.getElementById("hp-goal"),q=document.getElementById("hp-q"),redo=document.getElementById("hp-redo"),cta=document.getElementById("hp-cta");
