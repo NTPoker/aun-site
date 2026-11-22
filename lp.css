@@ -236,7 +236,7 @@ body.lp .s-cta{border-radius:999px}
 
 /* phones: fewer words (NT 11/10). The picture and headline carry each section. */
 @media (max-width:899px){
-  .lp-sub,.lp-step:not(.me) .lp-sd{display:none}
+  .lp-sub,.lp-step:not(.me) .lp-sd{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}   /* (hidden on screen, still read aloud: Codex review 41) */
   .lp-sv .lp-q p{font-size:23px}
   .lp-sv .lp-q{padding:18px 18px 16px}
   .lp-hero .lp-in{gap:18px}

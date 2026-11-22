@@ -34,7 +34,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=Zen+Old+Mincho:wght@700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver" in window)document.documentElement.classList.add("mo")</script>
-<link rel="stylesheet" href="/lp.css?v=20261113a">
+<link rel="stylesheet" href="/lp.css?v=20261122a">
 <link rel="stylesheet" href="/site.css?v=20261121a">
 <style>
 /* この版だけの部品：話の画面の見本、シリーズの並び、サービスの2枚 */
@@ -73,10 +73,12 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 .sr-h{margin:36px 0 14px;font-family:var(--serif);font-weight:900;font-size:21px;line-height:1.3}
 .sr-one{list-style:none;margin:0 -24px;padding:0 24px 6px;display:grid;grid-auto-flow:column;grid-auto-columns:148px;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .sr-one::-webkit-scrollbar{display:none}
+.sr-one:focus-visible{outline:3px solid var(--red);outline-offset:4px;border-radius:14px}
+.sr-cta{margin-top:36px}
 .sr-one li{scroll-snap-align:start}
 .sr-one img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:14px;display:block;box-shadow:0 6px 18px rgba(40,25,10,.08)}
 .sr-one b{display:block;margin-top:8px;font-size:15px;font-weight:700;line-height:1.45}
-@media (min-width:900px){.sr-h{margin-top:56px;font-size:26px}.sr-one{margin:0;padding:0;grid-auto-flow:row;grid-template-columns:repeat(5,1fr);gap:20px;overflow:visible}.sr-one b{font-size:16px}}
+@media (min-width:900px){.sr-cta{display:flex;max-width:420px;margin:56px auto 0}.sr-h{margin-top:56px;font-size:26px}.sr-one{margin:0;padding:0;grid-auto-flow:row;grid-template-columns:repeat(5,1fr);gap:20px;overflow:visible}.sr-one b{font-size:16px}}
 .lp-faq a{color:inherit;text-underline-offset:3px}
 </style>
 </head>
@@ -102,21 +104,22 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <section class="lp-sec sr">
 <div class="lp-in">
 <p class="lp-kick">いま遊べる英語の物語、20話</p>
-<h2 class="lp-cap" data-a>どの話から、<br><em>始める？</em></h2>
+<h2 class="lp-cap" data-a><span class="nw">入国審査から、</span><br><span class="nw"><em>映画の撮影</em>まで。</span></h2>
 <ul class="sr-list">
 <li><img src="/img/learn/cover_trip.jpg" alt="" width="480" height="720" loading="lazy"><div><small>全5話</small><b><span class="nw">ロサンゼルス、</span><span class="nw">ひとり旅</span></b><span>入国審査で、いきなり別室へ。荷物は出てこない。夜中に部屋から締め出される。あなたなら、英語でどう切り抜ける？</span></div></li>
 <li><img src="/img/learn/cover_film.jpg" alt="" width="480" height="720" loading="lazy"><div><small>全4話</small><b><span class="nw">ニューヨークで</span><span class="nw">映画に出る</span></b><span>小さな映画に、ルームメイト役で出る。セリフは覚えない。監督が聞くのは「あなたなら、どう言う？」だけ。</span></div></li>
 <li><img src="/img/learn/cover_magic.jpg" alt="" width="480" height="720" loading="lazy"><div><small>全4話</small><b><span class="nw">魔法の道具、</span><span class="nw">貸します</span></b><span>港町の島では、道具が英語で言ったとおりに動く。空を飛ぶ靴、猫と話す指輪、小さくなる上着、1分だけ戻る時計。</span></div></li>
 <li><img src="/img/learn/cover_house.jpg" alt="" width="480" height="720" loading="lazy"><div><small>全2話</small><b>シェアハウス</b><span>ボストンのシェアハウスで、プリンが消えた。同居人は3人、全員なにか隠している。英語で聞き出して、犯人を言い当てる。</span></div></li>
 </ul>
-<h3 class="sr-h">1話で終わる話</h3>
-<ul class="sr-one">
+<h3 class="sr-h" id="sr-one-h">1話で終わる話</h3>
+<ul class="sr-one" tabindex="0" aria-labelledby="sr-one-h">
 <li><img src="/img/learn/cover_wh.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">ワーホリ、</span><span class="nw">残り800ドル</span></b></li>
 <li><img src="/img/learn/cover_tattoo.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">初めての</span><span class="nw">タトゥー</span></b></li>
 <li><img src="/img/learn/cover_surf.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">ハワイで</span><span class="nw">初めての</span><span class="nw">サーフィン</span></b></li>
 <li><img src="/img/learn/cover_barber.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">ブルックリンで</span><span class="nw">髪を切る</span></b></li>
 <li><img src="/img/learn/cover_gym.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">ブルックリン、</span><span class="nw">朝7時のジム</span></b></li>
 </ul>
+<a href="https://app.aunjapanese.com/" class="lp-cta sr-cta" data-pos="list">無料で英語を話してみる</a>
 </div>
 </section>
 
