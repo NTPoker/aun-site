@@ -67,9 +67,16 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 .sr-list img{width:92px;height:92px;border-radius:14px;object-fit:cover;display:block}
 .sr-list small{display:block;font-family:'Archivo',var(--sans);font-weight:800;font-size:12px;color:var(--red)}
 .sr-list b{display:block;font-family:var(--serif);font-weight:900;font-size:21px;line-height:1.3}
-.sr-list span{display:block;margin-top:2px;font-size:14px;line-height:1.5;color:var(--ink2)}
+.sr-list div>span{display:block;margin-top:2px;font-size:14px;line-height:1.5;color:var(--ink2)}
 .sr-list img{height:138px;object-position:50% 25%}
-@media (min-width:900px){.sr .lp-in{display:block}.sr .lp-cap{margin-bottom:40px}.sr-list{grid-template-columns:1fr 1fr;gap:24px}.sr-list b{font-size:26px}.sr-list span{font-size:16px}.sr-list li{grid-template-columns:150px 1fr;padding:14px}.sr-list img{width:150px;height:225px}}
+@media (min-width:900px){.sr .lp-in{display:block}.sr .lp-cap{margin-bottom:40px}.sr-list{grid-template-columns:1fr 1fr;gap:24px}.sr-list b{font-size:26px}.sr-list div>span{font-size:16px}.sr-list li{grid-template-columns:150px 1fr;padding:14px}.sr-list img{width:150px;height:225px}}
+.sr-h{margin:36px 0 14px;font-family:var(--serif);font-weight:900;font-size:21px;line-height:1.3}
+.sr-one{list-style:none;margin:0 -24px;padding:0 24px 6px;display:grid;grid-auto-flow:column;grid-auto-columns:148px;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sr-one::-webkit-scrollbar{display:none}
+.sr-one li{scroll-snap-align:start}
+.sr-one img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:14px;display:block;box-shadow:0 6px 18px rgba(40,25,10,.08)}
+.sr-one b{display:block;margin-top:8px;font-size:15px;font-weight:700;line-height:1.45}
+@media (min-width:900px){.sr-h{margin-top:56px;font-size:26px}.sr-one{margin:0;padding:0;grid-auto-flow:row;grid-template-columns:repeat(5,1fr);gap:20px;overflow:visible}.sr-one b{font-size:16px}}
 .lp-faq a{color:inherit;text-underline-offset:3px}
 </style>
 </head>
@@ -94,11 +101,21 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 
 <section class="lp-sec sr">
 <div class="lp-in">
-<p class="lp-kick">いま遊べる物語</p>
+<p class="lp-kick">いま遊べる英語の物語、20話</p>
 <h2 class="lp-cap" data-a>どの話から、<br><em>始める？</em></h2>
 <ul class="sr-list">
-<li><img src="/img/learn/cover_trip.jpg" alt="" width="480" height="720" loading="lazy"><div><small>全5話</small><b>ロサンゼルス、ひとり旅</b><span>入国審査で、いきなり別室へ。荷物は出てこない。夜中に部屋から締め出される。あなたなら、英語でどう切り抜ける？</span></div></li>
-<li><img src="/img/learn/cover_house.jpg" alt="" width="480" height="720" loading="lazy"><div><small>全2話</small><b>シェアハウスの謎</b><span>ボストンのシェアハウスで、プリンが消えた。同居人は3人、全員なにか隠している。英語で聞き出して、犯人を言い当てる。</span></div></li>
+<li><img src="/img/learn/cover_trip.jpg" alt="" width="480" height="720" loading="lazy"><div><small>全5話</small><b><span class="nw">ロサンゼルス、</span><span class="nw">ひとり旅</span></b><span>入国審査で、いきなり別室へ。荷物は出てこない。夜中に部屋から締め出される。あなたなら、英語でどう切り抜ける？</span></div></li>
+<li><img src="/img/learn/cover_film.jpg" alt="" width="480" height="720" loading="lazy"><div><small>全4話</small><b><span class="nw">ニューヨークで</span><span class="nw">映画に出る</span></b><span>小さな映画に、ルームメイト役で出る。セリフは覚えない。監督が聞くのは「あなたなら、どう言う？」だけ。</span></div></li>
+<li><img src="/img/learn/cover_magic.jpg" alt="" width="480" height="720" loading="lazy"><div><small>全4話</small><b><span class="nw">魔法の道具、</span><span class="nw">貸します</span></b><span>港町の島では、道具が英語で言ったとおりに動く。空を飛ぶ靴、猫と話す指輪、小さくなる上着、1分だけ戻る時計。</span></div></li>
+<li><img src="/img/learn/cover_house.jpg" alt="" width="480" height="720" loading="lazy"><div><small>全2話</small><b>シェアハウス</b><span>ボストンのシェアハウスで、プリンが消えた。同居人は3人、全員なにか隠している。英語で聞き出して、犯人を言い当てる。</span></div></li>
+</ul>
+<h3 class="sr-h">1話で終わる話</h3>
+<ul class="sr-one">
+<li><img src="/img/learn/cover_wh.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">ワーホリ、</span><span class="nw">残り800ドル</span></b></li>
+<li><img src="/img/learn/cover_tattoo.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">初めての</span><span class="nw">タトゥー</span></b></li>
+<li><img src="/img/learn/cover_surf.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">ハワイで</span><span class="nw">初めての</span><span class="nw">サーフィン</span></b></li>
+<li><img src="/img/learn/cover_barber.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">ブルックリンで</span><span class="nw">髪を切る</span></b></li>
+<li><img src="/img/learn/cover_gym.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">ブルックリン、</span><span class="nw">朝7時のジム</span></b></li>
 </ul>
 </div>
 </section>
@@ -140,7 +157,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <details><summary>料金は？</summary><p>無料です。</p></details>
 <details><summary>登録は要る？</summary><p>登録なしで始められます。話の途中から先へ進む時に、Apple か Google でログインします。</p></details>
 <details><summary>スマホで遊べる？</summary><p>スマホでも PC でも、ブラウザで遊べます。インストールは要りません。</p></details>
-<details><summary>学べる言葉は？</summary><p>英語と日本語です。日本語の物語は、日本語を学ぶ人向けに準備しています。</p></details>
+<details><summary>学べる言葉は？</summary><p>英語と日本語です。日本語を学ぶ人には「東京ひとり旅」「日本の大学に留学」などの物語があり、「魔法の道具、貸します」はどちらの言葉でも遊べます。学ぶ言葉は、設定の「学ぶ言語」で選べます。</p></details>
 <details><summary>話した内容は、どうなる？</summary><p>会話は話ごとに残り、あとで読み返せます。返事を作るために、あなたの文と声を AI の会社（OpenAI）に送ります。くわしくは<a href="/privacy.html">プライバシーポリシー</a>へ。</p></details>
 </div>
 </div>
