@@ -4,7 +4,7 @@
 (function () {
   const NAMES = { ja: "日本語", en: "English", id: "Bahasa Indonesia", vi: "Tiếng Việt", zh: "简体中文", "zh-TW": "繁體中文", ko: "한국어" };
   const T = {
-    ja: { menu: "メニュー", story: "物語で話す", storyCta: "無料で話す", storyFree: "無料で遊べます", test: "阿吽のテスト", arts: "記事", app: "アプリ", how: "テストの中身", cta: "無料で受ける", svc: "サービス", co: "会社", rules: "ご利用にあたって", signup: "先行登録", faq: "よくある質問", about: "運営会社", contact: "お問い合わせ", privacy: "プライバシーポリシー", terms: "利用規約", legal: "特定商取引法に基づく表記", op: "運営：株式会社1900（東京・銀座）", free: "いまは無料で受けられます" },
+    ja: { menu: "メニュー", story: "物語で話す", storyFree: "無料で遊べます", test: "阿吽のテスト", arts: "記事", app: "アプリ", how: "テストの中身", cta: "無料で受ける", svc: "サービス", co: "会社", rules: "ご利用にあたって", signup: "先行登録", faq: "よくある質問", about: "運営会社", contact: "お問い合わせ", privacy: "プライバシーポリシー", terms: "利用規約", legal: "特定商取引法に基づく表記", op: "運営：株式会社1900（東京・銀座）", free: "いまは無料で受けられます" },
     en: { menu: "Menu", test: "AUN test", arts: "Articles", app: "App", how: "How the test works", cta: "Take it free", svc: "Service", co: "Company", rules: "Policies", signup: "Early sign-up", faq: "FAQ", about: "About", contact: "Contact", privacy: "Privacy Policy", terms: "Terms", legal: "Legal notice", op: "Operated by 1900 Co., Ltd. (Ginza, Tokyo)", free: "Free to take for now" },
     id: { menu: "Menu", test: "Tes AUN", arts: "Artikel", app: "Aplikasi", how: "Cara kerja tes", cta: "Ikut gratis", svc: "Layanan", co: "Perusahaan", rules: "Kebijakan", signup: "Daftar awal", faq: "Pertanyaan umum", about: "Tentang kami", contact: "Kontak", privacy: "Kebijakan privasi", terms: "Ketentuan", legal: "Pemberitahuan hukum", op: "Dikelola oleh 1900 Co., Ltd. (Ginza, Tokyo)", free: "Saat ini gratis" },
     vi: { menu: "Menu", test: "Bài kiểm tra AUN", arts: "Bài viết", app: "Ứng dụng", how: "Cách bài kiểm tra hoạt động", cta: "Làm bài miễn phí", svc: "Dịch vụ", co: "Công ty", rules: "Chính sách", signup: "Đăng ký trước", faq: "Câu hỏi thường gặp", about: "Về chúng tôi", contact: "Liên hệ", privacy: "Chính sách quyền riêng tư", terms: "Điều khoản", legal: "Thông báo pháp lý", op: "Vận hành bởi 1900 Co., Ltd. (Ginza, Tokyo)", free: "Hiện đang miễn phí" },
@@ -62,8 +62,8 @@
   }
   function drawTop(el) {
     const d = T[lang];
-    const cta = kind === "story" && d.storyCta ? '<a class="s-cta" href="' + STORY_APP + '" data-pos="header">' + d.storyCta + "</a>"
-              : page === "test.html" ? "" : '<a class="s-cta" href="/test.html">' + d.cta + "</a>";
+    // the story page has no button up here: its own first screen starts the story (NT 11/22「上部ゴチャっている」「無料で〜って必要？」)
+    const cta = kind === "story" || page === "test.html" ? "" : '<a class="s-cta" href="/test.html">' + d.cta + "</a>";
     el.innerHTML = '<div class="s-top-in"><a href="' + home() + '" class="s-brand" aria-label="AUN 阿吽">' + MARK + '<span>AUN</span><em class="s-kanji" aria-hidden="true">阿吽</em></a>' +
       '<div class="s-right">' + cta +
       '<div class="s-lang"><button type="button" class="s-lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Language">' + GLOBE + '<span>' + NAMES[lang] + '</span></button>' +

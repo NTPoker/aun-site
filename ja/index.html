@@ -62,9 +62,10 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 .hp-m.me p{background:var(--red);color:#fff;border-radius:16px 4px 16px 16px}
 .hp-m b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--who,url(/img/learn/officer_park.jpg)) 50% 20%/cover}
 /* 学ぶ言葉の切り替え（NT 11/22「勉強できるのは英語と日本語」「母国語は実装を見て」）：英語＝入国審査・本音は日本語、日本語＝寿司屋・本音は英語 */
-.hp-lang{align-self:flex-start;display:flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.1)}
-.hp-lang button{min-height:38px;border:0;border-radius:999px;background:none;color:rgba(255,255,255,.75);padding:0 16px;font:inherit;font-size:14px;font-weight:800;cursor:pointer}
-.hp-lang button[aria-pressed=true]{background:#fff;color:#141414}
+.hp-lang{align-self:flex-start;display:flex;gap:4px;margin:-4px 0 -4px -10px}
+.hp-lang button{position:relative;min-height:44px;border:0;background:none;color:rgba(255,255,255,.55);padding:0 10px;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.hp-lang button[aria-pressed=true]{color:#fff;font-weight:900}
+.hp-lang button[aria-pressed=true]::after{content:"";position:absolute;left:10px;right:10px;bottom:6px;height:3px;border-radius:2px;background:#FF8E77}
 .hp-lang button:focus-visible{outline:3px solid #FF8E77;outline-offset:2px}
 .hp-t{margin:-4px 0 0 42px;font-size:14px;line-height:1.5;color:rgba(255,255,255,.6);animation:hpIn .4s both}
 .hp-redo{align-self:flex-end;flex:none;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
@@ -134,20 +135,20 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 </head>
 <body class="lp">
 <script>if(/^#(signup|app)$/.test(location.hash))location.replace("/ja/test/"+location.search+location.hash)</script>
-<header id="site-top" class="s-top"></header><script src="/site.js?v=20261122a"></script>
+<header id="site-top" class="s-top"></header><script src="/site.js?v=20261122b"></script>
 
 <main>
 <section class="hp" aria-label="物語の見本">
 <div class="hp-in">
 <h1 class="hp-h"><span class="nw">入り込むから、</span><br><span class="nw"><em id="hp-goal">英語が身につく。</em></span></h1>
 <div class="hp-play" id="hp-play">
-<div class="hp-lang" role="group" aria-label="学ぶ言葉"><button type="button" aria-pressed="true" data-l="en">英語を学ぶ</button><button type="button" aria-pressed="false" data-l="ja">日本語を学ぶ</button></div>
+<div class="hp-lang" role="group" aria-label="学ぶ言葉"><button type="button" aria-pressed="true" data-l="en">英語</button><button type="button" aria-pressed="false" data-l="ja">日本語</button></div>
 <figure class="hp-scene"><img id="hp-img" src="/img/learn/scene_border.jpg" alt="入国審査のブース。審査官が手を出している"><figcaption><p id="hp-line" lang="en">Passport, please.</p></figcaption></figure>
 <button type="button" class="hp-redo" id="hp-redo" aria-label="もう一度" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" fill="currentColor"/></svg></button>
 <p class="hp-q" id="hp-q">あなたの英語で、返事が変わる。</p>
 <div class="hp-area" id="hp-area" tabindex="-1"></div><p class="hp-sr" id="hp-sr" aria-live="polite"></p>
 </div>
-<a href="https://app.aunjapanese.com/story/#/play/border/0" class="lp-cta hp-cta" id="hp-cta" data-pos="hero" data-story="border">無料で英語を話してみる</a>
+<a href="https://app.aunjapanese.com/story/#/play/border/0" class="lp-cta hp-cta" id="hp-cta" data-pos="hero" data-story="border">英語で第1話を始める</a>
 </div>
 </section>
 
@@ -192,7 +193,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <li><img src="/img/learn/cover_barber.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">ブルックリンで</span><span class="nw">髪を切る</span></b></li>
 <li><img src="/img/learn/cover_gym.jpg" alt="" width="480" height="720" loading="lazy"><b><span class="nw">ブルックリン、</span><span class="nw">朝7時のジム</span></b></li>
 </ul>
-<a href="https://app.aunjapanese.com/" class="lp-cta sr-cta" data-pos="list">無料で英語を話してみる</a>
+<a href="https://app.aunjapanese.com/" class="lp-cta sr-cta" data-pos="list">英語で第1話を始める</a>
 </div>
 </section>
 
@@ -202,7 +203,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <div class="lp-in">
 <p class="eq"><img src="/img/learn/officer_park.jpg" alt="" width="160" height="160"><span><small>入国審査官</small><b lang="en">What brings you to the US?</b></span></p>
 <h2 class="lp-cap" data-a><span class="nw">あなたなら、</span><br><span class="nw">英語で<em>どう返す？</em></span></h2>
-<a href="https://app.aunjapanese.com/" class="lp-cta" data-pos="end">無料で英語を話してみる</a>
+<a href="https://app.aunjapanese.com/" class="lp-cta" data-pos="end">英語で第1話を始める</a>
 </div>
 </section>
 
@@ -234,12 +235,12 @@ if(h.classList.contains("s-intro-on")){var mo=new MutationObserver(function(){if
 // 冒頭の物語の見本：学ぶ言葉（英語・日本語）を切り替え、絵の一言に3つの答えから返す。英語は入国審査（本音は日本語）、日本語は寿司屋（本音は英語。いま開いている母語は日本語と英語）。答えで、審査官の返事と本音が変わる（NT 11/22「8割削る」「押したくなる」）。
 // ボタンは、見ている物語（border／sushi）の第1話へ直接。日本語は ?hl=en で英語の画面に。ゲストもログインなしで遊べる。
 (function(){
-var L={en:{goal:"英語が身につく。",q:"あなたの英語で、返事が変わる。",cta:"無料で英語を話してみる",story:"border",href:"https://app.aunjapanese.com/story/#/play/border/0",
+var L={en:{goal:"英語が身につく。",q:"あなたの英語で、返事が変わる。",cta:"英語で第1話を始める",story:"border",href:"https://app.aunjapanese.com/story/#/play/border/0",
   img:"/img/learn/scene_border.jpg",alt:"入国審査のブース。審査官が手を出している",line:"Passport, please.",who:"審査官",face:"/img/learn/officer_park.jpg",say:"en",think:"ja",
   ch:[{say:"Here you go.",re:"Thanks. What brings you to the US?",th:"落ち着いてる。目的を聞こう。"},
    {say:"Hi! How are you?",re:"Fine. Passport, please.",th:"あいさつはいい。パスポートを。"},
    {say:"Uh... one second.",re:"Take your time.",th:"緊張してるな。急がせないでおこう。"}]},
- ja:{goal:"日本語が身につく。",q:"あなたの日本語で、返事が変わる。",cta:"無料で日本語を話してみる",story:"sushi",href:"https://app.aunjapanese.com/story/?hl=en#/play/sushi/0",
+ ja:{goal:"日本語が身につく。",q:"あなたの日本語で、返事が変わる。",cta:"日本語で第1話を始める",story:"sushi",href:"https://app.aunjapanese.com/story/?hl=en#/play/sushi/0",
   img:"/img/learn/scene_sushi.jpg",alt:"寿司屋のカウンター。職人がほほえんでいる",line:"何を握りますか？",who:"早川",face:"/img/learn/hayakawa.jpg",say:"ja",think:"en",
   ch:[{say:"サーモンでお願いします。",re:"サーモンですね。では、一緒に握りましょう。",th:"Salmon. Almost everyone from abroad starts there."},
    {say:"まぐろ、ありますか？",re:"ありますよ。今日のまぐろは、いいですよ。",th:"Good eye. The tuna is the best thing today."},
