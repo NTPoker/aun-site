@@ -60,7 +60,12 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 .hp-m.me{justify-content:flex-end}
 .hp-m p{margin:0;max-width:86%;border-radius:4px 16px 16px 16px;padding:9px 14px;background:#fff;color:#141414;font-family:'Archivo',var(--sans);font-size:17px;font-weight:600;line-height:1.35}
 .hp-m.me p{background:var(--red);color:#fff;border-radius:16px 4px 16px 16px}
-.hp-m b{flex:none;width:34px;height:34px;border-radius:50%;background:url(/img/learn/officer_park.jpg) 50% 20%/cover}
+.hp-m b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--who,url(/img/learn/officer_park.jpg)) 50% 20%/cover}
+/* 学ぶ言葉の切り替え（NT 11/22「勉強できるのは英語と日本語」「母国語は実装を見て」）：英語＝入国審査・本音は日本語、日本語＝寿司屋・本音は英語 */
+.hp-lang{align-self:flex-start;display:flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.1)}
+.hp-lang button{min-height:38px;border:0;border-radius:999px;background:none;color:rgba(255,255,255,.75);padding:0 16px;font:inherit;font-size:14px;font-weight:800;cursor:pointer}
+.hp-lang button[aria-pressed=true]{background:#fff;color:#141414}
+.hp-lang button:focus-visible{outline:3px solid #FF8E77;outline-offset:2px}
 .hp-t{margin:-4px 0 0 42px;font-size:14px;line-height:1.5;color:rgba(255,255,255,.6);animation:hpIn .4s both}
 .hp-redo{align-self:flex-end;flex:none;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .hp-redo[hidden]{display:none}.hp-redo svg{width:20px;height:20px}
@@ -134,9 +139,10 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <main>
 <section class="hp" aria-label="物語の見本">
 <div class="hp-in">
-<h1 class="hp-h"><span class="nw">入り込むから、</span><br><span class="nw"><em>英語が身につく。</em></span></h1>
-<div class="hp-play">
-<figure class="hp-scene"><img src="/img/learn/scene_border.jpg" alt="入国審査のブース。審査官が手を出している"><figcaption><p lang="en">Passport, please.</p></figcaption></figure>
+<h1 class="hp-h"><span class="nw">入り込むから、</span><br><span class="nw"><em id="hp-goal">英語が身につく。</em></span></h1>
+<div class="hp-play" id="hp-play">
+<div class="hp-lang" role="group" aria-label="学ぶ言葉"><button type="button" aria-pressed="true" data-l="en">英語を学ぶ</button><button type="button" aria-pressed="false" data-l="ja">日本語を学ぶ</button></div>
+<figure class="hp-scene"><img id="hp-img" src="/img/learn/scene_border.jpg" alt="入国審査のブース。審査官が手を出している"><figcaption><p id="hp-line" lang="en">Passport, please.</p></figcaption></figure>
 <button type="button" class="hp-redo" id="hp-redo" aria-label="もう一度" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" fill="currentColor"/></svg></button>
 <p class="hp-q" id="hp-q">あなたの英語で、返事が変わる。</p>
 <div class="hp-area" id="hp-area" tabindex="-1"></div><p class="hp-sr" id="hp-sr" aria-live="polite"></p>
@@ -225,25 +231,38 @@ if(h.classList.contains("s-intro-on")){var mo=new MutationObserver(function(){if
 })();
 </script>
 <script>
-// 冒頭の物語の見本：入国審査の一言に、3つの答えから返す。答えで、審査官の返事と本音が変わる（NT 11/22「8割削る」「押したくなる」）。
-// 「無料で英語を話してみる」は、この物語（border）の第1話へ直接。ゲストもログインなしで遊べる。
+// 冒頭の物語の見本：学ぶ言葉（英語・日本語）を切り替え、絵の一言に3つの答えから返す。英語は入国審査（本音は日本語）、日本語は寿司屋（本音は英語。いま開いている母語は日本語と英語）。答えで、審査官の返事と本音が変わる（NT 11/22「8割削る」「押したくなる」）。
+// ボタンは、見ている物語（border／sushi）の第1話へ直接。日本語は ?hl=en で英語の画面に。ゲストもログインなしで遊べる。
 (function(){
-var CH=[{en:"Here you go.",re:"Thanks. What brings you to the US?",th:"落ち着いてる。目的を聞こう。"},
- {en:"Hi! How are you?",re:"Fine. Passport, please.",th:"あいさつはいい。パスポートを。"},
- {en:"Uh... one second.",re:"Take your time.",th:"緊張してるな。急がせないでおこう。"}];
+var L={en:{goal:"英語が身につく。",q:"あなたの英語で、返事が変わる。",cta:"無料で英語を話してみる",story:"border",href:"https://app.aunjapanese.com/story/#/play/border/0",
+  img:"/img/learn/scene_border.jpg",alt:"入国審査のブース。審査官が手を出している",line:"Passport, please.",who:"審査官",face:"/img/learn/officer_park.jpg",say:"en",think:"ja",
+  ch:[{say:"Here you go.",re:"Thanks. What brings you to the US?",th:"落ち着いてる。目的を聞こう。"},
+   {say:"Hi! How are you?",re:"Fine. Passport, please.",th:"あいさつはいい。パスポートを。"},
+   {say:"Uh... one second.",re:"Take your time.",th:"緊張してるな。急がせないでおこう。"}]},
+ ja:{goal:"日本語が身につく。",q:"あなたの日本語で、返事が変わる。",cta:"無料で日本語を話してみる",story:"sushi",href:"https://app.aunjapanese.com/story/?hl=en#/play/sushi/0",
+  img:"/img/learn/scene_sushi.jpg",alt:"寿司屋のカウンター。職人がほほえんでいる",line:"何を握りますか？",who:"早川",face:"/img/learn/hayakawa.jpg",say:"ja",think:"en",
+  ch:[{say:"サーモンでお願いします。",re:"サーモンですね。では、一緒に握りましょう。",th:"Salmon. Almost everyone from abroad starts there."},
+   {say:"まぐろ、ありますか？",re:"ありますよ。今日のまぐろは、いいですよ。",th:"Good eye. The tuna is the best thing today."},
+   {say:"えっと……もう一度、お願いします。",re:"はい。何を、握りますか？",th:"Too fast. I'll slow down."}]}};
+var cur=L.en,CH=cur.ch;
 var area=document.getElementById("hp-area");if(!area)return;
-var sr=document.getElementById("hp-sr"),q=document.getElementById("hp-q"),redo=document.getElementById("hp-redo"),cta=document.getElementById("hp-cta");
+var sr=document.getElementById("hp-sr"),play=document.getElementById("hp-play"),img=document.getElementById("hp-img"),line=document.getElementById("hp-line"),goal=document.getElementById("hp-goal"),q=document.getElementById("hp-q"),redo=document.getElementById("hp-redo"),cta=document.getElementById("hp-cta");
 var still=matchMedia("(prefers-reduced-motion: reduce)").matches,run=0,timers=[];
 function wait(ms){return new Promise(function(ok){timers.push(setTimeout(ok,still?0:ms))})}
 function esc(t){return t.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function el(cls,html){var d=document.createElement("div");d.className=cls;d.innerHTML=html;area.appendChild(d);return d}
 function start(){run++;timers.forEach(clearTimeout);timers=[];area.innerHTML="";sr.textContent="";q.hidden=false;redo.hidden=true;document.querySelector(".hp-play").appendChild(redo);cta.classList.remove("go");
- CH.forEach(function(c,i){var b=document.createElement("button");b.type="button";b.className="hp-ch";b.lang="en";b.textContent=c.en;b.addEventListener("click",function(e){pick(i,e.detail===0)});area.appendChild(b)})}
-function pick(i,kb){var id=run,c=CH[i];if(window.gtag)gtag("event","hero_play",{story:"border",choice:i});
- area.innerHTML="";q.hidden=true;if(kb)area.focus({preventScroll:true});el("hp-m me",'<p lang="en">'+esc(c.en)+'</p>');
+ CH.forEach(function(c,i){var b=document.createElement("button");b.type="button";b.className="hp-ch";b.lang=cur.say;b.textContent=c.say;b.addEventListener("click",function(e){pick(i,e.detail===0)});area.appendChild(b)})}
+function pick(i,kb){var id=run,c=CH[i];if(window.gtag)gtag("event","hero_play",{story:cur.story,choice:i});
+ area.innerHTML="";q.hidden=true;if(kb)area.focus({preventScroll:true});el("hp-m me",'<p lang="'+cur.say+'">'+esc(c.say)+'</p>');
  var d=el("hp-m",'<b aria-hidden="true"></b><p>・・・</p>');
- wait(800).then(function(){if(id!==run)return;var p=d.querySelector("p");p.textContent=c.re;p.lang="en";return wait(700)})
-  .then(function(){if(id!==run)return;el("hp-t","（"+esc(c.th)+"）");sr.innerHTML='審査官「<span lang="en">'+esc(c.re)+'</span>」　本音：'+esc(c.th);area.appendChild(redo);redo.hidden=false;cta.classList.add("go")})}
+ wait(800).then(function(){if(id!==run)return;var p=d.querySelector("p");p.textContent=c.re;p.lang=cur.say;return wait(700)})
+  .then(function(){if(id!==run)return;var t=el("hp-t",cur.think==="ja"?"（"+esc(c.th)+"）":"("+esc(c.th)+")");t.lang=cur.think;sr.innerHTML=cur.who+'「<span lang="'+cur.say+'">'+esc(c.re)+'</span>」　本音：<span lang="'+cur.think+'">'+esc(c.th)+'</span>';area.appendChild(redo);redo.hidden=false;cta.classList.add("go")})}
+function lang(k){cur=L[k];CH=cur.ch;goal.textContent=cur.goal;q.textContent=cur.q;img.src=cur.img;img.alt=cur.alt;line.textContent=cur.line;line.lang=cur.say;
+ play.style.setProperty("--who","url("+cur.face+")");cta.textContent=cur.cta;cta.href=cur.href;cta.setAttribute("data-story",cur.story);
+ play.querySelectorAll(".hp-lang button").forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-l")===k?"true":"false")});start()}
+play.querySelectorAll(".hp-lang button").forEach(function(b){b.addEventListener("click",function(){var k=b.getAttribute("data-l");if(L[k]===cur)return;if(window.gtag)gtag("event","hero_lang",{lang:k});lang(k)})});
+new Image().src=L.ja.img;
 redo.addEventListener("click",function(){start();var b=area.querySelector("button");if(b)b.focus({preventScroll:true})});
 start();
 })();
