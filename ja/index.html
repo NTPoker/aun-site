@@ -38,62 +38,55 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <link rel="stylesheet" href="/site.css?v=20261121a">
 <style>
 /* この版だけの部品：話の画面の見本、物語の並び */
-/* 冒頭：その場で遊べる物語（NT 11/22「もっとユニークなできないかね」）。絵は画面いっぱい、会話は下に流れる */
-.hp{position:relative;overflow:hidden;background:#111;color:#fff;min-height:calc(100svh - 84px);display:flex}
-.hp-bg,.hp-bg img{position:absolute;inset:0}
-.hp-bg img{width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1s ease,transform 7s ease-out}
-.hp-bg img.on{opacity:1;transform:scale(1)}
-.hp-bg img[data-p="border"]{object-position:62% 30%}
-.hp-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.75) 0%,rgba(10,10,10,.3) 30%,rgba(10,10,10,.1) 42%,rgba(10,10,10,.55) 58%,rgba(10,10,10,.9) 78%,rgba(10,10,10,.95) 100%)}
-.hp-in{position:relative;z-index:1;width:100%;max-width:1120px;margin:0 auto;padding:20px 20px 22px;display:grid;grid-template-rows:auto auto 1fr auto auto auto;grid-template-areas:"txt" "tabs" "." "log" "ask" "cta";row-gap:12px}
-.hp-txt{grid-area:txt}.hp-cta{grid-area:cta;margin-top:4px}
-.hp-play{display:contents}.hp-tabs{grid-area:tabs}.hp-log{grid-area:log}.hp-ask{grid-area:ask}.hp-place{display:none}
-.hp-kick{margin:0;font-weight:800;font-size:13px;letter-spacing:1px;color:#FF8E77}
-.hp-h{margin:8px 0 0;font-family:var(--serif);font-weight:900;font-size:34px;line-height:1.22;font-feature-settings:"palt";text-shadow:0 2px 18px rgba(0,0,0,.45)}
-.hp-h em{font-style:normal;color:#FF8E77}
-.hp-sub{margin:10px 0 0;font-size:14px;font-weight:700;line-height:1.7;color:rgba(255,255,255,.88);text-shadow:0 1px 10px rgba(0,0,0,.5)}
+/* 冒頭：その場で遊べる物語（NT 11/22）。アプリと同じ形のチャットを主役に。絵は最初のメッセージ。押したら、見ていた物語の1話目へ直接 */
+.hp{background:var(--paper);color:var(--ink)}
+.hp-in{max-width:1120px;margin:0 auto;padding:16px 16px 22px;display:flex;flex-direction:column;gap:12px}
+.hp-kick{margin:0;font-weight:800;font-size:13px;letter-spacing:1px;color:var(--red)}
+.hp-h{margin:6px 0 0;font-family:var(--serif);font-weight:900;font-size:31px;line-height:1.22;font-feature-settings:"palt"}
+.hp-h em{font-style:normal;color:var(--red)}
+.hp-sub{display:none;margin:16px 0 0;font-size:17px;font-weight:700;line-height:1.75;color:var(--ink2)}
 .hp-tabs{display:flex;gap:6px}
-.hp-tabs button{flex:1;min-height:36px;border:0;border-radius:999px;background:rgba(20,20,20,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:rgba(255,255,255,.8);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
-.hp-tabs button[aria-pressed="true"]{background:#fff;color:var(--ink)}
-.hp-place{margin:10px 2px 0;font-size:11px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.6)}
-.hp-log{max-height:250px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 34px);mask-image:linear-gradient(180deg,transparent 0,#000 34px)}
-.hp-m{flex:none;display:flex;gap:8px;align-items:flex-end;animation:hpIn .35s cubic-bezier(.2,.7,.2,1) both}
-.hp-m img{flex:none;width:30px;height:30px;border-radius:50%;object-fit:cover;object-position:50% 20%}
+.hp-tabs button{flex:1;min-height:38px;border:1px solid var(--row);border-radius:999px;background:#fff;color:var(--ink2);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.hp-tabs button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.hp-chat{position:relative;background:#F4F5F7;border-radius:24px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:#111318}
+.hp-top{flex:none;display:flex;align-items:center;justify-content:center;height:42px;padding:0 44px;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hp-redo{position:absolute;top:4px;right:6px;width:36px;height:36px;border:0;border-radius:50%;background:#ECEEF2;color:#5F6672;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.hp-redo[hidden]{display:none}
+.hp-redo svg{width:18px;height:18px}
+.hp-log{height:364px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:2px 12px 12px;display:flex;flex-direction:column;gap:8px}
+.hp-log::-webkit-scrollbar{display:none}
+.hp-log>:first-child{margin-top:auto}
+.hp-pic{flex:none;width:100%;height:112px;border-radius:14px;object-fit:cover;display:block}
+.hp-m{flex:none;display:flex;gap:8px;align-items:flex-start;animation:hpIn .35s cubic-bezier(.2,.7,.2,1) both}
+.hp-m img{flex:none;width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:50% 20%}
 .hp-m div{max-width:84%}
-.hp-m small{display:block;margin:0 0 3px 4px;font-size:11px;font-weight:700;color:rgba(255,255,255,.65)}
-.hp-m p{margin:0;background:#fff;color:#141414;border-radius:16px 16px 16px 4px;padding:8px 12px;font-family:'Archivo',var(--sans);font-size:15px;font-weight:500;line-height:1.4}
+.hp-m small{display:block;margin:0 0 3px 2px;font-size:12px;font-weight:700;color:#5F6672}
+.hp-m p{margin:0;background:#fff;border-radius:4px 16px 16px 16px;padding:8px 12px;font-size:15px;line-height:1.45}
 .hp-m.me{justify-content:flex-end}
-.hp-m.me p{background:var(--red);color:#fff;border-radius:16px 16px 4px 16px}
-.hp-m.dots p{font-family:var(--sans);letter-spacing:3px;color:#888}
-.hp-n{flex:none;margin:0 0 0 38px;padding-left:10px;border-left:3px solid rgba(255,255,255,.45);font-size:13px;line-height:1.6;color:rgba(255,255,255,.9);animation:hpIn .35s both}
-.hp-t{flex:none;margin:0 0 0 38px;background:#F8E6E1;color:#141414;border-left:4px solid var(--red);border-radius:10px;padding:7px 12px;font-size:14px;font-weight:700;line-height:1.5;animation:hpIn .4s both}
-.hp-t b{display:block;font-size:11px;color:var(--red);letter-spacing:.06em}
-.hp-e{flex:none;margin:2px 0 0;text-align:center;font-family:var(--serif);font-weight:900;font-size:19px;color:#fff;animation:hpIn .5s both}
-.hp-ask{display:flex;flex-direction:column;gap:7px}
-.hp-ask>small{font-size:12px;font-weight:700;color:#FF8E77;letter-spacing:.06em}
-.hp-ask button{min-height:42px;text-align:left;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.08);color:#fff;border-radius:14px;padding:8px 14px;font-family:'Archivo',var(--sans);font-size:15px;font-weight:600;line-height:1.35;cursor:pointer;animation:hpIn .35s both;transition:background .2s,border-color .2s}
-.hp-ask button:hover{background:rgba(255,255,255,.18)}
-.hp-ask button.pick{background:#fff;color:#141414;border-color:#fff}
-.hp-ask.end{flex-direction:column}
-.hp-in-row{display:flex;align-items:center;gap:8px;min-height:48px;padding:0 6px 0 16px;border-radius:24px;background:#fff;color:#8b8e97;text-decoration:none;font-size:15px;animation:hpIn .4s both}
+.hp-m.me p{background:#C8371F;color:#fff;border-radius:16px 4px 16px 16px}
+.hp-m.dots p{letter-spacing:3px;color:#7C8490}
+.hp-n{flex:none;margin:0 0 0 40px;padding-left:10px;border-left:3px solid #C9CED6;font-size:14px;line-height:1.6;color:#5F6672;animation:hpIn .35s both}
+.hp-t{flex:none;margin:0 0 0 40px;background:#FBEDEA;border-radius:12px;padding:6px 12px;font-size:14px;font-weight:700;line-height:1.5;animation:hpIn .4s both}
+.hp-t b{display:block;font-size:11px;color:#A32A15;letter-spacing:.06em}
+.hp-ask{flex:none;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;margin-top:2px}
+.hp-ask button{min-height:38px;border:1.5px solid #C8371F;background:#fff;color:#A32A15;border-radius:20px;padding:6px 14px;font:inherit;font-size:15px;font-weight:600;line-height:1.3;text-align:left;cursor:pointer;animation:hpIn .35s both;transition:background .15s}
+.hp-ask button:hover{background:#FBEDEA}
+.hp-in-row{flex:none;display:flex;align-items:center;gap:8px;margin:0 10px 10px;min-height:48px;padding:0 5px 0 16px;border:1px solid #7C8490;border-radius:24px;background:#fff;color:#5F6672;text-decoration:none;font-size:15px}
 .hp-in-row span{flex:1}
-.hp-in-row i{flex:none;width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center}
+.hp-in-row i{flex:none;width:38px;height:38px;border-radius:50%;background:#C8371F;color:#fff;display:flex;align-items:center;justify-content:center}
 .hp-in-row svg{width:20px;height:20px}
-.hp-ask button.hp-again{align-self:center;min-height:36px;border:0;background:none;text-align:center;font-family:var(--sans);font-size:14px;font-weight:700;color:rgba(255,255,255,.8);text-decoration:underline;text-underline-offset:3px}
+.hp-in-row.go{border-color:#C8371F;box-shadow:0 0 0 3px rgba(200,55,31,.18);color:#111318}
 .hp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.hp-tabs button:focus-visible,.hp-ask button:focus-visible{outline:3px solid #FF8E77;outline-offset:2px}
+.hp-tabs button:focus-visible,.hp-ask button:focus-visible,.hp-redo:focus-visible,.hp-in-row:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 @keyframes hpIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (max-width:899px) and (max-height:720px){.hp-sub{display:none}.hp-h{font-size:28px}.hp-in{padding-top:14px;row-gap:10px}.hp-log{max-height:190px}.hp-ask button{min-height:38px;font-size:14px}}
-@media (prefers-reduced-motion:reduce){.hp-bg img{transition:none;transform:none!important}.hp-m,.hp-n,.hp-t,.hp-e,.hp-ask button{animation:none}}
+@media (max-width:899px) and (max-height:720px){.hp-h{font-size:27px}.hp-log{height:300px}.hp-pic{height:104px}}
+@media (max-width:360px){.hp-h{font-size:27px}.hp-ask button{font-size:14px;padding:6px 11px}.hp-m p{font-size:14px}}
+@media (prefers-reduced-motion:reduce){.hp-m,.hp-n,.hp-t,.hp-ask button{animation:none}}
 @media (min-width:900px){
- .hp{min-height:max(640px,calc(100svh - 100px))}
- .hp-bg::after{background:linear-gradient(90deg,rgba(10,10,10,.86) 0%,rgba(10,10,10,.55) 42%,rgba(10,10,10,.2) 62%,rgba(10,10,10,.55) 100%)}
- .hp-bg img[data-p="film"],.hp-bg img[data-p="magic"]{object-position:50% 35%}
- .hp-in{padding:64px clamp(32px,4vw,56px);grid-template-columns:minmax(0,1fr) clamp(380px,34vw,440px);grid-template-rows:1fr auto 1fr;grid-template-areas:"txt play" "cta play" ". play";column-gap:64px;row-gap:0;align-items:center}
- .hp-play{display:block;grid-area:play;background:rgba(16,16,16,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:14px 14px 16px}
- .hp-place{display:block}.hp-log{height:260px;max-height:none;margin-top:6px}.hp-ask{margin-top:12px;min-height:156px}
- .hp-txt{align-self:end}.hp-cta{align-self:start;max-width:420px;margin-top:14px}
- .hp-kick{font-size:15px}.hp-h{font-size:clamp(40px,4.2vw,56px)}.hp-sub{font-size:19px;margin-top:18px}
+ .hp-in{padding:48px clamp(32px,4vw,56px) 64px;display:grid;grid-template-columns:minmax(0,1fr) 420px;grid-template-rows:auto 1fr auto 1fr;grid-template-areas:". tabs" ". chat" "txt chat" "cta chat";column-gap:72px;row-gap:12px}
+ .hp-txt{grid-area:txt}.hp-tabs{grid-area:tabs}.hp-chat{grid-area:chat;align-self:start}.hp-cta{grid-area:cta;align-self:start;max-width:420px;margin-top:20px}
+ .hp-kick{font-size:15px}.hp-h{font-size:clamp(40px,4.2vw,56px)}.hp-sub{display:block}
+ .hp-log{height:400px}.hp-pic{height:170px}
 }
 
 .mlead{margin:0 auto;max-width:560px;text-align:left;font-size:16px;line-height:1.85;color:var(--ink)}
@@ -150,20 +143,20 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 
 <main>
 <section class="hp" aria-label="物語の見本">
-<div class="hp-bg" aria-hidden="true"><img src="/img/learn/scene_shoot.jpg" alt="" class="on" data-p="film"><img src="/img/learn/scene_border.jpg" alt="" data-p="border" loading="lazy"><img src="/img/learn/scene_fly.jpg" alt="" data-p="magic" loading="lazy"></div>
 <div class="hp-in">
 <div class="hp-txt">
-<p class="hp-kick">物語の主人公になって、AI と英語で話す。</p>
+<p class="hp-kick">英語、言いたいのに出てこない。</p>
 <h1 class="hp-h"><span class="nw">入り込むから、</span><br><span class="nw"><em>英語が身につく。</em></span></h1>
-<p class="hp-sub"><span class="nw">台本のない物語。</span><span class="nw">あなたの英語で、</span><span class="nw">相手の返事も結末も変わる。</span></p>
+<p class="hp-sub"><span class="nw">物語の主人公になって、AI と英語で話す。</span><br><span class="nw">あなたの英語で、相手の返事も結末も変わる。</span></p>
 </div>
-<div class="hp-play">
-<div class="hp-tabs" aria-label="物語"><button type="button" data-p="film" aria-pressed="true">映画に出る</button><button type="button" data-p="border" aria-pressed="false">入国審査</button><button type="button" data-p="magic" aria-pressed="false">魔法の島</button></div>
-<p class="hp-place" id="hp-place">ニューヨークで映画に出る｜撮影の日</p>
+<div class="hp-tabs" aria-label="物語"><button type="button" data-p="border" aria-pressed="true">入国審査</button><button type="button" data-p="film" aria-pressed="false">映画に出る</button><button type="button" data-p="magic" aria-pressed="false">魔法の島</button></div>
+<div class="hp-chat">
+<p class="hp-top" id="hp-top">第1話　別室送り</p>
+<button type="button" class="hp-redo" id="hp-redo" aria-label="最初から" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" fill="currentColor"/></svg></button>
 <div class="hp-log" id="hp-log"></div><p class="hp-sr" id="hp-sr" aria-live="polite"></p>
-<div class="hp-ask" id="hp-ask"></div>
+<a class="hp-in-row" id="hp-row" href="https://app.aunjapanese.com/story/#/play/border/0" data-pos="hero_input" data-story="border"><span>英語か日本語で話す</span><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-2.1A7 7 0 0 0 19 12h-2z" fill="currentColor"/></svg></i></a>
 </div>
-<a href="https://app.aunjapanese.com/" class="lp-cta hp-cta" data-pos="hero">無料で英語を話してみる</a>
+<a href="https://app.aunjapanese.com/story/#/play/border/0" class="lp-cta hp-cta" id="hp-cta" data-pos="hero" data-story="border">無料で英語を話してみる</a>
 </div>
 </section>
 
@@ -178,7 +171,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <div class="lp-sv pz" data-a><div class="ph" aria-hidden="true"><div class="scr"><p class="st-top"><i></i>撮影の日</p><p class="st-who"><img src="/img/learn/nina.jpg" alt="">Nina</p><p class="st-b" lang="en">You just got here from Tokyo. Say hi, your way.</p><p class="st-me" lang="en">Hi! I'm your new roommate. Sorry I'm late.</p><p class="st-nar">監督のニーナが、親指を立てる。</p><p class="st-who"><img src="/img/learn/nina.jpg" alt="">Nina</p><p class="st-b" lang="en">Love it. Keep the "sorry."</p><p class="st-in"><span>英語か日本語で話す</span><i></i></p></div></div></div>
 </article>
 <article class="lp-step">
-<div class="lp-st"><p class="lp-sl"><b>2</b><span>その場で</span></p><h3>相手の<em>本音</em>が、<br>日本語で見える。</h3><p class="lp-sd">相手が口に出さない心の声が、日本語で出ます。返事だけではわからない相手の気持ちが、その場でわかります。</p></div>
+<div class="lp-st"><p class="lp-sl"><b>2</b><span>その場で</span></p><h3>相手の<em>本音</em>が、<br>母語で見える。</h3><p class="lp-sd">相手が口に出さない心の声が、あなたの母語で出ます。返事だけではわからない相手の気持ちが、その場でわかります。</p></div>
 <div class="lp-sv pz" data-a><div class="ph" aria-hidden="true"><div class="scr"><p class="st-top"><i></i>撮影の日</p><p class="st-who"><img src="/img/learn/owen.jpg" alt="">Owen</p><p class="st-b" lang="en">So, where are you from?</p><p class="st-me" lang="en">Tokyo. Tokyo is big city.</p><p class="st-who"><img src="/img/learn/owen.jpg" alt="">Owen</p><p class="st-b" lang="en">Cool. First time in New York?</p><p class="st-th"><b>本音</b>緊張してるのかな。もっと話してほしい。</p></div></div></div>
 </article>
 <article class="lp-step me">
@@ -186,7 +179,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <div class="lp-sv pz" data-a><div class="ph" aria-hidden="true"><div class="scr"><p class="st-h">振り返り</p><div class="st-card"><p class="was" lang="en">Tokyo is big city.</p><span class="k">次はこう言う</span><p class="now" lang="en">Tokyo is a big city.</p><p class="pt">「大きな都市」は a big city。</p></div><div class="st-card"><p class="was" lang="en">I am live in Tokyo.</p><span class="k">次はこう言う</span><p class="now" lang="en">I live in Tokyo.</p><p class="pt">live の前に am は要りません。</p></div></div></div></div>
 </article>
 </div>
-<ul class="sp"><li>むずかしさは3段階</li><li>場面の説明は日本語</li><li>迷ったら言い方のヒント</li></ul>
+<ul class="sp"><li>むずかしさは3段階</li><li>場面の説明は母語で</li><li>迷ったら言い方のヒント</li></ul>
 </div>
 </section>
 
@@ -226,7 +219,7 @@ gtag('js',new Date());gtag('config','G-T49S0CQFE1');
 <div class="lp-in">
 <div class="lp-faq" id="faq">
 <h2>よくある質問</h2>
-<details><summary>英語が苦手でも、できる？</summary><p>できます。むずかしさは3つから選べます。場面の説明は日本語で、言い方に迷った時はヒントを出せます。</p></details>
+<details><summary>英語が苦手でも、できる？</summary><p>できます。むずかしさは3つから選べます。場面の説明は母語で読めて、言い方に迷った時はヒントを出せます。</p></details>
 <details><summary>声で話すの？</summary><p>声でも、文字でも話せます。</p></details>
 <details><summary>料金は？</summary><p>無料です。</p></details>
 <details><summary>登録は要る？</summary><p>登録なしで始められます。話の途中から先へ進む時に、Apple か Google でログインします。</p></details>
@@ -247,60 +240,56 @@ if(h.classList.contains("s-intro-on")){var mo=new MutationObserver(function(){if
 })();
 </script>
 <script>
-// 冒頭の物語の見本。選んだ答えで、相手の返事と本音が変わる。何も押さなければ、予告編のように自分で進む（押したら止まる）。
+// 冒頭の物語の見本：各物語の第1話の本物の始まり。選んだ答えで、相手の返事と本音が変わる。自動では進まない（Codex 45）。
+// 「無料で英語を話してみる」と入力欄は、見ていた物語の第1話へ直接（NT 11/22「ホームには飛ばさない」）。
 (function(){
+var APP="https://app.aunjapanese.com/story/#/play/";
 var P={
- film:{place:"ニューヨークで映画に出る｜撮影の日",
-  open:[{w:"Nina",r:"監督",f:"nina",en:"You just got to New York. Say hi to your new roommate. And... action!"},{w:"Owen",r:"ルームメイト役",f:"owen",en:"Hey! You must be my new roommate."}],
-  ch:[{en:"Yes! Nice to meet you. I'm so tired.",re:{w:"Owen",f:"owen",en:"Long flight, huh? Come in, sit down."},th:"疲れてるんだ。まず座ってもらおう。"},
-      {en:"Hi. Is this the right apartment?",re:{w:"Owen",f:"owen",en:"Ha, yes. You're in the right place."},th:"不安そう。安心させよう。"},
-      {en:"Where's the bathroom?",re:{w:"Owen",f:"owen",en:"Uh... down the hall, on the left."},th:"いきなりトイレ？ 面白い人が来た。"}],
-  after:{w:"Nina",f:"nina",en:"Cut! I didn't write that. Keep it."}},
- border:{place:"ロサンゼルス、ひとり旅｜入国審査",
-  open:[{w:"Officer Park",r:"入国審査官",f:"officer_park",en:"Next. What brings you to the US?"}],
-  ch:[{en:"Sightseeing. One week in LA.",re:{w:"Officer Park",f:"officer_park",en:"Enjoy your stay."},th:"目的も期間もはっきり。問題なし。"},
-      {en:"I'm visiting a friend.",re:{w:"Officer Park",f:"officer_park",en:"A friend. How long are you staying?"},th:"滞在期間も聞いておこう。"},
-      {en:"I don't know.",re:{w:"Officer Park",f:"officer_park",en:"You don't know? What are your plans while you're here?"},th:"答えがあやしい。もう少し聞こう。"}]},
- magic:{place:"魔法の道具、貸します｜空を飛ぶ靴",
-  open:[{w:"Mina",r:"道具屋",f:"mina",en:"Here are your shoes. Just tell them where to go."}],
-  ch:[{en:"Up, please. Slowly.",n:"靴が、ふわりと浮いた。",re:{w:"Mina",f:"mina",en:"See? They like \"please.\""},th:"ちゃんと頼める人だ。"},
-      {en:"To the tower!",n:"一気に、塔の上まで飛んだ。",re:{w:"Mina",f:"mina",en:"Whoa! Not so fast!"},th:"そんな勢いで飛ぶとは。大丈夫かな。"},
-      {en:"Stop! Stop!",n:"靴は動かない。まだ地面の上。",re:{w:"Mina",f:"mina",en:"You haven't even left the ground."},th:"まだ飛んでないのに。かわいい人。"}]}
+ border:{id:"border",top:"第1話　別室送り",pic:"/img/learn/scene_border.jpg",pos:"50% 30%",
+  open:{w:"Officer Park",f:"officer_park",en:"Next. Good morning. Passport, please."},th:"次の人。さっさと済ませよう。",
+  ch:[{en:"Good morning! How are you?",re:"Fine. Passport, please.",th:"あいさつはいい。パスポートを。"},
+      {en:"Here you go.",re:"Thank you. What brings you to the US?",th:"落ち着いてる。目的を聞こう。"},
+      {en:"Uh... one second.",re:"Take your time.",th:"緊張してるな。急がせないでおこう。"}]},
+ film:{id:"read",top:"第1話　台本の読み合わせ",pic:"/img/learn/scene_read.jpg",pos:"50% 42%",
+  open:{w:"Nina",f:"nina",en:"Hey, you're here! Come in, come in. Read-through day."},th:"来てくれた！ 今日を楽しみにしてた。",
+  ch:[{en:"Do I need to know my lines?",re:"Nope. The script's just a guide.",th:"まじめな人だ。それでいい。"},
+      {en:"Nice place!",re:"Thanks! It's a mess, but it's home.",th:"部屋をほめられた。うれしい。"},
+      {en:"I'm a little nervous.",re:"Don't be. There's no wrong answer today.",th:"かわいい。気楽にしてほしい。"}]},
+ magic:{id:"fly",top:"第1話　空を飛ぶ靴",pic:"/img/learn/scene_fly.jpg",pos:"50% 22%",
+  open:{w:"Mina",f:"mina",en:"Oh, you're back! Today it's the flying shoes, right? Come on in."},th:"また来てくれた。うれしい。",
+  ch:[{en:"Can I try them right now?",re:"Right now? Okay, put them on!",th:"せっかちな人だ。好きだな。"},
+      {en:"Yes! I can't wait.",re:"Ha! Then let's get you in the air.",th:"わくわくしてる。いいお客さん。"},
+      {en:"Are they safe?",re:"Very safe. They only go where you tell them.",th:"ちょっとこわいのかな。"}]}
 };
-var ORDER=["film","border","magic"],root=document.querySelector(".hp");if(!root)return;
-var sr=document.getElementById("hp-sr"),log=document.getElementById("hp-log"),ask=document.getElementById("hp-ask"),place=document.getElementById("hp-place");
-var tabs=[].slice.call(root.querySelectorAll(".hp-tabs button")),bgs=[].slice.call(root.querySelectorAll(".hp-bg img"));
-var still=matchMedia("(prefers-reduced-motion: reduce)").matches,auto=!still,run=0,cur="film",pickN={film:0,border:2,magic:1},seen=true,vis=true,timers=[];
+var root=document.querySelector(".hp");if(!root)return;
+var log=document.getElementById("hp-log"),sr=document.getElementById("hp-sr"),top=document.getElementById("hp-top"),redo=document.getElementById("hp-redo"),row=document.getElementById("hp-row"),cta=document.getElementById("hp-cta");
+var tabs=[].slice.call(root.querySelectorAll(".hp-tabs button"));
+var still=matchMedia("(prefers-reduced-motion: reduce)").matches,run=0,timers=[];
 function wait(ms){return new Promise(function(ok){timers.push(setTimeout(ok,still?0:ms))})}
-function esc(s){return s.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-function add(cls,html){var d=document.createElement("div");d.className=cls;d.innerHTML=html;log.appendChild(d);while(log.children.length>7)log.removeChild(log.firstChild);return d}
-function face(m){return '<img src="/img/learn/'+m.f+'.jpg" alt="">'}
-function say(m,id){if(id!==run)return Promise.resolve();var d=add("hp-m dots",face(m)+'<div><small>'+esc(m.w)+(m.r?"（"+m.r+"）":"")+'</small><p>・・・</p></div>');
- return wait(750).then(function(){if(id!==run)return;d.className="hp-m";d.querySelector("p").textContent=m.en;d.querySelector("p").setAttribute("lang","en")}).then(function(){return wait(500)})}
-function sel(k){cur=k;tabs.forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-p")===k?"true":"false")});bgs.forEach(function(i){i.classList.toggle("on",i.getAttribute("data-p")===k)});place.textContent=P[k].place}
-function play(k){var id=++run;timers.forEach(clearTimeout);timers=[];sel(k);log.innerHTML="";ask.innerHTML="";ask.className="hp-ask";var s=P[k],q=Promise.resolve();
- s.open.forEach(function(m){q=q.then(function(){return say(m,id)})});
- q.then(function(){if(id!==run)return;ask.innerHTML='<small>あなたなら？</small>';s.ch.forEach(function(c,i){var b=document.createElement("button");b.type="button";b.lang="en";b.textContent=c.en;b.addEventListener("click",function(){auto=false;answer(k,i,id,b)});ask.appendChild(b)});
-  if(auto&&seen){var n=pickN[k];pickN[k]=(n+1)%3;wait(5500).then(function(){if(id!==run||!auto)return;var b=ask.querySelectorAll("button")[n];b.classList.add("pick");return wait(450).then(function(){if(id===run&&auto)answer(k,n,id,b)})})}})}
-function answer(k,i,id,b){if(id!==run)return;var s=P[k],c=s.ch[i];if(window.gtag)gtag("event","hero_play",{story:k,choice:i,by:auto?"auto":"tap"});
- ask.innerHTML="";add("hp-m me",'<div><p lang="en">'+esc(c.en)+'</p></div>');var q=wait(500);
- if(c.n)q=q.then(function(){if(id===run)add("hp-n",esc(c.n));return wait(700)});
- q.then(function(){return say(c.re,id)}).then(function(){if(id!==run)return;add("hp-t","<b>本音</b>"+esc(c.th));if(!auto)sr.textContent=c.re.w+"「"+c.re.en+"」　本音："+c.th;return wait(1300)})
-  .then(function(){if(id!==run||!s.after)return;return say(s.after,id)})
-  .then(function(){if(id!==run)return;add("hp-e","続きは、あなたの言葉で。");
-   if(auto){wait(3200).then(function(){if(id===run&&auto)play(ORDER[(ORDER.indexOf(k)+1)%3])});return}
-   ask.className="hp-ask end";ask.innerHTML='<a class="hp-in-row" href="https://app.aunjapanese.com/" data-pos="hero_input"><span>英語か日本語で話す</span><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-2.1A7 7 0 0 0 19 12h-2z" fill="currentColor"/></svg></i></a>';var e=document.createElement("button");e.type="button";e.className="hp-again";e.textContent="ほかの答えで";e.addEventListener("click",function(){play(k)});ask.appendChild(e);e.focus({preventScroll:true})})}
-tabs.forEach(function(b){b.addEventListener("click",function(){auto=false;play(b.getAttribute("data-p"))})});
-var playEl=root.querySelector(".hp-play");["pointerdown","focusin"].forEach(function(ev){playEl.addEventListener(ev,function(){if(auto){auto=false;var bs=ask.querySelectorAll("button.pick");bs.forEach(function(x){x.classList.remove("pick")})}})});
-function stop(){run++;timers.forEach(clearTimeout);timers=[]}
-document.addEventListener("visibilitychange",function(){if(document.hidden){if(auto){seen=false;stop()}}else if(auto&&!seen&&vis){seen=true;play(cur)}});
-if("IntersectionObserver" in window)new IntersectionObserver(function(es){var v=es[0].intersectionRatio>=.25;vis=v;if(v&&!seen&&auto&&!document.hidden){seen=true;play(cur)}else if(!v&&auto){seen=false;stop()}},{threshold:[0,.25]}).observe(root);
-play("film");
+function esc(t){return t.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function add(cls,html){var d=document.createElement("div");d.className=cls;d.innerHTML=html;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+function say(m,en,id){if(id!==run)return Promise.resolve();var d=add("hp-m dots",'<img src="/img/learn/'+m.f+'.jpg" alt=""><div><small>'+esc(m.w)+'</small><p>・・・</p></div>');
+ return wait(700).then(function(){if(id!==run)return;d.className="hp-m";var q=d.querySelector("p");q.textContent=en;q.setAttribute("lang","en");log.scrollTop=log.scrollHeight}).then(function(){return wait(450)})}
+function think(t,id){if(id!==run)return;add("hp-t","<b>本音</b>"+esc(t))}
+function play(k){var id=++run,s=P[k];timers.forEach(clearTimeout);timers=[];sr.textContent="";row.querySelector("span").textContent="英語か日本語で話す";
+ tabs.forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-p")===k?"true":"false")});
+ top.textContent=s.top;redo.hidden=true;row.classList.remove("go");
+ [row,cta].forEach(function(a){a.href=APP+s.id+"/0";a.setAttribute("data-story",s.id)});
+ log.innerHTML='<img class="hp-pic" src="'+s.pic+'" alt="" style="object-position:'+s.pos+'">';
+ wait(350).then(function(){return say(s.open,s.open.en,id)}).then(function(){think(s.th,id);if(id===run)sr.innerHTML=esc(s.open.w)+"「<span lang=\"en\">"+esc(s.open.en)+"</span>」　本音："+esc(s.th);return wait(600)}).then(function(){if(id!==run)return;
+  var ask=add("hp-ask","");ask.setAttribute("role","group");ask.setAttribute("aria-label","あなたなら？");
+  s.ch.forEach(function(c,i){var b=document.createElement("button");b.type="button";b.lang="en";b.textContent=c.en;b.addEventListener("click",function(e){answer(k,i,id,ask,e.detail===0)});ask.appendChild(b)});log.scrollTop=log.scrollHeight})}
+function answer(k,i,id,ask,kb){if(id!==run)return;var s=P[k],c=s.ch[i];if(window.gtag)gtag("event","hero_play",{story:k,choice:i});
+ if(kb)row.focus({preventScroll:true});ask.remove();add("hp-m me",'<div><p lang="en">'+esc(c.en)+'</p></div>');
+ wait(450).then(function(){return say(s.open,c.re,id)}).then(function(){if(id!==run)return;think(c.th,id);sr.innerHTML=esc(s.open.w)+"「<span lang=\"en\">"+esc(c.re)+"</span>」　本音："+esc(c.th);redo.hidden=false;row.classList.add("go");row.querySelector("span").textContent="続きを話す"})}
+tabs.forEach(function(b){b.addEventListener("click",function(){play(b.getAttribute("data-p"))})});
+redo.addEventListener("click",function(){var t=tabs.filter(function(b){return b.getAttribute("aria-pressed")==="true"})[0];play(t.getAttribute("data-p"));t.focus({preventScroll:true})});
+play("border");
 })();
 </script>
 <script>
 // the buttons to the stories: count where they were pressed (GA4 only)
-document.addEventListener("click", function (e) { var a = e.target.closest('a[href^="https://app.aunjapanese.com/"]'); if (a && window.gtag) gtag("event", "story_cta", { pos: a.getAttribute("data-pos") || "menu" }); });
+document.addEventListener("click", function (e) { var a = e.target.closest('a[href^="https://app.aunjapanese.com/"]'); if (a && window.gtag) gtag("event", "story_cta", { pos: a.getAttribute("data-pos") || "menu", story: a.getAttribute("data-story") || "" }); });
 </script>
 </body>
 </html>
