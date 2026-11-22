@@ -119,6 +119,7 @@
   // Opening: the red circle is brushed in, 阿 then 吽 appear (breath in, breath out), then the page opens.
   // Once per visit (sessionStorage), skipped for reduced motion; a tap skips it.
   function intro() {
+    if (kind === "story") return;   // (the story page opens on the story itself: NT 2026-11-22 「アイコンのやつ外していいな」)
     try { if (sessionStorage.getItem("aun-intro")) return; sessionStorage.setItem("aun-intro", "1"); } catch (e) { return; }
     if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const el = document.createElement("div");
